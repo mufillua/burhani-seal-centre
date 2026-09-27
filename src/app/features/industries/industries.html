@@ -1,0 +1,264 @@
+<!-- ============================================
+  INDUSTRIES PAGE
+  ============================================ -->
+
+<div class="industries-page">
+
+  <!-- ══════════════════════════════════════════
+    SECTION 1: HERO
+  ══════════════════════════════════════════ -->
+  <section class="ind-hero" aria-label="Industries page header">
+
+    <div class="ind-hero__bg" aria-hidden="true">
+      <div class="ind-hero__gradient"></div>
+      <div class="ind-hero__pattern"></div>
+      <div class="ind-hero__glow ind-hero__glow--left"></div>
+      <div class="ind-hero__glow ind-hero__glow--right"></div>
+    </div>
+
+    <div class="container-custom ind-hero__container">
+
+      <!-- Breadcrumb -->
+      <nav class="ind-hero__breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <span>Industries</span>
+      </nav>
+
+      <!-- Hero content -->
+      <div class="ind-hero__content" [class.is-visible]="heroVisible()">
+
+        <span class="ind-hero__label">
+          <i class="fa fa-industry" aria-hidden="true"></i>
+          Who We Serve
+        </span>
+
+        <h1 class="ind-hero__title">
+          Industrial Sectors<br>
+          <span class="ind-hero__title-gold">We Empower</span>
+        </h1>
+
+        <div class="ind-hero__divider" aria-hidden="true"></div>
+
+        <p class="ind-hero__subtitle">
+          From chemical plants and oil refineries to food processing and pharmaceutical manufacturers — our precision sealing solutions are trusted across 11 major industrial sectors.
+        </p>
+
+        <!-- Industry count pills -->
+        <div class="ind-hero__pills" aria-label="Industries overview">
+          @for (ind of industries.slice(0, 6); track ind.id) {
+            <span class="ind-hero__pill">
+              <i [class]="'fa ' + ind.icon" aria-hidden="true"></i>
+              {{ ind.name }}
+            </span>
+          }
+          <span class="ind-hero__pill ind-hero__pill--more">
+            +{{ industries.length - 6 }} More
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Wave transition -->
+    <div class="ind-hero__wave" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="white"/>
+      </svg>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 2: STATS STRIP
+  ══════════════════════════════════════════ -->
+  <section class="ind-stats" id="industries-stats" aria-label="Industry statistics">
+    <div class="container-custom">
+      <div class="ind-stats__grid" [class.is-visible]="statsVisible()">
+        @for (stat of industrialStats; track trackById($index, stat)) {
+          <div class="ind-stat-card">
+            <div class="ind-stat-card__icon-wrap" aria-hidden="true">
+              <i [class]="'fa ' + stat.icon + ' ind-stat-card__icon'"></i>
+            </div>
+            <span class="ind-stat-card__value">{{ stat.value }}</span>
+            <span class="ind-stat-card__label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 3: INDUSTRIES GRID
+  ══════════════════════════════════════════ -->
+  <section class="ind-grid-section section-wrapper"
+           id="industries-grid"
+           aria-label="All industries">
+
+    <div class="container-custom">
+
+      <app-section-header
+        label="All Industries"
+        title="Complete Industry <em>Coverage</em>"
+        subtitle="Wherever precision sealing matters, we deliver. Click on any industry to explore the products we supply for it."
+        [centered]="true">
+      </app-section-header>
+
+      <!-- 11 Industry Cards -->
+      <div class="ind-cards-grid" [@cardStagger]="industries.length">
+
+        @for (industry of industries; track trackById($index, industry)) {
+          <article class="ind-card"
+                   [class.ind-card--active]="activeIndustry()?.id === industry.id"
+                   (click)="openIndustryDetail(industry)"
+                   [attr.aria-expanded]="activeIndustry()?.id === industry.id"
+                   role="button"
+                   tabindex="0"
+                   (keydown.enter)="openIndustryDetail(industry)"
+                   (keydown.space)="openIndustryDetail(industry)">
+
+            <!-- Card header -->
+            <div class="ind-card__header">
+
+              <div class="ind-card__icon-wrap" aria-hidden="true">
+                <i [class]="'fa ' + industry.icon + ' ind-card__icon'"></i>
+              </div>
+
+              <div class="ind-card__meta">
+                <span class="ind-card__product-count">
+                  {{ industry.productsUsed.length }} products
+                </span>
+                <i class="fa fa-chevron-down ind-card__arrow" aria-hidden="true"></i>
+              </div>
+
+            </div>
+
+            <!-- Industry name -->
+            <h2 class="ind-card__name">{{ industry.name }}</h2>
+
+            <!-- Description (always visible) -->
+            <p class="ind-card__desc">{{ industry.description }}</p>
+
+            <!-- Expandable: products used -->
+            @if (activeIndustry()?.id === industry.id) {
+              <div class="ind-card__products" role="region" [attr.aria-label]="'Products for ' + industry.name">
+                <div class="ind-card__products-title">
+                  <i class="fa fa-boxes-stacked" aria-hidden="true"></i>
+                  Products We Supply
+                </div>
+                <div class="ind-card__products-grid">
+                  @for (productId of industry.productsUsed; track productId) {
+                    <a class="ind-card__product-chip"
+                       [routerLink]="['/products', productId]"
+                       (click)="$event.stopPropagation()">
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                      {{ productId.replace(/-/g, ' ') | titlecase }}
+                    </a>
+                  }
+                </div>
+                <button class="ind-card__wa-btn"
+                        (click)="$event.stopPropagation(); openWhatsApp(industry.name)">
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                  Enquire for {{ industry.name }}
+                </button>
+              </div>
+            }
+
+            <!-- Bottom accent line -->
+            <div class="ind-card__line" aria-hidden="true"></div>
+
+          </article>
+        }
+
+      </div><!-- /.ind-cards-grid -->
+
+      <!-- Click instruction -->
+      <p class="ind-click-hint" aria-hidden="true">
+        <i class="fa fa-hand-pointer"></i>
+        Click on any industry card to explore products and send an enquiry
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 4: WHY CHOOSE US FOR YOUR INDUSTRY
+  ══════════════════════════════════════════ -->
+  <section class="ind-why section-wrapper section-bg-dark"
+           aria-label="Why choose Burhani Seal Centre">
+
+    <div class="container-custom">
+
+      <app-section-header
+        label="Our Advantage"
+        title="Why Industries <em>Trust Us</em>"
+        subtitle="Three reasons why industrial buyers across India consistently choose Burhani Seal Centre as their sealing solutions partner."
+        [centered]="true"
+        [light]="true">
+      </app-section-header>
+
+      <div class="ind-why__grid">
+        @for (item of whyChooseUs; track item.title) {
+          <div class="ind-why-card">
+            <div class="ind-why-card__icon-wrap" aria-hidden="true">
+              <i [class]="'fa ' + item.icon + ' ind-why-card__icon'"></i>
+            </div>
+            <h3 class="ind-why-card__title">{{ item.title }}</h3>
+            <p class="ind-why-card__text">{{ item.text }}</p>
+          </div>
+        }
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 5: CTA BANNER
+  ══════════════════════════════════════════ -->
+  <section class="ind-cta" aria-label="Industry enquiry call to action">
+    <div class="container-custom ind-cta__inner">
+
+      <div class="ind-cta__left">
+        <span class="ind-cta__label">
+          <i class="fa fa-bolt" aria-hidden="true"></i>
+          Start Today
+        </span>
+        <h2 class="ind-cta__title">
+          Don't See Your Industry Listed?
+        </h2>
+        <p class="ind-cta__text">
+          We supply sealing solutions to many more niche industries. Contact us with your specific requirements and our team will recommend the right products for your application.
+        </p>
+      </div>
+
+      <div class="ind-cta__actions">
+        <button class="ind-cta__btn ind-cta__btn--wa" (click)="openWhatsApp()">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <div>
+            <span class="ind-cta__btn-label">Instant Response</span>
+            <span class="ind-cta__btn-main">Chat on WhatsApp</span>
+          </div>
+        </button>
+        <a routerLink="/contact" class="ind-cta__btn ind-cta__btn--contact">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <div>
+            <span class="ind-cta__btn-label">Send us a message</span>
+            <span class="ind-cta__btn-main">Contact Us</span>
+          </div>
+        </a>
+        <a routerLink="/products" class="ind-cta__btn ind-cta__btn--catalog">
+          <i class="fa fa-book-open" aria-hidden="true"></i>
+          <div>
+            <span class="ind-cta__btn-label">Browse {{ totalProductCount }}+ products</span>
+            <span class="ind-cta__btn-main">View Catalog</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /.industries-page -->

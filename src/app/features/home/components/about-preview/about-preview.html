@@ -1,0 +1,132 @@
+<!-- ============================================
+  ABOUT PREVIEW SECTION
+  ============================================ -->
+
+<section class="about-prev section-wrapper section-bg-light"
+         id="about"
+         #aboutSection
+         aria-label="About Burhani Seal Centre">
+
+  <div class="container-custom">
+    <div class="about-prev__grid">
+
+      <!-- ── LEFT: VISUAL ── -->
+      <div class="about-prev__visual"
+           [class.is-visible]="isVisible()">
+
+        <!-- Main image/visual card -->
+        <div class="about-prev__img-card">
+
+          <!-- Gradient placeholder background -->
+          <div class="about-prev__img-bg" aria-hidden="true">
+          <img
+            class="about-prev__img"
+            src="/assets/images/about/about-preview.png"
+            alt="Burhani Seal Centre industrial sealing products"
+          />
+          </div>
+
+          <!-- Company name overlay at bottom -->
+          <!-- <div class="about-prev__img-overlay">
+            <span class="about-prev__img-company">Burhani Seal Centre</span>
+            <span class="about-prev__img-tagline">Industrial Sealing Solutions</span>
+          </div> -->
+
+          <!-- Gold corner accent -->
+          <div class="about-prev__corner about-prev__corner--tl" aria-hidden="true"></div>
+          <div class="about-prev__corner about-prev__corner--br" aria-hidden="true"></div>
+        </div>
+
+        <!-- Floating experience badge -->
+        <div class="about-prev__badge">
+          <div class="about-prev__badge-inner">
+            <span class="about-prev__badge-num">25<span>+</span></span>
+            <span class="about-prev__badge-text">Years of<br>Experience</span>
+          </div>
+        </div>
+
+        <!-- Floating quality card -->
+        <div class="about-prev__quality-card">
+          <i class="fa fa-certificate" aria-hidden="true"></i>
+          <div>
+            <div class="about-prev__quality-title">Quality Assured</div>
+            <div class="about-prev__quality-sub">Every Product</div>
+          </div>
+        </div>
+
+        <!-- Decorative gold shapes -->
+        <div class="about-prev__deco about-prev__deco--circle" aria-hidden="true"></div>
+        <div class="about-prev__deco about-prev__deco--dots" aria-hidden="true">
+          @for (_ of [1,2,3,4,5,6,7,8,9]; track $index) {
+            <span></span>
+          }
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT: CONTENT ── -->
+      <div class="about-prev__content"
+           [class.is-visible]="isVisible()">
+
+        <!-- Section label -->
+        <span class="section-label">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          About Our Company
+        </span>
+
+        <!-- Heading -->
+        <h2 class="section-title about-prev__title">
+          Why Choose
+          <em class="text-gradient-gold">Burhani Seal Centre?</em>
+        </h2>
+
+        <!-- Gold divider -->
+        <div class="gold-divider"></div>
+
+        <!-- Description -->
+        <p class="about-prev__desc">
+          Established in the heart of Kolkata's Burra Bazar, Burhani Seal Centre has been the trusted name for industrial sealing solutions for decades. Under the leadership of <strong>Qutubuddin Palanpurwala</strong>, we have built a reputation for supplying premium quality mechanical seals, gaskets, O Rings, PTFE products, and more to industries across India.
+        </p>
+
+        <!-- Feature grid -->
+        <div class="about-prev__features" role="list">
+          @for (feature of features; track trackByTitle($index, feature)) {
+            <div class="about-prev__feature" role="listitem">
+              <div class="about-prev__feature-icon" aria-hidden="true">
+                <i [class]="'fa ' + feature.icon"></i>
+              </div>
+              <div class="about-prev__feature-text">
+                <h4 class="about-prev__feature-title">{{ feature.title }}</h4>
+                <p class="about-prev__feature-desc">{{ feature.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Timeline preview -->
+        <div class="about-prev__timeline" aria-label="Company milestones">
+          @for (item of timelineItems; track trackByYear($index, item)) {
+            <div class="about-prev__timeline-item">
+              <div class="about-prev__timeline-icon" aria-hidden="true">
+                <i [class]="'fa ' + item.icon"></i>
+              </div>
+              <div class="about-prev__timeline-body">
+                <span class="about-prev__timeline-year">{{ item.year }}</span>
+                <span class="about-prev__timeline-text">{{ item.text }}</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- CTA -->
+        <a routerLink="/about" class="btn-dark about-prev__cta">
+          <span>Learn Our Full Story</span>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>

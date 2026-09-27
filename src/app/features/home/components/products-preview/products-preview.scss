@@ -1,0 +1,235 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// PRODUCTS PREVIEW STYLES
+// ============================================
+
+.products-prev {
+  background: $white;
+}
+
+// ── CATEGORY GRID ─────────────────────────────
+.products-prev__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+  margin-bottom: $space-8;
+
+  // Animation: cards slide up when visible
+  .cat-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0 linear, transform 0 linear;
+  }
+
+  &.is-visible .cat-card {
+    opacity: 1;
+    transform: translateY(0);
+    // Duration uses ease + the delay set inline
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.4s ease,
+      border-color 0.4s ease;
+  }
+
+  @include respond-to('laptop') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-3;
+  }
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── CATEGORY CARD ─────────────────────────────
+.cat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  border: 1px solid rgba($silver-light, 0.9);
+  border-radius: $radius-lg;
+  padding: $space-4;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+
+  // Gold bottom accent that slides up on hover
+  &__accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    @include gold-gradient;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-luxury;
+  }
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    border-color: rgba($gold, 0.25);
+    transform: translateY(-6px);
+
+    .cat-card__accent {
+      transform: scaleX(1);
+    }
+
+    .cat-card__icon-wrap {
+      @include gold-gradient;
+      .cat-card__icon { color: $charcoal; }
+    }
+
+    .cat-card__link-arrow {
+      background: $gold;
+      color: $charcoal;
+      transform: translateX(4px);
+    }
+  }
+}
+
+// ── CARD HEADER ───────────────────────────────
+.cat-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $space-3;
+}
+
+.cat-card__icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-md;
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.15);
+  @include flex-center;
+  flex-shrink: 0;
+  transition: all $transition-luxury;
+}
+
+.cat-card__icon {
+  font-size: $text-xl;
+  color: $gold;
+  transition: color $transition-luxury;
+}
+
+.cat-card__count {
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-bold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba($charcoal, 0.45);
+  background: $off-white;
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  border: 1px solid $silver-light;
+  white-space: nowrap;
+}
+
+// ── CARD BODY ─────────────────────────────────
+.cat-card__body {
+  flex: 1;
+  margin-bottom: $space-4;
+}
+
+.cat-card__name {
+  font-family: $font-primary;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $charcoal;
+  margin: 0 0 $space-2;
+  line-height: 1.25;
+  transition: color $transition-base;
+}
+
+.cat-card:hover .cat-card__name {
+  color: $navy;
+}
+
+.cat-card__desc {
+  font-size: $text-sm;
+  color: #777;
+  line-height: 1.7;
+  margin: 0;
+  @include truncate(3);
+}
+
+// ── CARD FOOTER LINK ──────────────────────────
+.cat-card__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $space-3;
+  border-top: 1px solid $silver-light;
+  text-decoration: none;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $charcoal;
+  transition: color $transition-base;
+
+  &:hover { color: $navy; }
+}
+
+.cat-card__link-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: $off-white;
+  @include flex-center;
+  color: $charcoal;
+  font-size: 12px;
+  transition: all $transition-luxury;
+}
+
+// ── BOTTOM CTA ────────────────────────────────
+.products-prev__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  padding: $space-4 $space-6;
+  background: $off-white;
+  border-radius: $radius-lg;
+  border: 1px solid $silver-light;
+
+  @include respond-to('max-tablet') {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.products-prev__cta-text {
+  font-size: $text-sm;
+  color: #888;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.products-prev__btn {
+  @include btn-base;
+  @include gold-gradient;
+  color: $charcoal;
+  box-shadow: $shadow-gold;
+  flex-shrink: 0;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-gold-lg;
+    color: $charcoal;
+    filter: brightness(1.08);
+  }
+
+  i { font-size: $text-base; }
+}

@@ -1,0 +1,201 @@
+<!-- ============================================
+  PRODUCTS PAGE
+  ============================================ -->
+
+<div class="products-page">
+
+  <!-- ── PAGE HERO ── -->
+  <section class="products-hero" aria-label="Products page header">
+    <div class="products-hero__bg" aria-hidden="true">
+      <div class="products-hero__gradient"></div>
+      <div class="products-hero__pattern"></div>
+    </div>
+    <div class="container-custom products-hero__container">
+
+      <!-- Breadcrumb -->
+      <nav class="products-hero__breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <span>Products</span>
+      </nav>
+
+      <h1 class="products-hero__title">
+        Our Product <span class="products-hero__title-gold">Catalog</span>
+      </h1>
+      <p class="products-hero__subtitle">
+        34+ product lines across 11 categories — engineered for performance in every industrial application.
+      </p>
+
+    </div>
+    <div class="products-hero__wave" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 50" preserveAspectRatio="none">
+        <path d="M0,25 C360,50 1080,0 1440,25 L1440,50 L0,50 Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT ── -->
+  <div class="products-body">
+    <div class="container-custom">
+      <div class="products-layout">
+
+        <!-- ── SIDEBAR: CATEGORY FILTERS ── -->
+        <aside class="products-sidebar" aria-label="Category filters">
+
+          <!-- Search box -->
+          <div class="products-search">
+            <div class="products-search__wrap">
+              <i class="fa fa-search products-search__icon" aria-hidden="true"></i>
+              <input class="products-search__input"
+                     type="search"
+                     placeholder="Search products..."
+                     [value]="searchQuery()"
+                     (input)="onSearchInput($any($event.target).value)"
+                     aria-label="Search products" />
+              @if (searchQuery()) {
+                <button class="products-search__clear"
+                        (click)="clearSearch()"
+                        aria-label="Clear search">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              }
+            </div>
+          </div>
+
+          <!-- Category filter list -->
+          <div class="products-filters">
+            <h2 class="products-filters__title">Categories</h2>
+
+            <!-- "All" option -->
+            <button class="products-filter-btn"
+                    [class.products-filter-btn--active]="selectedCategoryId() === 'all'"
+                    (click)="selectCategory('all')">
+              <div class="products-filter-btn__left">
+                <div class="products-filter-btn__icon" aria-hidden="true">
+                  <i class="fa fa-grid-2"></i>
+                </div>
+                <span class="products-filter-btn__label">All Products</span>
+              </div>
+              <span class="products-filter-btn__count">{{ allProducts.length }}</span>
+            </button>
+
+            <!-- Individual categories -->
+            @for (cat of categories; track trackById($index, cat)) {
+              <button class="products-filter-btn"
+                      [class.products-filter-btn--active]="selectedCategoryId() === cat.id"
+                      (click)="selectCategory(cat.id)"
+                      [attr.aria-pressed]="selectedCategoryId() === cat.id">
+                <div class="products-filter-btn__left">
+                  <div class="products-filter-btn__icon" aria-hidden="true">
+                    <i [class]="'fa ' + cat.icon"></i>
+                  </div>
+                  <span class="products-filter-btn__label">{{ cat.name }}</span>
+                </div>
+                <span class="products-filter-btn__count">{{ cat.productCount }}</span>
+              </button>
+            }
+
+          </div>
+
+          <!-- Sidebar WhatsApp CTA -->
+          <div class="sidebar-cta">
+            <div class="sidebar-cta__icon" aria-hidden="true">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3 class="sidebar-cta__title">Need Help Choosing?</h3>
+            <p class="sidebar-cta__text">Our experts will recommend the right product for your application.</p>
+            <a routerLink="/contact" class="sidebar-cta__btn sidebar-cta__btn--quote">
+              Get Expert Advice
+            </a>
+          </div>
+
+        </aside>
+
+        <!-- ── MAIN: PRODUCT GRID ── -->
+        <main class="products-main" id="products-grid" aria-label="Products grid">
+
+          <!-- Toolbar: title, count, view toggle -->
+          <div class="products-toolbar">
+            <div class="products-toolbar__left">
+              <h2 class="products-toolbar__title">{{ activeCategoryLabel() }}</h2>
+              <span class="products-toolbar__count">
+                {{ filteredProducts().length }}
+                {{ filteredProducts().length === 1 ? 'product' : 'products' }}
+                @if (searchQuery()) {
+                  <em>for "{{ searchQuery() }}"</em>
+                }
+              </span>
+            </div>
+            <div class="products-toolbar__right">
+              <!-- View toggle: grid / list -->
+              <div class="products-view-toggle" role="group" aria-label="View toggle">
+                <button class="products-view-btn"
+                        [class.products-view-btn--active]="isGridView()"
+                        (click)="isGridView.set(true)"
+                        aria-label="Grid view"
+                        [attr.aria-pressed]="isGridView()">
+                  <i class="fa fa-grid-2" aria-hidden="true"></i>
+                </button>
+                <button class="products-view-btn"
+                        [class.products-view-btn--active]="!isGridView()"
+                        (click)="isGridView.set(false)"
+                        aria-label="List view"
+                        [attr.aria-pressed]="!isGridView()">
+                  <i class="fa fa-list" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active filter chip -->
+          @if (selectedCategoryId() !== 'all') {
+            <div class="products-active-filter">
+              <span class="products-active-filter__label">Filtering by:</span>
+              <div class="products-active-filter__chip">
+                {{ activeCategoryLabel() }}
+                <button (click)="selectCategory('all')"
+                        aria-label="Remove filter"
+                        class="products-active-filter__remove">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          }
+
+          <!-- Products grid / list -->
+          @if (filteredProducts().length > 0) {
+            <div class="products-grid"
+                 [class.products-grid--list]="!isGridView()"
+                 [@gridAnim]="filteredProducts().length">
+              @for (product of filteredProducts(); track trackById($index, product)) {
+                <app-product-card [product]="product"></app-product-card>
+              }
+            </div>
+          } @else {
+            <!-- Empty state -->
+            <div class="products-empty">
+              <div class="products-empty__icon" aria-hidden="true">
+                <i class="fa fa-box-open"></i>
+              </div>
+              <h3 class="products-empty__title">No Products Found</h3>
+              <p class="products-empty__text">
+                No products match your current filters.
+                @if (searchQuery()) {
+                  Try a different search term.
+                } @else {
+                  Try selecting a different category.
+                }
+              </p>
+              <button class="btn-gold products-empty__btn" (click)="selectCategory('all')">
+                View All Products
+              </button>
+            </div>
+          }
+
+        </main>
+
+      </div>
+    </div>
+  </div>
+
+</div>

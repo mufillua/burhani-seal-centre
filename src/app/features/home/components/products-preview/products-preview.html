@@ -1,0 +1,82 @@
+<!-- ============================================
+  PRODUCTS PREVIEW SECTION
+  ============================================ -->
+
+<section class="products-prev section-wrapper"
+         id="products"
+         #productsSection
+         aria-label="Our product categories">
+
+  <div class="container-custom">
+
+    <!-- Section Header -->
+    <app-section-header
+      label="What We Supply"
+      title="Premium <em>Sealing Solutions</em>"
+      subtitle="Explore our comprehensive range of industrial sealing products, engineered for reliability and performance across all operating conditions."
+      [centered]="true">
+    </app-section-header>
+
+    <!-- Category Cards Grid -->
+    <div class="products-prev__grid"
+         [class.is-visible]="isVisible()"
+         role="list"
+         aria-label="Product categories">
+
+      @for (category of featuredCategories; track trackById($index, category)) {
+        <article class="cat-card"
+                 role="listitem"
+                 [style.animation-delay]="($index * 80) + 'ms'">
+
+          <!-- Card top: Icon and badge -->
+          <div class="cat-card__header">
+            <div class="cat-card__icon-wrap" aria-hidden="true">
+              <i [class]="'fa ' + category.icon + ' cat-card__icon'"></i>
+            </div>
+            @if (category.productCount) {
+              <span class="cat-card__count"
+                    [attr.aria-label]="category.productCount + ' products'">
+                {{ category.productCount }} items
+              </span>
+            }
+          </div>
+
+          <!-- Category name and description -->
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">{{ category.name }}</h3>
+            <p class="cat-card__desc">{{ category.description }}</p>
+          </div>
+
+          <!-- Card footer: action link -->
+          <a class="cat-card__link"
+             routerLink="/products"
+             [attr.aria-label]="'Explore ' + category.name">
+            <span>Explore Range</span>
+            <div class="cat-card__link-arrow" aria-hidden="true">
+              <i class="fa fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Hover gold accent border -->
+          <div class="cat-card__accent" aria-hidden="true"></div>
+
+        </article>
+      }
+
+    </div>
+
+    <!-- View All CTA -->
+    <div class="products-prev__cta">
+      <p class="products-prev__cta-text">
+        Showing {{ featuredCategories.length }} featured categories from our full range of
+        21 product categories and 44+ product lines.
+      </p>
+      <a routerLink="/products" class="btn-gold products-prev__btn">
+        <i class="fa fa-grid-2" aria-hidden="true"></i>
+        View Complete Catalog
+      </a>
+    </div>
+
+  </div>
+
+</section>

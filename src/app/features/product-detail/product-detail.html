@@ -1,0 +1,470 @@
+<!-- ============================================
+  PRODUCT DETAIL PAGE
+  ============================================ -->
+
+<div class="pd-page">
+
+  @if (product(); as p) {
+
+    <!-- ── HERO STRIP ── -->
+    <div class="pd-hero">
+      <div class="pd-hero__bg" aria-hidden="true">
+        <div class="pd-hero__gradient"></div>
+        <div class="pd-hero__pattern"></div>
+      </div>
+      <div class="container-custom pd-hero__container">
+
+        <!-- Breadcrumb -->
+        <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+          <a routerLink="/">Home</a>
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <a routerLink="/products">Products</a>
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <a [routerLink]="['/products']" [queryParams]="{ category: p.categoryId }">
+            {{ p.categoryName }}
+          </a>
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <span>{{ p.name }}</span>
+        </nav>
+
+      </div>
+      <div class="pd-hero__wave" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 40" preserveAspectRatio="none">
+          <path d="M0,20 C360,40 1080,0 1440,20 L1440,40 L0,40 Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ── MAIN PRODUCT SECTION ── -->
+    <section class="pd-main" aria-label="Product details">
+      <div class="container-custom">
+        <div class="pd-grid">
+
+          <!-- ── LEFT: IMAGE + BADGES ── -->
+          <div class="pd-image-col">
+
+            <!-- Product image card -->
+            <div class="pd-image-card">
+              @if (!imageError()) {
+                <img class="pd-image-card__img"
+                     [src]="p.imageUrl"
+                     [alt]="p.imageAlt"
+                     (error)="onImageError()" />
+              }
+              @if (imageError()) {
+                <div class="pd-image-card__placeholder" aria-hidden="true">
+                  <i class="fa fa-gear pd-image-card__placeholder-icon"></i>
+                  <span>{{ p.categoryName }}</span>
+                </div>
+              }
+
+              <!-- Category badge -->
+              <div class="pd-image-card__badge">{{ p.categoryName }}</div>
+
+              <!-- NEW badge -->
+              @if (p.isNew) {
+                <div class="pd-image-card__new">New</div>
+              }
+            </div>
+
+            <!-- Quick facts panel -->
+            <div class="pd-quick-facts">
+              <h3 class="pd-quick-facts__title">Quick Facts</h3>
+              <div class="pd-quick-facts__list">
+                @for (spec of p.specifications.slice(0, 4); track trackByLabel($index, spec)) {
+                  <div class="pd-quick-facts__row">
+                    <span class="pd-quick-facts__label">{{ spec.label }}</span>
+                    <span class="pd-quick-facts__value">{{ spec.value }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- WhatsApp CTA -->
+            <button class="pd-wa-btn" (click)="openWhatsApp()">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <div class="pd-wa-btn__text">
+                <span class="pd-wa-btn__label">Instant Response</span>
+                <span class="pd-wa-btn__main">Enquire on WhatsApp</span>
+              </div>
+              <i class="fa fa-arrow-right pd-wa-btn__arrow" aria-hidden="true"></i>
+            </button>
+
+          </div>
+
+          <!-- ── RIGHT: PRODUCT INFO ── -->
+          <div class="pd-info-col">
+
+            <!-- Category + name -->
+            <span class="pd-category-label">{{ p.categoryName }}</span>
+            <h1 class="pd-title">{{ p.name }}</h1>
+            <div class="pd-divider" aria-hidden="true"></div>
+            <p class="pd-short-desc">{{ p.shortDescription }}</p>
+
+            <!-- Industries served -->
+            @if (p.industriesServed.length > 0) {
+              <div class="pd-industries">
+                <span class="pd-industries__label">Industries:</span>
+                <div class="pd-industries__chips">
+                  @for (ind of p.industriesServed; track ind) {
+                    <span class="pd-industry-chip">{{ ind }}</span>
+                  }
+                </div>
+              </div>
+            }
+
+            <!-- ── TAB NAVIGATION ── -->
+            <div class="pd-tabs" role="tablist" aria-label="Product information tabs">
+              <button class="pd-tab"
+                      [class.pd-tab--active]="activeTab() === 'overview'"
+                      (click)="setTab('overview')"
+                      role="tab"
+                      [attr.aria-selected]="activeTab() === 'overview'"
+                      aria-controls="tab-overview">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Overview
+              </button>
+              <button class="pd-tab"
+                      [class.pd-tab--active]="activeTab() === 'specs'"
+                      (click)="setTab('specs')"
+                      role="tab"
+                      [attr.aria-selected]="activeTab() === 'specs'"
+                      aria-controls="tab-specs">
+                <i class="fa fa-table-list" aria-hidden="true"></i>
+                Specifications
+              </button>
+              <button class="pd-tab"
+                      [class.pd-tab--active]="activeTab() === 'applications'"
+                      (click)="setTab('applications')"
+                      role="tab"
+                      [attr.aria-selected]="activeTab() === 'applications'"
+                      aria-controls="tab-applications">
+                <i class="fa fa-industry" aria-hidden="true"></i>
+                Applications
+              </button>
+            </div>
+
+            <!-- ── TAB CONTENT ── -->
+
+            <!-- Overview Tab -->
+            @if (activeTab() === 'overview') {
+              <div class="pd-tab-content" id="tab-overview" role="tabpanel">
+
+                <!-- Full description -->
+                <div class="pd-full-desc">
+                  @for (para of p.fullDescription.split('\n\n'); track $index) {
+                    @if (para.trim()) {
+                      <p>{{ para.trim() }}</p>
+                    }
+                  }
+                </div>
+
+                <!-- Key features -->
+                @if (p.features.length > 0) {
+                  <div class="pd-features">
+                    <h3 class="pd-features__title">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      Key Features
+                    </h3>
+                    <ul class="pd-features__list" role="list">
+                      @for (feature of p.features; track feature) {
+                        <li class="pd-features__item" role="listitem">
+                          <i class="fa fa-check-circle" aria-hidden="true"></i>
+                          <span>{{ feature }}</span>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+
+              </div>
+            }
+
+            <!-- Specifications Tab -->
+            @if (activeTab() === 'specs') {
+              <div class="pd-tab-content" id="tab-specs" role="tabpanel">
+                <div class="pd-specs-table">
+                  <div class="pd-specs-table__header">
+                    <span>Parameter</span>
+                    <span>Value</span>
+                  </div>
+                  @for (spec of p.specifications; track trackByLabel($index, spec)) {
+                    <div class="pd-specs-table__row">
+                      <span class="pd-specs-table__label">{{ spec.label }}</span>
+                      <span class="pd-specs-table__value">{{ spec.value }}</span>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+
+            <!-- Applications Tab -->
+            @if (activeTab() === 'applications') {
+              <div class="pd-tab-content" id="tab-applications" role="tabpanel">
+
+                <!-- Applications list -->
+                @if (p.applications.length > 0) {
+                  <div class="pd-applications">
+                    <h3 class="pd-section-title">
+                      <i class="fa fa-wrench" aria-hidden="true"></i>
+                      Typical Applications
+                    </h3>
+                    <ul class="pd-app-list" role="list">
+                      @for (app of p.applications; track app) {
+                        <li class="pd-app-item" role="listitem">
+                          <i class="fa fa-circle-dot" aria-hidden="true"></i>
+                          {{ app }}
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+
+                <!-- Industries served -->
+                @if (p.industriesServed.length > 0) {
+                  <div class="pd-industries-served">
+                    <h3 class="pd-section-title">
+                      <i class="fa fa-industry" aria-hidden="true"></i>
+                      Industries Served
+                    </h3>
+                    <div class="pd-industries-grid">
+                      @for (ind of p.industriesServed; track ind) {
+                        <div class="pd-ind-chip">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                          {{ ind }}
+                        </div>
+                      }
+                    </div>
+                  </div>
+                }
+
+              </div>
+            }
+
+            <!-- Action buttons below tabs -->
+            <div class="pd-actions">
+              <button class="pd-actions__wa" (click)="openWhatsApp()">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                Enquire on WhatsApp
+              </button>
+              <a routerLink="/contact" class="pd-actions__quote">
+                <i class="fa fa-file-invoice" aria-hidden="true"></i>
+                Get a Quote
+              </a>
+            </div>
+
+          </div>
+
+        </div><!-- /.pd-grid -->
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ── ENQUIRY FORM SECTION ── -->
+    <section class="pd-enquiry section-bg-light" aria-label="Product enquiry form">
+      <div class="container-custom">
+        <div class="pd-enquiry__grid">
+
+          <!-- Left: form -->
+          <div class="pd-enquiry__form-col">
+
+            <h2 class="pd-enquiry__title">
+              Send an <span class="text-gradient-gold">Enquiry</span>
+            </h2>
+            <p class="pd-enquiry__subtitle">
+              Fill in your details below and we will get back to you within 24 hours.
+            </p>
+
+            @if (!isSubmitted()) {
+              <form class="pd-form"
+                    (ngSubmit)="onSubmitEnquiry()"
+                    #enquiryForm="ngForm"
+                    novalidate>
+
+                <!-- Product name (read-only) -->
+                <div class="pd-form__field pd-form__field--full">
+                  <label class="pd-form__label">Product</label>
+                  <div class="pd-form__product-tag">
+                    <i class="fa fa-box" aria-hidden="true"></i>
+                    {{ p.name }}
+                  </div>
+                </div>
+
+                <div class="pd-form__row">
+                  <!-- Name -->
+                  <div class="pd-form__field">
+                    <label class="pd-form__label" for="enq-name">
+                      Full Name <span class="pd-form__required">*</span>
+                    </label>
+                    <input class="pd-form__input"
+                           id="enq-name"
+                           type="text"
+                           [(ngModel)]="form.name"
+                           name="name"
+                           placeholder="Your full name"
+                           required
+                           #nameField="ngModel" />
+                    @if (nameField.invalid && nameField.touched) {
+                      <span class="pd-form__error">Name is required</span>
+                    }
+                  </div>
+
+                  <!-- Mobile -->
+                  <div class="pd-form__field">
+                    <label class="pd-form__label" for="enq-mobile">
+                      Mobile Number <span class="pd-form__required">*</span>
+                    </label>
+                    <input class="pd-form__input"
+                           id="enq-mobile"
+                           type="tel"
+                           [(ngModel)]="form.mobile"
+                           name="mobile"
+                           placeholder="+91 XXXXX XXXXX"
+                           required
+                           #mobileField="ngModel" />
+                    @if (mobileField.invalid && mobileField.touched) {
+                      <span class="pd-form__error">Mobile is required</span>
+                    }
+                  </div>
+                </div>
+
+                <div class="pd-form__row">
+                  <!-- Email -->
+                  <div class="pd-form__field">
+                    <label class="pd-form__label" for="enq-email">Email Address</label>
+                    <input class="pd-form__input"
+                           id="enq-email"
+                           type="email"
+                           [(ngModel)]="form.email"
+                           name="email"
+                           placeholder="you@company.com" />
+                  </div>
+
+                  <!-- Company -->
+                  <div class="pd-form__field">
+                    <label class="pd-form__label" for="enq-company">Company Name</label>
+                    <input class="pd-form__input"
+                           id="enq-company"
+                           type="text"
+                           [(ngModel)]="form.company"
+                           name="company"
+                           placeholder="Your company" />
+                  </div>
+                </div>
+
+                <!-- Message -->
+                <div class="pd-form__field pd-form__field--full">
+                  <label class="pd-form__label" for="enq-message">Message</label>
+                  <textarea class="pd-form__input pd-form__textarea"
+                            id="enq-message"
+                            [(ngModel)]="form.message"
+                            name="message"
+                            rows="4"
+                            placeholder="Please share product requirements, quantity, etc."></textarea>
+                </div>
+
+                <button type="submit"
+                        class="pd-form__submit"
+                        [disabled]="isSubmitting() || !form.name || !form.mobile">
+                  @if (isSubmitting()) {
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                    Sending...
+                  } @else {
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    Send Enquiry via WhatsApp
+                  }
+                </button>
+
+              </form>
+            } @else {
+              <!-- Success state -->
+              <div class="pd-form__success">
+                <div class="pd-form__success-icon" aria-hidden="true">
+                  <i class="fa fa-check-circle"></i>
+                </div>
+                <h3>Enquiry Sent!</h3>
+                <p>Your WhatsApp chat has been opened with your enquiry details. Our team will respond promptly.</p>
+                <button class="pd-form__reset" (click)="resetForm()">
+                  Send Another Enquiry
+                </button>
+              </div>
+            }
+
+          </div>
+
+          <!-- Right: info panel -->
+          <div class="pd-enquiry__info-col">
+
+            <div class="pd-enquiry-info-card">
+              <div class="pd-enquiry-info-card__header">
+                <div class="pd-enquiry-info-card__icon" aria-hidden="true">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                  <h3 class="pd-enquiry-info-card__title">Why WhatsApp?</h3>
+                  <p class="pd-enquiry-info-card__sub">Fastest way to reach us</p>
+                </div>
+              </div>
+
+              <ul class="pd-enquiry-info-card__list">
+                @for (item of [
+                  { icon: 'fa-bolt',         text: 'Instant response within minutes'        },
+                  { icon: 'fa-image',        text: 'Share images of your requirement'       },
+                  { icon: 'fa-file-pdf',     text: 'Receive datasheets and catalogs'        },
+                  { icon: 'fa-comments',     text: 'Direct chat with our technical team'    },
+                  { icon: 'fa-rupee-sign',   text: 'Get competitive pricing quickly'        }
+                ]; track item.text) {
+                  <li class="pd-enquiry-info-card__item">
+                    <div class="pd-enquiry-info-card__item-icon" aria-hidden="true">
+                      <i [class]="'fa ' + item.icon"></i>
+                    </div>
+                    <span>{{ item.text }}</span>
+                  </li>
+                }
+              </ul>
+
+              <button class="pd-enquiry-wa-direct" (click)="openWhatsApp()">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                Open WhatsApp Directly
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RELATED PRODUCTS ── -->
+    @if (relatedProducts.length > 0) {
+      <section class="pd-related section-wrapper" aria-label="Related products">
+        <div class="container-custom">
+          <h2 class="pd-related__title">
+            Related <span class="text-gradient-gold">Products</span>
+          </h2>
+          <div class="pd-related__grid">
+            @for (related of relatedProducts; track related.id) {
+              <app-product-card [product]="related"></app-product-card>
+            }
+          </div>
+          <div class="pd-related__cta">
+            <a [routerLink]="['/products']"
+               [queryParams]="{ category: p.categoryId }"
+               class="btn-outline-gold">
+              View All {{ p.categoryName }}
+            </a>
+          </div>
+        </div>
+      </section>
+    }
+
+  } @else {
+    <!-- Loading state while product loads -->
+    <div class="pd-loading">
+      <div class="pd-loading__spinner" aria-label="Loading product...">
+        <i class="fa fa-gear fa-spin" aria-hidden="true"></i>
+      </div>
+      <p>Loading product details...</p>
+    </div>
+  }
+
+</div>

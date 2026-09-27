@@ -1,0 +1,53 @@
+<!-- ============================================
+  STATS SECTION
+  ============================================ -->
+
+<section class="stats" id="stats-section" #statsSection aria-label="Company statistics">
+
+  <!-- Background decorative elements -->
+  <div class="stats__bg" aria-hidden="true">
+    <div class="stats__bg-grid"></div>
+    <div class="stats__bg-line stats__bg-line--left"></div>
+    <div class="stats__bg-line stats__bg-line--right"></div>
+  </div>
+
+  <div class="container-custom">
+
+    <!-- Stats grid — 4 columns on desktop, 2×2 on mobile -->
+    <div class="stats__grid" role="list" aria-label="Company statistics">
+
+      @for (stat of stats; track trackById($index, stat)) {
+        <div class="stats__card" role="listitem">
+
+          <!-- Top: icon -->
+          <div class="stats__icon-wrap" aria-hidden="true">
+            <i [class]="'fa ' + stat.icon + ' stats__icon'"></i>
+          </div>
+
+          <!-- Number counter -->
+          <div class="stats__number" [attr.aria-label]="stat.current() + stat.suffix + ' ' + stat.label">
+            <span class="stats__prefix">{{ stat.prefix }}</span>
+            <span class="stats__value">{{ stat.current() }}</span>
+            <span class="stats__suffix">{{ stat.suffix }}</span>
+          </div>
+
+          <!-- Labels -->
+          <div class="stats__label">{{ stat.label }}</div>
+          <div class="stats__sublabel">{{ stat.sublabel }}</div>
+
+          <!-- Bottom gold line (reveals on scroll via CSS) -->
+          <div class="stats__bottom-line" aria-hidden="true"></div>
+
+        </div>
+
+        <!-- Vertical divider between cards (not after last) -->
+        @if (!$last) {
+          <div class="stats__divider" aria-hidden="true"></div>
+        }
+      }
+
+    </div>
+
+  </div>
+
+</section>

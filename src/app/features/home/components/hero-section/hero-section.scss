@@ -1,0 +1,628 @@
+// ============================================
+// HERO SECTION STYLES
+// ============================================
+// Every rule here is scoped to this component.
+// Variables and mixins come from the global
+// styles directory (configured in angular.json).
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ── SECTION BASE ──────────────────────────────
+.hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// ── BACKGROUND ────────────────────────────────
+.hero__bg {
+  @include absolute-fill;
+  z-index: 0;
+}
+
+.hero__gradient {
+  @include absolute-fill;
+  // Apple / Mercedes-Benz style: rich dark gradient
+  background: linear-gradient(
+    135deg,
+    #080810 0%,
+    $charcoal 25%,
+    $navy 60%,
+    $navy-deep 100%
+  );
+}
+
+// Subtle dot-grid pattern — gives industrial texture
+.hero__pattern {
+  @include absolute-fill;
+  background-image: radial-gradient(
+    circle,
+    rgba($white, 0.035) 1px,
+    transparent 1px
+  );
+  background-size: 36px 36px;
+}
+
+// Atmospheric glow blobs
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+
+  &--gold {
+    top: -15%;
+    right: -5%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(
+      circle,
+      rgba($gold, 0.07) 0%,
+      transparent 65%
+    );
+  }
+
+  &--navy {
+    bottom: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba($navy-deep, 0.8) 0%,
+      transparent 70%
+    );
+  }
+}
+
+// Horizontal accent lines (decorative)
+.hero__accent-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+
+  &--1 {
+    top: 30%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba($gold, 0.08),
+      transparent
+    );
+  }
+
+  &--2 {
+    top: 70%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba($white, 0.04),
+      transparent
+    );
+  }
+}
+
+// ── CONTAINER ─────────────────────────────────
+.hero__container {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+
+  // Account for fixed navbar (80px)
+  padding-top: 40px;
+  padding-bottom: $space-12;
+
+  @include respond-to('laptop') {
+    gap: $space-6;
+    padding-top: calc(80px + #{$space-8});
+  }
+
+  @include respond-to('max-tablet') {
+    flex-direction: column;
+    text-align: center;
+    padding-top: calc(80px + #{$space-6});
+    padding-bottom: $space-8;
+    gap: $space-6;
+  }
+}
+
+// ── TEXT CONTENT ──────────────────────────────
+.hero__content {
+  flex: 1;
+  max-width: 620px;
+
+  @include respond-to('max-tablet') {
+    max-width: 100%;
+    order: 1;
+  }
+}
+
+// Eyebrow label
+.hero__label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.22);
+  padding: 8px 18px;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+}
+
+.hero__label-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  @include gold-gradient;
+  animation: pulse-dot 2s ease infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.8); }
+}
+
+.hero__label-text {
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+// Main heading
+.hero__title {
+  font-family: $font-primary;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: $weight-black;
+  color: $white;
+  line-height: 1.08;
+  margin: 0 0 $space-3;
+  letter-spacing: -0.02em;
+}
+
+.hero__title-highlight {
+  // Gold gradient text — the hero's visual centerpiece
+  background: linear-gradient(135deg, $gold-dark 0%, $gold 40%, $gold-light 70%, $gold 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  line-height: 1.12;
+}
+
+// Gold divider line
+.hero__divider {
+  width: 64px;
+  height: 3px;
+  @include gold-gradient;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+
+  @include respond-to('max-tablet') {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Subtitle text
+.hero__subtitle {
+  font-family: $font-secondary;
+  font-size: clamp($text-base, 1.8vw, $text-xl);
+  font-weight: $weight-light;
+  color: rgba($white, 0.72);
+  line-height: 1.85;
+  margin: 0 0 $space-6;
+  max-width: 520px;
+
+  @include respond-to('max-tablet') {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// ── CTA BUTTONS ───────────────────────────────
+.hero__actions {
+  display: flex;
+  gap: $space-3;
+  margin-bottom: $space-6;
+  flex-wrap: wrap;
+
+  @include respond-to('max-tablet') {
+    justify-content: center;
+  }
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+  }
+}
+
+.hero__btn {
+  @include flex-center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-family: $font-accent;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  transition: all $transition-luxury;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  min-width: 200px;
+
+  @include respond-to('mobile') {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  i {
+    font-size: 12px;
+    transition: transform $transition-base;
+  }
+
+  &--primary {
+    @include gold-gradient;
+    color: $charcoal;
+    box-shadow: $shadow-gold, 0 4px 16px rgba($gold, 0.2);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: $shadow-gold-lg;
+      color: $charcoal;
+      filter: brightness(1.08);
+
+      i { transform: translateX(5px); }
+    }
+
+    &:active { transform: translateY(-1px); }
+  }
+
+  &--outline {
+    background: rgba($white, 0.05);
+    border: 1.5px solid rgba($white, 0.25);
+    color: $white;
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      background: rgba($white, 0.1);
+      border-color: $gold;
+      color: $gold;
+      transform: translateY(-3px);
+
+      i { transform: translateX(4px); }
+    }
+  }
+}
+
+// ── TRUST BAR ─────────────────────────────────
+.hero__trust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-3;
+
+  @include respond-to('max-tablet') {
+    justify-content: center;
+  }
+}
+
+.hero__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba($white, 0.55);
+
+  i {
+    color: $gold;
+    font-size: $text-sm;
+  }
+}
+
+.hero__trust-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba($white, 0.18);
+
+  @include respond-to('mobile') { display: none; }
+}
+
+// ── VISUAL (RIGHT COLUMN) ─────────────────────
+.hero__visual {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to('mobile') { display: none; }
+
+  @include respond-to('max-tablet') {
+    order: 0;
+  }
+}
+
+.hero__visual-wrapper {
+  position: relative;
+  width: 460px;
+  height: 460px;
+
+  @include respond-to('laptop') {
+    width: 360px;
+    height: 360px;
+  }
+
+  @include respond-to('tablet') {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+// ── CONCENTRIC RINGS ──────────────────────────
+.hero__rings {
+  position: absolute;
+  // Inset to leave space for floating cards
+  top: 40px;
+  right: 20px;
+  bottom: 40px;
+  left: 40px;
+}
+
+.hero__ring {
+  position: absolute;
+  border-radius: 50%;
+}
+
+// Outer ring: gold border, slow reverse rotation
+.hero__ring--outer {
+  inset: 0;
+  border: 2px solid rgba($gold, 0.35);
+  box-shadow:
+    0 0 60px rgba($gold, 0.06),
+    inset 0 0 60px rgba($gold, 0.04);
+  animation: ring-reverse 30s linear infinite;
+
+  // Tick marks at cardinal points
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background: $gold;
+    border-radius: $radius-full;
+  }
+
+  // Top and bottom ticks
+  &::before {
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: 0 calc(100% + 6px + 3px - 6px) 0 0 $gold;
+  }
+
+  // Left and right ticks
+  &::after {
+    left: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: calc(100% + 6px + 3px - 6px) 0 0 0 $gold;
+  }
+}
+
+// Middle ring: dashed, forward rotation
+.hero__ring--middle {
+  inset: 48px;
+  border: 1.5px dashed rgba($silver, 0.18);
+  border-top-color: rgba($gold, 0.55);
+  border-right-color: rgba($gold, 0.35);
+  animation: ring-forward 18s linear infinite;
+}
+
+// Inner ring: solid gold, reverse rotation
+.hero__ring--inner {
+  inset: 96px;
+  border: 2px solid rgba($gold, 0.45);
+  background: radial-gradient(
+    circle at center,
+    rgba($gold, 0.06) 0%,
+    transparent 70%
+  );
+  animation: ring-reverse 14s linear infinite;
+}
+
+@keyframes ring-forward {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ring-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+// Ring center — gear icon
+.hero__ring-center {
+  position: absolute;
+  inset: 126px;
+  @include flex-center;
+  background: radial-gradient(circle, rgba($gold, 0.1), transparent 70%);
+  border-radius: 50%;
+}
+
+.hero__gear {
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  background: linear-gradient(135deg, $gold-dark, $gold, $gold-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ring-forward 10s linear infinite;
+  filter: drop-shadow(0 0 20px rgba($gold, 0.25));
+
+  @include respond-to('tablet') { font-size: 3rem; }
+}
+
+// ── FLOATING INFO CARDS ───────────────────────
+.hero__card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  // Glassmorphism
+  background: rgba($navy, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba($gold, 0.18);
+  border-radius: $radius-md;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+
+  &--top-right {
+    top: 0;
+    right: 0;
+    animation: float-a 4s ease-in-out infinite;
+  }
+
+  &--mid-left {
+    top: 38%;
+    left: 0;
+    animation: float-b 5s ease-in-out infinite;
+    animation-delay: 0.6s;
+  }
+
+  &--bottom-right {
+    bottom: 10%;
+    right: 4%;
+    animation: float-a 4.5s ease-in-out infinite;
+    animation-delay: 1.2s;
+  }
+}
+
+.hero__card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: $radius-sm;
+  background: rgba($gold, 0.12);
+  @include flex-center;
+  flex-shrink: 0;
+
+  i {
+    color: $gold;
+    font-size: $text-sm;
+  }
+}
+
+.hero__card-label {
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba($white, 0.88);
+}
+
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}
+
+// ── SCROLL INDICATOR ──────────────────────────
+.hero__scroll {
+  position: absolute;
+  bottom: $space-6;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-1;
+  opacity: 0.6;
+  transition: opacity $transition-base;
+
+  &:hover { opacity: 1; }
+
+  @include respond-to('mobile') { display: none; }
+}
+
+.hero__scroll-text {
+  font-family: $font-accent;
+  font-size: 10px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba($white, 0.6);
+}
+
+// Mouse icon with animated scroll wheel
+.hero__scroll-mouse {
+  width: 22px;
+  height: 34px;
+  border: 1.5px solid rgba($white, 0.3);
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.hero__scroll-wheel {
+  width: 3px;
+  height: 6px;
+  background: $gold;
+  border-radius: $radius-full;
+  animation: scroll-wheel 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-wheel {
+  0%   { opacity: 1; transform: translateY(0); }
+  60%  { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+
+// ── BOTTOM WAVE ───────────────────────────────
+.hero__wave {
+  position: relative;
+  z-index: 3;
+  line-height: 0;
+  margin-bottom: -2px; // Prevent gap between wave and next section
+
+  svg {
+    width: 100%;
+    height: 80px;
+    display: block;
+
+    @include respond-to('mobile') { height: 40px; }
+  }
+}

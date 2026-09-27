@@ -1,0 +1,357 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+// ============================================
+// FOOTER STYLES
+// ============================================
+
+.footer {
+  background: $black;
+  color: rgba($white, 0.75);
+  position: relative;
+}
+
+// ── TOP GOLD LINE ──────────────────────────────
+.footer__top-line {
+  height: 3px;
+  @include gold-gradient;
+}
+
+// ── BODY ──────────────────────────────────────
+.footer__body {
+  padding: $space-12 0 $space-8;
+
+  @include respond-to('mobile') {
+    padding: $space-8 0 $space-6;
+  }
+}
+
+// ── GRID ──────────────────────────────────────
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.5fr;
+  gap: $space-8;
+
+  @include respond-to('laptop') {
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: $space-6;
+  }
+
+  @include respond-to('tablet') {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-6;
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+}
+
+// ── BRAND COLUMN ──────────────────────────────
+.footer__col--brand {
+  @include respond-to('tablet') {
+    grid-column: 1 / -1; // Full width on tablet
+  }
+}
+
+// ── LOGO ──────────────────────────────────────
+.footer__logo {
+  @include flex-center;
+  justify-content: flex-start;
+  gap: $space-2;
+  text-decoration: none;
+  margin-bottom: $space-4;
+  width: fit-content;
+  transition: transform $transition-base;
+
+  &:hover { transform: scale(1.02); }
+}
+
+.footer__logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-sm;
+  @include gold-gradient;
+  @include flex-center;
+  flex-shrink: 0;
+  font-family: $font-primary;
+  font-size: $text-2xl;
+  font-weight: $weight-black;
+  color: $charcoal;
+  box-shadow: $shadow-gold;
+}
+
+.footer__logo-text {
+  @include flex-column;
+  line-height: 1.15;
+}
+
+.footer__logo-company {
+  font-family: $font-primary;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $white;
+}
+
+.footer__logo-division {
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-medium;
+  color: $gold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+// ── TAGLINE ────────────────────────────────────
+.footer__tagline {
+  color: rgba($white, 0.55);
+  font-size: $text-sm;
+  line-height: 1.8;
+  margin-bottom: $space-4;
+  max-width: 340px;
+}
+
+// ── SOCIAL ─────────────────────────────────────
+.footer__social {
+  display: flex;
+  gap: $space-2;
+  margin-bottom: $space-4;
+}
+
+.footer__social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-sm;
+  background: rgba($white, 0.06);
+  border: 1px solid rgba($white, 0.1);
+  @include flex-center;
+  color: rgba($white, 0.6);
+  text-decoration: none;
+  font-size: $text-sm;
+  transition: all $transition-base;
+
+  &:hover {
+    background: $gold;
+    border-color: $gold;
+    color: $charcoal;
+    transform: translateY(-3px);
+    box-shadow: $shadow-gold;
+  }
+}
+
+// ── QUALITY BADGES ─────────────────────────────
+.footer__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.footer__badge {
+  @include flex-center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: $radius-full;
+  color: rgba($gold, 0.8);
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  i { font-size: 11px; }
+}
+
+// ── COLUMN TITLES ──────────────────────────────
+.footer__col-title {
+  font-family: $font-accent;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $white;
+  margin: 0 0 $space-2;
+}
+
+.footer__col-divider {
+  width: 30px;
+  height: 2px;
+  @include gold-gradient;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+}
+
+// ── LINKS ──────────────────────────────────────
+.footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  color: rgba($white, 0.55);
+  text-decoration: none;
+  font-size: $text-sm;
+  transition: all $transition-base;
+
+  i {
+    font-size: 9px;
+    color: $gold;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all $transition-base;
+  }
+
+  &:hover {
+    color: $gold;
+    padding-left: 4px;
+
+    i {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+// ── CONTACT ────────────────────────────────────
+.footer__contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+}
+
+.footer__contact-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.2);
+  @include flex-center;
+  flex-shrink: 0;
+  color: $gold;
+  font-size: $text-sm;
+  margin-top: 2px;
+
+  &--wa {
+    background: rgba($whatsapp-green, 0.1);
+    border-color: rgba($whatsapp-green, 0.2);
+    color: $whatsapp-green;
+  }
+}
+
+.footer__contact-text {
+  font-size: $text-sm;
+  color: rgba($white, 0.6);
+  line-height: 1.7;
+  margin: 0;
+
+  small {
+    font-size: 11px;
+    color: rgba($white, 0.4);
+  }
+}
+
+.footer__contact-link {
+  color: rgba($white, 0.7);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover { color: $gold; }
+}
+
+// WhatsApp text button in contact list
+.footer__wa-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-size: $text-sm;
+
+  &:hover { color: $whatsapp-green !important; }
+}
+
+// WhatsApp CTA button at bottom of contact column
+.footer__cta-wa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: $space-4;
+  padding: 14px 20px;
+  background: rgba($whatsapp-green, 0.12);
+  border: 1px solid rgba($whatsapp-green, 0.3);
+  border-radius: $radius-sm;
+  color: $whatsapp-green;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all $transition-luxury;
+
+  i { font-size: $text-lg; }
+
+  &:hover {
+    background: $whatsapp-green;
+    color: $white;
+    border-color: $whatsapp-green;
+    box-shadow: 0 6px 24px rgba($whatsapp-green, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+// ── FOOTER BOTTOM ──────────────────────────────
+.footer__bottom {
+  border-top: 1px solid rgba($white, 0.06);
+  padding: $space-4 0;
+}
+
+.footer__bottom-inner {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $space-2;
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.footer__copyright {
+  font-size: $text-sm;
+  color: rgba($white, 0.4);
+  margin: 0;
+
+  strong { color: rgba($white, 0.7); font-weight: $weight-semibold; }
+}
+
+.footer__made-with {
+  font-size: $text-sm;
+  color: rgba($white, 0.35);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  i { color: $gold; font-size: 11px; }
+}

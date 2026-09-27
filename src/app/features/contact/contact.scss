@@ -1,0 +1,956 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// CONTACT PAGE STYLES
+// ============================================
+
+// ── HERO ──────────────────────────────────────
+.contact-hero {
+  position: relative;
+  background: $charcoal;
+  padding-top: 39px;
+  padding-bottom: $space-12;
+  overflow: hidden;
+}
+
+.contact-hero__bg { @include absolute-fill; z-index: 0; }
+
+.contact-hero__gradient {
+  @include absolute-fill;
+  background: linear-gradient(135deg, $black 0%, $charcoal 35%, $navy 75%, $navy-deep 100%);
+}
+
+.contact-hero__pattern {
+  @include absolute-fill;
+  background-image: radial-gradient(circle, rgba($white, 0.028) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.contact-hero__glow {
+  position: absolute;
+  top: -10%;
+  right: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba($gold, 0.055), transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contact-hero__container {
+  position: relative;
+  z-index: 2;
+  padding-bottom: $space-10;
+}
+
+.contact-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-6;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  a {
+    color: rgba($white, 0.45);
+    text-decoration: none;
+    transition: color $transition-base;
+    &:hover { color: $gold; }
+  }
+
+  i   { color: rgba($white, 0.2); font-size: 9px; }
+  span { color: $gold; }
+}
+
+.contact-hero__content { max-width: 720px; }
+
+.contact-hero__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.22);
+  padding: 7px 18px;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $gold;
+
+  i { font-size: $text-sm; }
+}
+
+.contact-hero__title {
+  font-family: $font-primary;
+  font-size: clamp($text-4xl, 5vw, $text-6xl);
+  font-weight: $weight-black;
+  color: $white;
+  line-height: 1.1;
+  margin: 0 0 $space-3;
+}
+
+.contact-hero__title-gold {
+  background: linear-gradient(135deg, $gold-dark, $gold, $gold-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.contact-hero__divider {
+  width: 64px;
+  height: 3px;
+  @include gold-gradient;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+}
+
+.contact-hero__subtitle {
+  font-size: $text-xl;
+  font-weight: $weight-light;
+  color: rgba($white, 0.68);
+  line-height: 1.8;
+  margin: 0 0 $space-6;
+}
+
+// Quick contact strip
+.contact-hero__strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: rgba($white, 0.05);
+  border: 1px solid rgba($white, 0.08);
+  border-radius: $radius-lg;
+  width: fit-content;
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+.contact-hero__strip-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: $font-secondary;
+  font-size: $text-sm;
+  color: rgba($white, 0.75);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color $transition-base;
+
+  i { color: $gold; font-size: $text-base; width: 18px; text-align: center; }
+
+  &:hover { color: $gold; }
+}
+
+.contact-hero__strip-sep {
+  width: 1px;
+  height: 20px;
+  background: rgba($white, 0.12);
+
+  @include respond-to('mobile') { display: none; }
+}
+
+.contact-hero__wave {
+  position: relative;
+  z-index: 3;
+  line-height: 0;
+  margin-bottom: -2px;
+  svg { width: 100%; height: 60px; display: block; }
+}
+
+// ── CONTACT CARDS ─────────────────────────────
+.contact-cards-section {
+  background: $white;
+  padding: $space-8 0;
+}
+
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-4;
+
+  @include respond-to('laptop')  { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('tablet')  { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('mobile')  { grid-template-columns: 1fr; }
+}
+
+.contact-info-card {
+  background: $white;
+  border-radius: $radius-xl;
+  padding: $space-5;
+  border: 1.5px solid rgba($silver-light, 0.9);
+  box-shadow: $shadow-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  transition: all $transition-luxury;
+  position: relative;
+  overflow: hidden;
+
+  // Gold accent line on hover
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    @include gold-gradient;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-luxury;
+  }
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    border-color: rgba($gold, 0.25);
+    transform: translateY(-5px);
+
+    &::after { transform: scaleX(1); }
+
+    .contact-info-card__icon-wrap { @include gold-gradient; }
+    .contact-info-card__icon      { color: $charcoal; }
+  }
+
+  // Green variant for WhatsApp
+  &--green {
+    background: linear-gradient(135deg, rgba($whatsapp-green, 0.04), rgba($whatsapp-green, 0.02));
+    border-color: rgba($whatsapp-green, 0.15);
+
+    &::after { background: $whatsapp-green; }
+
+    .contact-info-card__icon-wrap {
+      background: rgba($whatsapp-green, 0.1);
+      border-color: rgba($whatsapp-green, 0.2);
+    }
+    .contact-info-card__icon { color: $whatsapp-green; }
+
+    &:hover {
+      border-color: rgba($whatsapp-green, 0.35);
+      .contact-info-card__icon-wrap { background: $whatsapp-green; }
+      .contact-info-card__icon      { color: $white; }
+    }
+  }
+
+  &__icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-md;
+    background: rgba($gold, 0.08);
+    border: 1px solid rgba($gold, 0.16);
+    @include flex-center;
+    flex-shrink: 0;
+    margin-bottom: $space-1;
+    transition: all $transition-luxury;
+  }
+
+  &__icon {
+    font-size: $text-xl;
+    color: $gold;
+    transition: color $transition-luxury;
+  }
+
+  &__title {
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-bold;
+    letter-spacing: 0.06em;
+    color: $charcoal;
+    margin: 0;
+  }
+
+  &__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+
+    p {
+      font-size: $text-sm;
+      color: #777;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: $space-1;
+    padding: 8px 16px;
+    background: rgba($gold, 0.06);
+    border: 1px solid rgba($gold, 0.2);
+    border-radius: $radius-sm;
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $gold-dark;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all $transition-luxury;
+    width: fit-content;
+
+    i { font-size: 11px; }
+
+    &:hover {
+      @include gold-gradient;
+      color: $charcoal;
+      border-color: transparent;
+    }
+
+    &--wa {
+      background: rgba($whatsapp-green, 0.08);
+      border-color: rgba($whatsapp-green, 0.25);
+      color: $whatsapp-green;
+
+      i { font-size: $text-base; }
+
+      &:hover {
+        background: $whatsapp-green;
+        color: $white;
+        border-color: $whatsapp-green;
+      }
+    }
+  }
+}
+
+// ── MAIN: FORM + MAP ──────────────────────────
+.contact-main__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: $space-10;
+  align-items: start;
+
+  @include respond-to('laptop')    { gap: $space-6; }
+  @include respond-to('max-tablet') { grid-template-columns: 1fr; }
+}
+
+// ── CONTACT FORM ──────────────────────────────
+.contact-form-col {
+  // SectionHeader already provides top spacing
+}
+
+.cform {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__error-banner {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-3 $space-4;
+    background: rgba(#e53935, 0.06);
+    border: 1px solid rgba(#e53935, 0.2);
+    border-radius: $radius-sm;
+    font-size: $text-sm;
+    color: #c62828;
+
+    i { flex-shrink: 0; }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-4;
+
+    @include respond-to('mobile') { grid-template-columns: 1fr; }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+
+    &--full { grid-column: 1 / -1; }
+  }
+
+  &__label {
+    font-family: $font-accent;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.6);
+  }
+
+  &__req { color: #e53935; margin-left: 2px; }
+
+  &__input-wrap { position: relative; }
+
+  &__input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $silver-dark;
+    font-size: 13px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 13px 16px 13px 42px;
+    background: $white;
+    border: 1.5px solid $silver-light;
+    border-radius: $radius-sm;
+    font-family: $font-secondary;
+    font-size: $text-sm;
+    color: $charcoal;
+    transition: border-color $transition-base, box-shadow $transition-base;
+    outline: none;
+
+    &:focus {
+      border-color: $gold;
+      box-shadow: 0 0 0 3px rgba($gold, 0.08);
+    }
+
+    &::placeholder { color: $silver-dark; }
+
+    &.cform__textarea {
+      padding-left: 16px;
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.7;
+    }
+
+    &.cform__select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+  }
+
+  &__field-error {
+    font-size: $text-xs;
+    color: #e53935;
+  }
+
+  &__submit {
+    @include btn-base;
+    background: $whatsapp-green;
+    color: $white;
+    border: none;
+    padding: 16px 32px;
+    font-size: $text-sm;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      background: $whatsapp-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba($whatsapp-green, 0.45);
+      color: $white;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: $text-xs;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+
+    i { color: $gold; flex-shrink: 0; margin-top: 2px; }
+  }
+
+  // Success state
+  &__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: $space-10 $space-6;
+    background: $white;
+    border-radius: $radius-xl;
+    border: 1.5px solid rgba($whatsapp-green, 0.2);
+    box-shadow: $shadow-md;
+  }
+
+  &__success-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba($whatsapp-green, 0.1);
+    border: 2px solid rgba($whatsapp-green, 0.3);
+    @include flex-center;
+    margin-bottom: $space-4;
+    animation: pulse-ring 2s ease infinite;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 0 0 rgba($whatsapp-green, 0.2); }
+    50%       { box-shadow: 0 0 0 12px rgba($whatsapp-green, 0); }
+  }
+
+  &__success-icon {
+    font-size: 2.5rem;
+    color: $whatsapp-green;
+  }
+
+  &__success-title {
+    font-family: $font-primary;
+    font-size: $text-3xl;
+    font-weight: $weight-bold;
+    color: $charcoal;
+    margin: 0 0 $space-2;
+  }
+
+  &__success-text {
+    font-size: $text-base;
+    color: #777;
+    line-height: 1.75;
+    margin: 0 0 $space-6;
+    max-width: 360px;
+  }
+
+  &__success-actions {
+    display: flex;
+    gap: $space-3;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__reset,
+  &__browse {
+    @include btn-base;
+    padding: 12px 24px;
+    font-size: $text-sm;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+
+    i { font-size: 12px; }
+  }
+
+  &__reset {
+    background: $charcoal;
+    color: $white;
+
+    &:hover {
+      background: $navy;
+      transform: translateY(-2px);
+      color: $white;
+    }
+  }
+
+  &__browse {
+    background: transparent;
+    border: 1.5px solid $gold;
+    color: $gold;
+
+    &:hover {
+      @include gold-gradient;
+      color: $charcoal;
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ── MAP + SIDE INFO ───────────────────────────
+.contact-map-col {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  position: sticky;
+  top: calc(70px + #{$space-4});
+
+  @include respond-to('max-tablet') { position: static; }
+}
+
+.contact-map {
+  background: $white;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  border: 1px solid $silver-light;
+  box-shadow: $shadow-md;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-4;
+    border-bottom: 1px solid $silver-light;
+
+    i {
+      font-size: $text-2xl;
+      color: $gold;
+    }
+  }
+
+  &__title {
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-bold;
+    color: $charcoal;
+    margin: 0;
+  }
+
+  &__sub {
+    font-size: $text-xs;
+    color: #999;
+    margin: 0;
+  }
+
+  &__embed {
+    position: relative;
+    height: 260px;
+    background: $off-white;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    bottom: $space-3;
+    left: $space-3;
+    right: $space-3;
+    background: rgba($charcoal, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: $radius-md;
+    padding: $space-3;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    border: 1px solid rgba($gold, 0.2);
+  }
+
+  &__pin {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba($gold, 0.15);
+    @include flex-center;
+    flex-shrink: 0;
+    font-size: $text-lg;
+    color: $gold;
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    strong {
+      font-family: $font-accent;
+      font-size: $text-xs;
+      font-weight: $weight-bold;
+      color: $gold;
+      letter-spacing: 0.06em;
+    }
+
+    span {
+      font-size: 11px;
+      color: rgba($white, 0.65);
+      line-height: 1.4;
+    }
+  }
+
+  &__directions {
+    @include flex-center;
+    gap: 6px;
+    flex-shrink: 0;
+    padding: 7px 12px;
+    background: rgba($gold, 0.12);
+    border: 1px solid rgba($gold, 0.25);
+    border-radius: $radius-sm;
+    font-family: $font-accent;
+    font-size: 10px;
+    font-weight: $weight-bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $gold;
+    text-decoration: none;
+    transition: all $transition-base;
+    white-space: nowrap;
+
+    i { font-size: 11px; }
+
+    &:hover {
+      background: $gold;
+      color: $charcoal;
+      border-color: $gold;
+    }
+  }
+}
+
+// WhatsApp direct box
+.contact-wa-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding: $space-4;
+  background: rgba($whatsapp-green, 0.06);
+  border: 1.5px solid rgba($whatsapp-green, 0.2);
+  border-radius: $radius-lg;
+  transition: all $transition-luxury;
+
+  &:hover {
+    border-color: rgba($whatsapp-green, 0.4);
+    background: rgba($whatsapp-green, 0.1);
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-sm;
+    background: rgba($whatsapp-green, 0.12);
+    @include flex-center;
+    flex-shrink: 0;
+    font-size: $text-2xl;
+    color: $whatsapp-green;
+  }
+
+  &__title {
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-bold;
+    color: $charcoal;
+    margin: 0;
+  }
+
+  &__text {
+    font-size: $text-xs;
+    color: #999;
+    margin: 0;
+  }
+
+  &__btn {
+    @include flex-center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: $whatsapp-green;
+    color: $white;
+    border: none;
+    border-radius: $radius-sm;
+    font-family: $font-accent;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all $transition-luxury;
+    white-space: nowrap;
+
+    i { font-size: 11px; }
+
+    &:hover {
+      background: $whatsapp-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba($whatsapp-green, 0.4);
+    }
+  }
+}
+
+// Business hours
+.contact-hours {
+  background: $white;
+  border-radius: $radius-lg;
+  padding: $space-4;
+  border: 1px solid $silver-light;
+  box-shadow: $shadow-sm;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-accent;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.45);
+    margin: 0 0 $space-3;
+    padding-bottom: $space-2;
+    border-bottom: 1px solid $silver-light;
+
+    i { color: $gold; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba($silver-light, 0.6);
+
+    &:last-child { border-bottom: none; }
+
+    &--closed {
+      .contact-hours__day,
+      .contact-hours__time { color: rgba($charcoal, 0.35); }
+    }
+  }
+
+  &__day  { font-size: $text-sm; font-weight: $weight-medium; color: $charcoal; }
+  &__time { font-size: $text-sm; font-weight: $weight-semibold; color: $gold; }
+}
+
+// ── FAQ SECTION ───────────────────────────────
+.contact-faq {
+  background: $charcoal;
+}
+
+.faq-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin-bottom: $space-8;
+}
+
+.faq-item {
+  background: rgba($white, 0.04);
+  border: 1px solid rgba($white, 0.08);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: all $transition-luxury;
+
+  &--open {
+    background: rgba($white, 0.07);
+    border-color: rgba($gold, 0.25);
+    box-shadow: 0 4px 24px rgba($gold, 0.06);
+
+    .faq-item__icon { background: rgba($gold, 0.15); }
+    .faq-item__plus  { display: none; }
+    .faq-item__minus { display: block; }
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    width: 100%;
+    padding: $space-4 $space-5;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background $transition-base;
+
+    &:hover { background: rgba($white, 0.03); }
+
+    span {
+      font-family: $font-secondary;
+      font-size: $text-base;
+      font-weight: $weight-semibold;
+      color: $white;
+      line-height: 1.5;
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba($white, 0.06);
+    @include flex-center;
+    flex-shrink: 0;
+    color: $gold;
+    font-size: $text-sm;
+    transition: all $transition-base;
+  }
+
+  &__plus  { display: block; }
+  &__minus { display: none; }
+
+  &__answer {
+    padding: 0 $space-5 $space-4;
+    animation: expandDown 0.3s ease;
+
+    p {
+      font-size: $text-sm;
+      color: rgba($white, 0.6);
+      line-height: 1.8;
+      margin: 0;
+    }
+  }
+}
+
+@keyframes expandDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// FAQ footer CTA
+.faq-footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-3;
+
+  p {
+    font-size: $text-base;
+    color: rgba($white, 0.45);
+    margin: 0;
+  }
+
+  &__btn {
+    @include btn-base;
+    background: rgba($whatsapp-green, 0.12);
+    border: 1.5px solid rgba($whatsapp-green, 0.3);
+    color: $whatsapp-green;
+    padding: 13px 30px;
+    cursor: pointer;
+
+    &:hover {
+      background: $whatsapp-green;
+      color: $white;
+      border-color: $whatsapp-green;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba($whatsapp-green, 0.4);
+    }
+  }
+}

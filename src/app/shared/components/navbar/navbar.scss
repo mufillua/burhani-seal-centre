@@ -1,0 +1,501 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+// ============================================
+// NAVBAR STYLES
+// ============================================
+
+// ── BASE NAVBAR ──────────────────────────────
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-sticky;
+  height: 80px;
+  transition: all $transition-luxury;
+
+  // Same luxury navy background as hero
+  background: linear-gradient(
+    135deg,
+    $charcoal 0%,
+    $navy 50%,
+    $navy-deep 100%
+  );
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid rgba($gold, 0.12);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    @include gold-gradient;
+    opacity: 1;
+  }
+
+  &--scrolled {
+    background: linear-gradient(
+      135deg,
+      $charcoal 0%,
+      $navy 50%,
+      $navy-deep 100%
+    );
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    height: 75px;
+  }
+}
+
+// ── CONTAINER ────────────────────────────────
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $space-4;
+
+  @include respond-to('max-tablet') {
+    padding: 0 16px;
+  }
+}
+
+// ── LOGO ──────────────────────────────────────
+.navbar__logo {
+  @include flex-center;
+  gap: $space-2;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: transform $transition-base;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.navbar__logo-icon {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-sm;
+  @include gold-gradient;
+  @include flex-center;
+  flex-shrink: 0;
+  box-shadow: $shadow-gold;
+}
+
+.logo-letter {
+  font-family: $font-primary;
+  font-size: $text-2xl;
+  font-weight: $weight-black;
+  color: $charcoal;
+  line-height: 1;
+}
+
+.logo-dot {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background: $charcoal;
+  border-radius: 50%;
+}
+
+.navbar__logo-text {
+  @include flex-column;
+  line-height: 1.1;
+
+  @include respond-to('mobile') {
+    display: none; // hide text on small screens, keep icon
+  }
+}
+
+.logo-company {
+  font-family: $font-primary;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $gold-light;
+  letter-spacing: 0.04em;
+}
+
+.logo-division {
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-medium;
+  color: $gold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+// ── DESKTOP NAV LINKS ─────────────────────────
+.navbar__links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: $space-1;
+  margin: 0;
+  padding: 0;
+
+  @include respond-to('max-tablet') {
+    display: none; // Hidden on mobile
+  }
+}
+
+.navbar__item {
+  position: relative;
+}
+
+.navbar__link {
+  position: relative;
+  display: block;
+  padding: $space-1 14px;
+  font-family: $font-accent;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba($white, 0.85);
+  text-decoration: none;
+  transition: color $transition-base;
+  white-space: nowrap;
+
+  &:hover {
+    color: $gold;
+  }
+
+  &--active {
+    color: $gold !important;
+  }
+}
+
+// Animated gold underline on hover and active
+.navbar__link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  @include gold-gradient;
+  border-radius: $radius-full;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform $transition-luxury;
+}
+
+.navbar__link:hover .navbar__link-underline,
+.navbar__link--active .navbar__link-underline {
+  transform: scaleX(1);
+}
+
+// ── NAVBAR ACTIONS ────────────────────────────
+.navbar__actions {
+  @include flex-center;
+  gap: $space-2;
+  flex-shrink: 0;
+}
+
+// WhatsApp button in navbar
+.btn-whatsapp-nav {
+  @include flex-center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba($whatsapp-green, 0.15);
+  border: 1px solid rgba($whatsapp-green, 0.4);
+  border-radius: $radius-full;
+  color: $whatsapp-green;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all $transition-base;
+  white-space: nowrap;
+
+  i {
+    font-size: $text-base;
+  }
+
+  &:hover {
+    background: $whatsapp-green;
+    color: $white;
+    border-color: $whatsapp-green;
+    box-shadow: 0 4px 16px rgba($whatsapp-green, 0.4);
+  }
+
+  @include respond-to('max-tablet') {
+    display: none;
+  }
+}
+
+// Get Quote CTA button
+.btn-nav-cta {
+  padding: 10px 24px;
+  @include gold-gradient;
+  color: $charcoal;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  transition: all $transition-luxury;
+  white-space: nowrap;
+  box-shadow: $shadow-gold;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-gold-lg;
+    color: $charcoal;
+    filter: brightness(1.1);
+  }
+
+  @include respond-to('max-tablet') {
+    display: none;
+  }
+}
+
+// ── HAMBURGER BUTTON ──────────────────────────
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: $radius-sm;
+  transition: background $transition-base;
+
+  &:hover {
+    background: rgba($white, 0.1);
+  }
+
+  @include respond-to('max-tablet') {
+    display: flex;
+  }
+}
+
+.hamburger__line {
+  display: block;
+  height: 2px;
+  background: $white;
+  border-radius: $radius-full;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+
+  &--top    { width: 24px; }
+  &--middle { width: 18px; }
+  &--bottom { width: 24px; }
+}
+
+// Animate hamburger to X when open
+.navbar__hamburger--open {
+  .hamburger__line--top {
+    transform: translateY(7px) rotate(45deg);
+    width: 24px;
+  }
+  .hamburger__line--middle {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger__line--bottom {
+    transform: translateY(-7px) rotate(-45deg);
+    width: 24px;
+  }
+}
+
+// ── BACKDROP (mobile) ─────────────────────────
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba($black, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: calc(#{$z-sticky} - 1);
+  opacity: 0;
+  transition: opacity $transition-base;
+
+  &.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+// ── MOBILE MENU ───────────────────────────────
+.navbar__mobile {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+
+  overflow-y: auto;
+
+  background: $navy;
+
+  z-index: 9998;
+
+  // Only shown on mobile - this will be hidden
+  // at laptop+ sizes via the @if in template
+  @include respond-to('min-laptop') {
+    display: none;
+  }
+}
+
+// Mobile nav links list
+.mobile-nav__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav__item {
+  border-bottom: 1px solid rgba($white, 0.06);
+
+  &:first-child {
+    border-top: 1px solid rgba($white, 0.06);
+  }
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 $space-2;
+  font-family: $font-accent;
+  font-size: $text-base;
+  font-weight: $weight-medium;
+  letter-spacing: 0.05em;
+  color: rgba($white, 0.85);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all $transition-base;
+
+  &:hover,
+  &--active {
+    color: $gold;
+    padding-left: $space-3;
+  }
+
+  &--active .mobile-nav__arrow {
+    color: $gold;
+  }
+}
+
+.mobile-nav__arrow {
+  font-size: $text-xs;
+  color: rgba($white, 0.3);
+  transition: transform $transition-base;
+}
+
+.mobile-nav__link:hover .mobile-nav__arrow {
+  transform: translateX(4px);
+  color: $gold;
+}
+
+// Mobile CTA buttons
+.mobile-nav__cta {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  .btn-gold,
+  .btn-whatsapp {
+    padding: 16px;
+    font-size: $text-sm;
+    border-radius: $radius-sm;
+    font-weight: $weight-bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: all $transition-base;
+
+    i { margin-right: 8px; }
+  }
+
+  .btn-gold {
+    display: block;
+    @include gold-gradient;
+    color: $charcoal;
+    text-decoration: none;
+    border: none;
+
+    &:hover { filter: brightness(1.1); }
+  }
+
+  .btn-whatsapp {
+    background: rgba($whatsapp-green, 0.15);
+    border: 1px solid rgba($whatsapp-green, 0.5);
+    color: $whatsapp-green;
+
+    &:hover {
+      background: $whatsapp-green;
+      color: $white;
+    }
+  }
+}
+
+// Mobile contact info
+.mobile-nav__info {
+  margin-top: auto;
+  padding-top: $space-4;
+  border-top: 1px solid rgba($white, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.mobile-nav__contact-link {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  color: $gold;
+  text-decoration: none;
+  font-family: $font-accent;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+
+  i { width: 16px; text-align: center; }
+
+  &:hover { color: $gold-light; }
+}
+
+.mobile-nav__address {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-1;
+  color: rgba($white, 0.5);
+  font-size: $text-sm;
+  line-height: 1.5;
+  margin: 0;
+
+  i {
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+// Utility (used in mobile menu)
+.w-100 { width: 100%; }

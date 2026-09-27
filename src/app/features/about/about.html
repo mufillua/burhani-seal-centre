@@ -1,0 +1,399 @@
+<!-- ============================================
+  ABOUT PAGE
+  ============================================ -->
+
+<div class="about-page">
+
+  <!-- ══════════════════════════════════════════
+    SECTION 1: HERO
+  ══════════════════════════════════════════ -->
+  <section class="about-hero" aria-label="About page hero">
+
+    <!-- Background -->
+    <div class="about-hero__bg" aria-hidden="true">
+      <div class="about-hero__gradient"></div>
+      <div class="about-hero__pattern"></div>
+      <div class="about-hero__glow"></div>
+    </div>
+
+    <div class="container-custom about-hero__container">
+
+      <!-- Breadcrumb -->
+      <nav class="about-hero__breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <span>About Us</span>
+      </nav>
+
+      <!-- Hero text content -->
+      <div class="about-hero__content" [class.is-visible]="heroVisible()">
+
+        <span class="about-hero__label">
+          <i class="fa fa-building" aria-hidden="true"></i>
+          Our Company
+        </span>
+
+        <h1 class="about-hero__title">
+          The Story Behind<br>
+          <span class="about-hero__title-gold">Burhani Seal Centre</span>
+        </h1>
+
+        <div class="about-hero__divider" aria-hidden="true"></div>
+
+        <p class="about-hero__subtitle">
+          Decades of experience. Thousands of satisfied clients. One unwavering commitment —
+          delivering the right sealing solution for every application.
+        </p>
+
+        <!-- Quick stats -->
+        <div class="about-hero__stats" role="list">
+          @for (stat of stats; track trackByValue($index, stat)) {
+            <div class="about-hero__stat" role="listitem">
+              <span class="about-hero__stat-value">{{ stat.value }}</span>
+              <span class="about-hero__stat-label">{{ stat.label }}</span>
+            </div>
+            @if (!$last) {
+              <div class="about-hero__stat-sep" aria-hidden="true"></div>
+            }
+          }
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Wave transition -->
+    <div class="about-hero__wave" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="white"/>
+      </svg>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 2: COMPANY STORY + OWNER
+  ══════════════════════════════════════════ -->
+  <section class="about-story section-wrapper"
+           id="about-story"
+           aria-label="Company story">
+
+    <div class="container-custom">
+      <div class="about-story__grid">
+
+        <!-- Left: Owner profile card -->
+        <div class="about-story__visual" [class.is-visible]="storyVisible()">
+
+          <div class="owner-card">
+
+            <!-- Owner avatar -->
+            <div class="owner-card__avatar" aria-hidden="true">
+              <div class="owner-card__avatar-inner">
+                <i class="fa fa-user-tie owner-card__avatar-icon"></i>
+              </div>
+              <!-- Orbiting badge -->
+              <div class="owner-card__orbit">
+                <div class="owner-card__orbit-badge">
+                  <i class="fa fa-certificate"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Owner info -->
+            <div class="owner-card__info">
+              <h3 class="owner-card__name">Qutubuddin Palanpurwala</h3>
+              <span class="owner-card__role">Founder & Proprietor</span>
+              <div class="owner-card__divider" aria-hidden="true"></div>
+              <p class="owner-card__bio">
+                A dedicated entrepreneur with decades of experience in industrial sealing solutions. His deep technical knowledge and customer-first approach have made Burhani Seal Centre a trusted name across India's industrial sectors.
+              </p>
+            </div>
+
+            <!-- Contact details on owner card -->
+            <div class="owner-card__contact">
+              <a [href]="'tel:' + company.phone" class="owner-card__contact-item">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>{{ company.whatsappDisplay }}</span>
+              </a>
+              <div class="owner-card__contact-item">
+                <i class="fa fa-location-dot" aria-hidden="true"></i>
+                <span>Burra Bazar, Kolkata</span>
+              </div>
+            </div>
+
+            <!-- Decorative corner accents -->
+            <div class="owner-card__corner owner-card__corner--tl" aria-hidden="true"></div>
+            <div class="owner-card__corner owner-card__corner--br" aria-hidden="true"></div>
+
+          </div>
+
+          <!-- Location card -->
+          <div class="location-card">
+            <div class="location-card__icon">
+              <i class="fa fa-map-location-dot" aria-hidden="true"></i>
+            </div>
+            <div>
+              <div class="location-card__title">Our Location</div>
+              <address class="location-card__addr">
+                {{ company.address.line1 }},<br>
+                {{ company.address.line2 }},<br>
+                {{ company.address.city }} – {{ company.address.pincode }}
+              </address>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Story text -->
+        <div class="about-story__content" [class.is-visible]="storyVisible()">
+
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">
+            A Legacy Built on
+            <em class="text-gradient-gold">Trust & Quality</em>
+          </h2>
+          <div class="gold-divider"></div>
+
+          <div class="about-story__text">
+            <p>
+              Burhani Seal Centre was founded by <strong>Qutubuddin Palanpurwala</strong> in the heart of Kolkata's renowned industrial district — Burra Bazar on Strand Road. What began as a focused sealing solutions business quickly grew into one of the most trusted names in the industrial sealing supply chain across West Bengal and beyond.
+            </p>
+            <p>
+              From the very first day, our philosophy has been simple: <em>supply only what works, at a fair price, backed by honest technical advice.</em> In an industry where inferior products can cause catastrophic equipment failures, costly downtime, and even safety incidents, we believe quality is never optional.
+            </p>
+            <p>
+              Today, we supply over 34 product lines spanning Mechanical Seals, Gaskets, O Rings, PTFE Products, Packing Materials, Oil Seals, Rubber Products, Expansion Joints, Industrial Hoses, Engineering Plastics, and Industrial Insulation Materials. Our customers include chemical plants, pharmaceutical manufacturers, oil & gas companies, power plants, textile mills, cement factories, and many more.
+            </p>
+            <p>
+              We are not just a supplier. We are a <strong>technical partner</strong> who understands your operating conditions and recommends the sealing solution that will perform reliably in your specific application.
+            </p>
+          </div>
+
+          <!-- Key differentiators -->
+          <div class="about-story__points">
+            @for (point of [
+              { icon: 'fa-check-circle', text: 'ISO & API compliant products from verified manufacturers' },
+              { icon: 'fa-check-circle', text: 'Expert technical guidance for every application' },
+              { icon: 'fa-check-circle', text: 'Rapid availability — same day dispatch for stocked items' },
+              { icon: 'fa-check-circle', text: 'Serving 11+ industrial sectors across India' }
+            ]; track point.text) {
+              <div class="about-story__point">
+                <i [class]="'fa ' + point.icon" aria-hidden="true"></i>
+                <span>{{ point.text }}</span>
+              </div>
+            }
+          </div>
+
+          <a routerLink="/contact" class="btn-gold about-story__cta">
+            <span>Get in Touch</span>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 3: VALUES
+  ══════════════════════════════════════════ -->
+  <section class="about-values section-wrapper section-bg-light"
+           id="about-values"
+           aria-label="Our values">
+
+    <div class="container-custom">
+
+      <app-section-header
+        label="What We Stand For"
+        title="Our Core <em>Values</em>"
+        subtitle="Six principles guide every decision we make — from product selection to customer service."
+        [centered]="true">
+      </app-section-header>
+
+      <div class="values-grid" [class.is-visible]="valuesVisible()">
+        @for (value of values; track trackByTitle($index, value)) {
+          <div class="value-card"
+               [style.animation-delay]="($index * 90) + 'ms'">
+
+            <div class="value-card__icon-wrap" aria-hidden="true">
+              <i [class]="'fa ' + value.icon + ' value-card__icon'"></i>
+            </div>
+
+            <h3 class="value-card__title">{{ value.title }}</h3>
+            <p class="value-card__desc">{{ value.description }}</p>
+
+            <div class="value-card__line" aria-hidden="true"></div>
+
+          </div>
+        }
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 4: TIMELINE
+  ══════════════════════════════════════════ -->
+  <section class="about-timeline section-wrapper section-bg-dark"
+           id="about-timeline"
+           aria-label="Company timeline">
+
+    <div class="container-custom">
+
+      <app-section-header
+        label="Our Journey"
+        title="Milestones That <em>Define Us</em>"
+        subtitle="From a single store in Burra Bazar to serving 500+ clients across India — every milestone is a testament to our commitment."
+        [centered]="true"
+        [light]="true">
+      </app-section-header>
+
+      <!-- Timeline -->
+      <div class="timeline" [class.is-visible]="timelineVisible()">
+
+        <!-- Centre vertical line -->
+        <div class="timeline__spine" aria-hidden="true"></div>
+
+        @for (event of timeline; track trackByYear($index, event)) {
+          <div class="timeline__item"
+               [class.timeline__item--right]="event.side === 'right'"
+               [style.animation-delay]="($index * 150) + 'ms'">
+
+            <!-- Content card -->
+            <div class="timeline__card">
+              <div class="timeline__card-header">
+                <span class="timeline__year">{{ event.year }}</span>
+                <div class="timeline__card-icon" aria-hidden="true">
+                  <i [class]="'fa ' + event.icon"></i>
+                </div>
+              </div>
+              <h3 class="timeline__title">{{ event.title }}</h3>
+              <p class="timeline__desc">{{ event.description }}</p>
+            </div>
+
+            <!-- Dot on the spine -->
+            <div class="timeline__dot" aria-hidden="true">
+              <div class="timeline__dot-inner"></div>
+            </div>
+
+          </div>
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 5: ADDRESS / REACH US
+  ══════════════════════════════════════════ -->
+  <section class="about-team section-wrapper"
+           id="about-team"
+           aria-label="Visit us">
+
+    <div class="container-custom">
+
+      <app-section-header
+        label="Visit Us"
+        title="Come See Us <em>In Person</em>"
+        subtitle="We welcome clients to visit our premises in Burra Bazar, Kolkata. Our team is ready to assist you with product selection and technical queries."
+        [centered]="true">
+      </app-section-header>
+
+      <div class="reach-grid" [class.is-visible]="teamVisible()">
+
+        <!-- Address card -->
+        <div class="reach-card reach-card--address">
+          <div class="reach-card__icon-wrap" aria-hidden="true">
+            <i class="fa fa-location-dot reach-card__icon"></i>
+          </div>
+          <h3 class="reach-card__title">Our Address</h3>
+          <address class="reach-card__text">
+            <strong>{{ company.name }}</strong><br>
+            {{ company.address.line1 }},<br>
+            {{ company.address.line2 }},<br>
+            {{ company.address.city }} – {{ company.address.pincode }},<br>
+            {{ company.address.state }}, {{ company.address.country }}
+          </address>
+          <a [href]="'https://maps.google.com/?q=' + company.address.full"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="reach-card__link">
+            <i class="fa fa-map" aria-hidden="true"></i>
+            Open in Google Maps
+          </a>
+        </div>
+
+        <!-- Phone card -->
+        <div class="reach-card reach-card--phone">
+          <div class="reach-card__icon-wrap" aria-hidden="true">
+            <i class="fa fa-phone reach-card__icon"></i>
+          </div>
+          <h3 class="reach-card__title">Call / WhatsApp</h3>
+          <p class="reach-card__text">
+            Reach us directly for product enquiries, pricing, and technical support.
+          </p>
+          <a [href]="'tel:' + company.phone" class="reach-card__link">
+            {{ company.whatsappDisplay }}
+          </a>
+          <button class="reach-card__wa-btn" (click)="openWhatsApp()">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Chat on WhatsApp
+          </button>
+        </div>
+
+        <!-- Hours card -->
+        <div class="reach-card reach-card--hours">
+          <div class="reach-card__icon-wrap" aria-hidden="true">
+            <i class="fa fa-clock reach-card__icon"></i>
+          </div>
+          <h3 class="reach-card__title">Business Hours</h3>
+          <div class="hours-list">
+            @for (day of [
+              { day: 'Monday – Friday', hours: '9:00 AM – 6:00 PM', open: true  },
+              { day: 'Saturday',        hours: '9:00 AM – 5:00 PM', open: true  },
+              { day: 'Sunday',          hours: 'Closed',             open: false }
+            ]; track day.day) {
+              <div class="hours-row" [class.hours-row--closed]="!day.open">
+                <span class="hours-day">{{ day.day }}</span>
+                <span class="hours-time">{{ day.hours }}</span>
+              </div>
+            }
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+    SECTION 6: CTA STRIP
+  ══════════════════════════════════════════ -->
+  <section class="about-cta" id="about-cta" aria-label="Get in touch">
+    <div class="container-custom about-cta__inner" [class.is-visible]="ctaVisible()">
+      <div class="about-cta__text">
+        <h2 class="about-cta__title">Ready to Partner With Us?</h2>
+        <p class="about-cta__sub">
+          Let us help you find the right sealing solution. Contact us today for expert advice and competitive pricing.
+        </p>
+      </div>
+      <div class="about-cta__actions">
+        <button class="btn-whatsapp about-cta__btn" (click)="openWhatsApp()">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          WhatsApp Us Now
+        </button>
+        <a routerLink="/products" class="btn-outline-gold about-cta__btn">
+          <i class="fa fa-grid-2" aria-hidden="true"></i>
+          Browse Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.about-page -->

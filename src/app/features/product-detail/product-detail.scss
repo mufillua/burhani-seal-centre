@@ -1,0 +1,933 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// PRODUCT DETAIL PAGE STYLES
+// ============================================
+
+// ── PAGE HERO STRIP ───────────────────────────
+.pd-hero {
+  position: relative;
+  background: $charcoal;
+  padding: calc(80px + #{$space-4}) 0 0;
+  overflow: hidden;
+}
+
+.pd-hero__bg { @include absolute-fill; z-index: 0; }
+
+.pd-hero__gradient {
+  @include absolute-fill;
+  background: linear-gradient(135deg, $black 0%, $charcoal 50%, $navy 100%);
+}
+
+.pd-hero__pattern {
+  @include absolute-fill;
+  background-image: radial-gradient(circle, rgba($white, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.pd-hero__container {
+  position: relative;
+  z-index: 2;
+  padding-bottom: $space-4;
+}
+
+.pd-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-1;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  a {
+    color: rgba($white, 0.45);
+    text-decoration: none;
+    transition: color $transition-base;
+    &:hover { color: $gold; }
+  }
+
+  i   { color: rgba($white, 0.2); font-size: 9px; }
+  span { color: $gold; }
+}
+
+.pd-hero__wave {
+  position: relative;
+  z-index: 3;
+  line-height: 0;
+  margin-bottom: -2px;
+  svg { width: 100%; height: 40px; display: block; }
+}
+
+// ── MAIN PRODUCT SECTION ──────────────────────
+.pd-main {
+  background: $white;
+  padding: $space-8 0 $space-10;
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: $space-8;
+  align-items: start;
+
+  @include respond-to('laptop') {
+    grid-template-columns: 360px 1fr;
+    gap: $space-6;
+  }
+
+  @include respond-to('max-tablet') {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+}
+
+// ── IMAGE COLUMN ──────────────────────────────
+.pd-image-col {
+  position: sticky;
+  top: calc(70px + #{$space-4});
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @include respond-to('max-tablet') {
+    position: static;
+  }
+}
+
+.pd-image-card {
+  position: relative;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: $off-white;
+  border: 1px solid $silver-light;
+  aspect-ratio: 4 / 3;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__placeholder {
+    @include absolute-fill;
+    @include flex-center;
+    flex-direction: column;
+    gap: $space-3;
+    background: linear-gradient(135deg, $light-gray, $off-white);
+  }
+
+  &__placeholder-icon {
+    font-size: 6rem;
+    color: $silver;
+    opacity: 0.4;
+  }
+
+  &__placeholder span {
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $silver-dark;
+  }
+
+  &__badge {
+    position: absolute;
+    bottom: $space-3;
+    left: $space-3;
+    padding: 5px 14px;
+    background: rgba($charcoal, 0.88);
+    backdrop-filter: blur(8px);
+    color: $gold;
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: $radius-full;
+    border: 1px solid rgba($gold, 0.25);
+  }
+
+  &__new {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    padding: 5px 12px;
+    @include gold-gradient;
+    color: $charcoal;
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-black;
+    border-radius: $radius-full;
+  }
+}
+
+// Quick facts panel
+.pd-quick-facts {
+  background: $off-white;
+  border-radius: $radius-lg;
+  padding: $space-4;
+  border: 1px solid $silver-light;
+
+  &__title {
+    font-family: $font-accent;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.45);
+    margin: 0 0 $space-3;
+    padding-bottom: $space-2;
+    border-bottom: 1px solid $silver-light;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-3;
+    font-size: $text-sm;
+  }
+
+  &__label {
+    color: #888;
+    font-weight: $weight-medium;
+    flex-shrink: 0;
+    width: 44%;
+  }
+
+  &__value {
+    color: $charcoal;
+    font-weight: $weight-semibold;
+    text-align: right;
+  }
+}
+
+// WhatsApp CTA
+.pd-wa-btn {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  width: 100%;
+  padding: $space-3 $space-4;
+  background: $whatsapp-green;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-luxury;
+  box-shadow: 0 4px 20px rgba($whatsapp-green, 0.35);
+
+  &:hover {
+    background: $whatsapp-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba($whatsapp-green, 0.5);
+  }
+
+  i:first-child {
+    font-size: 2rem;
+    color: $white;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+  }
+
+  &__label {
+    font-family: $font-accent;
+    font-size: 10px;
+    font-weight: $weight-medium;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba($white, 0.75);
+  }
+
+  &__main {
+    font-family: $font-accent;
+    font-size: $text-base;
+    font-weight: $weight-bold;
+    color: $white;
+  }
+
+  &__arrow {
+    color: rgba($white, 0.6);
+    font-size: 12px;
+    transition: transform $transition-base;
+  }
+
+  &:hover &__arrow {
+    transform: translateX(4px);
+    color: $white;
+  }
+}
+
+// ── INFO COLUMN ───────────────────────────────
+.pd-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.pd-category-label {
+  display: inline-block;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-1;
+}
+
+.pd-title {
+  font-family: $font-primary;
+  font-size: clamp($text-3xl, 4vw, $text-5xl);
+  font-weight: $weight-black;
+  color: $charcoal;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.pd-divider {
+  width: 56px;
+  height: 3px;
+  @include gold-gradient;
+  border-radius: $radius-full;
+}
+
+.pd-short-desc {
+  font-size: $text-lg;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
+// Industries
+.pd-industries {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+  flex-wrap: wrap;
+
+  &__label {
+    font-family: $font-accent;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.45);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+.pd-industry-chip {
+  padding: 3px 12px;
+  background: rgba($navy, 0.06);
+  color: $navy;
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: $radius-full;
+  border: 1px solid rgba($navy, 0.1);
+}
+
+// ── TABS ──────────────────────────────────────
+.pd-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid $silver-light;
+}
+
+.pd-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: $space-2 $space-3;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-family: $font-accent;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.04em;
+  color: rgba($charcoal, 0.5);
+  cursor: pointer;
+  transition: all $transition-base;
+
+  i { font-size: 12px; }
+
+  &:hover { color: $charcoal; }
+
+  &--active {
+    color: $charcoal;
+    border-bottom-color: $gold;
+  }
+}
+
+// Tab content area
+.pd-tab-content {
+  padding: $space-4 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.pd-full-desc {
+  p {
+    color: #555;
+    line-height: 1.85;
+    margin-bottom: $space-3;
+
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+// Features list
+.pd-features {
+  margin-top: $space-4;
+  padding: $space-4;
+  background: $off-white;
+  border-radius: $radius-lg;
+  border: 1px solid $silver-light;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $charcoal;
+    margin: 0 0 $space-3;
+
+    i { color: $gold; }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-2;
+
+    @include respond-to('mobile') { grid-template-columns: 1fr; }
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: $text-sm;
+    color: #555;
+    line-height: 1.6;
+
+    i { color: $gold; font-size: $text-base; flex-shrink: 0; margin-top: 2px; }
+  }
+}
+
+// Specs table
+.pd-specs-table {
+  border: 1px solid $silver-light;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: $space-3;
+    padding: $space-2 $space-4;
+    background: $charcoal;
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-bold;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $gold;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: $space-3;
+    padding: $space-2 $space-4;
+    border-bottom: 1px solid $silver-light;
+    transition: background $transition-fast;
+
+    &:last-child { border-bottom: none; }
+    &:nth-child(even) { background: $off-white; }
+    &:hover { background: rgba($gold, 0.04); }
+  }
+
+  &__label {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $charcoal;
+  }
+
+  &__value {
+    font-size: $text-sm;
+    color: #555;
+  }
+}
+
+// Applications
+.pd-section-title {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-accent;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $charcoal;
+  margin: 0 0 $space-3;
+
+  i { color: $gold; }
+}
+
+.pd-app-list {
+  list-style: none;
+  margin: 0 0 $space-5;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.pd-app-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: $text-sm;
+  color: #555;
+  line-height: 1.65;
+
+  i { color: $gold; font-size: $text-sm; flex-shrink: 0; margin-top: 3px; }
+}
+
+.pd-industries-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.pd-ind-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: rgba($navy, 0.05);
+  border: 1px solid rgba($navy, 0.12);
+  border-radius: $radius-full;
+  font-family: $font-accent;
+  font-size: 12px;
+  font-weight: $weight-semibold;
+  color: $navy;
+  transition: all $transition-base;
+
+  i { color: $gold; font-size: 10px; }
+
+  &:hover {
+    background: $navy;
+    color: $white;
+    i { color: $gold; }
+  }
+}
+
+// Action buttons below tabs
+.pd-actions {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+  padding-top: $space-4;
+  border-top: 1px solid $silver-light;
+
+  button, a {
+    @include btn-base;
+    padding: 14px 28px;
+  }
+
+  &__wa {
+    background: $whatsapp-green;
+    color: $white;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background: $whatsapp-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba($whatsapp-green, 0.4);
+      color: $white;
+    }
+  }
+
+  &__quote {
+    background: $charcoal;
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      background: $navy;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+      color: $white;
+    }
+  }
+}
+
+// ── ENQUIRY FORM ──────────────────────────────
+.pd-enquiry {
+  padding: $space-12 0;
+}
+
+.pd-enquiry__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: $space-8;
+  align-items: start;
+
+  @include respond-to('max-tablet') {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+}
+
+.pd-enquiry__title {
+  font-family: $font-primary;
+  font-size: clamp($text-3xl, 3.5vw, $text-4xl);
+  font-weight: $weight-bold;
+  color: $charcoal;
+  margin: 0 0 $space-2;
+}
+
+.pd-enquiry__subtitle {
+  font-size: $text-base;
+  color: #777;
+  line-height: 1.7;
+  margin: 0 0 $space-6;
+}
+
+// Form
+.pd-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-4;
+
+    @include respond-to('mobile') { grid-template-columns: 1fr; }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+
+    &--full { grid-column: 1 / -1; }
+  }
+
+  &__label {
+    font-family: $font-accent;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.65);
+  }
+
+  &__required {
+    color: #e53935;
+    margin-left: 2px;
+  }
+
+  &__product-tag {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: 12px 16px;
+    background: rgba($gold, 0.06);
+    border: 1.5px solid rgba($gold, 0.25);
+    border-radius: $radius-sm;
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $charcoal;
+
+    i { color: $gold; }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 16px;
+    background: $white;
+    border: 1.5px solid $silver-light;
+    border-radius: $radius-sm;
+    font-family: $font-secondary;
+    font-size: $text-sm;
+    color: $charcoal;
+    transition: border-color $transition-base;
+    outline: none;
+    resize: vertical;
+
+    &:focus { border-color: $gold; }
+    &::placeholder { color: $silver-dark; }
+  }
+
+  &__textarea { min-height: 110px; }
+
+  &__error {
+    font-size: $text-xs;
+    color: #e53935;
+  }
+
+  &__submit {
+    @include btn-base;
+    background: $whatsapp-green;
+    color: $white;
+    border: none;
+    padding: 16px 32px;
+    font-size: $text-sm;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      background: $whatsapp-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba($whatsapp-green, 0.45);
+    }
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+
+  &__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: $space-8;
+    background: rgba($whatsapp-green, 0.05);
+    border: 1.5px solid rgba($whatsapp-green, 0.25);
+    border-radius: $radius-xl;
+
+    h3 {
+      font-family: $font-primary;
+      font-size: $text-2xl;
+      font-weight: $weight-bold;
+      color: $charcoal;
+      margin: 0 0 $space-2;
+    }
+
+    p { color: #666; line-height: 1.7; margin: 0 0 $space-4; }
+  }
+
+  &__success-icon {
+    font-size: 3.5rem;
+    color: $whatsapp-green;
+    margin-bottom: $space-3;
+  }
+
+  &__reset {
+    @include btn-base;
+    background: $charcoal;
+    color: $white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 28px;
+
+    &:hover {
+      background: $navy;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Info card
+.pd-enquiry-info-card {
+  background: $charcoal;
+  border-radius: $radius-xl;
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding-bottom: $space-3;
+    border-bottom: 1px solid rgba($white, 0.08);
+  }
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-sm;
+    background: rgba($whatsapp-green, 0.15);
+    @include flex-center;
+    color: $whatsapp-green;
+    font-size: $text-2xl;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: $text-xl;
+    font-weight: $weight-bold;
+    color: $white;
+    margin: 0;
+  }
+
+  &__sub {
+    font-size: $text-sm;
+    color: rgba($white, 0.4);
+    margin: 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $text-sm;
+    color: rgba($white, 0.65);
+  }
+
+  &__item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-sm;
+    background: rgba($gold, 0.1);
+    @include flex-center;
+    color: $gold;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+}
+
+.pd-enquiry-wa-direct {
+  @include btn-base;
+  background: $whatsapp-green;
+  color: $white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 14px;
+  font-size: $text-sm;
+
+  &:hover {
+    background: $whatsapp-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba($whatsapp-green, 0.45);
+    color: $white;
+  }
+}
+
+// ── RELATED PRODUCTS ──────────────────────────
+.pd-related {
+  background: $off-white;
+}
+
+.pd-related__title {
+  font-family: $font-primary;
+  font-size: clamp($text-3xl, 3.5vw, $text-4xl);
+  font-weight: $weight-bold;
+  color: $charcoal;
+  margin: 0 0 $space-6;
+}
+
+.pd-related__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+  margin-bottom: $space-6;
+
+  @include respond-to('tablet') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('mobile') { grid-template-columns: 1fr; }
+}
+
+.pd-related__cta {
+  text-align: center;
+
+  .btn-outline-gold {
+    @include btn-base;
+    background: transparent;
+    border: 1.5px solid $gold;
+    color: $gold;
+    text-decoration: none;
+
+    &:hover {
+      @include gold-gradient;
+      color: $charcoal;
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: $shadow-gold;
+    }
+  }
+}
+
+// ── LOADING STATE ─────────────────────────────
+.pd-loading {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-4;
+  margin-top: 80px;
+
+  &__spinner {
+    font-size: 4rem;
+    color: $gold;
+  }
+
+  p {
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.45);
+  }
+}

@@ -1,0 +1,126 @@
+<!-- ============================================
+  NAVBAR TEMPLATE
+  ============================================ -->
+
+<!-- Click backdrop closes mobile menu -->
+<div class="nav-backdrop"
+     [class.active]="isMobileMenuOpen()"
+     (click)="closeMobileMenu()"
+     aria-hidden="true">
+</div>
+
+<nav class="navbar" [ngClass]="navbarClass()" role="navigation" aria-label="Main navigation">
+  <div class="navbar__container">
+
+    <!-- ── LOGO ── -->
+    <a class="navbar__logo" routerLink="/" (click)="closeMobileMenu()" aria-label="Burhani Seal Centre — Home">
+      <div class="navbar__logo-icon" aria-hidden="true">
+        <span class="logo-letter">B</span>
+        <div class="logo-dot"></div>
+      </div>
+      <div class="navbar__logo-text">
+        <span class="logo-company">Burhani</span>
+        <span class="logo-division">Seal Centre</span>
+      </div>
+    </a>
+
+    <!-- ── DESKTOP NAV LINKS ── -->
+    <ul class="navbar__links" role="list">
+      @for (link of navLinks; track trackByPath($index, link)) {
+        <li class="navbar__item">
+          <a class="navbar__link"
+             [routerLink]="link.path"
+             routerLinkActive="navbar__link--active"
+             [routerLinkActiveOptions]="{ exact: link.exact ?? false }"
+             (click)="closeMobileMenu()">
+            {{ link.label }}
+            <span class="navbar__link-underline" aria-hidden="true"></span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- ── NAVBAR ACTIONS ── -->
+    <div class="navbar__actions">
+      <!-- WhatsApp Button (desktop) -->
+      <button class="btn-whatsapp-nav"
+              (click)="openWhatsApp()"
+              aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <span>WhatsApp</span>
+      </button>
+
+      <!-- Get Quote CTA -->
+      <a routerLink="/contact"
+         class="btn-nav-cta"
+         (click)="closeMobileMenu()">
+        Get Quote
+      </a>
+
+      <!-- ── HAMBURGER (mobile only) ── -->
+      <button class="navbar__hamburger"
+              [class.navbar__hamburger--open]="isMobileMenuOpen()"
+              (click)="toggleMobileMenu()"
+              [attr.aria-expanded]="isMobileMenuOpen()"
+              aria-controls="mobile-menu"
+              aria-label="Toggle navigation menu">
+        <span class="hamburger__line hamburger__line--top"></span>
+        <span class="hamburger__line hamburger__line--middle"></span>
+        <span class="hamburger__line hamburger__line--bottom"></span>
+      </button>
+    </div>
+
+  </div><!-- /.navbar__container -->
+
+  <!-- ── MOBILE MENU ── -->
+  @if (isMobileMenuOpen()) {
+    <div class="navbar__mobile"
+         id="mobile-menu"
+         [@slideDown]
+         role="dialog"
+         aria-modal="true"
+         aria-label="Mobile navigation menu">
+
+      <!-- Mobile nav links -->
+      <ul class="mobile-nav__links" role="list">
+        @for (link of navLinks; track trackByPath($index, link)) {
+          <li class="mobile-nav__item">
+            <a class="mobile-nav__link"
+               [routerLink]="link.path"
+               routerLinkActive="mobile-nav__link--active"
+               [routerLinkActiveOptions]="{ exact: link.exact ?? false }"
+               (click)="closeMobileMenu()">
+              {{ link.label }}
+              <i class="fa fa-chevron-right mobile-nav__arrow" aria-hidden="true"></i>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <!-- Mobile CTA area -->
+      <div class="mobile-nav__cta">
+        <a routerLink="/contact" class="btn-gold w-100 text-center" (click)="closeMobileMenu()">
+          Get a Free Quote
+        </a>
+        <button class="btn-whatsapp w-100" (click)="openWhatsApp()">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          Chat on WhatsApp
+        </button>
+      </div>
+
+      <!-- Mobile contact info -->
+      <div class="mobile-nav__info">
+        <a [href]="'tel:' + company.phone" class="mobile-nav__contact-link">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          {{ company.whatsappDisplay }}
+        </a>
+        <p class="mobile-nav__address">
+          <i class="fa fa-location-dot" aria-hidden="true"></i>
+          Burra Bazar, Kolkata – 700001
+        </p>
+      </div>
+
+    </div>
+  }
+
+</nav>

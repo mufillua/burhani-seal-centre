@@ -1,0 +1,231 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+// ============================================
+// PRODUCT CARD STYLES
+// ============================================
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  border: 1px solid rgba($silver-light, 0.8);
+  cursor: pointer;
+  position: relative;
+  height: 100%; // Fill grid cell height
+
+  // The Angular animation handles transform + shadow
+  // but we add our own border transition here
+  transition: border-color $transition-luxury;
+
+  &:hover {
+    border-color: rgba($gold, 0.3);
+  }
+}
+
+// ── IMAGE WRAPPER ─────────────────────────────
+.product-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: $off-white;
+  flex-shrink: 0;
+}
+
+.product-card__image {
+  @include absolute-fill;
+  object-fit: cover;
+  transition: transform $transition-luxury;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.08);
+}
+
+// Image placeholder (shown when image fails/missing)
+.product-card__placeholder {
+  @include absolute-fill;
+  @include flex-center;
+  background: linear-gradient(135deg, $light-gray, $off-white);
+}
+
+.product-card__placeholder-icon {
+  font-size: 4rem;
+  color: $silver;
+  opacity: 0.5;
+}
+
+// Gold shimmer overlay on hover
+.product-card__overlay {
+  @include absolute-fill;
+  background: linear-gradient(
+    135deg,
+    transparent 60%,
+    rgba($gold, 0.08)
+  );
+  opacity: 0;
+  transition: opacity $transition-luxury;
+  pointer-events: none;
+}
+
+.product-card:hover .product-card__overlay {
+  opacity: 1;
+}
+
+// ── BADGES ────────────────────────────────────
+.product-card__badge {
+  position: absolute;
+  bottom: $space-2;
+  left: $space-2;
+  padding: 4px 12px;
+  background: rgba($charcoal, 0.85);
+  backdrop-filter: blur(8px);
+  color: $gold;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: $radius-full;
+  border: 1px solid rgba($gold, 0.25);
+}
+
+.product-card__new-badge {
+  position: absolute;
+  top: $space-2;
+  right: $space-2;
+  padding: 4px 10px;
+  @include gold-gradient;
+  color: $charcoal;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: $radius-full;
+}
+
+// ── CONTENT ───────────────────────────────────
+.product-card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; // Fills remaining height
+  padding: $space-3;
+  gap: $space-2;
+}
+
+.product-card__name {
+  font-family: $font-primary;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $charcoal;
+  line-height: 1.3;
+  margin: 0;
+  @include truncate(2); // Max 2 lines
+  transition: color $transition-base;
+}
+
+.product-card:hover .product-card__name {
+  color: $navy;
+}
+
+.product-card__desc {
+  font-family: $font-secondary;
+  font-size: $text-sm;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+  @include truncate(3); // Max 3 lines
+  flex: 1;
+}
+
+// ── INDUSTRY TAGS ─────────────────────────────
+.product-card__industries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.industry-tag {
+  padding: 3px 10px;
+  background: rgba($navy, 0.06);
+  color: $navy;
+  font-family: $font-accent;
+  font-size: 10px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: $radius-full;
+  border: 1px solid rgba($navy, 0.1);
+
+  &--more {
+    background: $gold-subtle;
+    color: $gold-dark;
+    border-color: rgba($gold, 0.2);
+  }
+}
+
+// ── ACTION BUTTONS ────────────────────────────
+.product-card__actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: $space-1;
+  margin-top: auto;
+  padding-top: $space-2;
+  border-top: 1px solid $silver-light;
+}
+
+// Base button styles
+.product-card__btn {
+  @include flex-center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: $radius-sm;
+  transition: all $transition-luxury;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+
+  i {
+    font-size: 12px;
+    transition: transform $transition-base;
+  }
+
+  // "Learn More" button
+  &--primary {
+    background: $charcoal;
+    color: $white;
+    flex: 1;
+
+    &:hover {
+      background: $navy;
+      color: $white;
+
+      i { transform: translateX(4px); }
+    }
+  }
+
+  // WhatsApp button
+  &--whatsapp {
+    background: rgba($whatsapp-green, 0.1);
+    color: $whatsapp-green;
+    border: 1px solid rgba($whatsapp-green, 0.3);
+
+    &:hover {
+      background: $whatsapp-green;
+      color: $white;
+      border-color: $whatsapp-green;
+      box-shadow: 0 4px 16px rgba($whatsapp-green, 0.35);
+    }
+  }
+}

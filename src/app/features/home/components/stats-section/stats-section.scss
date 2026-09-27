@@ -1,0 +1,183 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// STATS SECTION STYLES
+// ============================================
+
+.stats {
+  position: relative;
+  background: $charcoal;
+  padding: $space-10 0;
+  overflow: hidden;
+}
+
+// ── BACKGROUND ────────────────────────────────
+.stats__bg {
+  @include absolute-fill;
+  pointer-events: none;
+}
+
+.stats__bg-grid {
+  @include absolute-fill;
+  background-image:
+    linear-gradient(rgba($white, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($white, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.stats__bg-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+
+  &--left {
+    left: 15%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba($gold, 0.12),
+      transparent
+    );
+  }
+
+  &--right {
+    right: 15%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba($gold, 0.12),
+      transparent
+    );
+  }
+}
+
+// ── GRID ──────────────────────────────────────
+.stats__grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to('max-tablet') {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba($white, 0.06);
+    border-radius: $radius-lg;
+    overflow: hidden;
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// ── STAT CARD ─────────────────────────────────
+.stats__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $space-6 $space-4;
+  position: relative;
+  transition: all $transition-luxury;
+
+  @include respond-to('max-tablet') {
+    background: rgba($white, 0.02);
+    padding: $space-4 $space-3;
+  }
+
+  &:hover {
+    .stats__icon-wrap {
+      background: rgba($gold, 0.18);
+      transform: scale(1.05);
+    }
+
+    .stats__bottom-line {
+      width: 60px;
+    }
+  }
+}
+
+// Icon
+.stats__icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-md;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.2);
+  @include flex-center;
+  margin-bottom: $space-3;
+  transition: all $transition-luxury;
+}
+
+.stats__icon {
+  font-size: $text-xl;
+  color: $gold;
+}
+
+// Number display
+.stats__number {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-bottom: $space-1;
+  line-height: 1;
+}
+
+.stats__prefix,
+.stats__value,
+.stats__suffix {
+  font-family: $font-primary;
+  font-weight: $weight-black;
+  color: $white;
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
+  line-height: 1;
+}
+
+.stats__suffix {
+  color: $gold;
+}
+
+// Label text
+.stats__label {
+  font-family: $font-accent;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $white;
+  margin-bottom: 6px;
+}
+
+.stats__sublabel {
+  font-family: $font-secondary;
+  font-size: $text-sm;
+  color: rgba($white, 0.42);
+  line-height: 1.5;
+}
+
+// Expanding gold line at card bottom
+.stats__bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0;
+  @include gold-gradient;
+  border-radius: $radius-full;
+  transition: width 0.5s ease;
+}
+
+// Vertical divider between cards
+.stats__divider {
+  width: 1px;
+  height: 80px;
+  background: rgba($white, 0.08);
+  flex-shrink: 0;
+
+  @include respond-to('max-tablet') { display: none; }
+}

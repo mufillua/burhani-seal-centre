@@ -1,0 +1,141 @@
+<!-- ============================================
+  HERO SECTION
+  ============================================ -->
+
+<section class="hero" id="home" aria-label="Hero section">
+
+  <!-- ── BACKGROUND LAYERS ── -->
+  <div class="hero__bg" aria-hidden="true">
+    <!-- Deep gradient base -->
+    <div class="hero__gradient"></div>
+    <!-- Dot grid pattern -->
+    <div class="hero__pattern"></div>
+    <!-- Gold glow — top right -->
+    <div class="hero__glow hero__glow--gold"></div>
+    <!-- Navy glow — bottom left -->
+    <div class="hero__glow hero__glow--navy"></div>
+    <!-- Horizontal accent lines -->
+    <div class="hero__accent-line hero__accent-line--1"></div>
+    <div class="hero__accent-line hero__accent-line--2"></div>
+  </div>
+
+  <!-- ── MAIN CONTENT CONTAINER ── -->
+  <div class="container-custom hero__container">
+
+    <!-- ── LEFT: TEXT CONTENT ── -->
+    @if (isVisible()) {
+      <div class="hero__content" [@heroReveal]>
+
+        <!-- Eyebrow label -->
+        <div class="hero__label hero__animate">
+          <span class="hero__label-dot" aria-hidden="true"></span>
+          <span class="hero__label-text">Kolkata's Premier Industrial Partner</span>
+        </div>
+
+        <!-- Main heading -->
+        <h1 class="hero__title hero__animate">
+          Trusted Industrial<br>
+          <span class="hero__title-highlight">Sealing Solutions</span>
+        </h1>
+
+        <!-- Gold divider -->
+        <div class="hero__divider hero__animate" aria-hidden="true"></div>
+
+        <!-- Subtitle -->
+        <p class="hero__subtitle hero__animate">
+          Delivering High Performance Seals, Gaskets, Packing Materials and
+          Industrial Components Across Industries.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero__actions hero__animate">
+          <a routerLink="/contact" class="hero__btn hero__btn--primary">
+            <span>Get a Free Quote</span>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a routerLink="/products" class="hero__btn hero__btn--outline">
+            <span>Explore Products</span>
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="hero__trust hero__animate" role="list" aria-label="Key facts">
+          @for (item of trustItems; track trackByLabel($index, item)) {
+            <div class="hero__trust-item" role="listitem">
+              <i [class]="'fa ' + item.icon" aria-hidden="true"></i>
+              <span>{{ item.label }}</span>
+            </div>
+            @if (!$last) {
+              <div class="hero__trust-sep" aria-hidden="true"></div>
+            }
+          }
+        </div>
+
+      </div>
+    }
+
+    <!-- ── RIGHT: INDUSTRIAL VISUAL ── -->
+    @if (isVisible()) {
+      <div class="hero__visual" [@visualReveal] aria-hidden="true">
+        <div class="hero__visual-wrapper">
+
+          <!-- Concentric rotating rings — CSS mechanical seal illustration -->
+          <div class="hero__rings">
+            <div class="hero__ring hero__ring--outer"></div>
+            <div class="hero__ring hero__ring--middle"></div>
+            <div class="hero__ring hero__ring--inner"></div>
+
+            <!-- Center gear icon -->
+            <div class="hero__ring-center">
+              <i class="fa fa-gear hero__gear"></i>
+            </div>
+          </div>
+
+          <!-- Floating glassmorphism info cards -->
+          <div class="hero__card hero__card--top-right">
+            <div class="hero__card-icon">
+              <i class="fa fa-certificate"></i>
+            </div>
+            <span class="hero__card-label">ISO Compliant</span>
+          </div>
+
+          <div class="hero__card hero__card--mid-left">
+            <div class="hero__card-icon">
+              <i class="fa fa-shield-halved"></i>
+            </div>
+            <span class="hero__card-label">Premium Quality</span>
+          </div>
+
+          <div class="hero__card hero__card--bottom-right">
+            <div class="hero__card-icon">
+              <i class="fa fa-truck-fast"></i>
+            </div>
+            <span class="hero__card-label">Fast Delivery</span>
+          </div>
+
+        </div>
+      </div>
+    }
+
+  </div><!-- /.hero__container -->
+
+  <!-- ── SCROLL INDICATOR ── -->
+  <button class="hero__scroll" (click)="scrollToNext()" aria-label="Scroll down">
+    <span class="hero__scroll-text">Discover More</span>
+    <div class="hero__scroll-mouse" aria-hidden="true">
+      <div class="hero__scroll-wheel"></div>
+    </div>
+  </button>
+
+  <!-- ── BOTTOM WAVE ── -->
+  <div class="hero__wave" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 1440 80"
+         preserveAspectRatio="none">
+      <path d="M0,0 C240,80 480,20 720,50 C960,80 1200,20 1440,50 L1440,80 L0,80 Z"
+            fill="white"/>
+    </svg>
+  </div>
+
+</section>

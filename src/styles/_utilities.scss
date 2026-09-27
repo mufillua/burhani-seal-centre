@@ -1,0 +1,211 @@
+// ============================================
+// UTILITY CLASSES
+// ============================================
+@use './variables' as *;
+@use './mixins' as *;
+// --- BUTTONS ---
+.btn-gold {
+  @include btn-base;
+  @include gold-gradient;
+  color: $charcoal;
+  box-shadow: $shadow-gold;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-gold-lg;
+    color: $charcoal;
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-outline-gold {
+  @include btn-base;
+  background: transparent;
+  border: 1.5px solid $gold;
+  color: $gold;
+
+  &:hover {
+    @include gold-gradient;
+    color: $charcoal;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: $shadow-gold;
+  }
+}
+
+.btn-dark {
+  @include btn-base;
+  background: $charcoal;
+  color: $white;
+
+  &:hover {
+    background: $navy;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    color: $white;
+  }
+}
+
+.btn-whatsapp {
+  @include btn-base;
+  background: $whatsapp-green;
+  color: $white;
+
+  i {
+    font-size: $text-base;
+  }
+
+  &:hover {
+    background: $whatsapp-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    color: $white;
+  }
+}
+
+// --- SECTION WRAPPER ---
+.section-wrapper {
+  @include section-padding;
+  position: relative;
+}
+
+.section-bg-dark {
+  background: $charcoal;
+  color: $white;
+
+  .section-title { color: $white; }
+  p { color: $silver-light; }
+}
+
+.section-bg-navy {
+  background: $navy;
+  color: $white;
+
+  .section-title { color: $white; }
+  p { color: $silver-light; }
+}
+
+.section-bg-light {
+  background: $off-white;
+}
+
+// --- GOLD DIVIDER ---
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  @include gold-gradient;
+  border-radius: $radius-full;
+  margin: $space-3 0;
+
+  &.centered {
+    margin: $space-3 auto;
+  }
+}
+
+// --- SECTION HEADER BLOCK ---
+.section-header {
+  margin-bottom: $space-8;
+
+  &.centered {
+    text-align: center;
+
+    .section-subtitle {
+      margin: 0 auto;
+    }
+  }
+}
+
+// --- OVERLAY ---
+.overlay-dark {
+  @include absolute-fill;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.85),
+    rgba(15, 52, 96, 0.7)
+  );
+  z-index: 1;
+}
+
+.overlay-navy {
+  @include absolute-fill;
+  background: linear-gradient(
+    to right,
+    rgba(22, 33, 62, 0.95) 40%,
+    rgba(22, 33, 62, 0.5)
+  );
+  z-index: 1;
+}
+
+// --- CONTENT ABOVE OVERLAY ---
+.above-overlay {
+  position: relative;
+  z-index: 2;
+}
+
+// --- GRID LAYOUTS ---
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $space-4;
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+    gap: $space-3;
+  }
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $space-4;
+
+  @include respond-to('mobile') {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-2;
+  }
+}
+
+// --- LOADING SKELETON ---
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    $silver-light 0%,
+    $off-white 50%,
+    $silver-light 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: $radius-md;
+}
+
+// --- CUSTOM SCROLLBAR ---
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: $light-gray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gold;
+  border-radius: $radius-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $gold-dark;
+}
+
+// --- SELECTION COLOR ---
+::selection {
+  background: $gold-subtle;
+  color: $charcoal;
+}

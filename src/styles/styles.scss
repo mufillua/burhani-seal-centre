@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+// ============================================
+// STYLES.SCSS — Main Entry Point
+// ============================================
+// This file imports everything in the correct order.
+// Angular reads this file first when building.
+
+@use './variables' as *;
+@use './mixins' as *;
+@use './typography';
+@use './animations';
+@use './utilities';
+
+// --- GLOBAL LAYOUT ---
+.container-custom {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $space-4;
+
+  @include respond-to('mobile') {
+    padding: 0 $space-2;
+  }
+}
+
+// --- BOOTSTRAP OVERRIDES ---
+// We slightly customize Bootstrap to match our design
+.container, .container-lg, .container-xl, .container-xxl {
+  max-width: $container-max;
+}
+
+// Override Bootstrap's default blue with our gold
+.btn-primary {
+  @extend .btn-gold;
+}
+
+// --- SMOOTH SCROLL ANCHOR OFFSET ---
+// This prevents navbar from covering anchor targets
+[id] {
+  scroll-margin-top: 80px;
+}
+
+// --- LAZY LOAD FADE IN ---
+img.lazy-loaded {
+  animation: fadeIn 0.5s ease;
+}
+
+// --- PRINT STYLES ---
+@media print {
+  .navbar,
+  .footer,
+  .whatsapp-float,
+  .btn { display: none !important; }
+}

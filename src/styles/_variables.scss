@@ -1,0 +1,110 @@
+// ============================================
+// BURHANI SEAL CENTRE - DESIGN TOKENS
+// ============================================
+// Think of these as the "DNA" of our design.
+// Change one variable and the whole site updates.
+
+// --- COLOR PALETTE ---
+$white:           #FFFFFF;
+$off-white:       #F8F9FA;
+$light-gray:      #F2F2F2;
+$silver-light:    #E8E8E8;
+$silver:          #C0C0C0;
+$silver-dark:     #999999;
+$charcoal:        #1A1A2E;
+$navy:            #16213E;
+$navy-deep:       #0F3460;
+$black:           #0A0A0A;
+
+// Gold Accents (our luxury signature color)
+$gold:            #C9A84C;
+$gold-light:      #E8C96B;
+$gold-dark:       #A07C30;
+$gold-subtle:     rgba(201, 168, 76, 0.15);
+
+// Functional Colors
+$success:         #28a745;
+$whatsapp-green:  #25D366;
+$whatsapp-dark:   #128C7E;
+
+// --- TYPOGRAPHY ---
+$font-primary:    'Playfair Display', Georgia, serif;   // Luxury headings
+$font-secondary:  'Inter', system-ui, sans-serif;       // Body text
+$font-accent:     'Montserrat', Arial, sans-serif;      // Nav, buttons, labels
+
+// Font Weights
+$weight-light:    300;
+$weight-regular:  400;
+$weight-medium:   500;
+$weight-semibold: 600;
+$weight-bold:     700;
+$weight-black:    900;
+
+// Font Sizes (fluid scale)
+$text-xs:     0.75rem;    //  12px
+$text-sm:     0.875rem;   //  14px
+$text-base:   1rem;       //  16px
+$text-lg:     1.125rem;   //  18px
+$text-xl:     1.25rem;    //  20px
+$text-2xl:    1.5rem;     //  24px
+$text-3xl:    1.875rem;   //  30px
+$text-4xl:    2.25rem;    //  36px
+$text-5xl:    3rem;       //  48px
+$text-6xl:    3.75rem;    //  60px
+$text-7xl:    4.5rem;     //  72px
+
+// --- SPACING SYSTEM (multiples of 8px) ---
+$space-1:   0.5rem;    //  8px
+$space-2:   1rem;      // 16px
+$space-3:   1.5rem;    // 24px
+$space-4:   2rem;      // 32px
+$space-5:   2.5rem;    // 40px
+$space-6:   3rem;      // 48px
+$space-8:   4rem;      // 64px
+$space-10:  5rem;      // 80px
+$space-12:  6rem;      // 96px
+$space-16:  8rem;      // 128px
+$space-20:  10rem;     // 160px
+
+// --- BORDER RADIUS ---
+$radius-sm:   4px;
+$radius-md:   8px;
+$radius-lg:   16px;
+$radius-xl:   24px;
+$radius-full: 9999px;
+
+// --- SHADOWS ---
+$shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md:     0 4px 24px rgba(0, 0, 0, 0.12);
+$shadow-lg:     0 8px 48px rgba(0, 0, 0, 0.18);
+$shadow-xl:     0 16px 64px rgba(0, 0, 0, 0.24);
+$shadow-gold:   0 8px 32px rgba(201, 168, 76, 0.25);
+$shadow-gold-lg: 0 16px 48px rgba(201, 168, 76, 0.35);
+
+// --- TRANSITIONS ---
+$transition-fast:   0.2s ease;
+$transition-base:   0.3s ease;
+$transition-slow:   0.5s ease;
+$transition-luxury: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// --- Z-INDEX LAYERS ---
+$z-base:     1;
+$z-dropdown: 100;
+$z-sticky:   200;
+$z-overlay:  300;
+$z-modal:    400;
+$z-toast:    500;
+
+// --- BREAKPOINTS ---
+$bp-mobile:     576px;
+$bp-tablet:     768px;
+$bp-laptop:     992px;
+$bp-desktop:    1200px;
+$bp-wide:       1400px;
+$bp-ultrawide:  1600px;
+
+// --- SECTION SPACING ---
+$section-padding-y: $space-12;  // 96px top and bottom on desktop
+
+// --- CONTAINER ---
+$container-max: 1320px;

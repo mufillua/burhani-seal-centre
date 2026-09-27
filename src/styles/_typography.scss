@@ -1,0 +1,126 @@
+// ============================================
+// TYPOGRAPHY — Font imports and base styles
+// ============================================
+@use './variables' as *;
+@use './mixins' as *;
+// Import Google Fonts
+// Playfair Display = luxury, editorial (used by Rolex, Vogue)
+// Inter = clean, modern, readable (used by Apple)
+// Montserrat = geometric, strong (used by many luxury brands)
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+// --- BASE TYPOGRAPHY RESET ---
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-secondary;
+  font-weight: $weight-regular;
+  font-size: $text-base;
+  line-height: 1.7;
+  color: $charcoal;
+  background-color: $white;
+  overflow-x: hidden;
+}
+
+// --- HEADINGS ---
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  line-height: 1.2;
+  color: $charcoal;
+  font-weight: $weight-bold;
+}
+
+h1 { font-size: clamp($text-4xl, 5vw, $text-7xl); }
+h2 { font-size: clamp($text-3xl, 4vw, $text-5xl); }
+h3 { font-size: clamp($text-2xl, 3vw, $text-4xl); }
+h4 { font-size: clamp($text-xl, 2.5vw, $text-3xl); }
+h5 { font-size: $text-xl; }
+h6 { font-size: $text-lg; }
+
+// clamp() explanation:
+// clamp(MIN, PREFERRED, MAX)
+// Font grows with viewport but stays between min and max
+// This is called "fluid typography"
+
+p {
+  font-family: $font-secondary;
+  line-height: 1.8;
+  color: #555;
+}
+
+a {
+  color: $gold;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $gold-light;
+  }
+}
+
+// --- UTILITY TYPOGRAPHY CLASSES ---
+.font-primary   { font-family: $font-primary !important; }
+.font-secondary { font-family: $font-secondary !important; }
+.font-accent    { font-family: $font-accent !important; }
+
+.text-gold      { color: $gold !important; }
+.text-navy      { color: $navy !important; }
+.text-charcoal  { color: $charcoal !important; }
+.text-silver    { color: $silver !important; }
+.text-white     { color: $white !important; }
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, $gold-dark, $gold-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// --- SECTION LABELS ---
+.section-label {
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $gold;
+  display: block;
+  margin-bottom: $space-2;
+}
+
+// --- SECTION TITLE ---
+.section-title {
+  font-family: $font-primary;
+  font-weight: $weight-bold;
+  color: $charcoal;
+  margin-bottom: $space-2;
+  line-height: 1.15;
+}
+
+// --- SECTION SUBTITLE ---
+.section-subtitle {
+  font-family: $font-secondary;
+  font-size: $text-lg;
+  color: #666;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+// --- LEAD TEXT ---
+.lead-text {
+  font-size: $text-xl;
+  font-weight: $weight-light;
+  line-height: 1.8;
+  color: #444;
+}

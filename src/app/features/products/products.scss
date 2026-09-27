@@ -1,0 +1,514 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// PRODUCTS PAGE STYLES
+// ============================================
+
+// ── PAGE HERO ─────────────────────────────────
+.products-hero {
+  position: relative;
+  padding: calc(80px + #{$space-8}) 0 0;
+  overflow: hidden;
+}
+
+.products-hero__bg { @include absolute-fill; z-index: 0; }
+
+.products-hero__gradient {
+  @include absolute-fill;
+  background: linear-gradient(135deg, $black 0%, $charcoal 40%, $navy 100%);
+}
+
+.products-hero__pattern {
+  @include absolute-fill;
+  background-image: radial-gradient(circle, rgba($white, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.products-hero__container {
+  position: relative;
+  z-index: 2;
+  padding-bottom: $space-8;
+}
+
+.products-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-4;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba($white, 0.4);
+
+  a { color: rgba($white, 0.5); text-decoration: none; transition: color $transition-base;
+    &:hover { color: $gold; } }
+  i  { font-size: 9px; }
+  span { color: $gold; }
+}
+
+.products-hero__title {
+  font-family: $font-primary;
+  font-size: clamp($text-4xl, 5vw, $text-6xl);
+  font-weight: $weight-black;
+  color: $white;
+  margin: 0 0 $space-3;
+}
+
+.products-hero__title-gold {
+  background: linear-gradient(135deg, $gold-dark, $gold, $gold-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.products-hero__subtitle {
+  font-size: $text-lg;
+  color: rgba($white, 0.6);
+  margin: 0;
+  max-width: 580px;
+}
+
+.products-hero__wave {
+  position: relative;
+  z-index: 3;
+  line-height: 0;
+  margin-bottom: -2px;
+  svg { width: 100%; height: 50px; display: block; }
+}
+
+// ── BODY LAYOUT ───────────────────────────────
+.products-body {
+  background: $off-white;
+  padding: $space-8 0 $space-12;
+}
+
+.products-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: $space-6;
+  align-items: start;
+
+  @include respond-to('laptop') {
+    grid-template-columns: 240px 1fr;
+    gap: $space-4;
+  }
+
+  @include respond-to('max-tablet') {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── SIDEBAR ───────────────────────────────────
+.products-sidebar {
+  position: sticky;
+  top: calc(70px + #{$space-3});
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @include respond-to('max-tablet') {
+    position: static;
+  }
+}
+
+// Search box
+.products-search__wrap {
+  position: relative;
+}
+
+.products-search__icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $silver;
+  font-size: $text-sm;
+  pointer-events: none;
+}
+
+.products-search__input {
+  width: 100%;
+  padding: 12px 44px 12px 42px;
+  background: $white;
+  border: 1.5px solid $silver-light;
+  border-radius: $radius-md;
+  font-family: $font-secondary;
+  font-size: $text-sm;
+  color: $charcoal;
+  transition: border-color $transition-base;
+  outline: none;
+
+  &:focus { border-color: $gold; }
+  &::placeholder { color: $silver-dark; }
+}
+
+.products-search__clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: $silver-dark;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  @include flex-center;
+  border-radius: 50%;
+  transition: all $transition-base;
+
+  &:hover { background: $light-gray; color: $charcoal; }
+}
+
+// Filter list
+.products-filters {
+  background: $white;
+  border-radius: $radius-lg;
+  padding: $space-4;
+  border: 1px solid rgba($silver-light, 0.8);
+  box-shadow: $shadow-sm;
+}
+
+.products-filters__title {
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba($charcoal, 0.45);
+  margin: 0 0 $space-3;
+  padding-bottom: $space-2;
+  border-bottom: 1px solid $silver-light;
+}
+
+.products-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9px $space-2;
+  background: none;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $transition-base;
+  gap: $space-2;
+  text-align: left;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-sm;
+    background: $off-white;
+    @include flex-center;
+    flex-shrink: 0;
+    transition: all $transition-base;
+    font-size: $text-sm;
+    color: rgba($charcoal, 0.5);
+  }
+
+  &__label {
+    font-family: $font-secondary;
+    font-size: $text-sm;
+    font-weight: $weight-medium;
+    color: rgba($charcoal, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color $transition-base;
+  }
+
+  &__count {
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-bold;
+    color: rgba($charcoal, 0.35);
+    background: $off-white;
+    padding: 2px 8px;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+    transition: all $transition-base;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.05);
+
+    .products-filter-btn__icon  { background: rgba($gold, 0.1); color: $gold; }
+    .products-filter-btn__label { color: $charcoal; }
+  }
+
+  &--active {
+    background: rgba($gold, 0.08);
+
+    .products-filter-btn__icon  { @include gold-gradient; color: $charcoal; }
+    .products-filter-btn__label { color: $charcoal; font-weight: $weight-semibold; }
+    .products-filter-btn__count { background: rgba($gold, 0.15); color: $gold-dark; }
+  }
+}
+
+// Sidebar CTA card
+.sidebar-cta {
+  background: $charcoal;
+  border-radius: $radius-lg;
+  padding: $space-4;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  align-items: flex-start;
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-sm;
+    background: rgba($whatsapp-green, 0.15);
+    @include flex-center;
+    color: $whatsapp-green;
+    font-size: $text-2xl;
+  }
+
+  &__title {
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-bold;
+    color: $white;
+    margin: 0;
+  }
+
+  &__text {
+    font-size: $text-sm;
+    color: rgba($white, 0.55);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  &__btn {
+    @include btn-base;
+    padding: 10px 18px;
+    font-size: 11px;
+    margin-top: $space-1;
+    border-radius: $radius-sm;
+    text-decoration: none;
+
+    &--quote {
+      @include gold-gradient;
+      color: $charcoal;
+
+      &:hover {
+        filter: brightness(1.08);
+        transform: translateY(-2px);
+        color: $charcoal;
+      }
+    }
+  }
+}
+
+// ── MAIN AREA ─────────────────────────────────
+.products-main {
+  min-height: 600px;
+}
+
+// Toolbar
+.products-toolbar {
+  @include flex-between;
+  gap: $space-4;
+  margin-bottom: $space-4;
+  flex-wrap: wrap;
+}
+
+.products-toolbar__left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.products-toolbar__title {
+  font-family: $font-primary;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $charcoal;
+  margin: 0;
+}
+
+.products-toolbar__count {
+  font-size: $text-sm;
+  color: #999;
+
+  em { font-style: normal; color: $gold; }
+}
+
+.products-toolbar__right {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+// View toggle
+.products-view-toggle {
+  display: flex;
+  background: $white;
+  border: 1px solid $silver-light;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.products-view-btn {
+  width: 36px;
+  height: 36px;
+  @include flex-center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba($charcoal, 0.4);
+  font-size: $text-base;
+  transition: all $transition-base;
+
+  &--active {
+    background: $charcoal;
+    color: $white;
+  }
+
+  &:not(&--active):hover {
+    background: $off-white;
+    color: $charcoal;
+  }
+}
+
+// Active filter chip
+.products-active-filter {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-3;
+
+  &__label {
+    font-size: $text-sm;
+    color: #999;
+  }
+
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background: rgba($gold, 0.1);
+    border: 1px solid rgba($gold, 0.25);
+    border-radius: $radius-full;
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-semibold;
+    color: $gold-dark;
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $gold-dark;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+    @include flex-center;
+    font-size: 10px;
+    opacity: 0.7;
+    transition: opacity $transition-base;
+
+    &:hover { opacity: 1; }
+  }
+}
+
+// Products grid
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+
+  &--list {
+    grid-template-columns: 1fr;
+
+    ::ng-deep app-product-card .product-card {
+      flex-direction: row;
+
+      .product-card__image-wrapper {
+        width: 200px;
+        height: auto;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  @include respond-to('laptop') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Empty state
+.products-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $space-12 $space-6;
+  background: $white;
+  border-radius: $radius-xl;
+  border: 1.5px dashed $silver-light;
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: $off-white;
+    @include flex-center;
+    margin-bottom: $space-4;
+    font-size: 2.5rem;
+    color: $silver;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: $text-2xl;
+    font-weight: $weight-bold;
+    color: $charcoal;
+    margin: 0 0 $space-2;
+  }
+
+  &__text {
+    font-size: $text-base;
+    color: #999;
+    line-height: 1.7;
+    margin: 0 0 $space-5;
+    max-width: 360px;
+  }
+
+  &__btn {
+    @include btn-base;
+    @include gold-gradient;
+    color: $charcoal;
+    box-shadow: $shadow-gold;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-gold-lg;
+      color: $charcoal;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- ── MAIN PAGES ── -->
+  <url>
+    <loc>https://www.burhanisealcentre.com/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.burhanisealcentre.com/about</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.burhanisealcentre.com/products</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.burhanisealcentre.com/industries</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.burhanisealcentre.com/contact</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ── PRODUCT DETAIL PAGES ── -->
+
+  <!-- Oil Seal products -->
+  <url><loc>https://www.burhanisealcentre.com/products/skf-oil-seals</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/ivr-oil-seals</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/jk-pioneer-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/5mm-rubber-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/8mm-rubber-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/4mm-rubber-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/2mm-rubber-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/3mm-rubber-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/20mm-nitrile-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/20mm-viton-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/gold-super-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/craft-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Seals products -->
+  <url><loc>https://www.burhanisealcentre.com/products/viton-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/double-lip-seals</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/pu-hydraulic-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/hydraulic-cylinder-seals</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/hydraulic-jack-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- PU Coupling Spider products -->
+  <url><loc>https://www.burhanisealcentre.com/products/1-inch-pu-coupling-spider</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/2-inch-pu-coupling-spider</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/pu-coupling-spider</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Seal Kit products -->
+  <url><loc>https://www.burhanisealcentre.com/products/cassette-oil-seals</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/hydraulic-oil-seal-kit</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/hydraulic-cylinder-seal-kits</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Rubber Sheet products -->
+  <url><loc>https://www.burhanisealcentre.com/products/3mm-black-silicone-rubber-sheet</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/8mm-white-silicone-rubber-sheet</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Pump Seal products -->
+  <url><loc>https://www.burhanisealcentre.com/products/30mm-mechanical-pump-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/20mm-water-pump-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Hydraulic Oil Seal products -->
+  <url><loc>https://www.burhanisealcentre.com/products/hydraulic-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/hydraulic-wiper-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- O Ring Kit products -->
+  <url><loc>https://www.burhanisealcentre.com/products/nitrile-rubber-o-ring-kit</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/rubber-o-ring-kit</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Remaining products -->
+  <url><loc>https://www.burhanisealcentre.com/products/8mm-black-rubber-cord</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/20mm-polypropylene-cylindrical-rod</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/rubber-industrial-tyre-couplings</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/3mm-stainless-steel-circlips</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/2-inch-blue-polyurethane-tube</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/gearbox-oil-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/stainless-steel-pipe-nipple</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/skf-ball-bearings</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/rubber-o-ring</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/water-pump-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/rubber-spider-couplings</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/pu-rod-seal</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.burhanisealcentre.com/products/pneumatic-seal-kit</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>

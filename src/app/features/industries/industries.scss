@@ -1,0 +1,740 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// INDUSTRIES PAGE STYLES
+// ============================================
+
+// ── HERO ──────────────────────────────────────
+.ind-hero {
+  position: relative;
+  background: $charcoal;
+  padding-top: 39px;
+  padding-bottom: $space-12;
+  overflow: hidden;
+}
+
+.ind-hero__bg { @include absolute-fill; z-index: 0; }
+
+.ind-hero__gradient {
+  @include absolute-fill;
+  background: linear-gradient(135deg, $black 0%, $charcoal 35%, $navy 70%, $navy-deep 100%);
+}
+
+.ind-hero__pattern {
+  @include absolute-fill;
+  background-image: radial-gradient(circle, rgba($white, 0.028) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.ind-hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+
+  &--left {
+    bottom: -10%;
+    left: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba($navy-deep, 0.7), transparent 65%);
+  }
+
+  &--right {
+    top: -15%;
+    right: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba($gold, 0.055), transparent 65%);
+  }
+}
+
+.ind-hero__container {
+  position: relative;
+  z-index: 2;
+  padding-bottom: $space-10;
+}
+
+// Breadcrumb
+.ind-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-6;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  a {
+    color: rgba($white, 0.45);
+    text-decoration: none;
+    transition: color $transition-base;
+    &:hover { color: $gold; }
+  }
+
+  i   { color: rgba($white, 0.2); font-size: 9px; }
+  span { color: $gold; }
+}
+
+// Hero content reveal
+.ind-hero__content {
+  max-width: 780px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ind-hero__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.22);
+  padding: 7px 18px;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $gold;
+
+  i { font-size: $text-sm; }
+}
+
+.ind-hero__title {
+  font-family: $font-primary;
+  font-size: clamp($text-4xl, 5vw, $text-6xl);
+  font-weight: $weight-black;
+  color: $white;
+  line-height: 1.1;
+  margin: 0 0 $space-3;
+}
+
+.ind-hero__title-gold {
+  background: linear-gradient(135deg, $gold-dark, $gold, $gold-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.ind-hero__divider {
+  width: 64px;
+  height: 3px;
+  @include gold-gradient;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+}
+
+.ind-hero__subtitle {
+  font-size: $text-xl;
+  font-weight: $weight-light;
+  color: rgba($white, 0.68);
+  line-height: 1.8;
+  margin: 0 0 $space-6;
+  max-width: 660px;
+}
+
+// Industry pills in hero
+.ind-hero__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.ind-hero__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba($white, 0.05);
+  border: 1px solid rgba($white, 0.1);
+  border-radius: $radius-full;
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.05em;
+  color: rgba($white, 0.6);
+  transition: all $transition-base;
+
+  i { color: $gold; font-size: 11px; }
+
+  &:hover {
+    background: rgba($gold, 0.1);
+    border-color: rgba($gold, 0.25);
+    color: $gold;
+  }
+
+  &--more {
+    background: rgba($gold, 0.08);
+    border-color: rgba($gold, 0.2);
+    color: $gold;
+    font-weight: $weight-bold;
+  }
+}
+
+.ind-hero__wave {
+  position: relative;
+  z-index: 3;
+  line-height: 0;
+  margin-bottom: -2px;
+  svg { width: 100%; height: 60px; display: block; }
+}
+
+// ── STATS STRIP ───────────────────────────────
+.ind-stats {
+  background: $white;
+  padding: $space-6 0;
+  border-bottom: 1px solid $silver-light;
+}
+
+.ind-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-4;
+
+  // Animation: stats slide up when visible
+  .ind-stat-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0 linear, transform 0 linear;
+  }
+
+  &.is-visible .ind-stat-card {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &:nth-child(2) { transition-delay: 0.08s; }
+    &:nth-child(3) { transition-delay: 0.16s; }
+    &:nth-child(4) { transition-delay: 0.24s; }
+  }
+
+  @include respond-to('tablet') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('mobile') { grid-template-columns: repeat(2, 1fr); }
+}
+
+.ind-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $space-4;
+  border-radius: $radius-lg;
+  background: $off-white;
+  border: 1px solid $silver-light;
+  gap: $space-2;
+  transition: all $transition-luxury;
+
+  &:hover {
+    border-color: rgba($gold, 0.25);
+    box-shadow: $shadow-md;
+    transform: translateY(-4px);
+
+    .ind-stat-card__icon-wrap { @include gold-gradient; }
+    .ind-stat-card__icon      { color: $charcoal; }
+  }
+
+  &__icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-md;
+    background: rgba($gold, 0.08);
+    border: 1px solid rgba($gold, 0.18);
+    @include flex-center;
+    transition: all $transition-luxury;
+  }
+
+  &__icon {
+    font-size: $text-xl;
+    color: $gold;
+    transition: color $transition-luxury;
+  }
+
+  &__value {
+    font-family: $font-primary;
+    font-size: $text-4xl;
+    font-weight: $weight-black;
+    color: $charcoal;
+    line-height: 1;
+  }
+
+  &__label {
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-semibold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.5);
+  }
+}
+
+// ── INDUSTRIES GRID ───────────────────────────
+.ind-grid-section {
+  background: $off-white;
+}
+
+.ind-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+  margin-bottom: $space-4;
+
+  @include respond-to('tablet') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('mobile') { grid-template-columns: 1fr; }
+}
+
+// ── INDUSTRY CARD ─────────────────────────────
+.ind-card {
+  position: relative;
+  background: $white;
+  border-radius: $radius-xl;
+  padding: $space-5;
+  border: 1.5px solid rgba($silver-light, 0.9);
+  box-shadow: $shadow-sm;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all $transition-luxury;
+  outline: none;
+
+  // Bottom accent line
+  &__line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    @include gold-gradient;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-luxury;
+  }
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: $shadow-lg;
+    border-color: rgba($gold, 0.3);
+    transform: translateY(-5px);
+
+    .ind-card__line    { transform: scaleX(1); }
+    .ind-card__icon-wrap { @include gold-gradient; }
+    .ind-card__icon    { color: $charcoal; }
+    .ind-card__arrow   { color: $gold; transform: rotate(180deg); }
+    .ind-card__name    { color: $navy-deep; }
+  }
+
+  // Active (expanded) state
+  &--active {
+    border-color: rgba($gold, 0.4);
+    box-shadow: $shadow-gold;
+    transform: translateY(-5px);
+    background: linear-gradient(to bottom, $white, rgba($gold, 0.018));
+
+    .ind-card__line    { transform: scaleX(1); }
+    .ind-card__icon-wrap { @include gold-gradient; }
+    .ind-card__icon    { color: $charcoal; }
+    .ind-card__arrow   { color: $gold; transform: rotate(180deg); }
+    .ind-card__name    { color: $navy-deep; }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-2;
+    margin-bottom: $space-3;
+  }
+
+  &__icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-md;
+    background: rgba($gold, 0.08);
+    border: 1px solid rgba($gold, 0.16);
+    @include flex-center;
+    flex-shrink: 0;
+    transition: all $transition-luxury;
+  }
+
+  &__icon {
+    font-size: $text-2xl;
+    color: $gold;
+    transition: color $transition-luxury;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  &__product-count {
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.4);
+    background: $off-white;
+    padding: 3px 10px;
+    border-radius: $radius-full;
+    border: 1px solid $silver-light;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    color: rgba($charcoal, 0.3);
+    font-size: $text-sm;
+    transition: transform $transition-luxury, color $transition-base;
+  }
+
+  &__name {
+    font-family: $font-primary;
+    font-size: $text-2xl;
+    font-weight: $weight-bold;
+    color: $charcoal;
+    margin: 0 0 $space-2;
+    line-height: 1.25;
+    transition: color $transition-base;
+  }
+
+  &__desc {
+    font-size: $text-sm;
+    color: #777;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  // Expandable products panel
+  &__products {
+    margin-top: $space-4;
+    padding-top: $space-4;
+    border-top: 1px solid rgba($gold, 0.15);
+    animation: expandDown 0.3s ease;
+  }
+
+  &__products-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $font-accent;
+    font-size: 11px;
+    font-weight: $weight-bold;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.5);
+    margin-bottom: $space-3;
+
+    i { color: $gold; }
+  }
+
+  &__products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-1;
+    margin-bottom: $space-3;
+  }
+
+  &__product-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: rgba($navy, 0.05);
+    border: 1px solid rgba($navy, 0.1);
+    border-radius: $radius-full;
+    font-size: 12px;
+    font-weight: $weight-medium;
+    color: $navy;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all $transition-base;
+
+    i { font-size: 9px; color: $gold; transition: transform $transition-base; }
+
+    &:hover {
+      background: $navy;
+      color: $white;
+      border-color: $navy;
+      i { color: $gold; transform: translateX(3px); }
+    }
+  }
+
+  &__wa-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba($whatsapp-green, 0.08);
+    border: 1px solid rgba($whatsapp-green, 0.28);
+    border-radius: $radius-sm;
+    color: $whatsapp-green;
+    font-family: $font-accent;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all $transition-luxury;
+    width: 100%;
+    justify-content: center;
+
+    i { font-size: $text-base; }
+
+    &:hover {
+      background: $whatsapp-green;
+      color: $white;
+      border-color: $whatsapp-green;
+      box-shadow: 0 4px 16px rgba($whatsapp-green, 0.35);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@keyframes expandDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// Click hint
+.ind-click-hint {
+  text-align: center;
+  font-family: $font-accent;
+  font-size: $text-xs;
+  font-weight: $weight-medium;
+  letter-spacing: 0.08em;
+  color: rgba($charcoal, 0.35);
+  margin: 0;
+  padding: $space-3 0 0;
+
+  i { margin-right: 6px; color: rgba($charcoal, 0.25); }
+}
+
+// ── WHY CHOOSE US ─────────────────────────────
+.ind-why {
+  background: $charcoal;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-5;
+
+    @include respond-to('tablet') { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  }
+}
+
+.ind-why-card {
+  padding: $space-5;
+  background: rgba($white, 0.04);
+  border: 1px solid rgba($white, 0.08);
+  border-radius: $radius-xl;
+  transition: all $transition-luxury;
+
+  &:hover {
+    background: rgba($white, 0.07);
+    border-color: rgba($gold, 0.25);
+    transform: translateY(-5px);
+
+    .ind-why-card__icon-wrap { @include gold-gradient; }
+    .ind-why-card__icon      { color: $charcoal; }
+  }
+
+  &__icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: $radius-md;
+    background: rgba($gold, 0.1);
+    border: 1px solid rgba($gold, 0.2);
+    @include flex-center;
+    margin-bottom: $space-4;
+    transition: all $transition-luxury;
+  }
+
+  &__icon {
+    font-size: $text-2xl;
+    color: $gold;
+    transition: color $transition-luxury;
+  }
+
+  &__title {
+    font-family: $font-accent;
+    font-size: $text-base;
+    font-weight: $weight-bold;
+    color: $white;
+    margin: 0 0 $space-2;
+  }
+
+  &__text {
+    font-size: $text-sm;
+    color: rgba($white, 0.55);
+    line-height: 1.8;
+    margin: 0;
+  }
+}
+
+// ── CTA BANNER ────────────────────────────────
+.ind-cta {
+  background: $navy-deep;
+  padding: $space-10 0;
+  border-top: 1px solid rgba($gold, 0.12);
+}
+
+.ind-cta__inner {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+
+  @include respond-to('max-tablet') {
+    flex-direction: column;
+    text-align: center;
+    gap: $space-6;
+  }
+}
+
+.ind-cta__left { flex: 1; }
+
+.ind-cta__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.2);
+  padding: 6px 14px;
+  border-radius: $radius-full;
+  font-family: $font-accent;
+  font-size: 11px;
+  font-weight: $weight-bold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-3;
+
+  i { font-size: 11px; }
+}
+
+.ind-cta__title {
+  font-family: $font-primary;
+  font-size: clamp($text-3xl, 3.5vw, $text-4xl);
+  font-weight: $weight-bold;
+  color: $white;
+  margin: 0 0 $space-3;
+  line-height: 1.2;
+}
+
+.ind-cta__text {
+  font-size: $text-base;
+  color: rgba($white, 0.6);
+  line-height: 1.8;
+  margin: 0;
+  max-width: 520px;
+
+  @include respond-to('max-tablet') { max-width: 100%; }
+}
+
+.ind-cta__actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  flex-shrink: 0;
+  min-width: 280px;
+
+  @include respond-to('max-tablet') { width: 100%; max-width: 380px; }
+}
+
+.ind-cta__btn {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  border-radius: $radius-md;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: all $transition-luxury;
+  text-align: left;
+
+  > i:first-child {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &-label {
+    font-family: $font-accent;
+    font-size: 10px;
+    font-weight: $weight-medium;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  &-main {
+    font-family: $font-accent;
+    font-size: $text-sm;
+    font-weight: $weight-bold;
+    letter-spacing: 0.02em;
+  }
+
+  &--wa {
+    background: rgba($whatsapp-green, 0.12);
+    border: 1.5px solid rgba($whatsapp-green, 0.3);
+
+    > i:first-child { color: $whatsapp-green; }
+
+    .ind-cta__btn-label, .ind-cta__btn-main { color: $whatsapp-green; }
+
+    &:hover {
+      background: $whatsapp-green;
+      border-color: $whatsapp-green;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba($whatsapp-green, 0.4);
+
+      .ind-cta__btn-label, .ind-cta__btn-main { color: $white; }
+      > i:first-child { color: $white; }
+    }
+  }
+
+  &--contact {
+    @include gold-gradient;
+
+    > i:first-child { color: $charcoal; }
+
+    .ind-cta__btn-label, .ind-cta__btn-main { color: $charcoal; }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-gold-lg;
+      filter: brightness(1.08);
+    }
+  }
+
+  &--catalog {
+    background: rgba($white, 0.06);
+    border: 1.5px solid rgba($white, 0.14);
+
+    > i:first-child { color: rgba($white, 0.7); }
+
+    .ind-cta__btn-label { color: rgba($white, 0.45); }
+    .ind-cta__btn-main  { color: $white; }
+
+    &:hover {
+      background: rgba($white, 0.1);
+      border-color: rgba($white, 0.25);
+      transform: translateY(-2px);
+    }
+  }
+}

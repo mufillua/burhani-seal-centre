@@ -1,0 +1,75 @@
+<!-- ============================================
+  INDUSTRIES PREVIEW SECTION
+  ============================================ -->
+
+<section class="ind-prev section-wrapper section-bg-navy"
+         id="industries"
+         #industrySection
+         aria-label="Industries we serve">
+
+  <!-- Background decorative elements -->
+  <div class="ind-prev__bg" aria-hidden="true">
+    <div class="ind-prev__bg-grid"></div>
+    <div class="ind-prev__bg-glow"></div>
+  </div>
+
+  <div class="container-custom ind-prev__inner">
+
+    <!-- Section Header (light variant for dark background) -->
+    <app-section-header
+      label="Sectors We Serve"
+      title="Industries <em>We Empower</em>"
+      subtitle="Our sealing solutions are trusted across 11 industrial sectors. Wherever precision sealing matters, Burhani Seal Centre delivers."
+      [centered]="true"
+      [light]="true">
+    </app-section-header>
+
+    <!-- Industry Cards Grid -->
+    <div class="ind-prev__grid"
+         [class.is-visible]="isVisible()"
+         role="list"
+         aria-label="Industries we serve">
+
+      @for (industry of displayedIndustries; track trackById($index, industry)) {
+        <div class="ind-card"
+             role="listitem"
+             [style.animation-delay]="($index * 90) + 'ms'">
+
+          <!-- Icon circle -->
+          <div class="ind-card__icon-wrap" aria-hidden="true">
+            <i [class]="'fa ' + industry.icon + ' ind-card__icon'"></i>
+          </div>
+
+          <!-- Industry name -->
+          <h3 class="ind-card__name">{{ industry.name }}</h3>
+
+          <!-- Short description -->
+          <p class="ind-card__desc">{{ industry.description }}</p>
+
+          <!-- Gold hover line at bottom -->
+          <div class="ind-card__line" aria-hidden="true"></div>
+
+          <!-- Arrow icon that appears on hover -->
+          <div class="ind-card__arrow" aria-hidden="true">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+
+        </div>
+      }
+
+    </div>
+
+    <!-- View All Industries Button -->
+    <div class="ind-prev__footer">
+      <p class="ind-prev__note">
+        We serve {{ displayedIndustries.length }} major industries and more specialised sectors.
+      </p>
+      <a routerLink="/industries" class="btn-outline-gold ind-prev__btn">
+        <i class="fa fa-globe" aria-hidden="true"></i>
+        View All Industries
+      </a>
+    </div>
+
+  </div>
+
+</section>
