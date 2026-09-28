@@ -354,8 +354,8 @@
           <h3 class="reach-card__title">Business Hours</h3>
           <div class="hours-list">
             @for (day of [
-              { day: 'Monday – Friday', hours: '9:00 AM – 6:00 PM', open: true  },
-              { day: 'Saturday',        hours: '9:00 AM – 5:00 PM', open: true  },
+              { day: 'Monday – Friday', hours: '10:00 AM – 6:00 PM', open: true  },
+              { day: 'Saturday',        hours: '10:00 AM – 5:00 PM', open: true  },
               { day: 'Sunday',          hours: 'Closed',             open: false }
             ]; track day.day) {
               <div class="hours-row" [class.hours-row--closed]="!day.open">

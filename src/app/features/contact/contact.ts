@@ -94,7 +94,7 @@ export class ContactComponent implements OnInit {
       title:   'WhatsApp / Call',
       lines:   [
         this.company.whatsappDisplay,
-        'Mon–Sat: 9:00 AM – 6:00 PM',
+        'Mon–Sat: 10:00 AM – 6:00 PM',
         'Fastest way to reach us'
       ],
       action:  null,
@@ -119,8 +119,8 @@ export class ContactComponent implements OnInit {
       icon:    'fa-clock',
       title:   'Business Hours',
       lines:   [
-        'Monday – Friday: 9:00 AM – 6:00 PM',
-        'Saturday: 9:00 AM – 5:00 PM',
+        'Monday – Friday: 10:00 AM – 6:00 PM',
+        'Saturday: 10:00 AM – 5:00 PM',
         'Sunday: Closed'
       ],
       action:  null,
