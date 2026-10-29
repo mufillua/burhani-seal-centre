@@ -154,3 +154,20 @@
   text-decoration: none;
   white-space: nowrap;
 }
+
+// --- CURVED BOTTOM EDGE (cut-out) ---
+// Cuts a shallow hill out of the bottom of a dark block, so whatever
+// sits behind (the blueprint backdrop) shows through the curve.
+@mixin curve-cutout($h) {
+  $shape: radial-gradient(ellipse 55% #{$h} at 50% 100%, transparent 99.2%, #000 100%);
+  -webkit-mask-image: $shape;
+  mask-image: $shape;
+}
+
+// --- TINTED BAND ---
+// A light section that sits a shade deeper than the page, with the
+// blueprint still faintly visible through it.
+@mixin mist-band {
+  background: rgba($mist-deep, 0.62);
+  box-shadow: inset 0 1px 0 rgba($navy, 0.06), inset 0 -1px 0 rgba($navy, 0.06);
+}

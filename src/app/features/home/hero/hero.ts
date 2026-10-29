@@ -22,7 +22,6 @@ import { Router, RouterLink } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { ProductImageComponent } from '../../../shared/components/product-image/product-image';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-hero',
@@ -64,9 +63,6 @@ export class HeroComponent {
   protected readonly suggestions = computed(() => this.products.suggest(this.query(), 6));
   protected readonly open = computed(() => this.focused() && this.query().trim().length >= 2);
 
-  // ── Open / closed right now (Kolkata time) ──
-  protected readonly status = signal(this.computeStatus());
-
   constructor() {
     const zone = inject(NgZone);
     const doc = inject(DOCUMENT);
@@ -104,10 +100,6 @@ export class HeroComponent {
           this.host.removeEventListener('mousemove', onMove);
         });
       });
-
-      // Refresh "open now" every minute
-      const t = setInterval(() => this.status.set(this.computeStatus()), 60_000);
-      destroyRef.onDestroy(() => clearInterval(t));
     });
   }
 
@@ -147,24 +139,4 @@ export class HeroComponent {
     // let a click on a suggestion land first
     setTimeout(() => this.focused.set(false), 150);
   }
-
-  /** "Open now · until 6 PM" / "Closed · opens Mon 10 AM" in Kolkata time */
-  private computeStatus(): { open: boolean; text: string } {
-    const parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Asia/Kolkata', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false
-    }).formatToParts(new Date());
-    const get = (t: string) => parts.find(p => p.type === t)?.value ?? '';
-    const day = get('weekday');               // Mon … Sun
-    const mins = Number(get('hour')) * 60 + Number(get('minute'));
-    const close = day === 'Sat' ? 17 * 60 : 18 * 60;
-    const workday = day !== 'Sun';
-
-    if (workday && mins >= 600 && mins < close) {
-      return { open: true, text: `Open now · until ${close === 1020 ? '5' : '6'} PM` };
-    }
-    const next = !workday || (day === 'Sat' && mins >= close) ? 'Monday' : mins < 600 ? 'today' : 'tomorrow';
-    return { open: false, text: `Closed now · opens ${next} 10 AM` };
-  }
-
-  protected readonly hoursShort = environment.company.hoursShort;
 }

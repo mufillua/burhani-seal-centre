@@ -16,6 +16,14 @@ $navy:            #16213E;
 $navy-deep:       #0F3460;
 $black:           #0A0A0A;
 
+// Light surfaces — a cool "drafting table" tint taken from the navy,
+// used instead of plain white behind light sections. White is kept
+// for cards, so they read as sheets of paper laid on the table.
+$mist:            #E7ECF4;
+$mist-deep:       #D8E0EC;
+$mist-line:       rgba(22, 33, 62, 0.07);
+$card-border:     #D5DCE8;
+
 // Gold Accents (our luxury signature color)
 $gold:            #C9A84C;
 $gold-light:      #E8C96B;
@@ -117,4 +125,4 @@ $nav-h-mobile: 64px;
 
 // --- TEXT ON LIGHT ---
 $text-body:  #4A4F5C;
-$text-muted: #6B7080;
+$text-muted: #5E6474;   // ≥ 4.5:1 on $mist and $mist-deep

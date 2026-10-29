@@ -17,14 +17,14 @@
   position: relative;
   padding-block: clamp(4rem, 9vw, 6.5rem);
 
-  &--light { background: $off-white; }
+  &--light { @include mist-band; }
   &--dark  { background: $charcoal; color: $white; }
   &--navy  { background: linear-gradient(160deg, $navy 0%, $charcoal 100%); color: $white; }
 }
 
 // Old names kept so nothing breaks
 .section-wrapper { @include section-padding; position: relative; }
-.section-bg-light { background: $off-white; }
+.section-bg-light { @include mist-band; }
 .section-bg-dark  { background: $charcoal; color: $white; }
 .section-bg-navy  { background: $navy; color: $white; }
 
@@ -200,17 +200,8 @@
     mask-image: linear-gradient(to bottom, #000 30%, transparent 100%);
   }
 
-  // Curved bottom edge
-  &::after {
-    content: '';
-    position: absolute;
-    left: -5%;
-    right: -5%;
-    bottom: -1px;
-    height: clamp(28px, 4vw, 56px);
-    background: var(--page-hero-next, #{$white});
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  }
+  // Curved bottom edge, cut out so the backdrop shows through
+  @include curve-cutout(clamp(28px, 4vw, 56px));
 
   &__title {
     color: $white;
@@ -287,11 +278,11 @@
 // ── SCROLLBAR (desktop) ──────────────────────
 @media (hover: hover) and (pointer: fine) {
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: $off-white; }
+  ::-webkit-scrollbar-track { background: $mist; }
   ::-webkit-scrollbar-thumb {
     background: rgba($navy, 0.35);
     border-radius: $radius-full;
-    border: 2px solid $off-white;
+    border: 2px solid $mist;
   }
   ::-webkit-scrollbar-thumb:hover { background: $gold-dark; }
 }

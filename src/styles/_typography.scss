@@ -22,6 +22,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   scroll-padding-top: calc(#{$nav-h} + 16px);
   overflow-x: clip;
+  // The page colour lives on the root so the fixed blueprint
+  // backdrop (z-index -1) can paint above it and below content.
+  background-color: $mist;
 
   @include respond-to('max-tablet') {
     scroll-padding-top: calc(#{$nav-h-mobile} + 12px);
@@ -38,7 +41,6 @@ body {
   font-size: $text-base;
   line-height: 1.7;
   color: $charcoal;
-  background-color: $white;
   overflow-x: clip;
   min-height: 100vh;
   -webkit-tap-highlight-color: transparent;

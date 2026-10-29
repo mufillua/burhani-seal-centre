@@ -1,7 +1,7 @@
 // ============================================
 // APP SHELL
 // ============================================
-// Navbar + page + footer + floating WhatsApp button.
+// Blueprint backdrop + navbar + page + footer + floating WhatsApp button.
 // Also owns scroll behaviour between pages:
 //  • new page            → start at the top
 //  • back / forward      → return to where you were
@@ -14,12 +14,14 @@ import { filter } from 'rxjs';
 import { NavbarComponent } from './shared/components/navbar/navbar';
 import { FooterComponent } from './shared/components/footer/footer';
 import { WhatsappButtonComponent } from './shared/components/whatsapp-button/whatsapp-button';
+import { BackdropComponent } from './shared/components/backdrop/backdrop';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, WhatsappButtonComponent],
+  imports: [RouterOutlet, BackdropComponent, NavbarComponent, FooterComponent, WhatsappButtonComponent],
   template: `
     <a class="skip-link" href="#main">Skip to content</a>
+    <app-backdrop />
     <app-navbar />
     <main id="main" tabindex="-1">
       <router-outlet />

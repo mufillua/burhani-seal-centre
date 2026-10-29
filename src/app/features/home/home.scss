@@ -6,8 +6,7 @@
   position: relative;
   padding: 18px 0;
   overflow: hidden;
-  border-block: 1px solid #eceef3;
-  background: $white;
+  border-block: 1px solid rgba($navy, 0.08);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 
   &:hover .ribbon__track { animation-play-state: paused; }
@@ -91,8 +90,9 @@
   padding: 22px;
   overflow: hidden;
   border-radius: $radius-lg;
-  background: $off-white;
-  border: 1px solid #eceef3;
+  background: $white;
+  border: 1px solid $card-border;
+  box-shadow: 0 18px 36px -28px rgba($navy, 0.45);
   color: $charcoal;
   isolation: isolate;
   transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), color 0.4s ease;
@@ -144,7 +144,7 @@
   min-width: 32px;
   padding: 3px 9px;
   border-radius: $radius-full;
-  background: $white;
+  background: $mist;
   font-family: $font-accent;
   font-size: 0.75rem;
   font-weight: $weight-bold;
@@ -183,7 +183,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: $white;
+  background: $mist;
   font-size: 12px;
   color: $charcoal;
   transition: all 0.5s var(--ease-out);
@@ -408,7 +408,7 @@
   border-radius: 50%;
   background: $white;
   border: 1px solid rgba($gold, 0.4);
-  box-shadow: 0 0 0 8px $white, 0 14px 30px -14px rgba($navy, 0.4);
+  box-shadow: 0 0 0 8px $mist, 0 14px 30px -14px rgba($navy, 0.4);
   color: $gold-dark;
   font-size: 1.5rem;
   transition: transform 0.5s var(--ease-spring);
@@ -455,7 +455,8 @@
   padding: 12px 20px 12px 12px;
   border-radius: $radius-full;
   background: $white;
-  border: 1px solid #e3e6ec;
+  border: 1px solid $card-border;
+  box-shadow: 0 10px 20px -18px rgba($navy, 0.5);
   font-weight: $weight-semibold;
   font-size: 0.9375rem;
   color: $charcoal;
