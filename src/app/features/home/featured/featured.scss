@@ -57,7 +57,7 @@
   border-radius: $radius-lg;
   background:
     radial-gradient(circle at 80% 10%, rgba($gold, 0.3), transparent 55%),
-    linear-gradient(160deg, $navy, $charcoal);
+    linear-gradient(160deg, $surface-3, $surface-1);
   color: $white;
   transition: transform 0.5s var(--ease-out);
 

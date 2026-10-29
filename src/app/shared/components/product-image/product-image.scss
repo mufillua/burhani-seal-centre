@@ -25,7 +25,7 @@ img {
   place-items: center;
   background:
     radial-gradient(circle at 70% 20%, rgba($gold, 0.16), transparent 55%),
-    linear-gradient(150deg, $navy 0%, $charcoal 100%);
+    linear-gradient(150deg, $surface-3 0%, $surface-1 100%);
   color: rgba($white, 0.82);
   --art-accent: #{$gold-light};
   --art-bg: #{$navy};

@@ -105,7 +105,7 @@
     z-index: -1;
     background:
       radial-gradient(circle at 80% 0%, rgba($gold, 0.3), transparent 55%),
-      linear-gradient(160deg, $navy, $charcoal);
+      linear-gradient(160deg, $surface-3, $surface-1);
     transform: translateY(101%);
     transition: transform 0.6s var(--ease-out);
   }

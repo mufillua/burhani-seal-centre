@@ -18,15 +18,15 @@
   padding-block: clamp(4rem, 9vw, 6.5rem);
 
   &--light { @include mist-band; }
-  &--dark  { background: $charcoal; color: $white; }
-  &--navy  { background: linear-gradient(160deg, $navy 0%, $charcoal 100%); color: $white; }
+  &--dark  { background: $surface-1-glass; color: $white; }
+  &--navy  { @include navy-glass(160deg); color: $white; }
 }
 
 // Old names kept so nothing breaks
 .section-wrapper { @include section-padding; position: relative; }
 .section-bg-light { @include mist-band; }
-.section-bg-dark  { background: $charcoal; color: $white; }
-.section-bg-navy  { background: $navy; color: $white; }
+.section-bg-dark  { background: $surface-1-glass; color: $white; }
+.section-bg-navy  { background: $surface-2-glass; color: $white; }
 
 // ── BUTTONS ──────────────────────────────────
 .btn {
@@ -177,8 +177,8 @@
   padding: calc(#{$nav-h} + clamp(2.5rem, 6vw, 4.5rem)) 0 clamp(4rem, 8vw, 5.5rem);
   background:
     radial-gradient(ellipse 60% 80% at 85% 0%, rgba($gold, 0.12), transparent 60%),
-    radial-gradient(ellipse 50% 70% at 0% 100%, rgba($navy-deep, 0.9), transparent 70%),
-    linear-gradient(135deg, #0b0d1a 0%, $charcoal 40%, $navy 100%);
+    radial-gradient(ellipse 50% 70% at 0% 100%, rgba($navy-deep, 0.45), transparent 70%),
+    linear-gradient(135deg, $surface-1-glass 0%, $surface-2-glass 40%, $surface-3-glass 100%);
   color: $white;
   overflow: hidden;
   isolation: isolate;

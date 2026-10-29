@@ -24,6 +24,17 @@ $mist-deep:       #D8E0EC;
 $mist-line:       rgba(22, 33, 62, 0.07);
 $card-border:     #D5DCE8;
 
+// Dark surfaces — a lighter navy than the text ink ($charcoal/$navy).
+// Big dark sections use the "glass" versions: 86% opaque, so the
+// backdrop's drifting light shows through. Over $mist they land on
+// the solid colours, which small cards and panels use.
+$surface-1:       #222A48;   // deepest
+$surface-2:       #2A365E;
+$surface-3:       #314070;   // lightest
+$surface-1-glass: rgba(2, 10, 44, 0.86);
+$surface-2-glass: rgba(11, 24, 70, 0.86);
+$surface-3-glass: rgba(19, 36, 90, 0.86);
+
 // Gold Accents (our luxury signature color)
 $gold:            #C9A84C;
 $gold-light:      #E8C96B;

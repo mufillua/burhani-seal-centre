@@ -4,8 +4,8 @@
 .footer {
   position: relative;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba($gold, 0.08), transparent 70%),
-    #0c0e1b;
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba($gold, 0.1), transparent 70%),
+    linear-gradient(180deg, $surface-2-glass 0%, $surface-1-glass 100%);
   color: rgba($white, 0.7);
   padding-top: clamp(3rem, 7vw, 5rem);
 
@@ -122,7 +122,7 @@
   font-family: $font-accent;
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
-  color: rgba($white, 0.4);
+  color: rgba($white, 0.55);
 }
 
 .footer__heading {
@@ -178,7 +178,7 @@
   padding-block: 20px calc(20px + env(safe-area-inset-bottom));
   font-size: 0.8125rem;
 
-  p { color: rgba($white, 0.45); }
+  p { color: rgba($white, 0.6); }
   strong { color: rgba($white, 0.75); font-weight: $weight-semibold; }
 }
 

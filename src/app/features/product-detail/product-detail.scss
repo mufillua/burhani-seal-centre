@@ -8,7 +8,7 @@
   padding: calc(#{$nav-h} + 22px) 0 70px;
   background:
     radial-gradient(ellipse 50% 120% at 90% 0%, rgba($gold, 0.14), transparent 60%),
-    linear-gradient(120deg, #0b0d1a, $charcoal 45%, $navy);
+    linear-gradient(120deg, $surface-1-glass, $surface-2-glass 45%, $surface-3-glass);
 
   .breadcrumb { margin: 0; }
 
