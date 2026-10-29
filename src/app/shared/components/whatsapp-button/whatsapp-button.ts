@@ -1,189 +1,43 @@
 // ============================================
-// WHATSAPP FLOATING BUTTON COMPONENT
+// FLOATING WHATSAPP BUTTON
 // ============================================
-// Fixed-position button always visible in the
-// bottom-right corner of every page.
-// Pulses gently to attract attention.
+// Appears after a moment on every page. On product pages
+// (phones) it steps aside for the sticky enquiry bar.
 
-import {
-  Component,
-  signal,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { WhatsappService } from '../../../services/whatsapp.service';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs';
+import { EnquiryService } from '../../../services/enquiry.service';
 
 @Component({
   selector: 'app-whatsapp-button',
-  standalone: true,
-  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'no-print' },
   template: `
-    <div class="wa-float" [class.wa-float--visible]="isVisible()">
-
-      <!-- Tooltip label -->
-      <div class="wa-float__tooltip" role="tooltip" id="wa-tooltip">
-        Chat with us!
-      </div>
-
-      <!-- Pulse rings -->
-      <div class="wa-float__rings" aria-hidden="true">
-        <span class="wa-ring wa-ring--1"></span>
-        <span class="wa-ring wa-ring--2"></span>
-      </div>
-
-      <!-- Main button -->
-      <button class="wa-float__btn"
-              (click)="openWhatsApp()"
-              aria-label="Open WhatsApp chat with Burhani Seal Centre"
-              aria-describedby="wa-tooltip">
-        <i class="fab fa-whatsapp wa-float__icon" aria-hidden="true"></i>
-      </button>
-
-    </div>
+    <a class="fab"
+       [class.fab--visible]="visible()"
+       [class.fab--hide-mobile]="onProductPage()"
+       [href]="enquiry.generalWhatsappHref"
+       target="_blank" rel="noopener"
+       aria-label="Chat with Burhani Seal Centre on WhatsApp">
+      <span class="fab__ring" aria-hidden="true"></span>
+      <span class="fab__ring fab__ring--late" aria-hidden="true"></span>
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+      <span class="fab__label">Chat on WhatsApp</span>
+    </a>
   `,
-  styles: [`
-    @use '../../../../styles/variables' as *;
-
-    .wa-float {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      z-index: $z-toast;
-      opacity: 0;
-      transform: scale(0.5);
-      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      pointer-events: none;
-
-      &--visible {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: all;
-      }
-
-      @media (max-width: 576px) {
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-
-    // ── Tooltip ──────────────────────────────────
-    .wa-float__tooltip {
-      position: absolute;
-      right: calc(100% + 12px);
-      top: 50%;
-      transform: translateY(-50%);
-      background: $charcoal;
-      color: $white;
-      font-family: $font-accent;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-      padding: 8px 14px;
-      border-radius: $radius-sm;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      pointer-events: none;
-
-      // Arrow pointing right
-      &::after {
-        content: '';
-        position: absolute;
-        left: 100%;
-        top: 50%;
-        transform: translateY(-50%);
-        border: 6px solid transparent;
-        border-left-color: $charcoal;
-      }
-    }
-
-    .wa-float:hover .wa-float__tooltip {
-      opacity: 1;
-    }
-
-    // ── Pulse rings ───────────────────────────────
-    .wa-float__rings {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-    }
-
-    .wa-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: rgba($whatsapp-green, 0.3);
-      animation: waPulse 2.5s ease-out infinite;
-
-      &--2 {
-        animation-delay: 0.8s;
-      }
-    }
-
-    @keyframes waPulse {
-      0%   { transform: scale(1); opacity: 0.6; }
-      100% { transform: scale(2); opacity: 0; }
-    }
-
-    // ── Main button ───────────────────────────────
-    .wa-float__btn {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: $whatsapp-green;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        0 4px 20px rgba($whatsapp-green, 0.5),
-        0 2px 8px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-      &:hover {
-        background: $whatsapp-dark;
-        transform: scale(1.12) rotate(-5deg);
-        box-shadow:
-          0 8px 32px rgba($whatsapp-green, 0.6),
-          0 4px 16px rgba(0, 0, 0, 0.3);
-      }
-
-      &:active {
-        transform: scale(0.95);
-      }
-    }
-
-    .wa-float__icon {
-      font-size: 28px;
-      color: $white;
-    }
-  `]
+  styleUrl: './whatsapp-button.scss'
 })
-export class WhatsappButtonComponent implements OnInit, OnDestroy {
+export class WhatsappButtonComponent {
+  protected readonly enquiry = inject(EnquiryService);
+  protected readonly visible = signal(false);
+  protected readonly onProductPage = signal(false);
 
-  isVisible = signal(false);
-  private timer: ReturnType<typeof setTimeout> | null = null;
-
-  constructor(private whatsappService: WhatsappService) {}
-
-  ngOnInit(): void {
-    // Show the button after a short delay
-    // (prevents it from appearing during page load animation)
-    this.timer = setTimeout(() => {
-      this.isVisible.set(true);
-    }, 1500);
-  }
-
-  ngOnDestroy(): void {
-    if (this.timer) {
-      clearTimeout(this.timer);
-    }
-  }
-
-  openWhatsApp(): void {
-    this.whatsappService.openGeneralEnquiry();
+  constructor() {
+    setTimeout(() => this.visible.set(true), 1200);
+    inject(Router).events
+      .pipe(filter(e => e instanceof NavigationEnd), takeUntilDestroyed())
+      .subscribe(e => this.onProductPage.set(/^\/products\/[^/?#]+/.test((e as NavigationEnd).urlAfterRedirects)));
   }
 }

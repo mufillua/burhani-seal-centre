@@ -1,0 +1,74 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:host {
+  display: block;
+  margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+  max-width: 760px;
+}
+
+:host(.sh--centered) {
+  margin-inline: auto;
+  text-align: center;
+
+  .sh__eyebrow { justify-content: center; }
+  .sh__rule { margin-inline: auto; transform-origin: center; }
+  .sh__subtitle { margin-inline: auto; }
+}
+
+.sh__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-family: $font-accent;
+  font-size: 0.75rem;
+  font-weight: $weight-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold-dark;
+
+  &::before {
+    content: '';
+    width: 26px;
+    height: 1.5px;
+    background: currentColor;
+  }
+}
+
+.sh__title {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: $weight-bold;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: $charcoal;
+
+  em {
+    font-style: italic;
+    font-weight: $weight-semibold;
+    @include gold-text;
+    padding-right: 0.06em; // italic overhang
+  }
+}
+
+.sh__rule {
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin-top: 18px;
+  border-radius: 3px;
+  @include gold-gradient;
+}
+
+.sh__subtitle {
+  margin-top: 18px;
+  font-size: clamp(1rem, 1.5vw, 1.0625rem);
+  color: $text-muted;
+  max-width: 62ch;
+}
+
+:host(.sh--light) {
+  .sh__eyebrow { color: $gold-light; }
+  .sh__title { color: $white; }
+  .sh__subtitle { color: rgba($white, 0.68); }
+}

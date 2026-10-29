@@ -1,0 +1,102 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.featured {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  overflow: hidden;
+}
+
+.featured__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+
+  app-section-header { margin-bottom: 32px; }
+}
+
+.featured__nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+
+  @include respond-to('mobile') { display: none; }
+}
+
+// Track lines up with the container's left edge and bleeds right
+.track {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 8px max(clamp(16px, 4vw, 32px), calc((100vw - #{$container-max}) / 2 + clamp(16px, 4vw, 32px))) 28px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(clamp(16px, 4vw, 32px), calc((100vw - #{$container-max}) / 2 + clamp(16px, 4vw, 32px)));
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+
+  &:focus-visible { outline-offset: -4px; }
+}
+
+.track__item {
+  flex: 0 0 clamp(260px, 26vw, 310px);
+  scroll-snap-align: start;
+
+  @include respond-to('mobile') { flex-basis: 78vw; }
+}
+
+.more-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  height: 100%;
+  min-height: 360px;
+  padding: 28px;
+  border-radius: $radius-lg;
+  background:
+    radial-gradient(circle at 80% 10%, rgba($gold, 0.3), transparent 55%),
+    linear-gradient(160deg, $navy, $charcoal);
+  color: $white;
+  transition: transform 0.5s var(--ease-out);
+
+  &:hover { color: $white; transform: translateY(-6px); .more-card__cta i { transform: translateX(6px); } }
+}
+
+.more-card__count {
+  font-family: $font-primary;
+  font-size: 4.5rem;
+  font-weight: $weight-bold;
+  line-height: 1;
+  @include gold-text;
+}
+
+.more-card__label { color: rgba($white, 0.7); }
+
+.more-card__cta {
+  margin-top: 16px;
+  font-family: $font-accent;
+  font-size: 0.875rem;
+  font-weight: $weight-bold;
+  color: $gold-light;
+
+  i { margin-left: 6px; transition: transform 0.3s var(--ease-out); }
+}
+
+.progress {
+  height: 2px;
+  border-radius: 2px;
+  background: #e6e8ee;
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform-origin: left;
+    transform: scaleX(var(--p, 0.12));
+    transition: transform 0.25s ease;
+    @include gold-gradient;
+  }
+}

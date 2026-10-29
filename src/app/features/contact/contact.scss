@@ -1,956 +1,396 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// ============================================
-// CONTACT PAGE STYLES
-// ============================================
-
-// ── HERO ──────────────────────────────────────
-.contact-hero {
-  position: relative;
-  background: $charcoal;
-  padding-top: 39px;
-  padding-bottom: $space-12;
-  overflow: hidden;
-}
-
-.contact-hero__bg { @include absolute-fill; z-index: 0; }
-
-.contact-hero__gradient {
-  @include absolute-fill;
-  background: linear-gradient(135deg, $black 0%, $charcoal 35%, $navy 75%, $navy-deep 100%);
-}
-
-.contact-hero__pattern {
-  @include absolute-fill;
-  background-image: radial-gradient(circle, rgba($white, 0.028) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-
-.contact-hero__glow {
-  position: absolute;
-  top: -10%;
-  right: 0;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba($gold, 0.055), transparent 65%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.contact-hero__container {
-  position: relative;
-  z-index: 2;
-  padding-bottom: $space-10;
-}
-
-.contact-hero__breadcrumb {
+// ── HERO QUICK LINKS ─────────────────────────
+.quick {
   display: flex;
-  align-items: center;
-  gap: $space-2;
-  margin-bottom: $space-6;
-  font-family: $font-accent;
-  font-size: $text-xs;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
-  a {
-    color: rgba($white, 0.45);
-    text-decoration: none;
-    transition: color $transition-base;
-    &:hover { color: $gold; }
-  }
-
-  i   { color: rgba($white, 0.2); font-size: 9px; }
-  span { color: $gold; }
-}
-
-.contact-hero__content { max-width: 720px; }
-
-.contact-hero__label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba($gold, 0.08);
-  border: 1px solid rgba($gold, 0.22);
-  padding: 7px 18px;
-  border-radius: $radius-full;
-  margin-bottom: $space-4;
-  font-family: $font-accent;
-  font-size: 11px;
-  font-weight: $weight-bold;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: $gold;
-
-  i { font-size: $text-sm; }
-}
-
-.contact-hero__title {
-  font-family: $font-primary;
-  font-size: clamp($text-4xl, 5vw, $text-6xl);
-  font-weight: $weight-black;
-  color: $white;
-  line-height: 1.1;
-  margin: 0 0 $space-3;
-}
-
-.contact-hero__title-gold {
-  background: linear-gradient(135deg, $gold-dark, $gold, $gold-light);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-}
-
-.contact-hero__divider {
-  width: 64px;
-  height: 3px;
-  @include gold-gradient;
-  border-radius: $radius-full;
-  margin-bottom: $space-4;
-}
-
-.contact-hero__subtitle {
-  font-size: $text-xl;
-  font-weight: $weight-light;
-  color: rgba($white, 0.68);
-  line-height: 1.8;
-  margin: 0 0 $space-6;
-}
-
-// Quick contact strip
-.contact-hero__strip {
-  display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: $space-3;
-  padding: $space-3 $space-4;
-  background: rgba($white, 0.05);
-  border: 1px solid rgba($white, 0.08);
-  border-radius: $radius-lg;
-  width: fit-content;
-
-  @include respond-to('mobile') {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
+  gap: 12px;
+  margin: 32px 0 0;
 }
 
-.contact-hero__strip-item {
+.quick__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px 10px 10px;
+  border-radius: $radius-full;
+  background: rgba($white, 0.06);
+  border: 1px solid rgba($white, 0.14);
+  color: $white;
+  font-weight: $weight-semibold;
+  font-size: 0.9rem;
+  transition: all 0.3s var(--ease-out);
+
+  i {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba($gold, 0.16);
+    color: $gold-light;
+  }
+
+  span { display: flex; flex-direction: column; line-height: 1.25; word-break: break-all; }
+  small { font-family: $font-accent; font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba($white, 0.55); font-weight: $weight-medium; }
+
+  &:hover { color: $white; border-color: $gold; transform: translateY(-2px); }
+
+  &--wa i { background: rgba($whatsapp-green, 0.2); color: $whatsapp-green; }
+}
+
+// ── LAYOUT ───────────────────────────────────
+.quote { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 6rem); }
+
+.quote__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+
+  @include respond-to('max-tablet') { grid-template-columns: minmax(0, 1fr); }
+}
+
+// ── FORM ─────────────────────────────────────
+.form {
+  padding: clamp(22px, 4vw, 40px);
+  border-radius: $radius-xl;
+  background: $white;
+  border: 1px solid #e6e8ee;
+  box-shadow: 0 24px 60px -30px rgba($navy, 0.35);
+}
+
+.form__title { font-size: clamp(1.5rem, 3vw, 2rem); }
+.form__intro { margin: 6px 0 22px; font-size: 0.875rem; color: $text-muted; }
+.req { color: #c62828; }
+
+.form__alert {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: $font-secondary;
-  font-size: $text-sm;
-  color: rgba($white, 0.75);
-  text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: color $transition-base;
-
-  i { color: $gold; font-size: $text-base; width: 18px; text-align: center; }
-
-  &:hover { color: $gold; }
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: $radius-md;
+  background: #fdecec;
+  border: 1px solid #f5c2c2;
+  color: #a12020;
+  font-size: 0.875rem;
+  font-weight: $weight-medium;
 }
 
-.contact-hero__strip-sep {
-  width: 1px;
-  height: 20px;
-  background: rgba($white, 0.12);
-
-  @include respond-to('mobile') { display: none; }
+.picked {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding: 10px;
+  border-radius: $radius-md;
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.3);
 }
 
-.contact-hero__wave {
-  position: relative;
-  z-index: 3;
-  line-height: 0;
-  margin-bottom: -2px;
-  svg { width: 100%; height: 60px; display: block; }
+.picked__img {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-md;
 }
 
-// ── CONTACT CARDS ─────────────────────────────
-.contact-cards-section {
-  background: $white;
-  padding: $space-8 0;
-}
-
-.contact-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-4;
-
-  @include respond-to('laptop')  { grid-template-columns: repeat(2, 1fr); }
-  @include respond-to('tablet')  { grid-template-columns: repeat(2, 1fr); }
-  @include respond-to('mobile')  { grid-template-columns: 1fr; }
-}
-
-.contact-info-card {
-  background: $white;
-  border-radius: $radius-xl;
-  padding: $space-5;
-  border: 1.5px solid rgba($silver-light, 0.9);
-  box-shadow: $shadow-sm;
+.picked__text {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: $space-2;
-  transition: all $transition-luxury;
-  position: relative;
-  overflow: hidden;
+  line-height: 1.3;
 
-  // Gold accent line on hover
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    @include gold-gradient;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform $transition-luxury;
-  }
+  small { font-family: $font-accent; font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: $text-muted; }
+  a { font-weight: $weight-semibold; color: $charcoal; }
+}
 
-  &:hover {
-    box-shadow: $shadow-lg;
-    border-color: rgba($gold, 0.25);
-    transform: translateY(-5px);
+.picked__clear {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: $text-muted;
 
-    &::after { transform: scaleX(1); }
+  &:hover { background: $white; color: $charcoal; }
+}
 
-    .contact-info-card__icon-wrap { @include gold-gradient; }
-    .contact-info-card__icon      { color: $charcoal; }
-  }
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
 
-  // Green variant for WhatsApp
-  &--green {
-    background: linear-gradient(135deg, rgba($whatsapp-green, 0.04), rgba($whatsapp-green, 0.02));
-    border-color: rgba($whatsapp-green, 0.15);
+  &--product { grid-template-columns: 1.6fr 1fr; }
 
-    &::after { background: $whatsapp-green; }
+  @include respond-to('mobile') { grid-template-columns: 1fr; &--product { grid-template-columns: 1fr; } }
+}
 
-    .contact-info-card__icon-wrap {
-      background: rgba($whatsapp-green, 0.1);
-      border-color: rgba($whatsapp-green, 0.2);
-    }
-    .contact-info-card__icon { color: $whatsapp-green; }
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
 
-    &:hover {
-      border-color: rgba($whatsapp-green, 0.35);
-      .contact-info-card__icon-wrap { background: $whatsapp-green; }
-      .contact-info-card__icon      { color: $white; }
-    }
-  }
-
-  &__icon-wrap {
-    width: 52px;
-    height: 52px;
-    border-radius: $radius-md;
-    background: rgba($gold, 0.08);
-    border: 1px solid rgba($gold, 0.16);
-    @include flex-center;
-    flex-shrink: 0;
-    margin-bottom: $space-1;
-    transition: all $transition-luxury;
-  }
-
-  &__icon {
-    font-size: $text-xl;
-    color: $gold;
-    transition: color $transition-luxury;
-  }
-
-  &__title {
+  label {
     font-family: $font-accent;
-    font-size: $text-sm;
+    font-size: 0.75rem;
     font-weight: $weight-bold;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     color: $charcoal;
-    margin: 0;
   }
 
-  &__lines {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    flex: 1;
-
-    p {
-      font-size: $text-sm;
-      color: #777;
-      line-height: 1.6;
-      margin: 0;
-    }
-  }
-
-  &__action {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    margin-top: $space-1;
-    padding: 8px 16px;
-    background: rgba($gold, 0.06);
-    border: 1px solid rgba($gold, 0.2);
-    border-radius: $radius-sm;
-    font-family: $font-accent;
-    font-size: 11px;
-    font-weight: $weight-bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: $gold-dark;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all $transition-luxury;
-    width: fit-content;
-
-    i { font-size: 11px; }
-
-    &:hover {
-      @include gold-gradient;
-      color: $charcoal;
-      border-color: transparent;
-    }
-
-    &--wa {
-      background: rgba($whatsapp-green, 0.08);
-      border-color: rgba($whatsapp-green, 0.25);
-      color: $whatsapp-green;
-
-      i { font-size: $text-base; }
-
-      &:hover {
-        background: $whatsapp-green;
-        color: $white;
-        border-color: $whatsapp-green;
-      }
-    }
-  }
-}
-
-// ── MAIN: FORM + MAP ──────────────────────────
-.contact-main__grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: $space-10;
-  align-items: start;
-
-  @include respond-to('laptop')    { gap: $space-6; }
-  @include respond-to('max-tablet') { grid-template-columns: 1fr; }
-}
-
-// ── CONTACT FORM ──────────────────────────────
-.contact-form-col {
-  // SectionHeader already provides top spacing
-}
-
-.cform {
-  display: flex;
-  flex-direction: column;
-  gap: $space-4;
-
-  &__error-banner {
-    display: flex;
-    align-items: center;
-    gap: $space-2;
-    padding: $space-3 $space-4;
-    background: rgba(#e53935, 0.06);
-    border: 1px solid rgba(#e53935, 0.2);
-    border-radius: $radius-sm;
-    font-size: $text-sm;
-    color: #c62828;
-
-    i { flex-shrink: 0; }
-  }
-
-  &__row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: $space-4;
-
-    @include respond-to('mobile') { grid-template-columns: 1fr; }
-  }
-
-  &__field {
-    display: flex;
-    flex-direction: column;
-    gap: $space-1;
-
-    &--full { grid-column: 1 / -1; }
-  }
-
-  &__label {
-    font-family: $font-accent;
-    font-size: $text-xs;
-    font-weight: $weight-bold;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba($charcoal, 0.6);
-  }
-
-  &__req { color: #e53935; margin-left: 2px; }
-
-  &__input-wrap { position: relative; }
-
-  &__input-icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: $silver-dark;
-    font-size: 13px;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  &__input {
+  input, textarea {
     width: 100%;
-    padding: 13px 16px 13px 42px;
-    background: $white;
-    border: 1.5px solid $silver-light;
-    border-radius: $radius-sm;
-    font-family: $font-secondary;
-    font-size: $text-sm;
-    color: $charcoal;
-    transition: border-color $transition-base, box-shadow $transition-base;
+    min-height: 50px;
+    padding: 12px 14px;
+    border: 1px solid #d9dde5;
+    border-radius: $radius-md;
+    background: #fbfbfc;
+    font-size: 16px; // stops iOS zooming in
+    line-height: 1.4;
     outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+
+    &::placeholder { color: #a3a8b6; }
 
     &:focus {
       border-color: $gold;
-      box-shadow: 0 0 0 3px rgba($gold, 0.08);
-    }
-
-    &::placeholder { color: $silver-dark; }
-
-    &.cform__textarea {
-      padding-left: 16px;
-      resize: vertical;
-      min-height: 140px;
-      line-height: 1.7;
-    }
-
-    &.cform__select {
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
+      background: $white;
+      box-shadow: 0 0 0 4px rgba($gold, 0.15);
     }
   }
 
-  &__field-error {
-    font-size: $text-xs;
-    color: #e53935;
-  }
+  textarea { resize: vertical; min-height: 130px; }
 
-  &__submit {
-    @include btn-base;
-    background: $whatsapp-green;
-    color: $white;
-    border: none;
-    padding: 16px 32px;
-    font-size: $text-sm;
-    cursor: pointer;
-    width: 100%;
-    justify-content: center;
-
-    &:hover:not(:disabled) {
-      background: $whatsapp-dark;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba($whatsapp-green, 0.45);
-      color: $white;
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-  }
-
-  &__note {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: $text-xs;
-    color: #aaa;
-    line-height: 1.6;
-    margin: 0;
-
-    i { color: $gold; flex-shrink: 0; margin-top: 2px; }
-  }
-
-  // Success state
-  &__success {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: $space-10 $space-6;
-    background: $white;
-    border-radius: $radius-xl;
-    border: 1.5px solid rgba($whatsapp-green, 0.2);
-    box-shadow: $shadow-md;
-  }
-
-  &__success-ring {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba($whatsapp-green, 0.1);
-    border: 2px solid rgba($whatsapp-green, 0.3);
-    @include flex-center;
-    margin-bottom: $space-4;
-    animation: pulse-ring 2s ease infinite;
-  }
-
-  @keyframes pulse-ring {
-    0%, 100% { box-shadow: 0 0 0 0 rgba($whatsapp-green, 0.2); }
-    50%       { box-shadow: 0 0 0 12px rgba($whatsapp-green, 0); }
-  }
-
-  &__success-icon {
-    font-size: 2.5rem;
-    color: $whatsapp-green;
-  }
-
-  &__success-title {
-    font-family: $font-primary;
-    font-size: $text-3xl;
-    font-weight: $weight-bold;
-    color: $charcoal;
-    margin: 0 0 $space-2;
-  }
-
-  &__success-text {
-    font-size: $text-base;
-    color: #777;
-    line-height: 1.75;
-    margin: 0 0 $space-6;
-    max-width: 360px;
-  }
-
-  &__success-actions {
-    display: flex;
-    gap: $space-3;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  &__reset,
-  &__browse {
-    @include btn-base;
-    padding: 12px 24px;
-    font-size: $text-sm;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-
-    i { font-size: 12px; }
-  }
-
-  &__reset {
-    background: $charcoal;
-    color: $white;
-
-    &:hover {
-      background: $navy;
-      transform: translateY(-2px);
-      color: $white;
-    }
-  }
-
-  &__browse {
-    background: transparent;
-    border: 1.5px solid $gold;
-    color: $gold;
-
-    &:hover {
-      @include gold-gradient;
-      color: $charcoal;
-      border-color: transparent;
-      transform: translateY(-2px);
-    }
+  &.has-error {
+    input, textarea { border-color: #d64545; background: #fffafa; }
   }
 }
 
-// ── MAP + SIDE INFO ───────────────────────────
-.contact-map-col {
+.field__error {
+  display: flex;
+  gap: 6px;
+  font-size: 0.8125rem;
+  color: #b42318;
+  animation: fadeInDown 0.25s var(--ease-out);
+}
+
+.form__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 6px;
+
+  @include respond-to('mobile') { grid-template-columns: 1fr; }
+}
+
+.form__note {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 0.8125rem;
+  color: $text-muted;
+
+  i { margin-top: 4px; color: $gold-dark; font-size: 0.75rem; }
+}
+
+// ── SENT STATE ───────────────────────────────
+.sent {
   display: flex;
   flex-direction: column;
-  gap: $space-4;
+  align-items: center;
+  text-align: center;
+  padding: clamp(32px, 6vw, 56px) clamp(20px, 4vw, 40px);
+  border-radius: $radius-xl;
+  background: $white;
+  border: 1px solid rgba($whatsapp-green, 0.3);
+}
+
+.sent__icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: rgba($whatsapp-green, 0.12);
+  color: #12924a;
+  font-size: 1.9rem;
+  animation: scaleIn 0.5s var(--ease-spring) both;
+}
+
+.sent__title { font-size: clamp(1.5rem, 3vw, 2rem); }
+.sent__text { max-width: 44ch; margin-top: 10px; color: $text-muted; }
+.sent__fallback {
+  margin-top: 14px;
+  font-size: 0.875rem;
+  color: $text-muted;
+
+  a { font-weight: $weight-semibold; text-decoration: underline; text-underline-offset: 3px; }
+}
+
+.sent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+// ── INFO COLUMN ──────────────────────────────
+.info {
   position: sticky;
-  top: calc(70px + #{$space-4});
+  top: calc(68px + 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 
   @include respond-to('max-tablet') { position: static; }
 }
 
-.contact-map {
-  background: $white;
-  border-radius: $radius-xl;
+.map {
+  position: relative;
   overflow: hidden;
-  border: 1px solid $silver-light;
-  box-shadow: $shadow-md;
+  border-radius: $radius-xl;
+  aspect-ratio: 4 / 3;
+  background: #e9ebf0;
+  box-shadow: 0 0 0 1px #e6e8ee;
 
-  &__header {
-    display: flex;
-    align-items: center;
-    gap: $space-3;
-    padding: $space-4;
-    border-bottom: 1px solid $silver-light;
-
-    i {
-      font-size: $text-2xl;
-      color: $gold;
-    }
-  }
-
-  &__title {
-    font-family: $font-accent;
-    font-size: $text-sm;
-    font-weight: $weight-bold;
-    color: $charcoal;
-    margin: 0;
-  }
-
-  &__sub {
-    font-size: $text-xs;
-    color: #999;
-    margin: 0;
-  }
-
-  &__embed {
-    position: relative;
-    height: 260px;
-    background: $off-white;
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-  }
-
-  &__overlay {
-    position: absolute;
-    bottom: $space-3;
-    left: $space-3;
-    right: $space-3;
-    background: rgba($charcoal, 0.92);
-    backdrop-filter: blur(8px);
-    border-radius: $radius-md;
-    padding: $space-3;
-    display: flex;
-    align-items: center;
-    gap: $space-2;
-    border: 1px solid rgba($gold, 0.2);
-  }
-
-  &__pin {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba($gold, 0.15);
-    @include flex-center;
-    flex-shrink: 0;
-    font-size: $text-lg;
-    color: $gold;
-  }
-
-  &__info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-
-    strong {
-      font-family: $font-accent;
-      font-size: $text-xs;
-      font-weight: $weight-bold;
-      color: $gold;
-      letter-spacing: 0.06em;
-    }
-
-    span {
-      font-size: 11px;
-      color: rgba($white, 0.65);
-      line-height: 1.4;
-    }
-  }
-
-  &__directions {
-    @include flex-center;
-    gap: 6px;
-    flex-shrink: 0;
-    padding: 7px 12px;
-    background: rgba($gold, 0.12);
-    border: 1px solid rgba($gold, 0.25);
-    border-radius: $radius-sm;
-    font-family: $font-accent;
-    font-size: 10px;
-    font-weight: $weight-bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: $gold;
-    text-decoration: none;
-    transition: all $transition-base;
-    white-space: nowrap;
-
-    i { font-size: 11px; }
-
-    &:hover {
-      background: $gold;
-      color: $charcoal;
-      border-color: $gold;
-    }
-  }
+  iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.25) contrast(1.05); }
 }
 
-// WhatsApp direct box
-.contact-wa-box {
+.map__pin {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: $radius-full;
+  background: $charcoal;
+  color: $white;
+  font-family: $font-accent;
+  font-size: 0.75rem;
+  font-weight: $weight-bold;
+  box-shadow: $shadow-lg;
+
+  &:hover { background: $gold; color: $charcoal; }
+}
+
+.info__card {
+  padding: 24px;
+  border-radius: $radius-xl;
+  background:
+    radial-gradient(circle at 100% 0%, rgba($gold, 0.18), transparent 55%),
+    linear-gradient(160deg, $navy, $charcoal);
+  color: $white;
+}
+
+.info__title { color: $white; font-size: 1.3rem; }
+
+.info__address {
+  margin-top: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba($white, 0.75);
+
+  strong { color: $white; }
+}
+
+.info__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba($white, 0.12);
+  font-size: 0.875rem;
+
+  li { display: flex; justify-content: space-between; gap: 12px; color: rgba($white, 0.75); }
+  li span:last-child { color: $gold-light; font-weight: $weight-semibold; }
+  li.is-closed span { color: rgba($white, 0.4); }
+}
+
+// ── FAQ ──────────────────────────────────────
+.faq {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: $off-white;
+}
+
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.faq__item {
+  border-radius: $radius-lg;
+  background: $white;
+  border: 1px solid #e6e8ee;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &.is-open { border-color: rgba($gold, 0.45); box-shadow: 0 16px 40px -24px rgba($navy, 0.35); }
+
+  h3 { font-size: inherit; }
+}
+
+.faq__q {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: $space-3;
-  padding: $space-4;
-  background: rgba($whatsapp-green, 0.06);
-  border: 1.5px solid rgba($whatsapp-green, 0.2);
-  border-radius: $radius-lg;
-  transition: all $transition-luxury;
+  gap: 20px;
+  width: 100%;
+  min-height: 64px;
+  padding: 16px 22px;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-family: $font-secondary;
+  font-size: 1rem;
+  font-weight: $weight-semibold;
+  color: $charcoal;
+}
 
-  &:hover {
-    border-color: rgba($whatsapp-green, 0.4);
-    background: rgba($whatsapp-green, 0.1);
+.faq__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: $off-white;
+  transition: background-color 0.3s ease, transform 0.4s var(--ease-out);
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 11px;
+    height: 2px;
+    border-radius: 2px;
+    background: $gold-dark;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s var(--ease-out);
   }
+  &::after { transform: translate(-50%, -50%) rotate(90deg); }
 
-  &__left {
-    display: flex;
-    align-items: center;
-    gap: $space-3;
-  }
+  .is-open & {
+    background: $gold;
+    transform: rotate(180deg);
 
-  &__icon {
-    width: 48px;
-    height: 48px;
-    border-radius: $radius-sm;
-    background: rgba($whatsapp-green, 0.12);
-    @include flex-center;
-    flex-shrink: 0;
-    font-size: $text-2xl;
-    color: $whatsapp-green;
-  }
-
-  &__title {
-    font-family: $font-accent;
-    font-size: $text-sm;
-    font-weight: $weight-bold;
-    color: $charcoal;
-    margin: 0;
-  }
-
-  &__text {
-    font-size: $text-xs;
-    color: #999;
-    margin: 0;
-  }
-
-  &__btn {
-    @include flex-center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: $whatsapp-green;
-    color: $white;
-    border: none;
-    border-radius: $radius-sm;
-    font-family: $font-accent;
-    font-size: $text-xs;
-    font-weight: $weight-bold;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all $transition-luxury;
-    white-space: nowrap;
-
-    i { font-size: 11px; }
-
-    &:hover {
-      background: $whatsapp-dark;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba($whatsapp-green, 0.4);
-    }
+    &::before, &::after { background: $charcoal; }
+    &::after { transform: translate(-50%, -50%) rotate(0deg); }
   }
 }
 
-// Business hours
-.contact-hours {
-  background: $white;
-  border-radius: $radius-lg;
-  padding: $space-4;
-  border: 1px solid $silver-light;
-  box-shadow: $shadow-sm;
+.faq__a {
+  padding: 0 22px 20px;
 
-  &__title {
-    display: flex;
-    align-items: center;
-    gap: $space-2;
-    font-family: $font-accent;
-    font-size: $text-xs;
-    font-weight: $weight-bold;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba($charcoal, 0.45);
-    margin: 0 0 $space-3;
-    padding-bottom: $space-2;
-    border-bottom: 1px solid $silver-light;
-
-    i { color: $gold; }
-  }
-
-  &__list {
-    display: flex;
-    flex-direction: column;
-    gap: $space-2;
-  }
-
-  &__row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba($silver-light, 0.6);
-
-    &:last-child { border-bottom: none; }
-
-    &--closed {
-      .contact-hours__day,
-      .contact-hours__time { color: rgba($charcoal, 0.35); }
-    }
-  }
-
-  &__day  { font-size: $text-sm; font-weight: $weight-medium; color: $charcoal; }
-  &__time { font-size: $text-sm; font-weight: $weight-semibold; color: $gold; }
-}
-
-// ── FAQ SECTION ───────────────────────────────
-.contact-faq {
-  background: $charcoal;
-}
-
-.faq-grid {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: $space-2;
-  margin-bottom: $space-8;
-}
-
-.faq-item {
-  background: rgba($white, 0.04);
-  border: 1px solid rgba($white, 0.08);
-  border-radius: $radius-lg;
-  overflow: hidden;
-  transition: all $transition-luxury;
-
-  &--open {
-    background: rgba($white, 0.07);
-    border-color: rgba($gold, 0.25);
-    box-shadow: 0 4px 24px rgba($gold, 0.06);
-
-    .faq-item__icon { background: rgba($gold, 0.15); }
-    .faq-item__plus  { display: none; }
-    .faq-item__minus { display: block; }
-  }
-
-  &__question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: $space-4;
-    width: 100%;
-    padding: $space-4 $space-5;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    transition: background $transition-base;
-
-    &:hover { background: rgba($white, 0.03); }
-
-    span {
-      font-family: $font-secondary;
-      font-size: $text-base;
-      font-weight: $weight-semibold;
-      color: $white;
-      line-height: 1.5;
-    }
-  }
-
-  &__icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba($white, 0.06);
-    @include flex-center;
-    flex-shrink: 0;
-    color: $gold;
-    font-size: $text-sm;
-    transition: all $transition-base;
-  }
-
-  &__plus  { display: block; }
-  &__minus { display: none; }
-
-  &__answer {
-    padding: 0 $space-5 $space-4;
-    animation: expandDown 0.3s ease;
-
-    p {
-      font-size: $text-sm;
-      color: rgba($white, 0.6);
-      line-height: 1.8;
-      margin: 0;
-    }
-  }
-}
-
-@keyframes expandDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-// FAQ footer CTA
-.faq-footer {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $space-3;
-
-  p {
-    font-size: $text-base;
-    color: rgba($white, 0.45);
-    margin: 0;
-  }
-
-  &__btn {
-    @include btn-base;
-    background: rgba($whatsapp-green, 0.12);
-    border: 1.5px solid rgba($whatsapp-green, 0.3);
-    color: $whatsapp-green;
-    padding: 13px 30px;
-    cursor: pointer;
-
-    &:hover {
-      background: $whatsapp-green;
-      color: $white;
-      border-color: $whatsapp-green;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba($whatsapp-green, 0.4);
-    }
-  }
+  p { color: $text-muted; max-width: 68ch; }
 }

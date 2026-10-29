@@ -1,211 +1,303 @@
 // ============================================
-// UTILITY CLASSES
+// SHARED UI BUILDING BLOCKS
 // ============================================
+
 @use './variables' as *;
 @use './mixins' as *;
-// --- BUTTONS ---
-.btn-gold {
-  @include btn-base;
-  @include gold-gradient;
-  color: $charcoal;
-  box-shadow: $shadow-gold;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-gold-lg;
-    color: $charcoal;
-    filter: brightness(1.1);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
+// ── LAYOUT ───────────────────────────────────
+.container-custom {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
 }
 
-.btn-outline-gold {
-  @include btn-base;
-  background: transparent;
-  border: 1.5px solid $gold;
-  color: $gold;
+.section {
+  position: relative;
+  padding-block: clamp(4rem, 9vw, 6.5rem);
 
-  &:hover {
+  &--light { background: $off-white; }
+  &--dark  { background: $charcoal; color: $white; }
+  &--navy  { background: linear-gradient(160deg, $navy 0%, $charcoal 100%); color: $white; }
+}
+
+// Old names kept so nothing breaks
+.section-wrapper { @include section-padding; position: relative; }
+.section-bg-light { background: $off-white; }
+.section-bg-dark  { background: $charcoal; color: $white; }
+.section-bg-navy  { background: $navy; color: $white; }
+
+// ── BUTTONS ──────────────────────────────────
+.btn {
+  @include btn-base;
+  position: relative;
+  min-height: 48px;
+  padding: 12px 26px;
+  border: 1.5px solid transparent;
+  font-size: 0.8125rem;
+  letter-spacing: 0.07em;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+
+  i { font-size: 1.05em; transition: transform 0.35s var(--ease-out); }
+
+  &:hover i.fa-arrow-right { transform: translateX(4px); }
+  &:active { transform: translateY(1px) scale(0.98); }
+
+  &:disabled, &[aria-disabled='true'] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  // Sheen sweep on hover — the one "luxury" flourish on buttons
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.7s var(--ease-out);
+  }
+  &:hover::after { transform: translateX(120%); }
+
+  &--sm { min-height: 40px; padding: 8px 16px; font-size: 0.75rem; }
+  &--lg { min-height: 56px; padding: 16px 34px; font-size: 0.875rem; }
+  &--block { width: 100%; }
+
+  &--gold {
     @include gold-gradient;
     color: $charcoal;
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: $shadow-gold;
+    box-shadow: 0 6px 20px rgba($gold, 0.28);
+
+    &:hover { color: $charcoal; transform: translateY(-2px); box-shadow: $shadow-gold-lg; }
   }
-}
 
-.btn-dark {
-  @include btn-base;
-  background: $charcoal;
-  color: $white;
+  &--dark {
+    background: $charcoal;
+    color: $white;
 
-  &:hover {
+    &:hover { background: $navy; color: $white; transform: translateY(-2px); box-shadow: $shadow-lg; }
+  }
+
+  &--outline {
+    background: transparent;
+    border-color: rgba($charcoal, 0.22);
+    color: $charcoal;
+
+    &:hover { border-color: $gold; color: $gold-dark; transform: translateY(-2px); }
+  }
+
+  &--outline-light {
+    background: rgba($white, 0.04);
+    border-color: rgba($white, 0.3);
+    color: $white;
+    backdrop-filter: blur(6px);
+
+    &:hover { border-color: $gold; color: $gold-light; transform: translateY(-2px); }
+  }
+
+  &--whatsapp {
+    background: $whatsapp-green;
+    color: #06381c;
+
+    &:hover { background: #1fbe5b; color: #04290f; transform: translateY(-2px); box-shadow: 0 10px 26px rgba($whatsapp-green, 0.38); }
+  }
+
+  &--email {
     background: $navy;
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
     color: $white;
+
+    &:hover { background: $navy-deep; color: $white; transform: translateY(-2px); box-shadow: 0 10px 26px rgba($navy, 0.35); }
   }
 }
 
-.btn-whatsapp {
-  @include btn-base;
-  background: $whatsapp-green;
-  color: $white;
+// Legacy button names → new system
+.btn-gold         { @extend .btn; @extend .btn--gold; }
+.btn-outline-gold { @extend .btn; @extend .btn--outline; }
+.btn-dark         { @extend .btn; @extend .btn--dark; }
+.btn-whatsapp     { @extend .btn; @extend .btn--whatsapp; }
 
-  i {
-    font-size: $text-base;
-  }
+// Round icon-only button
+.icon-btn {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid $silver-light;
+  background: $white;
+  color: $charcoal;
+  transition: all 0.25s ease;
 
-  &:hover {
-    background: $whatsapp-dark;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-    color: $white;
-  }
+  &:hover { border-color: $gold; color: $gold-dark; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 
-// --- SECTION WRAPPER ---
-.section-wrapper {
-  @include section-padding;
-  position: relative;
+// ── CHIPS ────────────────────────────────────
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: $radius-full;
+  font-family: $font-accent;
+  font-size: 0.6875rem;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.04em;
+  background: rgba($navy, 0.06);
+  color: $navy;
+  border: 1px solid rgba($navy, 0.1);
+  white-space: nowrap;
+
+  &--gold { background: $gold-subtle; color: $gold-dark; border-color: rgba($gold, 0.25); }
 }
 
-.section-bg-dark {
-  background: $charcoal;
-  color: $white;
-
-  .section-title { color: $white; }
-  p { color: $silver-light; }
-}
-
-.section-bg-navy {
-  background: $navy;
-  color: $white;
-
-  .section-title { color: $white; }
-  p { color: $silver-light; }
-}
-
-.section-bg-light {
-  background: $off-white;
-}
-
-// --- GOLD DIVIDER ---
+// ── GOLD DIVIDER ─────────────────────────────
 .gold-divider {
-  width: 60px;
+  width: 56px;
   height: 3px;
   @include gold-gradient;
   border-radius: $radius-full;
   margin: $space-3 0;
 
-  &.centered {
-    margin: $space-3 auto;
-  }
+  &.centered { margin-inline: auto; }
 }
 
-// --- SECTION HEADER BLOCK ---
-.section-header {
-  margin-bottom: $space-8;
+// ── INNER PAGE HERO (products, categories, about…) ──
+.page-hero {
+  position: relative;
+  padding: calc(#{$nav-h} + clamp(2.5rem, 6vw, 4.5rem)) 0 clamp(4rem, 8vw, 5.5rem);
+  background:
+    radial-gradient(ellipse 60% 80% at 85% 0%, rgba($gold, 0.12), transparent 60%),
+    radial-gradient(ellipse 50% 70% at 0% 100%, rgba($navy-deep, 0.9), transparent 70%),
+    linear-gradient(135deg, #0b0d1a 0%, $charcoal 40%, $navy 100%);
+  color: $white;
+  overflow: hidden;
+  isolation: isolate;
 
-  &.centered {
-    text-align: center;
+  @include respond-to('max-tablet') {
+    padding-top: calc(#{$nav-h-mobile} + 2rem);
+  }
 
-    .section-subtitle {
-      margin: 0 auto;
+  // Fine engineering-drawing grid
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba($white, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($white, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, #000 30%, transparent 100%);
+  }
+
+  // Curved bottom edge
+  &::after {
+    content: '';
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    bottom: -1px;
+    height: clamp(28px, 4vw, 56px);
+    background: var(--page-hero-next, #{$white});
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  }
+
+  &__title {
+    color: $white;
+    font-size: clamp(2.1rem, 5vw, 3.75rem);
+    font-weight: $weight-bold;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    max-width: 18ch;
+
+    em {
+      font-style: italic;
+      font-weight: $weight-semibold;
+      @include gold-text;
     }
   }
-}
 
-// --- OVERLAY ---
-.overlay-dark {
-  @include absolute-fill;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 10, 10, 0.85),
-    rgba(15, 52, 96, 0.7)
-  );
-  z-index: 1;
-}
-
-.overlay-navy {
-  @include absolute-fill;
-  background: linear-gradient(
-    to right,
-    rgba(22, 33, 62, 0.95) 40%,
-    rgba(22, 33, 62, 0.5)
-  );
-  z-index: 1;
-}
-
-// --- CONTENT ABOVE OVERLAY ---
-.above-overlay {
-  position: relative;
-  z-index: 2;
-}
-
-// --- GRID LAYOUTS ---
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: $space-4;
-
-  @include respond-to('mobile') {
-    grid-template-columns: 1fr;
-    gap: $space-3;
-  }
-
-  @include respond-to('tablet') {
-    grid-template-columns: repeat(2, 1fr);
+  &__subtitle {
+    margin-top: $space-3;
+    color: rgba($white, 0.72);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    max-width: 60ch;
   }
 }
 
-.industries-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: $space-4;
+// ── BREADCRUMB ───────────────────────────────
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-bottom: $space-4;
+  font-family: $font-accent;
+  font-size: 0.75rem;
+  font-weight: $weight-medium;
+  letter-spacing: 0.04em;
+  color: rgba($white, 0.5);
 
-  @include respond-to('mobile') {
-    grid-template-columns: repeat(2, 1fr);
-    gap: $space-2;
-  }
+  a { color: rgba($white, 0.65); &:hover { color: $gold-light; } }
+  i { font-size: 8px; opacity: 0.5; }
+  [aria-current] { color: $gold-light; }
 }
 
-// --- LOADING SKELETON ---
+// ── SKELETON SHIMMER ─────────────────────────
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    $silver-light 0%,
-    $off-white 50%,
-    $silver-light 100%
-  );
-  background-size: 1000px 100%;
-  animation: shimmer 2s infinite linear;
+  background: linear-gradient(90deg, $silver-light 0%, $off-white 50%, $silver-light 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
   border-radius: $radius-md;
 }
 
-// --- CUSTOM SCROLLBAR ---
-::-webkit-scrollbar {
-  width: 6px;
+// ── BOOT LOADER (before Angular starts) ──────
+.boot {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: $charcoal;
+  z-index: 9999;
 }
-
-::-webkit-scrollbar-track {
-  background: $light-gray;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $gold;
-  border-radius: $radius-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: $gold-dark;
-}
-
-// --- SELECTION COLOR ---
-::selection {
-  background: $gold-subtle;
+.boot__mark {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  @include gold-gradient;
   color: $charcoal;
+  font-family: $font-primary;
+  font-weight: $weight-black;
+  font-size: 1.75rem;
+  animation: float 1.6s ease-in-out infinite;
+}
+
+// ── SCROLLBAR (desktop) ──────────────────────
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: $off-white; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba($navy, 0.35);
+    border-radius: $radius-full;
+    border: 2px solid $off-white;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: $gold-dark; }
+}
+
+// Product pages show a fixed enquiry bar on phones — keep the
+// footer's last line clear of it.
+@include respond-to('max-tablet') {
+  .has-sticky-bar .footer__bottom { padding-bottom: calc(92px + env(safe-area-inset-bottom)) !important; }
 }

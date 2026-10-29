@@ -1,124 +1,92 @@
 // ============================================
 // SEO SERVICE
 // ============================================
-// Dynamically updates page title and meta tags
-// for every page. This is critical for Google ranking.
+// Each page calls seo.set({...}) once. This keeps the
+// <title>, meta description, canonical URL, social preview
+// tags and JSON-LD structured data in sync with the page.
 
-import { Injectable } from '@angular/core';
+import { DOCUMENT, Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+export interface SeoConfig {
+  title: string;              // page title (brand is appended)
+  description: string;
+  path: string;               // '/products/skf-oil-seals'
+  image?: string;             // absolute or site-relative
+  type?: 'website' | 'product' | 'article';
+  jsonLd?: object | object[]; // page-specific structured data
+  noindex?: boolean;
+}
+
+@Injectable({ providedIn: 'root' })
 export class SeoService {
 
-  private readonly seo = environment.seo;
-  private readonly company = environment.company;
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
+  private readonly doc = inject(DOCUMENT);
+  private readonly site = environment.seo.siteUrl;
+  private readonly brand = environment.company.name;
 
-  constructor(
-    private title: Title,
-    private meta: Meta
-  ) {}
+  set(config: SeoConfig): void {
+    const fullTitle = config.title.includes(this.brand) ? config.title : `${config.title} | ${this.brand}`;
+    const url = this.absolute(config.path);
+    const image = this.absolute(config.image ?? environment.seo.ogImage);
 
-  /**
-   * Update all SEO tags for a page
-   * Call this in ngOnInit() of each page component
-   */
-  updateSeo(config: {
-    title: string;
-    description: string;
-    keywords?: string;
-    ogImage?: string;
-    url?: string;
-  }): void {
-    // Set document title
-    const fullTitle = `${config.title} | ${this.company.name}`;
     this.title.setTitle(fullTitle);
+    this.meta.updateTag({ name: 'description', content: config.description });
+    this.meta.updateTag({ name: 'robots', content: config.noindex ? 'noindex, follow' : 'index, follow' });
 
-    // Update meta description
-    this.meta.updateTag({
-      name: 'description',
-      content: config.description
-    });
-
-    // Update keywords
-    if (config.keywords) {
-      this.meta.updateTag({
-        name: 'keywords',
-        content: config.keywords
-      });
-    }
-
-    // Update Open Graph tags (social media sharing)
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
     this.meta.updateTag({ property: 'og:description', content: config.description });
-    this.meta.updateTag({
-      property: 'og:image',
-      content: config.ogImage || this.seo.ogImage
-    });
-    if (config.url) {
-      this.meta.updateTag({ property: 'og:url', content: config.url });
-    }
+    this.meta.updateTag({ property: 'og:url', content: url });
+    this.meta.updateTag({ property: 'og:type', content: config.type === 'product' ? 'product' : 'website' });
+    this.meta.updateTag({ property: 'og:image', content: image });
 
-    // Update Twitter card tags
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
     this.meta.updateTag({ name: 'twitter:description', content: config.description });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
+
+    this.setCanonical(url);
+    this.setJsonLd(config.jsonLd);
   }
 
-  /** Set SEO for the Home page */
-  setHomeSeo(): void {
-    this.updateSeo({
-      title: 'Industrial Sealing Solutions Kolkata',
-      description: `${this.company.name} — Trusted supplier of Mechanical Seals, Gaskets, O Rings, PTFE Products and Industrial Sealing Solutions in Kolkata, West Bengal. Contact us for bulk enquiries.`,
-      keywords: this.seo.defaultKeywords,
-      url: this.seo.siteUrl
-    });
+  /** Breadcrumb structured data helper */
+  breadcrumb(items: { name: string; path: string }[]): object {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        item: this.absolute(item.path)
+      }))
+    };
   }
 
-  /** Set SEO for a product page */
-  setProductSeo(productName: string, description: string, slug: string): void {
-    this.updateSeo({
-      title: productName,
-      description: description,
-      keywords: `${productName.toLowerCase()}, industrial seals, kolkata, burhani seal centre`,
-      url: `${this.seo.siteUrl}/products/${slug}`
-    });
+  absolute(pathOrUrl: string): string {
+    if (/^https?:\/\//.test(pathOrUrl)) return pathOrUrl;
+    return `${this.site}/${pathOrUrl.replace(/^\/+/, '')}`.replace(/\/$/, '') || this.site;
   }
 
-  /** Set SEO for the Products listing page */
-  setProductsSeo(): void {
-    this.updateSeo({
-      title: 'Products — Mechanical Seals, Gaskets, O Rings',
-      description: 'Browse our complete range: Oil Seals, Hydraulic Seals, PU Coupling Spiders, Seal Kits, Pump Seals, O Ring Kits, SKF Ball Bearings and more. Burhani Seal Centre, Kolkata.',
-      url: `${this.seo.siteUrl}/products`
-    });
+  private setCanonical(url: string): void {
+    let link = this.doc.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) {
+      link = this.doc.createElement('link');
+      link.rel = 'canonical';
+      this.doc.head.appendChild(link);
+    }
+    link.href = url;
   }
 
-  /** Set SEO for the Industries page */
-  setIndustriesSeo(): void {
-    this.updateSeo({
-      title: 'Industries We Serve',
-      description: 'Burhani Seal Centre serves Chemical, Pharmaceutical, Food, Oil & Gas, Petrochemical, Water Treatment, Power, Textile, Cement, Steel and Paper industries.',
-      url: `${this.seo.siteUrl}/industries`
-    });
-  }
-
-  /** Set SEO for the About page */
-  setAboutSeo(): void {
-    this.updateSeo({
-      title: 'About Us — Burhani Seal Centre',
-      description: `Learn about Burhani Seal Centre, Kolkata's trusted industrial sealing solutions provider. Owner: ${this.company.owner}. Located at ${this.company.address.full}.`,
-      url: `${this.seo.siteUrl}/about`
-    });
-  }
-
-  /** Set SEO for the Contact page */
-  setContactSeo(): void {
-    this.updateSeo({
-      title: 'Contact Us',
-      description: `Contact Burhani Seal Centre in Kolkata. Address: ${this.company.address.full}. Phone: ${this.company.whatsappDisplay}. Get a quote for industrial sealing products.`,
-      url: `${this.seo.siteUrl}/contact`
-    });
+  private setJsonLd(data?: object | object[]): void {
+    this.doc.head.querySelectorAll('script[data-page-jsonld]').forEach(s => s.remove());
+    if (!data) return;
+    const script = this.doc.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-page-jsonld', '');
+    script.textContent = JSON.stringify(data);
+    this.doc.head.appendChild(script);
   }
 }

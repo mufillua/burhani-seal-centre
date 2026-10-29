@@ -1,0 +1,136 @@
+<app-hero />
+
+<!-- ── Brands & materials ribbon ── -->
+<section class="ribbon" aria-label="Brands and materials we stock">
+  <div class="ribbon__track">
+    @for (pass of [0, 1]; track pass) {
+      <ul class="ribbon__list" role="list" [attr.aria-hidden]="pass === 1 ? 'true' : null">
+        @for (item of ribbon; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    }
+  </div>
+</section>
+
+<!-- ── Categories ── -->
+<section class="section" id="categories">
+  <div class="container-custom">
+    <div class="split-head">
+      <app-section-header eyebrow="Our range" title="Browse by" accent="category"
+                          subtitle="Eight families of parts, each with sizes and specifications you can check before you enquire." />
+      <a class="btn btn--outline split-head__link" routerLink="/categories" appReveal="fade">
+        All categories <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <ul class="cat-grid" role="list">
+      @for (cat of categories; track cat.id; let i = $index) {
+        <li appReveal="up" [revealDelay]="(i % 4) * 80">
+          <a class="cat-tile" routerLink="/products" [queryParams]="{ category: cat.id }">
+            <span class="cat-tile__art"><app-category-art [type]="cat.art" /></span>
+            <span class="cat-tile__count">{{ cat.productCount }}</span>
+            <span class="cat-tile__name">{{ cat.name }}</span>
+            <span class="cat-tile__desc">{{ cat.description }}</span>
+            <span class="cat-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ── Featured products ── -->
+<app-featured />
+
+<!-- ── About + numbers ── -->
+<section class="about section section--navy">
+  <div class="about__glow" aria-hidden="true"></div>
+  <div class="container-custom about__grid">
+    <div class="about__media" appReveal="left">
+      <img src="assets/images/about/about-preview.webp" width="960" height="960" loading="lazy" decoding="async"
+           alt="Oil seals, O-rings and hydraulic seals on a workbench" />
+      <div class="about__badge">
+        <span class="about__badge-num"><span [appCountUp]="company.stats.years"></span>+</span>
+        <span class="about__badge-text">years serving<br>Kolkata's industry</span>
+      </div>
+    </div>
+
+    <div class="about__copy">
+      <app-section-header eyebrow="Burhani Seal Centre" title="A counter in Burra Bazar," accent="trusted across industries" [light]="true" />
+      <p appReveal="up">
+        Led by <strong>{{ company.owner }}</strong>, Burhani Seal Centre supplies oil seals, hydraulic seals,
+        seal kits, couplings and bearings to workshops, maintenance teams and plant buyers. We help you match
+        the right part to your machine — not just sell what's on the shelf.
+      </p>
+      <ul class="about__points" role="list">
+        @for (pt of ['Branded parts from SKF, IVR and J K Pioneer', 'Help identifying sizes from an old part or photo', 'GST invoice on every order']; track pt; let i = $index) {
+          <li appReveal="up" [revealDelay]="100 + i * 80"><i class="fa-solid fa-check" aria-hidden="true"></i>{{ pt }}</li>
+        }
+      </ul>
+      <a class="btn btn--gold" routerLink="/about" appReveal="up" [revealDelay]="320">
+        Our story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="container-custom">
+    <ul class="stats" role="list">
+      @for (s of stats; track s.label; let i = $index) {
+        <li class="stat" appReveal="up" [revealDelay]="i * 90">
+          <span class="stat__value"><span [appCountUp]="s.value"></span>{{ s.suffix }}</span>
+          <span class="stat__label">{{ s.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ── How enquiring works ── -->
+<section class="section steps-section">
+  <div class="container-custom">
+    <app-section-header eyebrow="How it works" title="From search to quote in" accent="three steps" [centered]="true" />
+    <div class="steps-wrap">
+    <span class="steps__line draw-line" appReveal [revealDelay]="200" aria-hidden="true"></span>
+    <ol class="steps" role="list">
+      @for (s of steps; track s.title; let i = $index) {
+        <li class="step" appReveal="up" [revealDelay]="i * 140">
+          <span class="step__num">{{ i + 1 }}</span>
+          <span class="step__icon"><i [class]="s.icon" aria-hidden="true"></i></span>
+          <h3 class="step__title">{{ s.title }}</h3>
+          <p class="step__text">{{ s.text }}</p>
+        </li>
+      }
+    </ol>
+    </div>
+    <div class="steps__cta" appReveal="up">
+      <a class="btn btn--dark btn--lg" routerLink="/products">Start with the catalogue</a>
+      <a class="btn btn--whatsapp btn--lg" [href]="enquiry.generalWhatsappHref" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Or just WhatsApp us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Industries ── -->
+<section class="section section--light industries">
+  <div class="container-custom">
+    <div class="split-head">
+      <app-section-header eyebrow="Who we supply" title="Industries" accent="we serve"
+                          subtitle="From chemical plants and power stations to textile mills and water works." />
+      <a class="btn btn--outline split-head__link" routerLink="/industries" appReveal="fade">
+        All industries <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+    <ul class="ind-list" role="list">
+      @for (ind of industries; track ind.id; let i = $index) {
+        <li appReveal="zoom" [revealDelay]="(i % 6) * 50">
+          <a class="ind-pill" routerLink="/industries" [fragment]="ind.id">
+            <i [class]="'fa-solid ' + ind.icon" aria-hidden="true"></i>
+            {{ ind.name }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

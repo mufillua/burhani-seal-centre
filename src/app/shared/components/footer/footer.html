@@ -1,193 +1,95 @@
-<!-- ============================================
-  FOOTER TEMPLATE
-  ============================================ -->
-
-<footer class="footer" role="contentinfo">
-
-  <!-- ── TOP GOLD LINE ── -->
-  <div class="footer__top-line" aria-hidden="true"></div>
-
-  <!-- ── MAIN FOOTER BODY ── -->
-  <div class="footer__body">
-    <div class="container-custom">
-      <div class="footer__grid">
-
-        <!-- ── COLUMN 1: Company Info ── -->
-        <div class="footer__col footer__col--brand">
-
-          <!-- Logo -->
-          <a class="footer__logo" routerLink="/" aria-label="Burhani Seal Centre Home">
-            <div class="footer__logo-icon">
-              <span>B</span>
-            </div>
-            <div class="footer__logo-text">
-              <span class="footer__logo-company">Burhani</span>
-              <span class="footer__logo-division">Seal Centre</span>
-            </div>
-          </a>
-
-          <!-- Tagline -->
-          <p class="footer__tagline">
-            Trusted Industrial Sealing Solutions delivering high-performance seals, gaskets, and industrial components across industries since decades.
-          </p>
-
-          <!-- Social Icons -->
-          <div class="footer__social" role="list" aria-label="Social media links">
-            @for (social of socialLinks; track trackByLabel($index, social)) {
-              <a class="footer__social-link"
-                 [href]="social.url"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 [attr.aria-label]="social.label"
-                 role="listitem">
-                <i [class]="social.icon" aria-hidden="true"></i>
-              </a>
-            }
-          </div>
-
-          <!-- ISO / Quality Badges -->
-          <div class="footer__badges">
-            <div class="footer__badge">
-              <i class="fa fa-certificate" aria-hidden="true"></i>
-              <span>Quality Assured</span>
-            </div>
-            <div class="footer__badge">
-              <i class="fa fa-shield-halved" aria-hidden="true"></i>
-              <span>Trusted Supplier</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ── COLUMN 2: Quick Links ── -->
-        <div class="footer__col">
-          <h3 class="footer__col-title">Quick Links</h3>
-          <div class="footer__col-divider" aria-hidden="true"></div>
-          <ul class="footer__links" role="list">
-            @for (link of quickLinks; track trackByPath($index, link)) {
-              <li role="listitem">
-                <a class="footer__link" [routerLink]="link.path">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  {{ link.label }}
-                </a>
-              </li>
-            }
-          </ul>
-        </div>
-
-        <!-- ── COLUMN 3: Products ── -->
-        <div class="footer__col">
-          <h3 class="footer__col-title">Products</h3>
-          <div class="footer__col-divider" aria-hidden="true"></div>
-          <ul class="footer__links" role="list">
-            @for (link of productLinks; track trackByPath($index, link)) {
-              <li role="listitem">
-                <a class="footer__link" [routerLink]="link.path">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                  {{ link.label }}
-                </a>
-              </li>
-            }
-          </ul>
-        </div>
-
-        <!-- ── COLUMN 4: Contact ── -->
-        <div class="footer__col footer__col--contact">
-          <h3 class="footer__col-title">Contact Us</h3>
-          <div class="footer__col-divider" aria-hidden="true"></div>
-
-          <ul class="footer__contact-list" role="list">
-
-            <!-- Address -->
-            <li class="footer__contact-item">
-              <div class="footer__contact-icon">
-                <i class="fa fa-location-dot" aria-hidden="true"></i>
-              </div>
-              <address class="footer__contact-text" style="font-style:normal;">
-                {{ company.name }}<br />
-                {{ company.address.line1 }},<br />
-                {{ company.address.line2 }},<br />
-                {{ company.address.city }} – {{ company.address.pincode }},<br />
-                {{ company.address.state }}, {{ company.address.country }}
-              </address>
-            </li>
-
-            <!-- Phone -->
-            <li class="footer__contact-item">
-              <div class="footer__contact-icon">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-              </div>
-              <a [href]="'tel:' + company.phone"
-                 class="footer__contact-text footer__contact-link">
-                {{ company.whatsappDisplay }}
-              </a>
-            </li>
-
-            <!-- WhatsApp -->
-            <li class="footer__contact-item">
-              <div class="footer__contact-icon footer__contact-icon--wa">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              </div>
-              <button class="footer__contact-text footer__contact-link footer__wa-btn"
-                      (click)="openWhatsApp()">
-                Chat on WhatsApp
-              </button>
-            </li>
-
-            <!-- Email -->
-            <li class="footer__contact-item">
-              <div class="footer__contact-icon">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-              </div>
-              <a [href]="'mailto:' + company.email"
-                 class="footer__contact-text footer__contact-link">
-                {{ company.email }}
-              </a>
-            </li>
-
-            <!-- Hours -->
-            <li class="footer__contact-item">
-              <div class="footer__contact-icon">
-                <i class="fa fa-clock" aria-hidden="true"></i>
-              </div>
-              <span class="footer__contact-text">
-                Mon – Sat: 10:00 AM – 6:00 PM<br />
-                <small>Sunday: Closed</small>
-              </span>
-            </li>
-
-          </ul>
-
-          <!-- WhatsApp CTA -->
-          <button class="footer__cta-wa" (click)="openWhatsApp()">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            Get Instant Quote on WhatsApp
-          </button>
-
-        </div>
-
-      </div><!-- /.footer__grid -->
+<footer class="footer">
+  <!-- Call-to-action band -->
+  <div class="footer__cta container-custom" appReveal="up">
+    <div>
+      <h2 class="footer__cta-title">Need a seal matched <em>today?</em></h2>
+      <p class="footer__cta-text">Send the part number, size or a photo. We reply with price and stock, usually the same day.</p>
     </div>
-  </div><!-- /.footer__body -->
-
-  <!-- ── FOOTER BOTTOM ── -->
-  <div class="footer__bottom">
-    <div class="container-custom">
-      <div class="footer__bottom-inner">
-
-        <p class="footer__copyright">
-          &copy; {{ currentYear }} <strong>{{ company.name }}</strong>.
-          All rights reserved.
-          Powered by <strong>Mufaddal Maimoon</strong>.
-        </p>
-
-        <p class="footer__made-with">
-          <i class="fa fa-location-dot" aria-hidden="true"></i>
-          Made with pride in Kolkata, India
-        </p>
-
-      </div>
+    <div class="footer__cta-actions">
+      <a class="btn btn--whatsapp btn--lg" [href]="enquiry.generalWhatsappHref" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp us
+      </a>
+      <a class="btn btn--outline-light btn--lg" [href]="enquiry.generalEmailHref">
+        <i class="fa-regular fa-envelope" aria-hidden="true"></i> Email us
+      </a>
     </div>
   </div>
 
+  <div class="footer__main container-custom">
+    <div class="footer__brand">
+      <a class="footer__logo" routerLink="/" aria-label="Burhani Seal Centre — home">
+        <span class="footer__mark" aria-hidden="true">B</span>
+        <span>
+          <span class="footer__name">Burhani</span>
+          <span class="footer__sub">Seal Centre</span>
+        </span>
+      </a>
+      <p class="footer__about">
+        Oil seals, hydraulic seals, seal kits, couplings and bearings for workshops,
+        plants and OEMs — from our counter in Burra Bazar, Kolkata.
+      </p>
+      @if (socials.length) {
+        <ul class="footer__social" role="list">
+          @for (s of socials; track s.label) {
+            <li>
+              <a [href]="s.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="s.label">
+                <i [class]="s.icon" aria-hidden="true"></i>
+              </a>
+            </li>
+          }
+        </ul>
+      }
+      <p class="footer__gst">GSTIN {{ company.gst }}</p>
+    </div>
+
+    <nav class="footer__col" aria-label="Categories">
+      <h3 class="footer__heading">Categories</h3>
+      <ul role="list">
+        @for (cat of categories; track cat.id) {
+          <li><a routerLink="/products" [queryParams]="{ category: cat.id }">{{ cat.name }}</a></li>
+        }
+      </ul>
+    </nav>
+
+    <nav class="footer__col" aria-label="Company">
+      <h3 class="footer__heading">Company</h3>
+      <ul role="list">
+        @for (p of pages; track p.path) {
+          <li><a [routerLink]="p.path">{{ p.label }}</a></li>
+        }
+      </ul>
+    </nav>
+
+    <div class="footer__col footer__contact">
+      <h3 class="footer__heading">Visit or call</h3>
+      <address>
+        <a [href]="mapsUrl" target="_blank" rel="noopener" class="footer__line">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <span>{{ company.address.line1 }},<br>{{ company.address.line2 }}, {{ company.address.city }} – {{ company.address.pincode }}</span>
+        </a>
+        <a [href]="enquiry.telHref" class="footer__line">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span>{{ company.phoneDisplay }}</span>
+        </a>
+        <a [href]="'mailto:' + company.email" class="footer__line">
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+          <span>{{ company.email }}</span>
+        </a>
+      </address>
+      <ul class="footer__hours" role="list">
+        @for (h of company.hours; track h.days) {
+          <li [class.is-closed]="!h.open"><span>{{ h.days }}</span><span>{{ h.time }}</span></li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container-custom footer__bottom-inner">
+      <p>&copy; {{ year }} {{ company.name }}. All rights reserved. Powered by <strong>Mufaddal Maimoon</strong>.</p>
+      <button type="button" class="footer__top" (click)="scrollTop()">
+        Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
 </footer>

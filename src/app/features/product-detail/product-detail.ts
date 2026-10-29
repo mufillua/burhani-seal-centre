@@ -1,157 +1,174 @@
 // ============================================
-// PRODUCT DETAIL PAGE COMPONENT
+// PRODUCT DETAIL
 // ============================================
-// Displays full product information for a
-// single product based on the URL slug.
-// URL format: /products/:slug
+// Photo, key specs and an enquiry box. Visitors pick a
+// quantity, optionally add a note, then send the enquiry
+// on WhatsApp or by email — the message is pre-filled with
+// the product name, quantity and a link back to this page.
 
 import {
+  ChangeDetectionStrategy,
   Component,
-  OnInit,
-  OnDestroy,
-  signal
+  DOCUMENT,
+  DestroyRef,
+  ElementRef,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, ActivatedRoute, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { SeoService } from '../../services/seo.service';
-import { WhatsappService } from '../../services/whatsapp.service';
-import { Product } from '../../models/product.model';
+import { EnquiryService } from '../../services/enquiry.service';
+import { environment } from '../../../environments/environment';
+import { ProductImageComponent } from '../../shared/components/product-image/product-image';
 import { ProductCardComponent } from '../../shared/components/product-card/product-card';
-import { Subscription } from 'rxjs';
+import { CategoryArtComponent } from '../../shared/components/category-art/category-art';
+import { SectionHeaderComponent } from '../../shared/components/section-header/section-header';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
 
-interface EnquiryForm {
-  name: string;
-  mobile: string;
-  email: string;
-  company: string;
-  message: string;
-}
+type Tab = 'overview' | 'specs' | 'applications';
 
 @Component({
   selector: 'app-product-detail',
-  standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule, ProductCardComponent],
+  imports: [
+    RouterLink, ProductImageComponent, ProductCardComponent, CategoryArtComponent,
+    SectionHeaderComponent, RevealDirective
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.scss'
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
+export class ProductDetailComponent {
+  private readonly products = inject(ProductService);
+  private readonly seo = inject(SeoService);
+  protected readonly enquiry = inject(EnquiryService);
+  protected readonly company = environment.company;
 
-  product      = signal<Product | null>(null);
-  relatedProducts: Product[] = [];
-  activeTab    = signal<'overview' | 'specs' | 'applications'>('overview');
-  isSubmitting = signal(false);
-  isSubmitted  = signal(false);
-  imageError   = signal(false);
+  private readonly slug = toSignal(inject(ActivatedRoute).paramMap.pipe(map(p => p.get('slug') ?? '')), { initialValue: '' });
 
-  form: EnquiryForm = {
-    name: '', mobile: '', email: '', company: '', message: ''
-  };
+  protected readonly product = computed(() => this.products.getProductBySlug(this.slug()));
+  protected readonly category = computed(() => this.products.getCategoryById(this.product()?.categoryId));
+  protected readonly related = computed(() => {
+    const p = this.product();
+    return p ? this.products.getRelatedProducts(p, 4) : [];
+  });
+  protected readonly keySpecs = computed(() => this.product()?.specifications.slice(0, 4) ?? []);
+  protected readonly paragraphs = computed(() =>
+    (this.product()?.fullDescription ?? '').split(/\n\n+/).map(s => s.trim()).filter(Boolean));
 
-  private routeSub: Subscription | null = null;
+  // ── Enquiry box state (resets when the product changes) ──
+  protected readonly quantity = linkedSignal<string, number>({ source: this.slug, computation: () => 10 });
+  protected readonly unit = linkedSignal<string, string>({ source: this.slug, computation: () => 'pcs' });
+  protected readonly note = linkedSignal<string, string>({ source: this.slug, computation: () => '' });
+  protected readonly showNote = linkedSignal<string, boolean>({ source: this.slug, computation: () => false });
+  protected readonly tab = linkedSignal<string, Tab>({ source: this.slug, computation: () => 'overview' });
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private productService: ProductService,
-    private seoService: SeoService,
-    private whatsappService: WhatsappService
-  ) {}
+  private readonly details = computed(() => ({
+    quantity: this.quantity() > 0 ? `${this.quantity()} ${this.unit()}` : null,
+    message: this.note()
+  }));
+  protected readonly whatsappHref = computed(() => {
+    const p = this.product();
+    return p ? this.enquiry.productWhatsappHref(p, this.details()) : '';
+  });
+  protected readonly emailHref = computed(() => {
+    const p = this.product();
+    return p ? this.enquiry.productEmailHref(p, this.details()) : '';
+  });
 
-  ngOnInit(): void {
-    // Subscribe to route param changes
-    // This fires when user navigates between products
-    this.routeSub = this.route.params.subscribe(params => {
-      const slug = params['slug'];
-      this.loadProduct(slug);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  // ── Image zoom (desktop, photos only) ────
+  protected readonly zoom = signal<{ x: number; y: number } | null>(null);
+  private readonly tabsEl = viewChild<ElementRef<HTMLElement>>('tablist');
+
+  protected readonly tabs: { id: Tab; label: string; icon: string }[] = [
+    { id: 'overview', label: 'Overview', icon: 'fa-regular fa-file-lines' },
+    { id: 'specs', label: 'Specifications', icon: 'fa-solid fa-ruler-combined' },
+    { id: 'applications', label: 'Applications', icon: 'fa-solid fa-industry' }
+  ];
+
+  constructor() {
+    // Leave room under the footer for the phone sticky bar
+    const body = inject(DOCUMENT).body;
+    body.classList.add('has-sticky-bar');
+    inject(DestroyRef).onDestroy(() => body.classList.remove('has-sticky-bar'));
+
+    effect(() => {
+      const p = this.product();
+      const slug = this.slug();
+      if (!slug) return;
+      if (!p) {
+        this.seo.set({
+          title: 'Product not found',
+          description: 'This product is not in our online catalogue. Browse all products or ask us on WhatsApp.',
+          path: `/products/${slug}`,
+          noindex: true
+        });
+        return;
+      }
+      const brand = p.specifications.find(s => /^brand$/i.test(s.label))?.value;
+      this.seo.set({
+        title: p.metaTitle?.replace(/\s*\|.*$/, '') || `${p.name} — ${p.categoryName}`,
+        description: p.metaDescription || `${p.shortDescription} Enquire on WhatsApp or email — Burhani Seal Centre, Kolkata.`,
+        path: `/products/${p.slug}`,
+        image: p.imageUrl || undefined,
+        type: 'product',
+        jsonLd: [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: p.name,
+            sku: p.id,
+            description: p.shortDescription,
+            category: p.categoryName,
+            ...(p.imageUrl ? { image: this.seo.absolute(p.imageUrl) } : {}),
+            ...(brand ? { brand: { '@type': 'Brand', name: brand } } : {}),
+            additionalProperty: p.specifications.map(s => ({ '@type': 'PropertyValue', name: s.label, value: s.value }))
+          },
+          this.seo.breadcrumb([
+            { name: 'Home', path: '/' },
+            { name: 'Products', path: '/products' },
+            { name: p.categoryName, path: `/products?category=${p.categoryId}` },
+            { name: p.name, path: `/products/${p.slug}` }
+          ])
+        ]
+      });
     });
   }
 
-  ngOnDestroy(): void {
-    this.routeSub?.unsubscribe();
+  protected changeQty(delta: number): void {
+    this.quantity.update(q => Math.min(99999, Math.max(1, (q || 0) + delta)));
   }
 
-  private loadProduct(slug: string): void {
-    const found = this.productService.getProductBySlug(slug);
-
-    if (!found) {
-      // Product not found → redirect to products page
-      this.router.navigate(['/products']);
-      return;
-    }
-
-    this.product.set(found);
-    this.imageError.set(false);
-    this.activeTab.set('overview');
-
-    // Load related products from same category
-    this.relatedProducts = this.productService
-      .getRelatedProducts(found.id, found.categoryId, 3);
-
-    // Update SEO for this product page
-    this.seoService.setProductSeo(
-      found.name,
-      found.metaDescription || found.shortDescription,
-      found.slug
-    );
-
-    // Pre-fill the enquiry message
-    this.form.message = `I am interested in ${found.name}. Please share product details and pricing.`;
+  protected setQty(value: string): void {
+    const n = parseInt(value.replace(/\D/g, ''), 10);
+    this.quantity.set(Number.isFinite(n) ? Math.min(99999, n) : 0);
   }
 
-  setTab(tab: 'overview' | 'specs' | 'applications'): void {
-    this.activeTab.set(tab);
+  protected selectTab(tab: Tab, focus = false): void {
+    this.tab.set(tab);
+    if (focus) this.tabsEl()?.nativeElement.querySelector<HTMLElement>(`#tab-${tab}`)?.focus();
   }
 
-  openWhatsApp(): void {
-    const p = this.product();
-    if (!p) return;
-    this.whatsappService.openProductEnquiry(p.name, p.whatsappMessage);
+  /** Arrow keys move between tabs (WAI-ARIA tabs pattern) */
+  protected onTabKey(event: KeyboardEvent): void {
+    const ids = this.tabs.map(t => t.id);
+    const i = ids.indexOf(this.tab());
+    if (event.key === 'ArrowRight') { event.preventDefault(); this.selectTab(ids[(i + 1) % ids.length], true); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); this.selectTab(ids[(i - 1 + ids.length) % ids.length], true); }
   }
 
-  onImageError(): void {
-    this.imageError.set(true);
-  }
-
-  // Form submission → sends via WhatsApp
-  onSubmitEnquiry(): void {
-    const p = this.product();
-    if (!p || !this.form.name || !this.form.mobile) return;
-
-    this.isSubmitting.set(true);
-
-    // Build WhatsApp message from form data
-    const message =
-      `Hello Burhani Seal Centre! 👋\n\n` +
-      `*Product Enquiry*\n` +
-      `Product: *${p.name}*\n\n` +
-      `*Contact Details*\n` +
-      `Name: ${this.form.name}\n` +
-      `Mobile: ${this.form.mobile}\n` +
-      `Email: ${this.form.email || 'Not provided'}\n` +
-      `Company: ${this.form.company || 'Not provided'}\n\n` +
-      `*Message:*\n${this.form.message}\n\n` +
-      `Thank you.`;
-
-    setTimeout(() => {
-      this.isSubmitting.set(false);
-      this.isSubmitted.set(true);
-      this.whatsappService.openProductEnquiry(p.name, message);
-    }, 600);
-  }
-
-  resetForm(): void {
-    const p = this.product();
-    this.form = {
-      name: '', mobile: '', email: '', company: '',
-      message: p ? `I am interested in ${p.name}. Please share product details and pricing.` : ''
-    };
-    this.isSubmitted.set(false);
-  }
-
-  trackByLabel(_i: number, item: { label?: string; text?: string }): string {
-    return item.label || item.text || '';
+  protected onZoomMove(event: MouseEvent): void {
+    if (!this.product()?.imageUrl) return;
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    this.zoom.set({
+      x: ((event.clientX - rect.left) / rect.width) * 100,
+      y: ((event.clientY - rect.top) / rect.height) * 100
+    });
   }
 }

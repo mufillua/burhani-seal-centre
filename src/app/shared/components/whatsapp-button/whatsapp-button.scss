@@ -1,0 +1,75 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.fab {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: $whatsapp-green;
+  color: $white;
+  font-size: 30px;
+  box-shadow: 0 10px 30px rgba($whatsapp-green, 0.45), 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.4) translateY(30px);
+  pointer-events: none;
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s var(--ease-spring),
+    background-color 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  &:hover { background: #1fbe5b; color: $white; }
+
+  @include respond-to('max-tablet') {
+    width: 54px;
+    height: 54px;
+    font-size: 27px;
+
+    &--hide-mobile { opacity: 0; transform: scale(0.4); pointer-events: none; }
+  }
+
+  i { position: relative; z-index: 1; }
+}
+
+.fab__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba($whatsapp-green, 0.45);
+  animation: pulseRing 2.6s ease-out infinite;
+
+  &--late { animation-delay: 1.3s; }
+}
+
+.fab__label {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  padding: 8px 14px;
+  border-radius: $radius-full;
+  background: $charcoal;
+  color: $white;
+  font-family: $font-accent;
+  font-size: 0.75rem;
+  font-weight: $weight-semibold;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(8px, -50%);
+  transition: all 0.3s var(--ease-out);
+  pointer-events: none;
+
+  .fab:hover &, .fab:focus-visible & { opacity: 1; transform: translate(0, -50%); }
+
+  @media (hover: none) { display: none; }
+}

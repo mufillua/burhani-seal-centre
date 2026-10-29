@@ -1,131 +1,111 @@
 // ============================================
-// GLOBAL CSS ANIMATIONS
+// MOTION SYSTEM
 // ============================================
-// These are CSS-only animations (no Angular needed)
-// Used for loading states, simple effects
+// 1. Scroll reveals  — [appReveal] directive adds .is-revealed
+// 2. Enter/leave     — classes used with Angular's animate.enter
+// 3. Page changes    — View Transitions API (enabled in router)
+// 4. Reduced motion  — everything collapses to a quick fade
+
 @use './variables' as *;
-@use './mixins' as *;
-// --- FADE IN ---
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+
+:root {
+  --ease-out: #{$ease-out-expo};
+  --ease-spring: #{$ease-spring};
+  --dur-reveal: 0.9s;
 }
 
-// --- FADE IN UP ---
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+// ── 1. SCROLL REVEAL ─────────────────────────
+// Elements start hidden only once JS has marked the page
+// as ready (html.reveal-ready) — so content never stays
+// invisible if scripts fail.
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out),
+    filter var(--dur-reveal) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
 
-// --- FADE IN DOWN ---
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.reveal-ready [data-reveal='up']    { transform: translate3d(0, 36px, 0); }
+.reveal-ready [data-reveal='down']  { transform: translate3d(0, -24px, 0); }
+.reveal-ready [data-reveal='left']  { transform: translate3d(-48px, 0, 0); }
+.reveal-ready [data-reveal='right'] { transform: translate3d(48px, 0, 0); }
+.reveal-ready [data-reveal='zoom']  { transform: scale(0.92); }
+.reveal-ready [data-reveal='blur']  { filter: blur(12px); transform: translate3d(0, 16px, 0); }
+.reveal-ready [data-reveal='fade']  { transform: none; }
+
+.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  will-change: auto;
 }
 
-// --- SLIDE IN LEFT ---
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-60px);
+// Gold line that draws itself when revealed
+.reveal-ready .draw-line[data-reveal] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.reveal-ready .draw-line[data-reveal].is-revealed { transform: scaleX(1); }
+
+// ── 2. ENTER / LEAVE (animate.enter="...") ───
+@keyframes fadeIn       { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut      { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeInUp     { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
+@keyframes fadeInDown   { from { opacity: 0; transform: translate3d(0, -12px, 0); } to { opacity: 1; transform: none; } }
+@keyframes fadeOutUp    { from { opacity: 1; transform: none; } to { opacity: 0; transform: translate3d(0, -8px, 0); } }
+@keyframes scaleIn      { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
+@keyframes slideInRight { from { transform: translate3d(100%, 0, 0); } to { transform: none; } }
+@keyframes slideOutRight{ from { transform: none; } to { transform: translate3d(100%, 0, 0); } }
+@keyframes float        { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes spin         { to { transform: rotate(360deg); } }
+@keyframes shimmer      { from { background-position: -200% 0; } to { background-position: 200% 0; } }
+@keyframes marquee      { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+// Entrances that use the individual `scale` / `translate` properties,
+// so they can run alongside transform-based loops (float, spin, tilt)
+@keyframes popIn        { from { opacity: 0; scale: 0.6; } to { opacity: 1; scale: 1; } }
+@keyframes riseIn       { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes pulseRing    { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(1.9); opacity: 0; } }
+
+.anim-fade-in    { animation: fadeIn 0.35s var(--ease-out) both; }
+.anim-fade-out   { animation: fadeOut 0.25s ease both; }
+.anim-drop-in    { animation: fadeInDown 0.32s var(--ease-out) both; }
+.anim-drop-out   { animation: fadeOutUp 0.2s ease both; }
+.anim-scale-in   { animation: scaleIn 0.4s var(--ease-out) both; }
+.anim-drawer-in  { animation: slideInRight 0.45s var(--ease-out) both; }
+.anim-drawer-out { animation: slideOutRight 0.3s cubic-bezier(0.7, 0, 0.84, 0) both; }
+
+// Product grid cards — staggered by their position in the grid
+.anim-card-in {
+  animation: fadeInUp 0.6s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+// ── 3. PAGE TRANSITIONS (View Transitions API) ──
+::view-transition-old(root) {
+  animation: 0.22s ease both fadeOut;
+}
+::view-transition-new(root) {
+  animation: 0.38s var(--ease-out) both fadeIn;
+}
+
+// ── 4. REDUCED MOTION ────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  .reveal-ready [data-reveal] {
+    transform: none !important;
+    filter: none !important;
   }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
 }
-
-// --- SLIDE IN RIGHT ---
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-// --- SCALE IN ---
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-// --- SHIMMER (loading skeleton) ---
-@keyframes shimmer {
-  0%   { background-position: -1000px 0; }
-  100% { background-position: 1000px 0; }
-}
-
-// --- FLOAT (gentle up and down) ---
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
-}
-
-// --- PULSE GOLD ---
-@keyframes pulseGold {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 16px rgba(201, 168, 76, 0);
-  }
-}
-
-// --- ROTATE ---
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-// --- GOLD LINE EXPAND ---
-@keyframes expandLine {
-  from { width: 0; }
-  to   { width: 60px; }
-}
-
-// --- COUNTER NUMBER ROLL ---
-@keyframes countUp {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
-}
-
-// Utility animation classes
-.animate-fade-in     { animation: fadeIn 0.6s ease forwards; }
-.animate-fade-in-up  { animation: fadeInUp 0.8s ease forwards; }
-.animate-slide-left  { animation: slideInLeft 0.8s ease forwards; }
-.animate-slide-right { animation: slideInRight 0.8s ease forwards; }
-.animate-scale-in    { animation: scaleIn 0.6s ease forwards; }
-.animate-float       { animation: float 3s ease-in-out infinite; }
-.animate-pulse-gold  { animation: pulseGold 2s ease infinite; }
-
-// Delay utilities
-.delay-100  { animation-delay: 0.1s; }
-.delay-200  { animation-delay: 0.2s; }
-.delay-300  { animation-delay: 0.3s; }
-.delay-400  { animation-delay: 0.4s; }
-.delay-500  { animation-delay: 0.5s; }
-.delay-600  { animation-delay: 0.6s; }
-.delay-700  { animation-delay: 0.7s; }
-.delay-800  { animation-delay: 0.8s; }

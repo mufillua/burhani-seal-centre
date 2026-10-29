@@ -1,453 +1,218 @@
-<!-- ============================================
-  CONTACT PAGE
-  ============================================ -->
+<section class="page-hero">
+  <div class="container-custom">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/">Home</a>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      <span aria-current="page">Get a quote</span>
+    </nav>
+    <h1 class="page-hero__title">Get a <em>quote</em></h1>
+    <p class="page-hero__subtitle">
+      Tell us the part and quantity. Send it on WhatsApp for the fastest reply, or by email if you need it on record.
+    </p>
 
-<div class="contact-page">
+    <ul class="quick" role="list">
+      <li>
+        <a class="quick__item" [href]="enquiry.telHref">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span><small>Call</small>{{ company.phoneDisplay }}</span>
+        </a>
+      </li>
+      <li>
+        <a class="quick__item quick__item--wa" [href]="enquiry.generalWhatsappHref" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <span><small>WhatsApp</small>Chat now</span>
+        </a>
+      </li>
+      <li>
+        <a class="quick__item" [href]="enquiry.generalEmailHref">
+          <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+          <span><small>Email</small>{{ company.email }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
 
-  <!-- ══════════════════════════════════════════
-    SECTION 1: HERO
-  ══════════════════════════════════════════ -->
-  <section class="contact-hero" aria-label="Contact page header">
+<section class="quote">
+  <div class="container-custom quote__grid">
 
-    <div class="contact-hero__bg" aria-hidden="true">
-      <div class="contact-hero__gradient"></div>
-      <div class="contact-hero__pattern"></div>
-      <div class="contact-hero__glow"></div>
-    </div>
+    <!-- ── FORM ── -->
+    <div class="quote__form-col" appReveal="up">
+      @if (!sent()) {
+        <form #formEl class="form" novalidate (submit)="$event.preventDefault(); send('whatsapp')">
+          <h2 class="form__title">Request for quotation</h2>
+          <p class="form__intro">Fields marked <span class="req">*</span> are required.</p>
 
-    <div class="container-custom contact-hero__container">
-
-      <nav class="contact-hero__breadcrumb" aria-label="Breadcrumb">
-        <a routerLink="/">Home</a>
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        <span>Contact Us</span>
-      </nav>
-
-      <div class="contact-hero__content">
-
-        <span class="contact-hero__label">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-          Get In Touch
-        </span>
-
-        <h1 class="contact-hero__title">
-          Let's Discuss Your<br>
-          <span class="contact-hero__title-gold">Sealing Requirements</span>
-        </h1>
-
-        <div class="contact-hero__divider" aria-hidden="true"></div>
-
-        <p class="contact-hero__subtitle">
-          Our team is ready to help you find the right sealing solution. Whether you need a quotation, technical guidance, or just want to learn more — we're here.
-        </p>
-
-        <!-- Quick contact strip -->
-        <div class="contact-hero__strip">
-          <a [href]="'tel:' + company.phone" class="contact-hero__strip-item">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-            <span>{{ company.whatsappDisplay }}</span>
-          </a>
-          <div class="contact-hero__strip-sep" aria-hidden="true"></div>
-          <button class="contact-hero__strip-item" (click)="openWhatsApp()">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            <span>Chat on WhatsApp</span>
-          </button>
-          <div class="contact-hero__strip-sep" aria-hidden="true"></div>
-          <a [href]="'mailto:' + company.email" class="contact-hero__strip-item">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-            <span>{{ company.email }}</span>
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="contact-hero__wave" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="white"/>
-      </svg>
-    </div>
-
-  </section>
-
-  <!-- ══════════════════════════════════════════
-    SECTION 2: CONTACT CARDS
-  ══════════════════════════════════════════ -->
-  <section class="contact-cards-section" aria-label="Contact information">
-    <div class="container-custom">
-      <div class="contact-cards-grid">
-
-        @for (card of contactCards; track trackByTitle($index, card)) {
-          <div class="contact-info-card"
-               [class.contact-info-card--green]="card.color === 'green'">
-
-            <div class="contact-info-card__icon-wrap" aria-hidden="true">
-              <i [class]="(card.icon.startsWith('fab') ? card.icon : 'fa ' + card.icon) + ' contact-info-card__icon'"></i>
+          @if (showSummary() && errorCount()) {
+            <div class="form__alert" role="alert" animate.enter="anim-drop-in">
+              <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+              Fix {{ errorCount() }} {{ errorCount() === 1 ? 'field' : 'fields' }} below, then send again.
             </div>
-
-            <h3 class="contact-info-card__title">{{ card.title }}</h3>
-
-            <div class="contact-info-card__lines">
-              @for (line of card.lines; track $index) {
-                <p>{{ line }}</p>
-              }
-            </div>
-
-            @if (card.color === 'green') {
-              <button class="contact-info-card__action contact-info-card__action--wa"
-                      (click)="openWhatsApp()">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                Chat Now
-              </button>
-            }
-
-            @if (card.action) {
-              <a class="contact-info-card__action"
-                 [href]="card.action.url"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                <i [class]="'fa ' + card.action.icon" aria-hidden="true"></i>
-                {{ card.action.label }}
-              </a>
-            }
-
-          </div>
-        }
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-    SECTION 3: CONTACT FORM + MAP
-  ══════════════════════════════════════════ -->
-  <section class="contact-main section-wrapper section-bg-light"
-           aria-label="Contact form and location">
-
-    <div class="container-custom">
-      <div class="contact-main__grid">
-
-        <!-- ── LEFT: CONTACT FORM ── -->
-        <div class="contact-form-col">
-
-          <app-section-header
-            label="Send a Message"
-            title="We'd Love to <em>Hear From You</em>"
-            subtitle="Fill in the form below and we'll respond within 24 hours. Prefer instant communication? Use WhatsApp.">
-          </app-section-header>
-
-          @if (!isSubmitted()) {
-            <form class="cform"
-                  (ngSubmit)="onSubmit()"
-                  #contactForm="ngForm"
-                  novalidate>
-
-              <!-- Error banner -->
-              @if (formError()) {
-                <div class="cform__error-banner" role="alert">
-                  <i class="fa fa-circle-exclamation" aria-hidden="true"></i>
-                  {{ formError() }}
-                </div>
-              }
-
-              <!-- Row 1: Name + Mobile -->
-              <div class="cform__row">
-                <div class="cform__field">
-                  <label class="cform__label" for="c-name">
-                    Full Name <span class="cform__req">*</span>
-                  </label>
-                  <div class="cform__input-wrap">
-                    <i class="fa fa-user cform__input-icon" aria-hidden="true"></i>
-                    <input class="cform__input"
-                           id="c-name"
-                           type="text"
-                           [(ngModel)]="form.name"
-                           name="name"
-                           placeholder="Your full name"
-                           required
-                           #nameF="ngModel" />
-                  </div>
-                  @if (nameF.invalid && nameF.touched) {
-                    <span class="cform__field-error">Name is required</span>
-                  }
-                </div>
-
-                <div class="cform__field">
-                  <label class="cform__label" for="c-mobile">
-                    Mobile Number <span class="cform__req">*</span>
-                  </label>
-                  <div class="cform__input-wrap">
-                    <i class="fa fa-phone cform__input-icon" aria-hidden="true"></i>
-                    <input class="cform__input"
-                           id="c-mobile"
-                           type="tel"
-                           [(ngModel)]="form.mobile"
-                           name="mobile"
-                           placeholder="+91 XXXXX XXXXX"
-                           required
-                           #mobileF="ngModel" />
-                  </div>
-                  @if (mobileF.invalid && mobileF.touched) {
-                    <span class="cform__field-error">Mobile is required</span>
-                  }
-                </div>
-              </div>
-
-              <!-- Row 2: Email + Company -->
-              <div class="cform__row">
-                <div class="cform__field">
-                  <label class="cform__label" for="c-email">Email Address</label>
-                  <div class="cform__input-wrap">
-                    <i class="fa fa-envelope cform__input-icon" aria-hidden="true"></i>
-                    <input class="cform__input"
-                           id="c-email"
-                           type="email"
-                           [(ngModel)]="form.email"
-                           name="email"
-                           placeholder="you@company.com" />
-                  </div>
-                </div>
-
-                <div class="cform__field">
-                  <label class="cform__label" for="c-company">Company Name</label>
-                  <div class="cform__input-wrap">
-                    <i class="fa fa-building cform__input-icon" aria-hidden="true"></i>
-                    <input class="cform__input"
-                           id="c-company"
-                           type="text"
-                           [(ngModel)]="form.company"
-                           name="company"
-                           placeholder="Your company" />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Row 3: Subject (full width) -->
-              <div class="cform__field cform__field--full">
-                <label class="cform__label" for="c-subject">Subject</label>
-                <div class="cform__input-wrap">
-                  <i class="fa fa-tag cform__input-icon" aria-hidden="true"></i>
-                  <select class="cform__input cform__select"
-                          id="c-subject"
-                          [(ngModel)]="form.subject"
-                          name="subject">
-                    <option value="" disabled>Select a subject...</option>
-                    @for (opt of subjectOptions; track opt) {
-                      <option [value]="opt">{{ opt }}</option>
-                    }
-                  </select>
-                </div>
-              </div>
-
-              <!-- Row 4: Message (full width) -->
-              <div class="cform__field cform__field--full">
-                <label class="cform__label" for="c-message">
-                  Message <span class="cform__req">*</span>
-                </label>
-                <textarea class="cform__input cform__textarea"
-                          id="c-message"
-                          [(ngModel)]="form.message"
-                          name="message"
-                          rows="5"
-                          placeholder="Tell us about your requirements — product type, quantity, application, operating conditions, etc."
-                          required
-                          #msgF="ngModel"></textarea>
-                @if (msgF.invalid && msgF.touched) {
-                  <span class="cform__field-error">Message is required</span>
-                }
-              </div>
-
-              <!-- Submit button -->
-              <button type="submit"
-                      class="cform__submit"
-                      [disabled]="isSubmitting()">
-                @if (isSubmitting()) {
-                  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                  Processing...
-                } @else {
-                  <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                  Send Message via WhatsApp
-                }
-              </button>
-
-              <p class="cform__note">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                Your message will be sent via WhatsApp for the fastest response from our team.
-              </p>
-
-            </form>
-
-          } @else {
-
-            <!-- ── SUCCESS STATE ── -->
-            <div class="cform__success">
-              <div class="cform__success-ring" aria-hidden="true">
-                <i class="fa fa-check cform__success-icon"></i>
-              </div>
-              <h3 class="cform__success-title">Message Sent!</h3>
-              <p class="cform__success-text">
-                Your enquiry has been opened in WhatsApp. Our team will respond to you promptly during business hours.
-              </p>
-              <div class="cform__success-actions">
-                <button class="cform__reset" (click)="resetForm()">
-                  <i class="fa fa-rotate-left" aria-hidden="true"></i>
-                  Send Another Message
-                </button>
-                <a routerLink="/products" class="cform__browse">
-                  <i class="fa fa-grid-2" aria-hidden="true"></i>
-                  Browse Products
-                </a>
-              </div>
-            </div>
-
           }
 
-        </div>
-
-        <!-- ── RIGHT: MAP + INFO ── -->
-        <div class="contact-map-col">
-
-          <!-- Map placeholder -->
-          <div class="contact-map">
-            <div class="contact-map__header">
-              <i class="fa fa-map-location-dot" aria-hidden="true"></i>
-              <div>
-                <h3 class="contact-map__title">Find Us</h3>
-                <p class="contact-map__sub">Burra Bazar, Kolkata</p>
+          @if (fromProduct(); as p) {
+            <div class="picked" animate.enter="anim-fade-in">
+              <app-product-image class="picked__img" [product]="p" [width]="96" [height]="96" />
+              <div class="picked__text">
+                <small>Quoting for</small>
+                <a [routerLink]="['/products', p.slug]">{{ p.name }}</a>
               </div>
+              <button type="button" class="picked__clear" (click)="update('product', '')" aria-label="Remove product">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+              </button>
+            </div>
+          }
+
+          <div class="form__row">
+            <div class="field" [class.has-error]="showError('name')">
+              <label for="f-name">Your name <span class="req">*</span></label>
+              <input id="f-name" type="text" autocomplete="name" [value]="form().name"
+                     (input)="update('name', $any($event.target).value)" (blur)="touch('name')"
+                     [attr.aria-invalid]="!!showError('name')" aria-describedby="e-name" />
+              @if (showError('name'); as err) { <p class="field__error" id="e-name">{{ err }}</p> }
             </div>
 
-            <!-- Google Maps Embed placeholder -->
-            <div class="contact-map__embed" aria-label="Location map">
-              <iframe
-                title="Burhani Seal Centre Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.4478843693!2d88.34!3d22.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDM0JzEyLjAiTiA4OMKwMjAnMjQuMCJF!5e0!3m2!1sen!2sin!4v1699000000000!5m2!1sen!2sin"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-
-              <!-- Overlay with company info (shown over the map placeholder) -->
-              <div class="contact-map__overlay">
-                <div class="contact-map__pin" aria-hidden="true">
-                  <i class="fa fa-location-dot"></i>
-                </div>
-                <div class="contact-map__info">
-                  <strong>{{ company.name }}</strong>
-                  <span>{{ company.address.line1 }}</span>
-                  <span>{{ company.address.line2 }}, {{ company.address.city }}</span>
-                </div>
-                <a [href]="'https://maps.google.com/?q=' + company.address.full"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="contact-map__directions">
-                  <i class="fa fa-directions" aria-hidden="true"></i>
-                  Get Directions
-                </a>
-              </div>
+            <div class="field" [class.has-error]="showError('mobile')">
+              <label for="f-mobile">Mobile <span class="req">*</span></label>
+              <input id="f-mobile" type="tel" inputmode="tel" autocomplete="tel" placeholder="98300 12345"
+                     [value]="form().mobile"
+                     (input)="update('mobile', $any($event.target).value)" (blur)="touch('mobile')"
+                     [attr.aria-invalid]="!!showError('mobile')" aria-describedby="e-mobile" />
+              @if (showError('mobile'); as err) { <p class="field__error" id="e-mobile">{{ err }}</p> }
             </div>
-
           </div>
 
-          <!-- WhatsApp direct box -->
-          <div class="contact-wa-box">
-            <div class="contact-wa-box__left">
-              <div class="contact-wa-box__icon" aria-hidden="true">
-                <i class="fab fa-whatsapp"></i>
-              </div>
-              <div>
-                <h3 class="contact-wa-box__title">Prefer WhatsApp?</h3>
-                <p class="contact-wa-box__text">Get answers in minutes, not hours.</p>
-              </div>
+          <div class="form__row">
+            <div class="field" [class.has-error]="showError('email')">
+              <label for="f-email">Email</label>
+              <input id="f-email" type="email" autocomplete="email" placeholder="you@company.com"
+                     [value]="form().email"
+                     (input)="update('email', $any($event.target).value)" (blur)="touch('email')"
+                     [attr.aria-invalid]="!!showError('email')" aria-describedby="e-email" />
+              @if (showError('email'); as err) { <p class="field__error" id="e-email">{{ err }}</p> }
             </div>
-            <button class="contact-wa-box__btn" (click)="openWhatsApp()">
-              Chat Now
-              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input id="f-company" type="text" autocomplete="organization" [value]="form().company"
+                     (input)="update('company', $any($event.target).value)" />
+            </div>
+          </div>
+
+          <div class="form__row form__row--product">
+            <div class="field">
+              <label for="f-product">Product</label>
+              <input id="f-product" type="text" list="product-list" autocomplete="off"
+                     placeholder="Start typing — e.g. SKF oil seal"
+                     [value]="form().product" (input)="update('product', $any($event.target).value)" />
+              <datalist id="product-list">
+                @for (name of productNames; track name) { <option [value]="name"></option> }
+              </datalist>
+            </div>
+            <div class="field">
+              <label for="f-qty">Quantity</label>
+              <input id="f-qty" type="text" placeholder="e.g. 50 pcs" [value]="form().quantity"
+                     (input)="update('quantity', $any($event.target).value)" />
+            </div>
+          </div>
+
+          <div class="field" [class.has-error]="showError('message')">
+            <label for="f-message">Requirement details @if (!form().product) { <span class="req">*</span> }</label>
+            <textarea id="f-message" rows="5" maxlength="1200"
+                      placeholder="Size (e.g. 35×62×7), material, machine or application, delivery location…"
+                      [value]="form().message"
+                      (input)="update('message', $any($event.target).value)" (blur)="touch('message')"
+                      [attr.aria-invalid]="!!showError('message')" aria-describedby="e-message"></textarea>
+            @if (showError('message'); as err) { <p class="field__error" id="e-message">{{ err }}</p> }
+          </div>
+
+          <div class="form__actions">
+            <button type="submit" class="btn btn--whatsapp btn--lg">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send on WhatsApp
+            </button>
+            <button type="button" class="btn btn--email btn--lg" (click)="send('email')">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i> Send by email
             </button>
           </div>
-
-          <!-- Business hours -->
-          <div class="contact-hours">
-            <h3 class="contact-hours__title">
-              <i class="fa fa-clock" aria-hidden="true"></i>
-              Business Hours
-            </h3>
-            <div class="contact-hours__list">
-              @for (row of [
-                { day: 'Monday – Friday', hours: '10:00 AM – 6:00 PM', open: true  },
-                { day: 'Saturday',        hours: '10:00 AM – 5:00 PM', open: true  },
-                { day: 'Sunday',          hours: 'Closed',             open: false }
-              ]; track row.day) {
-                <div class="contact-hours__row" [class.contact-hours__row--closed]="!row.open">
-                  <span class="contact-hours__day">{{ row.day }}</span>
-                  <span class="contact-hours__time">{{ row.hours }}</span>
-                </div>
-              }
-            </div>
+          <p class="form__note">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            Your details go straight to us in WhatsApp or your email app — nothing is stored on this website.
+          </p>
+        </form>
+      } @else {
+        <div class="sent" role="status" animate.enter="anim-scale-in">
+          <div class="sent__icon" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
+          <h2 class="sent__title">
+            {{ sent()!.channel === 'whatsapp' ? 'WhatsApp is ready' : 'Your email is ready' }}
+          </h2>
+          <p class="sent__text">
+            We've filled in your request{{ sent()!.channel === 'whatsapp' ? ' in WhatsApp' : ' in your email app' }}.
+            Press <strong>send</strong> there and we'll reply with price and availability.
+          </p>
+          <p class="sent__fallback">
+            Nothing opened?
+            <a [href]="sent()!.href" [attr.target]="sent()!.channel === 'whatsapp' ? '_blank' : null" rel="noopener">Open it again</a>
+            or call <a [href]="enquiry.telHref">{{ company.phoneDisplay }}</a>.
+          </p>
+          <div class="sent__actions">
+            <button type="button" class="btn btn--dark" (click)="reset()">Start a new request</button>
+            <a class="btn btn--outline" routerLink="/products">Back to products</a>
           </div>
-
         </div>
-
-      </div>
+      }
     </div>
 
-  </section>
+    <!-- ── INFO ── -->
+    <aside class="info" appReveal="left" [revealDelay]="120">
+      <div class="map">
+        <iframe title="Burhani Seal Centre on Google Maps"
+                src="https://www.google.com/maps?q=22.57974,88.34903&z=17&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <a class="map__pin" [href]="mapsUrl" target="_blank" rel="noopener">
+          <i class="fa-solid fa-location-arrow" aria-hidden="true"></i> Directions
+        </a>
+      </div>
 
-  <!-- ══════════════════════════════════════════
-    SECTION 4: FAQ
-  ══════════════════════════════════════════ -->
-  <section class="contact-faq section-wrapper section-bg-dark"
-           aria-label="Frequently asked questions">
+      <div class="info__card">
+        <h2 class="info__title">Visit our counter</h2>
+        <address class="info__address">
+          <strong>{{ company.name }}</strong><br>
+          {{ company.address.line1 }},<br>
+          {{ company.address.line2 }}, {{ company.address.city }} – {{ company.address.pincode }}<br>
+          {{ company.address.state }}
+        </address>
 
-    <div class="container-custom">
+        <ul class="info__hours" role="list">
+          @for (h of company.hours; track h.days) {
+            <li [class.is-closed]="!h.open"><span>{{ h.days }}</span><span>{{ h.time }}</span></li>
+          }
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
 
-      <app-section-header
-        label="Common Questions"
-        title="Frequently Asked <em>Questions</em>"
-        subtitle="Quick answers to the questions we hear most often."
-        [centered]="true"
-        [light]="true">
-      </app-section-header>
-
-      <div class="faq-grid">
-        @for (item of faqItems; track trackByQuestion($index, item)) {
-          <div class="faq-item" [class.faq-item--open]="item.open">
-
-            <button class="faq-item__question"
-                    (click)="toggleFaq($index)"
-                    [attr.aria-expanded]="item.open"
-                    [attr.aria-controls]="'faq-ans-' + $index">
-              <span>{{ item.question }}</span>
-              <div class="faq-item__icon" aria-hidden="true">
-                <i class="fa fa-plus faq-item__plus"></i>
-                <i class="fa fa-minus faq-item__minus"></i>
-              </div>
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="container-custom faq__inner">
+    <app-section-header eyebrow="Before you ask" title="Common" accent="questions" [centered]="true" />
+    <div class="faq__list">
+      @for (item of faqs; track item.q; let i = $index) {
+        <div class="faq__item" [class.is-open]="openFaq() === i" appReveal="up" [revealDelay]="i * 60">
+          <h3>
+            <button type="button" class="faq__q" [attr.aria-expanded]="openFaq() === i" [attr.aria-controls]="'faq-' + i"
+                    (click)="openFaq.set(openFaq() === i ? null : i)">
+              {{ item.q }}
+              <span class="faq__icon" aria-hidden="true"></span>
             </button>
-
-            @if (item.open) {
-              <div class="faq-item__answer"
-                   [id]="'faq-ans-' + $index"
-                   role="region">
-                <p>{{ item.answer }}</p>
-              </div>
-            }
-
-          </div>
-        }
-      </div>
-
-      <!-- Still have questions CTA -->
-      <div class="faq-footer">
-        <p>Still have questions? Our team is happy to help.</p>
-        <button class="faq-footer__btn" (click)="openWhatsApp()">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i>
-          Ask on WhatsApp
-        </button>
-      </div>
-
+          </h3>
+          @if (openFaq() === i) {
+            <div class="faq__a" [id]="'faq-' + i" animate.enter="anim-drop-in">
+              <p>{{ item.a }}</p>
+            </div>
+          }
+        </div>
+      }
     </div>
-
-  </section>
-
-</div><!-- /.contact-page -->
+  </div>
+</section>

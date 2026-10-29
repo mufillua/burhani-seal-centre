@@ -1,0 +1,56 @@
+<section class="page-hero" style="--page-hero-next: #F8F9FA">
+  <div class="container-custom">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/">Home</a>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      <span aria-current="page">Categories</span>
+    </nav>
+    <h1 class="page-hero__title">Shop by <em>category</em></h1>
+    <p class="page-hero__subtitle">
+      {{ categories.length }} categories, {{ totalProducts }} products. Pick the family your part belongs to —
+      or tell us what you're replacing and we'll find it.
+    </p>
+  </div>
+</section>
+
+<section class="cats">
+  <div class="container-custom">
+    <ul class="cats__grid" role="list">
+      @for (cat of categories; track cat.id; let i = $index) {
+        <li appReveal="up" [revealDelay]="(i % 2) * 90">
+          <article class="cat">
+            <a class="cat__link" routerLink="/products" [queryParams]="{ category: cat.id }">
+              <span class="visually-hidden">Browse {{ cat.name }}</span>
+            </a>
+
+            <div class="cat__visual">
+              <div class="cat__art"><app-category-art [type]="cat.art" /></div>
+              @if (cat.photos.length) {
+                <div class="cat__photos" aria-hidden="true">
+                  @for (ph of cat.photos; track ph.id) {
+                    <img [src]="ph.imageUrl" alt="" loading="lazy" decoding="async" width="72" height="72" />
+                  }
+                </div>
+              }
+              <span class="cat__count">{{ cat.productCount }} products</span>
+            </div>
+
+            <div class="cat__body">
+              <h2 class="cat__name">{{ cat.name }}</h2>
+              <p class="cat__desc">{{ cat.description }}</p>
+              <ul class="cat__items" role="list">
+                @for (p of cat.top; track p.id) {
+                  <li><a [routerLink]="['/products', p.slug]">{{ p.name }}</a></li>
+                }
+              </ul>
+              <span class="cat__cta" aria-hidden="true">
+                View all {{ cat.productCount }} <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </article>
+        </li>
+      }
+    </ul>
+
+  </div>
+</section>

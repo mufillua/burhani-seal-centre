@@ -1,231 +1,183 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
 
-// ============================================
-// PRODUCT CARD STYLES
-// ============================================
+:host { display: block; height: 100%; container-type: inline-size; }
 
-.product-card {
+.card {
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: $white;
+  border: 1px solid #e6e8ee;
   border-radius: $radius-lg;
   overflow: hidden;
-  box-shadow: $shadow-md;
-  border: 1px solid rgba($silver-light, 0.8);
-  cursor: pointer;
-  position: relative;
-  height: 100%; // Fill grid cell height
+  transition:
+    transform 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease-out),
+    border-color 0.3s ease;
 
-  // The Angular animation handles transform + shadow
-  // but we add our own border transition here
-  transition: border-color $transition-luxury;
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba($gold, 0.45);
+      box-shadow: 0 24px 48px -18px rgba($navy, 0.28);
 
-  &:hover {
-    border-color: rgba($gold, 0.3);
+      .card__media ::ng-deep img,
+      .card__media ::ng-deep .art-tile__art { transform: scale(1.06); }
+      .card__view { opacity: 1; transform: none; }
+      .card__name { color: $navy-deep; }
+    }
   }
+
+  &:focus-within { border-color: rgba($gold, 0.6); }
 }
 
-// ── IMAGE WRAPPER ─────────────────────────────
-.product-card__image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  background: $off-white;
-  flex-shrink: 0;
-}
-
-.product-card__image {
-  @include absolute-fill;
-  object-fit: cover;
-  transition: transform $transition-luxury;
-}
-
-.product-card:hover .product-card__image {
-  transform: scale(1.08);
-}
-
-// Image placeholder (shown when image fails/missing)
-.product-card__placeholder {
-  @include absolute-fill;
-  @include flex-center;
-  background: linear-gradient(135deg, $light-gray, $off-white);
-}
-
-.product-card__placeholder-icon {
-  font-size: 4rem;
-  color: $silver;
-  opacity: 0.5;
-}
-
-// Gold shimmer overlay on hover
-.product-card__overlay {
-  @include absolute-fill;
-  background: linear-gradient(
-    135deg,
-    transparent 60%,
-    rgba($gold, 0.08)
-  );
-  opacity: 0;
-  transition: opacity $transition-luxury;
-  pointer-events: none;
-}
-
-.product-card:hover .product-card__overlay {
-  opacity: 1;
-}
-
-// ── BADGES ────────────────────────────────────
-.product-card__badge {
+// Whole-card link sits under the action buttons
+.card__link {
   position: absolute;
-  bottom: $space-2;
-  left: $space-2;
-  padding: 4px 12px;
-  background: rgba($charcoal, 0.85);
-  backdrop-filter: blur(8px);
-  color: $gold;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+
+  &:focus-visible { outline-offset: -3px; }
+}
+
+.card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+
+  app-product-image { position: absolute; inset: 0; }
+}
+
+.card__category {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  background: rgba($charcoal, 0.78);
+  backdrop-filter: blur(6px);
+  color: $gold-light;
   font-family: $font-accent;
-  font-size: $text-xs;
+  font-size: 0.625rem;
   font-weight: $weight-semibold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-radius: $radius-full;
-  border: 1px solid rgba($gold, 0.25);
 }
 
-.product-card__new-badge {
+.card__view {
   position: absolute;
-  top: $space-2;
-  right: $space-2;
-  padding: 4px 10px;
-  @include gold-gradient;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: $radius-full;
+  background: $white;
   color: $charcoal;
   font-family: $font-accent;
-  font-size: $text-xs;
+  font-size: 0.6875rem;
   font-weight: $weight-bold;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border-radius: $radius-full;
+  letter-spacing: 0.04em;
+  box-shadow: $shadow-md;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.4s var(--ease-out);
+
+  i { font-size: 10px; color: $gold-dark; }
+
+  @media (hover: none) { display: none; }
 }
 
-// ── CONTENT ───────────────────────────────────
-.product-card__content {
+.card__body {
   display: flex;
   flex-direction: column;
-  flex: 1; // Fills remaining height
-  padding: $space-3;
-  gap: $space-2;
-}
-
-.product-card__name {
-  font-family: $font-primary;
-  font-size: $text-xl;
-  font-weight: $weight-bold;
-  color: $charcoal;
-  line-height: 1.3;
-  margin: 0;
-  @include truncate(2); // Max 2 lines
-  transition: color $transition-base;
-}
-
-.product-card:hover .product-card__name {
-  color: $navy;
-}
-
-.product-card__desc {
-  font-family: $font-secondary;
-  font-size: $text-sm;
-  color: #666;
-  line-height: 1.7;
-  margin: 0;
-  @include truncate(3); // Max 3 lines
   flex: 1;
+  gap: 10px;
+  padding: 18px 18px 18px;
 }
 
-// ── INDUSTRY TAGS ─────────────────────────────
-.product-card__industries {
+.card__name {
+  font-family: $font-primary;
+  font-size: 1.15rem;
+  font-weight: $weight-bold;
+  line-height: 1.3;
+  color: $charcoal;
+  transition: color 0.3s ease;
+  @include truncate(2);
+}
+
+.card__desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: $text-muted;
+  @include truncate(2);
+}
+
+.card__spec {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.industry-tag {
-  padding: 3px 10px;
-  background: rgba($navy, 0.06);
-  color: $navy;
-  font-family: $font-accent;
-  font-size: 10px;
-  font-weight: $weight-semibold;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border-radius: $radius-full;
-  border: 1px solid rgba($navy, 0.1);
-
-  &--more {
-    background: $gold-subtle;
-    color: $gold-dark;
-    border-color: rgba($gold, 0.2);
-  }
-}
-
-// ── ACTION BUTTONS ────────────────────────────
-.product-card__actions {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: $space-1;
+  justify-content: space-between;
+  gap: 12px;
   margin-top: auto;
-  padding-top: $space-2;
-  border-top: 1px solid $silver-light;
+  padding-top: 10px;
+  border-top: 1px dashed #e1e4ea;
+  font-size: 0.75rem;
+  color: $text-muted;
+
+  strong {
+    color: $charcoal;
+    font-weight: $weight-semibold;
+    text-align: right;
+    @include truncate(1);
+  }
 }
 
-// Base button styles
-.product-card__btn {
+.card__actions {
+  position: relative;
+  z-index: 2; // above .card__link
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.card__btn {
   @include flex-center;
-  gap: 6px;
-  padding: 10px 16px;
+  gap: 8px;
+  min-height: 42px;
+  border-radius: $radius-md;
   font-family: $font-accent;
-  font-size: $text-xs;
-  font-weight: $weight-semibold;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border-radius: $radius-sm;
-  transition: all $transition-luxury;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  border: none;
+  font-size: 0.75rem;
+  font-weight: $weight-bold;
+  letter-spacing: 0.03em;
+  transition: all 0.3s var(--ease-out);
 
-  i {
-    font-size: 12px;
-    transition: transform $transition-base;
+  i { font-size: 1rem; }
+
+  &--wa {
+    background: rgba($whatsapp-green, 0.12);
+    color: #0b7a3b;
+
+    &:hover { background: $whatsapp-green; color: #04290f; transform: translateY(-2px); }
   }
 
-  // "Learn More" button
-  &--primary {
-    background: $charcoal;
-    color: $white;
-    flex: 1;
+  &--mail {
+    background: rgba($navy, 0.07);
+    color: $navy;
 
-    &:hover {
-      background: $navy;
-      color: $white;
-
-      i { transform: translateX(4px); }
-    }
+    &:hover { background: $navy; color: $white; transform: translateY(-2px); }
   }
+}
 
-  // WhatsApp button
-  &--whatsapp {
-    background: rgba($whatsapp-green, 0.1);
-    color: $whatsapp-green;
-    border: 1px solid rgba($whatsapp-green, 0.3);
-
-    &:hover {
-      background: $whatsapp-green;
-      color: $white;
-      border-color: $whatsapp-green;
-      box-shadow: 0 4px 16px rgba($whatsapp-green, 0.35);
-    }
-  }
+// ── Compact card (narrow columns, e.g. 2-up on phones) ──
+@container (max-width: 250px) {
+  .card__body { padding: 12px; gap: 8px; }
+  .card__name { font-size: 0.95rem; line-height: 1.25; }
+  .card__desc, .card__spec { display: none; }
+  .card__category { left: 8px; top: 8px; padding: 3px 8px; font-size: 0.5625rem; }
+  .card__actions { margin-top: auto; gap: 6px; }
+  .card__btn { min-height: 38px; gap: 6px; font-size: 0.6875rem; }
+  .card__btn span { display: none; }
+  .card__btn i { font-size: 1.1rem; }
 }

@@ -1,126 +1,158 @@
-<!-- ============================================
-  NAVBAR TEMPLATE
-  ============================================ -->
+<header class="nav" [class.nav--scrolled]="scrolled() || megaOpen()" [class.nav--drawer-open]="drawerOpen()">
+  <div class="nav__bar container-custom">
 
-<!-- Click backdrop closes mobile menu -->
-<div class="nav-backdrop"
-     [class.active]="isMobileMenuOpen()"
-     (click)="closeMobileMenu()"
-     aria-hidden="true">
-</div>
-
-<nav class="navbar" [ngClass]="navbarClass()" role="navigation" aria-label="Main navigation">
-  <div class="navbar__container">
-
-    <!-- ── LOGO ── -->
-    <a class="navbar__logo" routerLink="/" (click)="closeMobileMenu()" aria-label="Burhani Seal Centre — Home">
-      <div class="navbar__logo-icon" aria-hidden="true">
-        <span class="logo-letter">B</span>
-        <div class="logo-dot"></div>
-      </div>
-      <div class="navbar__logo-text">
-        <span class="logo-company">Burhani</span>
-        <span class="logo-division">Seal Centre</span>
-      </div>
+    <!-- Logo -->
+    <a class="brand" routerLink="/" aria-label="Burhani Seal Centre — home">
+      <span class="brand__mark" aria-hidden="true">B<i></i></span>
+      <span class="brand__text">
+        <span class="brand__name">Burhani</span>
+        <span class="brand__sub">Seal Centre</span>
+      </span>
     </a>
 
-    <!-- ── DESKTOP NAV LINKS ── -->
-    <ul class="navbar__links" role="list">
-      @for (link of navLinks; track trackByPath($index, link)) {
-        <li class="navbar__item">
-          <a class="navbar__link"
-             [routerLink]="link.path"
-             routerLinkActive="navbar__link--active"
-             [routerLinkActiveOptions]="{ exact: link.exact ?? false }"
-             (click)="closeMobileMenu()">
-            {{ link.label }}
-            <span class="navbar__link-underline" aria-hidden="true"></span>
-          </a>
+    <!-- Desktop links -->
+    <nav class="nav__links" aria-label="Main">
+      <ul role="list">
+        <li class="nav__item">
+          <a class="nav__link" routerLink="/products" routerLinkActive="is-active">Products</a>
         </li>
-      }
-    </ul>
 
-    <!-- ── NAVBAR ACTIONS ── -->
-    <div class="navbar__actions">
-      <!-- WhatsApp Button (desktop) -->
-      <button class="btn-whatsapp-nav"
-              (click)="openWhatsApp()"
-              aria-label="Contact us on WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-        <span>WhatsApp</span>
-      </button>
+        <li class="nav__item nav__item--mega"
+            (mouseenter)="openMegaSoon()"
+            (mouseleave)="closeMegaSoon()">
+          <button #megaTrigger type="button" class="nav__link nav__link--btn"
+                  [class.is-open]="megaOpen()"
+                  [class.is-active]="onCategories()"
+                  [attr.aria-expanded]="megaOpen()" aria-controls="mega-menu"
+                  (click)="toggleMega()">
+            Categories
+            <i class="fa-solid fa-chevron-down nav__chev" aria-hidden="true"></i>
+          </button>
 
-      <!-- Get Quote CTA -->
-      <a routerLink="/contact"
-         class="btn-nav-cta"
-         (click)="closeMobileMenu()">
-        Get Quote
+          @if (megaOpen()) {
+            <div id="mega-menu" class="mega" animate.enter="anim-drop-in" animate.leave="anim-drop-out">
+              <div class="mega__inner">
+                <ul class="mega__grid" role="list">
+                  @for (cat of categories; track cat.id; let i = $index) {
+                    <li [style.--i]="i">
+                      <a class="mega__cat" routerLink="/products" [queryParams]="{ category: cat.id }">
+                        <span class="mega__art"><app-category-art [type]="cat.art" /></span>
+                        <span class="mega__cat-text">
+                          <span class="mega__cat-name">{{ cat.name }}</span>
+                          <span class="mega__cat-count">{{ cat.productCount }} products</span>
+                        </span>
+                      </a>
+                    </li>
+                  }
+                </ul>
+                <aside class="mega__side">
+                  <p class="mega__side-title">Can't find a part?</p>
+                  <p class="mega__side-text">Send a photo or the size printed on your old seal — we'll match it.</p>
+                  <a class="btn btn--whatsapp btn--sm" [href]="enquiry.generalWhatsappHref" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send on WhatsApp
+                  </a>
+                  <a class="mega__all" routerLink="/categories">
+                    All categories <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          }
+        </li>
+
+        <li class="nav__item">
+          <a class="nav__link" routerLink="/about" routerLinkActive="is-active">About Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Right side -->
+    <div class="nav__actions">
+      <a class="nav__phone" [href]="enquiry.telHref" [attr.aria-label]="'Call ' + company.phoneDisplay">
+        <span class="nav__phone-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+        <span class="nav__phone-text">
+          <small>Call / WhatsApp</small>
+          {{ company.phoneDisplay }}
+        </span>
       </a>
 
-      <!-- ── HAMBURGER (mobile only) ── -->
-      <button class="navbar__hamburger"
-              [class.navbar__hamburger--open]="isMobileMenuOpen()"
-              (click)="toggleMobileMenu()"
-              [attr.aria-expanded]="isMobileMenuOpen()"
-              aria-controls="mobile-menu"
-              aria-label="Toggle navigation menu">
-        <span class="hamburger__line hamburger__line--top"></span>
-        <span class="hamburger__line hamburger__line--middle"></span>
-        <span class="hamburger__line hamburger__line--bottom"></span>
+      <a class="btn btn--gold btn--sm nav__quote" routerLink="/contact">
+        <span class="nav__quote-long">Get A Quote</span>
+        <span class="nav__quote-short">Quote</span>
+      </a>
+
+      <button #burger type="button" class="burger"
+              [class.is-open]="drawerOpen()"
+              [attr.aria-expanded]="drawerOpen()"
+              aria-controls="mobile-drawer"
+              [attr.aria-label]="drawerOpen() ? 'Close menu' : 'Open menu'"
+              (click)="toggleDrawer()">
+        <span></span><span></span><span></span>
       </button>
     </div>
+  </div>
 
-  </div><!-- /.navbar__container -->
+  <!-- Scroll progress -->
+  <div #progress class="nav__progress" aria-hidden="true"></div>
+</header>
 
-  <!-- ── MOBILE MENU ── -->
-  @if (isMobileMenuOpen()) {
-    <div class="navbar__mobile"
-         id="mobile-menu"
-         [@slideDown]
-         role="dialog"
-         aria-modal="true"
-         aria-label="Mobile navigation menu">
+<!-- ── Mobile drawer ── -->
+@if (drawerOpen()) {
+  <div class="scrim" (click)="closeAll(true)" animate.enter="anim-fade-in" animate.leave="anim-fade-out" aria-hidden="true"></div>
 
-      <!-- Mobile nav links -->
-      <ul class="mobile-nav__links" role="list">
-        @for (link of navLinks; track trackByPath($index, link)) {
-          <li class="mobile-nav__item">
-            <a class="mobile-nav__link"
-               [routerLink]="link.path"
-               routerLinkActive="mobile-nav__link--active"
-               [routerLinkActiveOptions]="{ exact: link.exact ?? false }"
-               (click)="closeMobileMenu()">
-              {{ link.label }}
-              <i class="fa fa-chevron-right mobile-nav__arrow" aria-hidden="true"></i>
-            </a>
-          </li>
-        }
+  <div id="mobile-drawer" class="drawer" role="dialog" aria-modal="true" aria-label="Menu"
+       animate.enter="anim-drawer-in" animate.leave="anim-drawer-out">
+    <nav aria-label="Mobile">
+      <ul class="drawer__links" role="list">
+        <li style="--i:0">
+          <a routerLink="/products" routerLinkActive="is-active">
+            Products <span class="drawer__count">{{ totalProducts }}</span>
+          </a>
+        </li>
+        <li style="--i:1">
+          <button type="button" class="drawer__toggle"
+                  [attr.aria-expanded]="drawerCategoriesOpen()"
+                  aria-controls="drawer-categories"
+                  (click)="drawerCategoriesOpen.set(!drawerCategoriesOpen())">
+            Categories
+            <i class="fa-solid fa-chevron-down" [class.is-open]="drawerCategoriesOpen()" aria-hidden="true"></i>
+          </button>
+          @if (drawerCategoriesOpen()) {
+            <ul id="drawer-categories" class="drawer__cats" role="list" animate.enter="anim-drop-in">
+              @for (cat of categories; track cat.id) {
+                <li>
+                  <a routerLink="/products" [queryParams]="{ category: cat.id }">
+                    <span class="drawer__cat-art"><app-category-art [type]="cat.art" /></span>
+                    {{ cat.name }}
+                    <span class="drawer__count">{{ cat.productCount }}</span>
+                  </a>
+                </li>
+              }
+              <li><a routerLink="/categories" class="drawer__all">View all categories</a></li>
+            </ul>
+          }
+        </li>
+        <li style="--i:2"><a routerLink="/about" routerLinkActive="is-active">About Us</a></li>
+        <li style="--i:3"><a routerLink="/industries" routerLinkActive="is-active">Industries</a></li>
+        <li style="--i:4"><a routerLink="/contact" routerLinkActive="is-active">Contact</a></li>
       </ul>
+    </nav>
 
-      <!-- Mobile CTA area -->
-      <div class="mobile-nav__cta">
-        <a routerLink="/contact" class="btn-gold w-100 text-center" (click)="closeMobileMenu()">
-          Get a Free Quote
+    <div class="drawer__footer">
+      <a class="btn btn--gold btn--block" routerLink="/contact">Get A Quote</a>
+      <div class="drawer__row">
+        <a class="btn btn--whatsapp" [href]="enquiry.generalWhatsappHref" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
-        <button class="btn-whatsapp w-100" (click)="openWhatsApp()">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i>
-          Chat on WhatsApp
-        </button>
-      </div>
-
-      <!-- Mobile contact info -->
-      <div class="mobile-nav__info">
-        <a [href]="'tel:' + company.phone" class="mobile-nav__contact-link">
-          <i class="fa fa-phone" aria-hidden="true"></i>
-          {{ company.whatsappDisplay }}
+        <a class="btn btn--outline-light" [href]="enquiry.telHref">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i> Call
         </a>
-        <p class="mobile-nav__address">
-          <i class="fa fa-location-dot" aria-hidden="true"></i>
-          Burra Bazar, Kolkata – 700001
-        </p>
       </div>
-
+      <p class="drawer__meta">
+        {{ company.phoneDisplay }}<br>
+        {{ company.address.line2 }}, {{ company.address.city }}<br>
+        {{ company.hoursShort }}
+      </p>
     </div>
-  }
-
-</nav>
+  </div>
+}

@@ -28,9 +28,9 @@ $whatsapp-green:  #25D366;
 $whatsapp-dark:   #128C7E;
 
 // --- TYPOGRAPHY ---
-$font-primary:    'Playfair Display', Georgia, serif;   // Luxury headings
-$font-secondary:  'Inter', system-ui, sans-serif;       // Body text
-$font-accent:     'Montserrat', Arial, sans-serif;      // Nav, buttons, labels
+$font-primary:    'Playfair Display Variable', 'Playfair Display', Georgia, serif;   // Luxury headings
+$font-secondary:  'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; // Body text
+$font-accent:     'Montserrat Variable', 'Montserrat', Arial, sans-serif; // Nav, buttons, labels
 
 // Font Weights
 $weight-light:    300;
@@ -86,6 +86,8 @@ $transition-fast:   0.2s ease;
 $transition-base:   0.3s ease;
 $transition-slow:   0.5s ease;
 $transition-luxury: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$ease-out-expo:     cubic-bezier(0.16, 1, 0.3, 1);
+$ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
 
 // --- Z-INDEX LAYERS ---
 $z-base:     1;
@@ -108,3 +110,11 @@ $section-padding-y: $space-12;  // 96px top and bottom on desktop
 
 // --- CONTAINER ---
 $container-max: 1320px;
+
+// --- NAVBAR HEIGHTS (fixed header offset) ---
+$nav-h:        76px;
+$nav-h-mobile: 64px;
+
+// --- TEXT ON LIGHT ---
+$text-body:  #4A4F5C;
+$text-muted: #6B7080;

@@ -1,128 +1,150 @@
 // ============================================
-// NAVBAR COMPONENT
+// NAVBAR
 // ============================================
-// Standalone sticky navigation bar.
-// Detects scroll position to change appearance.
-// Handles mobile menu open/close state.
+// Desktop:  Logo | Products · Categories ▾ · About Us | ☎ number | Get A Quote
+// Mobile:   Logo | ☎ | Quote | ☰  → slide-in drawer
+//
+// • Transparent over the dark page heroes, turns to frosted
+//   navy once you scroll, and shrinks slightly.
+// • Gold progress line under the bar shows how far down the
+//   page you are.
+// • "Categories" opens a mega-menu (hover, click or keyboard).
 
 import {
+  ChangeDetectionStrategy,
   Component,
-  OnInit,
-  OnDestroy,
-  HostListener,
+  DOCUMENT,
+  DestroyRef,
+  ElementRef,
+  NgZone,
+  afterNextRender,
+  inject,
   signal,
-  computed
+  viewChild
 } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { slideDown } from '../../../animations/app.animations';
-import { WhatsappService } from '../../../services/whatsapp.service';
-import { environment } from '../../../../environments/environments';
-
-// Defines the shape of each nav link
-interface NavLink {
-  label: string;
-  path: string;
-  exact?: boolean;
-}
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { environment } from '../../../../environments/environment';
+import { ProductService } from '../../../services/product.service';
+import { EnquiryService } from '../../../services/enquiry.service';
+import { CategoryArtComponent } from '../category-art/category-art';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
-  animations: [slideDown],
+  imports: [RouterLink, RouterLinkActive, CategoryArtComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './navbar.html',
-  styleUrl: './navbar.scss'
+  styleUrl: './navbar.scss',
+  host: {
+    '(document:keydown.escape)': 'closeAll(true)',
+    '(document:click)': 'onDocumentClick($event)'
+  }
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent {
+  private readonly doc = inject(DOCUMENT);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+  private readonly router = inject(Router);
+  protected readonly enquiry = inject(EnquiryService);
 
-  // ── Signals (Angular 20's reactive state) ─────────────────────────
-  // A signal is like a variable that automatically
-  // updates the template when its value changes.
+  protected readonly company = environment.company;
+  protected readonly categories = inject(ProductService).getAllCategories();
+  protected readonly totalProducts = inject(ProductService).getTotalProductCount();
 
-  /** Is the mobile menu currently open? */
-  isMobileMenuOpen = signal(false);
+  protected readonly scrolled = signal(false);
+  protected readonly megaOpen = signal(false);
+  protected readonly drawerOpen = signal(false);
+  protected readonly drawerCategoriesOpen = signal(false);
+  protected readonly onCategories = signal(false);
 
-  /** Has the user scrolled more than 80px? */
-  isScrolled = signal(false);
+  private readonly megaTrigger = viewChild<ElementRef<HTMLButtonElement>>('megaTrigger');
+  private readonly burger = viewChild<ElementRef<HTMLButtonElement>>('burger');
+  private readonly progress = viewChild<ElementRef<HTMLElement>>('progress');
+  private hoverTimer?: ReturnType<typeof setTimeout>;
 
-  /** Current scroll position in pixels */
-  scrollY = signal(0);
+  constructor() {
+    const zone = inject(NgZone);
 
-  // ── Computed values ───────────────────────────────────────────────
-  /** CSS class applied to navbar based on scroll state */
-  navbarClass = computed(() => ({
-    'navbar--scrolled': this.isScrolled(),
-    'navbar--menu-open': this.isMobileMenuOpen()
-  }));
+    // Close everything after any navigation
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd), takeUntilDestroyed())
+      .subscribe(e => {
+        this.onCategories.set((e as NavigationEnd).urlAfterRedirects.startsWith('/categories'));
+        this.closeAll(false);
+      });
 
-  // ── Static data ───────────────────────────────────────────────────
-  readonly company = environment.company;
+    // Scroll listener runs outside Angular: it only touches the DOM
+    // directly (progress bar) and flips a signal when crossing 24px.
+    afterNextRender(() => {
+      const win = this.doc.defaultView!;
+      const onScroll = () => {
+        const y = win.scrollY;
+        const max = this.doc.documentElement.scrollHeight - win.innerHeight;
+        this.progress()?.nativeElement.style.setProperty('--progress', String(max > 0 ? Math.min(y / max, 1) : 0));
+        const isScrolled = y > 24;
+        if (isScrolled !== this.scrolled()) zone.run(() => this.scrolled.set(isScrolled));
+      };
+      zone.runOutsideAngular(() => {
+        win.addEventListener('scroll', onScroll, { passive: true });
+        win.addEventListener('resize', onScroll, { passive: true });
+      });
+      onScroll();
+    });
 
-  readonly navLinks: NavLink[] = [
-    { label: 'Home',       path: '/',           exact: true  },
-    { label: 'About',      path: '/about'                    },
-    { label: 'Products',   path: '/products'                 },
-    { label: 'Industries', path: '/industries'               },
-    { label: 'Contact',    path: '/contact'                  }
-  ];
-
-  constructor(private whatsappService: WhatsappService) {}
-
-  ngOnInit(): void {
-    // Check initial scroll position
-    // (handles page refresh when already scrolled)
-    this.checkScroll(window.scrollY);
+    inject(DestroyRef).onDestroy(() => this.lockScroll(false));
   }
 
-  ngOnDestroy(): void {
-    // Cleanup — ensure body scroll is restored
-    // if component is destroyed while menu is open
-    document.body.style.overflow = '';
+  // ── Mega menu ────────────────────────────
+
+  protected openMegaSoon(): void {
+    clearTimeout(this.hoverTimer);
+    this.hoverTimer = setTimeout(() => this.megaOpen.set(true), 90);
   }
 
-  // ── HostListener ──────────────────────────────────────────────────
-  // @HostListener listens to browser window events.
-  // This fires every time the user scrolls.
-  @HostListener('window:scroll')
-  onWindowScroll(): void {
-    this.checkScroll(window.scrollY);
+  protected closeMegaSoon(): void {
+    clearTimeout(this.hoverTimer);
+    this.hoverTimer = setTimeout(() => this.megaOpen.set(false), 180);
   }
 
-  // Close mobile menu if user resizes to desktop width
-  @HostListener('window:resize')
-  onWindowResize(): void {
-    if (window.innerWidth >= 992 && this.isMobileMenuOpen()) {
-      this.closeMobileMenu();
+  protected toggleMega(): void {
+    clearTimeout(this.hoverTimer);
+    this.megaOpen.update(v => !v);
+  }
+
+  // ── Mobile drawer ────────────────────────
+
+  protected toggleDrawer(): void {
+    const open = !this.drawerOpen();
+    this.drawerOpen.set(open);
+    this.lockScroll(open);
+    if (open) {
+      setTimeout(() => this.host.querySelector<HTMLElement>('.drawer a, .drawer button')?.focus(), 60);
     }
   }
 
-  // ── Methods ───────────────────────────────────────────────────────
-
-  private checkScroll(scrollPosition: number): void {
-    this.scrollY.set(scrollPosition);
-    this.isScrolled.set(scrollPosition > 80);
+  protected closeAll(restoreFocus: boolean): void {
+    const wasMega = this.megaOpen();
+    const wasDrawer = this.drawerOpen();
+    clearTimeout(this.hoverTimer);
+    this.megaOpen.set(false);
+    if (wasDrawer) {
+      this.drawerOpen.set(false);
+      this.drawerCategoriesOpen.set(false);
+      this.lockScroll(false);
+    }
+    if (restoreFocus) {
+      if (wasMega) this.megaTrigger()?.nativeElement.focus();
+      if (wasDrawer) this.burger()?.nativeElement.focus();
+    }
   }
 
-  toggleMobileMenu(): void {
-    const newState = !this.isMobileMenuOpen();
-    this.isMobileMenuOpen.set(newState);
-
-    // Prevent body scroll when mobile menu is open
-    document.body.style.overflow = newState ? 'hidden' : '';
+  protected onDocumentClick(event: MouseEvent): void {
+    if (this.megaOpen() && !(event.target as HTMLElement).closest('.nav__item--mega')) {
+      this.megaOpen.set(false);
+    }
   }
 
-  closeMobileMenu(): void {
-    this.isMobileMenuOpen.set(false);
-    document.body.style.overflow = '';
-  }
-
-  openWhatsApp(): void {
-    this.whatsappService.openGeneralEnquiry();
-  }
-
-  /** TrackBy function for *ngFor performance */
-  trackByPath(_index: number, link: NavLink): string {
-    return link.path;
+  private lockScroll(lock: boolean): void {
+    this.doc.documentElement.style.overflow = lock ? 'hidden' : '';
   }
 }

@@ -1,199 +1,108 @@
 // ============================================
-// ABOUT PAGE COMPONENT
+// ABOUT US
 // ============================================
-// Full company story, owner profile, values,
-// timeline, and team section.
 
 import {
+  ChangeDetectionStrategy,
   Component,
-  OnInit,
-  AfterViewInit,
-  OnDestroy,
-  ViewChildren,
-  QueryList,
+  DOCUMENT,
+  DestroyRef,
   ElementRef,
-  signal
+  NgZone,
+  afterNextRender,
+  inject,
+  viewChild
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 import { SeoService } from '../../services/seo.service';
-import { WhatsappService } from '../../services/whatsapp.service';
+import { ProductService } from '../../services/product.service';
+import { EnquiryService } from '../../services/enquiry.service';
 import { SectionHeaderComponent } from '../../shared/components/section-header/section-header';
-import { environment } from '../../../environments/environments';
-
-interface TimelineEvent {
-  year: string;
-  title: string;
-  description: string;
-  icon: string;
-  side: 'left' | 'right';
-}
-
-interface ValueCard {
-  icon: string;
-  title: string;
-  description: string;
-  color: string;
-}
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { CountUpDirective } from '../../shared/directives/count-up.directive';
 
 @Component({
   selector: 'app-about',
-  standalone: true,
-  imports: [CommonModule, RouterLink, SectionHeaderComponent],
+  imports: [RouterLink, SectionHeaderComponent, RevealDirective, CountUpDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.html',
   styleUrl: './about.scss'
 })
-export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AboutComponent {
+  protected readonly company = environment.company;
+  protected readonly enquiry = inject(EnquiryService);
+  private readonly products = inject(ProductService);
 
-  @ViewChildren('revealEl') revealElements!: QueryList<ElementRef>;
+  protected readonly mapsUrl =
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(environment.company.address.full)}`;
 
-  readonly company = environment.company;
-  private observers: IntersectionObserver[] = [];
+  protected readonly stats = [
+    { value: this.company.stats.years, suffix: '+', label: 'Years in the trade' },
+    { value: this.products.getTotalProductCount(), suffix: '', label: 'Products listed' },
+    { value: this.products.getTotalCategoryCount(), suffix: '', label: 'Categories' },
+    { value: this.company.stats.clients, suffix: '+', label: 'Repeat customers' }
+  ];
 
-  // Track visibility of each animated section
-  heroVisible    = signal(false);
-  storyVisible   = signal(false);
-  valuesVisible  = signal(false);
-  timelineVisible = signal(false);
-  teamVisible    = signal(false);
-  ctaVisible     = signal(false);
-
-  readonly values: ValueCard[] = [
+  protected readonly values = [
     {
-      icon: 'fa-gem',
-      title: 'Premium Quality',
-      description: 'Every product we supply undergoes strict quality verification. We partner only with manufacturers who meet international standards — DIN, ISO, API, and ASME.',
-      color: '#C9A84C'
+      icon: 'fa-solid fa-bullseye',
+      title: 'The right part, not the priciest',
+      text: 'We ask about the machine, the media and the temperature before we recommend anything — so the seal fits and lasts.'
     },
     {
-      icon: 'fa-handshake',
-      title: 'Customer Trust',
-      description: 'Relationships built on honesty and reliability. Our clients trust us to recommend the right product for their application — not the most expensive one.',
-      color: '#C9A84C'
+      icon: 'fa-solid fa-tags',
+      title: 'Brands you already trust',
+      text: 'SKF, IVR, J K Pioneer and Gold Super oil seals alongside PU, nitrile and Viton seals, kits and couplings.'
     },
     {
-      icon: 'fa-lightbulb',
-      title: 'Technical Expertise',
-      description: 'Decades of hands-on experience across 11 industries means we understand your sealing challenges — and can recommend solutions that work.',
-      color: '#C9A84C'
+      icon: 'fa-solid fa-comments',
+      title: 'Straight answers',
+      text: 'Price, stock and lead time up front, on WhatsApp, email or phone — whichever you prefer.'
     },
     {
-      icon: 'fa-truck-fast',
-      title: 'Reliable Delivery',
-      description: 'Strong supplier relationships and strategic stocking ensure we can fulfil orders quickly, minimising your plant downtime and procurement lead times.',
-      color: '#C9A84C'
-    },
-    {
-      icon: 'fa-shield-halved',
-      title: 'Integrity First',
-      description: 'No shortcuts. No counterfeit products. We supply only genuine, traceable materials with full documentation and certifications when required.',
-      color: '#C9A84C'
-    },
-    {
-      icon: 'fa-chart-line',
-      title: 'Continuous Growth',
-      description: 'We continuously expand our product range and technical knowledge to serve new industries and meet evolving customer requirements.',
-      color: '#C9A84C'
+      icon: 'fa-solid fa-store',
+      title: 'A real counter you can visit',
+      text: `Walk in at ${environment.company.address.line1}, ${environment.company.address.line2} with your old part and we'll match it.`
     }
   ];
 
-  readonly timeline: TimelineEvent[] = [
-    {
-      year: 'Establishment',
-      title: 'Burhani Seal Centre Founded',
-      description: 'Qutubuddin Palanpurwala established Burhani Seal Centre at the heart of Kolkata\'s industrial hub in Burra Bazar, Strand Road — starting with a focused range of mechanical seals and gaskets.',
-      icon: 'fa-flag',
-      side: 'left'
-    },
-    {
-      year: 'Expansion',
-      title: 'Product Range Expanded',
-      description: 'Responding to customer demand, we expanded into O Rings, PTFE Products, Packing Materials, and Oil Seals — becoming a comprehensive one-stop sealing solutions provider.',
-      icon: 'fa-boxes-stacked',
-      side: 'right'
-    },
-    {
-      year: 'Industry Growth',
-      title: 'Cross-Industry Penetration',
-      description: 'Built strong supply relationships with Chemical, Pharmaceutical, Oil & Gas, Power Plant, and Textile industries across West Bengal and beyond.',
-      icon: 'fa-industry',
-      side: 'left'
-    },
-    {
-      year: 'Portfolio',
-      title: '11 Product Categories',
-      description: 'Added Rubber Products, Expansion Joints, Industrial Hoses, Engineering Plastics, and Industrial Insulation Materials, reaching 34+ product lines.',
-      icon: 'fa-chart-line',
-      side: 'right'
-    },
-    {
-      year: 'Today',
-      title: 'Trusted Industrial Partner',
-      description: 'Today, Burhani Seal Centre serves 500+ clients across 11 industrial sectors, supplying quality-assured sealing solutions with expert technical support and reliable delivery.',
-      icon: 'fa-star',
-      side: 'left'
-    }
+  /** What happens after you get in touch — a real sequence, so it's numbered */
+  protected readonly journey = [
+    { icon: 'fa-solid fa-camera', title: 'You share the part', text: 'A product name, the size printed on the old seal, or simply a photo on WhatsApp.' },
+    { icon: 'fa-solid fa-magnifying-glass', title: 'We identify it', text: 'We match the size, material and type, and check what is in stock right now.' },
+    { icon: 'fa-solid fa-indian-rupee-sign', title: 'You get a clear quote', text: 'Price, quantity and availability — usually the same working day for stocked items.' },
+    { icon: 'fa-solid fa-file-invoice', title: 'We pack and invoice', text: `Every order is billed with a GST invoice (GSTIN ${environment.company.gst}).` },
+    { icon: 'fa-solid fa-truck-ramp-box', title: 'Pickup or dispatch', text: 'Collect from our Burra Bazar counter, or tell us where to send it and we will arrange it.' }
   ];
 
-  readonly stats = [
-    { value: '25+', label: 'Years Experience' },
-    { value: '34+', label: 'Product Lines'    },
-    { value: '11',  label: 'Industries'       },
-    { value: '500+',label: 'Happy Clients'    }
-  ];
+  private readonly timeline = viewChild<ElementRef<HTMLElement>>('timeline');
 
-  constructor(
-    private seoService: SeoService,
-    private whatsappService: WhatsappService
-  ) {}
+  constructor() {
+    inject(SeoService).set({
+      title: 'About us',
+      description: `Burhani Seal Centre, ${environment.company.address.line2}, Kolkata — led by ${environment.company.owner}. Oil seals, hydraulic seals, seal kits, couplings and bearings with help matching the right part.`,
+      path: '/about'
+    });
 
-  ngOnInit(): void {
-    this.seoService.setAboutSeo();
-    setTimeout(() => this.heroVisible.set(true), 100);
-  }
-
-  ngAfterViewInit(): void {
-    this.setupScrollReveal();
-  }
-
-  ngOnDestroy(): void {
-    this.observers.forEach(o => o.disconnect());
-  }
-
-  private setupScrollReveal(): void {
-    // We observe named section IDs to trigger animations
-    const sections: Array<{ id: string; signal: ReturnType<typeof signal<boolean>> }> = [
-      { id: 'about-story',    signal: this.storyVisible    },
-      { id: 'about-values',   signal: this.valuesVisible   },
-      { id: 'about-timeline', signal: this.timelineVisible },
-      { id: 'about-team',     signal: this.teamVisible     },
-      { id: 'about-cta',      signal: this.ctaVisible      }
-    ];
-
-    sections.forEach(({ id, signal: sig }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            sig.set(true);
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.12 }
-      );
-
-      observer.observe(el);
-      this.observers.push(observer);
+    // The gold line in the timeline fills as you scroll through it
+    const zone = inject(NgZone);
+    const doc = inject(DOCUMENT);
+    const destroyRef = inject(DestroyRef);
+    afterNextRender(() => {
+      const win = doc.defaultView!;
+      zone.runOutsideAngular(() => {
+        const update = () => {
+          const el = this.timeline()?.nativeElement;
+          if (!el) return;
+          const r = el.getBoundingClientRect();
+          const p = (win.innerHeight * 0.6 - r.top) / r.height;
+          el.style.setProperty('--fill', String(Math.max(0, Math.min(1, p))));
+        };
+        win.addEventListener('scroll', update, { passive: true });
+        update();
+        destroyRef.onDestroy(() => win.removeEventListener('scroll', update));
+      });
     });
   }
-
-  openWhatsApp(): void {
-    this.whatsappService.openGeneralEnquiry();
-  }
-
-  trackByTitle(_i: number, item: { title: string }): string { return item.title; }
-  trackByYear(_i: number, item: TimelineEvent): string { return item.year; }
-  trackByValue(_i: number, item: { value: string }): string { return item.value; }
 }

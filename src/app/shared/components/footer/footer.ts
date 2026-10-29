@@ -1,72 +1,47 @@
 // ============================================
-// FOOTER COMPONENT
+// FOOTER
 // ============================================
-// Luxury multi-column footer displayed on every page.
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { WhatsappService } from '../../../services/whatsapp.service';
-import { environment } from '../../../../environments/environments';
-
-interface FooterLink { label: string; path: string; }
-interface SocialLink { icon: string; url: string; label: string; }
+import { environment } from '../../../../environments/environment';
+import { ProductService } from '../../../services/product.service';
+import { EnquiryService } from '../../../services/enquiry.service';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink, RevealDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.html',
   styleUrl: './footer.scss'
 })
 export class FooterComponent {
+  protected readonly company = environment.company;
+  protected readonly enquiry = inject(EnquiryService);
+  protected readonly categories = inject(ProductService).getAllCategories();
+  protected readonly year = new Date().getFullYear();
 
-  readonly company = environment.company;
-  readonly currentYear = new Date().getFullYear();
-
-  readonly quickLinks: FooterLink[] = [
-    { label: 'Home',       path: '/'           },
-    { label: 'About Us',   path: '/about'      },
-    { label: 'Products',   path: '/products'   },
-    { label: 'Industries', path: '/industries' },
-    { label: 'Contact Us', path: '/contact'    }
+  protected readonly pages = [
+    { label: 'All products', path: '/products' },
+    { label: 'Categories', path: '/categories' },
+    { label: 'About us', path: '/about' },
+    { label: 'Industries we serve', path: '/industries' },
+    { label: 'Get a quote', path: '/contact' }
   ];
 
-  readonly productLinks: FooterLink[] = [
-    { label: 'Oil Seals',              path: '/products' },
-    { label: 'Seals',                  path: '/products' },
-    { label: 'PU Coupling Spider',     path: '/products' },
-    { label: 'Seal Kits',              path: '/products' },
-    { label: 'Rubber Sheets',          path: '/products' },
-    { label: 'Pump Seals',             path: '/products' },
-    { label: 'Hydraulic Oil Seals',    path: '/products' },
-    { label: 'O Ring Kits',            path: '/products' },
-    { label: 'SKF Ball Bearings',      path: '/products' },
-    { label: 'Spider Couplings',       path: '/products' }
-  ];
+  // Only show social icons that actually have a link
+  protected readonly socials = [
+    { icon: 'fa-brands fa-linkedin-in', url: this.company.social.linkedin, label: 'LinkedIn' },
+    { icon: 'fa-brands fa-facebook-f', url: this.company.social.facebook, label: 'Facebook' },
+    { icon: 'fa-brands fa-instagram', url: this.company.social.instagram, label: 'Instagram' },
+    { icon: 'fa-solid fa-store', url: this.company.social.indiamart, label: 'IndiaMART' }
+  ].filter(s => !!s.url);
 
-  readonly industryLinks: FooterLink[] = [
-    { label: 'Chemical Industry',      path: '/industries' },
-    { label: 'Pharmaceutical',         path: '/industries' },
-    { label: 'Oil & Gas',              path: '/industries' },
-    { label: 'Power Plants',           path: '/industries' },
-    { label: 'Water Treatment',        path: '/industries' },
-    { label: 'Steel Industry',         path: '/industries' }
-  ];
+  protected readonly mapsUrl =
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(environment.company.address.full)}`;
 
-  readonly socialLinks: SocialLink[] = [
-    { icon: 'fab fa-linkedin-in', url: this.company.social.linkedin, label: 'LinkedIn' },
-    { icon: 'fab fa-facebook-f',  url: this.company.social.facebook, label: 'Facebook' },
-    { icon: 'fab fa-instagram',   url: this.company.social.instagram, label: 'Instagram' },
-    { icon: 'fab fa-whatsapp',    url: `https://wa.me/${this.company.whatsapp.replace(/\D/g,'')}`, label: 'WhatsApp' }
-  ];
-
-  constructor(private whatsappService: WhatsappService) {}
-
-  openWhatsApp(): void {
-    this.whatsappService.openGeneralEnquiry();
+  protected scrollTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  trackByPath(_i: number, link: FooterLink): string { return link.path + link.label; }
-  trackByLabel(_i: number, link: SocialLink): string { return link.label; }
 }

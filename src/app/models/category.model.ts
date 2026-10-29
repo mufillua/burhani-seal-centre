@@ -1,18 +1,21 @@
 // ============================================
 // CATEGORY MODEL
 // ============================================
-// A category groups related products together.
-// Example: "Mechanical Seals" is a category
-// containing Single Spring, Multi Spring, etc.
+// A category groups related products, e.g. "Oil Seals".
+
+/** Which line illustration to draw for a category (see CategoryArtComponent) */
+export type CategoryArt =
+  | 'oil-seal' | 'hydraulic' | 'kit' | 'pump'
+  | 'o-ring' | 'coupling' | 'sheet' | 'bearing';
 
 export interface Category {
-  id: string;           // Unique identifier: 'mechanical-seals'
-  name: string;         // Display name: 'Mechanical Seals'
-  slug: string;         // URL-friendly: 'mechanical-seals'
-  icon: string;         // Font Awesome class: 'fa-gear'
-  description: string;  // Short description shown on category card
-  productCount?: number; // Auto-calculated, optional
-  imageUrl?: string;    // Optional category image
-  featured?: boolean;   // Show on homepage preview?
-  sortOrder: number;    // Controls display order
+  id: string;            // 'oil-seals' — also used in ?category= URLs
+  name: string;          // 'Oil Seals'
+  slug: string;
+  icon: string;          // Font Awesome icon (small UI places)
+  art: CategoryArt;      // Line illustration (cards, placeholders)
+  description: string;
+  productCount?: number; // Calculated at runtime
+  featured?: boolean;
+  sortOrder: number;
 }

@@ -1,150 +1,166 @@
 // ============================================
-// PRODUCTS PAGE COMPONENT
+// PRODUCTS — catalogue with filters + pagination
 // ============================================
-// Full product catalog with:
-// - Category filter sidebar/tabs
-// - Product grid
-// - Search bar
-// - Smooth filter transitions
+// Everything lives in the URL so any view can be shared,
+// bookmarked or refreshed:
+//   /products?category=oil-seals&q=viton&sort=name-asc&page=2
+// 12 products per page.
 
 import {
+  ChangeDetectionStrategy,
   Component,
-  OnInit,
-  signal,
-  computed
+  DestroyRef,
+  ElementRef,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  viewChild
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { ProductService } from '../../services/product.service';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { PAGE_SIZE, ProductService, ProductSort } from '../../services/product.service';
 import { SeoService } from '../../services/seo.service';
-import { Product } from '../../models/product.model';
-import { Category } from '../../models/category.model';
+import { EnquiryService } from '../../services/enquiry.service';
 import { ProductCardComponent } from '../../shared/components/product-card/product-card';
-import { SectionHeaderComponent } from '../../shared/components/section-header/section-header';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  query,
-  stagger
-} from '@angular/animations';
+import { PaginationComponent } from '../../shared/components/pagination/pagination';
+import { CategoryArtComponent } from '../../shared/components/category-art/category-art';
+
+const SORTS: { value: ProductSort; label: string }[] = [
+  { value: 'featured', label: 'Featured first' },
+  { value: 'name-asc', label: 'Name: A to Z' },
+  { value: 'name-desc', label: 'Name: Z to A' }
+];
 
 @Component({
   selector: 'app-products',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink,
-    FormsModule,
-    ProductCardComponent,
-    SectionHeaderComponent
-  ],
-  animations: [
-    // Stagger cards as they appear
-    trigger('gridAnim', [
-      transition('* => *', [
-        query(':enter', [
-          style({ opacity: 0, transform: 'translateY(24px)' }),
-          stagger('60ms', [
-            animate(
-              '0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-              style({ opacity: 1, transform: 'translateY(0)' })
-            )
-          ])
-        ], { optional: true })
-      ])
-    ])
-  ],
+  imports: [RouterLink, ProductCardComponent, PaginationComponent, CategoryArtComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './products.html',
   styleUrl: './products.scss'
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly products = inject(ProductService);
+  private readonly seo = inject(SeoService);
+  protected readonly enquiry = inject(EnquiryService);
 
-  // ── State ──────────────────────────────────
-  selectedCategoryId = signal<string>('all');
-  searchQuery        = signal<string>('');
-  isGridView         = signal<boolean>(true);
+  protected readonly categories = this.products.getAllCategories();
+  protected readonly totalProducts = this.products.getTotalProductCount();
+  protected readonly sorts = SORTS;
+  protected readonly pageSize = PAGE_SIZE;
 
-  // ── Data ───────────────────────────────────
-  categories: Category[]  = [];
-  allProducts: Product[]  = [];
+  private readonly results = viewChild<ElementRef<HTMLElement>>('results');
+  private readonly chips = viewChild<ElementRef<HTMLElement>>('chips');
 
-  // ── Computed: filtered product list ────────
-  // This recomputes automatically whenever
-  // selectedCategoryId or searchQuery changes
-  filteredProducts = computed(() => {
-    let products = this.allProducts;
+  // ── State, read from the URL ─────────────
+  private readonly params = toSignal(this.route.queryParamMap, { requireSync: true });
 
-    // Filter by category
-    const catId = this.selectedCategoryId();
-    if (catId !== 'all') {
-      products = products.filter(p => p.categoryId === catId);
-    }
-
-    // Filter by search
-    const query = this.searchQuery().trim().toLowerCase();
-    if (query.length >= 2) {
-      products = products.filter(p =>
-        p.name.toLowerCase().includes(query)               ||
-        p.shortDescription.toLowerCase().includes(query)   ||
-        p.categoryName.toLowerCase().includes(query)       ||
-        p.applications.some(a => a.toLowerCase().includes(query)) ||
-        p.industriesServed.some(i => i.toLowerCase().includes(query))
-      );
-    }
-
-    return products;
+  protected readonly category = computed(() => {
+    const id = this.params().get('category');
+    return this.products.getCategoryById(id) ? id : null;
   });
-
-  // ── Computed: active category label ────────
-  activeCategoryLabel = computed(() => {
-    if (this.selectedCategoryId() === 'all') return 'All Products';
-    return this.categories.find(c => c.id === this.selectedCategoryId())?.name || 'Products';
+  protected readonly activeCategory = computed(() => this.products.getCategoryById(this.category()));
+  protected readonly search = computed(() => (this.params().get('q') ?? '').slice(0, 80));
+  protected readonly sort = computed<ProductSort>(() => {
+    const s = this.params().get('sort') as ProductSort;
+    return SORTS.some(o => o.value === s) ? s : 'featured';
   });
+  protected readonly requestedPage = computed(() => Number(this.params().get('page')) || 1);
 
-  constructor(
-    private productService: ProductService,
-    private seoService: SeoService,
-    private route: ActivatedRoute
-  ) {}
+  protected readonly result = computed(() =>
+    this.products.query({
+      category: this.category(),
+      search: this.search(),
+      sort: this.sort(),
+      page: this.requestedPage()
+    })
+  );
 
-  ngOnInit(): void {
-    this.seoService.setProductsSeo();
-    this.categories = this.productService.getAllCategories();
-    this.allProducts = this.productService.getAllProducts();
+  /** What's in the search box right now (updates the URL after a pause) */
+  protected readonly searchInput = linkedSignal(() => this.search());
+  private searchTimer?: ReturnType<typeof setTimeout>;
 
-    // Check if a category was passed as a query param
-    // e.g. /products?category=mechanical-seals
-    this.route.queryParams.subscribe(params => {
-      const cat = params['category'];
-      if (cat) this.selectedCategoryId.set(cat);
+  constructor() {
+    // Page title / description follow the selected category
+    effect(() => {
+      const cat = this.activeCategory();
+      this.seo.set({
+        title: cat ? `${cat.name} — buy in Kolkata` : 'Product catalogue — seals, kits, couplings & bearings',
+        description: cat
+          ? `${cat.description} Browse ${cat.productCount} products and enquire on WhatsApp or email — Burhani Seal Centre, Burra Bazar, Kolkata.`
+          : `Browse ${this.totalProducts} industrial products: oil seals, hydraulic seals, seal kits, pump seals, O-rings, couplings, rubber sheets and SKF bearings. Enquire on WhatsApp or email.`,
+        path: cat ? `/products?category=${cat.id}` : '/products'
+      });
+    });
+
+    // Keep the selected category chip in view on phones
+    effect(() => {
+      const id = this.category() ?? 'all';
+      queueMicrotask(() => {
+        const chip = this.chips()?.nativeElement.querySelector<HTMLElement>(`[data-chip="${id}"]`);
+        chip?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+      });
+    });
+
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.searchTimer));
+  }
+
+  // ── Actions ──────────────────────────────
+
+  protected setCategory(id: string | null): void {
+    if (id === this.category()) return;
+    this.navigate({ category: id, page: null });
+    this.scrollToResults();
+  }
+
+  protected setPage(page: number): void {
+    this.navigate({ page: page > 1 ? page : null });
+    this.scrollToResults(true);
+  }
+
+  protected setSort(value: string): void {
+    this.navigate({ sort: value === 'featured' ? null : value, page: null });
+  }
+
+  protected onSearchInput(value: string): void {
+    this.searchInput.set(value);
+    clearTimeout(this.searchTimer);
+    this.searchTimer = setTimeout(() => {
+      this.navigate({ q: value.trim() || null, page: null }, true);
+    }, 280);
+  }
+
+  protected clearSearch(): void {
+    this.searchInput.set('');
+    clearTimeout(this.searchTimer);
+    this.navigate({ q: null, page: null }, true);
+  }
+
+  protected clearAll(): void {
+    this.searchInput.set('');
+    this.navigate({ q: null, page: null, category: null, sort: null });
+  }
+
+  private navigate(params: Params, replaceUrl = false): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: params,
+      queryParamsHandling: 'merge',
+      replaceUrl
     });
   }
 
-  selectCategory(id: string): void {
-    this.selectedCategoryId.set(id);
-    this.searchQuery.set('');
-    // Smooth scroll to grid
-    document.getElementById('products-grid')
-      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  onSearchInput(value: string): void {
-    this.searchQuery.set(value);
-    this.selectedCategoryId.set('all');
-  }
-
-  clearSearch(): void {
-    this.searchQuery.set('');
-  }
-
-  toggleView(): void {
-    this.isGridView.update(v => !v);
-  }
-
-  trackById(_i: number, item: Product | Category): string {
-    return (item as Product).id || (item as Category).id;
+  /** Bring the top of the results into view if it's off-screen */
+  private scrollToResults(always = false): void {
+    setTimeout(() => {
+      const el = this.results()?.nativeElement;
+      if (!el) return;
+      const top = el.getBoundingClientRect().top;
+      if (always ? top < 0 || top > window.innerHeight * 0.6 : top < 0) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 30);
   }
 }

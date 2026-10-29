@@ -1,0 +1,165 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true"></div>
+
+  <div class="container-custom hero__grid">
+    <!-- ── Copy + search ── -->
+    <div class="hero__copy">
+      <p class="hero__status" [class.is-open]="status().open">
+        <span class="hero__dot"></span>{{ status().text }}
+      </p>
+
+      <h1 id="hero-title" class="hero__title">
+        <span class="line"><span>Trusted Industrial</span></span>
+        <span class="line line--gold"><span>Sealing Solutions</span></span>
+      </h1>
+
+      <p class="hero__lead">
+        Oil seals, hydraulic seals, seal kits, couplings and SKF bearings from Burra Bazar, Kolkata.
+        Find your part, then enquire on WhatsApp or email in one tap.
+      </p>
+
+      <!-- Search -->
+      <form class="finder" role="search" (submit)="$event.preventDefault(); submit()">
+        <div class="finder__box" [class.is-open]="open()">
+          <i class="fa-solid fa-magnifying-glass finder__icon" aria-hidden="true"></i>
+          <label for="hero-search" class="visually-hidden">Search products</label>
+          <input id="hero-search" type="search" autocomplete="off" enterkeyhint="search"
+                 role="combobox" aria-autocomplete="list" aria-controls="hero-suggestions"
+                 [attr.aria-expanded]="open()"
+                 [attr.aria-activedescendant]="active() >= 0 ? 'sugg-' + active() : null"
+                 placeholder="Search seals, sizes, brands…"
+                 [value]="query()"
+                 (input)="onInput($any($event.target).value)"
+                 (focus)="focused.set(true)"
+                 (blur)="onBlur()"
+                 (keydown)="onKeydown($event)" />
+          <button type="submit" class="finder__go" aria-label="Search">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        @if (open()) {
+          <div class="finder__panel" animate.enter="anim-drop-in" animate.leave="anim-drop-out">
+            @if (suggestions().length) {
+              <ul id="hero-suggestions" role="listbox" class="finder__list" aria-label="Suggested products">
+                @for (p of suggestions(); track p.id; let i = $index) {
+                  <li role="option" [id]="'sugg-' + i" [attr.aria-selected]="active() === i">
+                    <a class="finder__item" [class.is-active]="active() === i"
+                       [routerLink]="['/products', p.slug]" (mousedown)="$event.preventDefault()">
+                      <app-product-image class="finder__thumb" [product]="p" [width]="80" [height]="80" />
+                      <span class="finder__text">
+                        <span class="finder__name">{{ p.name }}</span>
+                        <span class="finder__cat">{{ p.categoryName }}</span>
+                      </span>
+                      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                }
+              </ul>
+              <button type="submit" class="finder__all" (mousedown)="$event.preventDefault()">
+                See all results for “{{ query().trim() }}”
+              </button>
+            } @else {
+              <p class="finder__empty">
+                No match for “{{ query().trim() }}”. Press enter to search the catalogue, or ask us on WhatsApp.
+              </p>
+            }
+          </div>
+        }
+      </form>
+
+      <div class="hero__popular">
+        <span>Popular:</span>
+        @for (term of popular; track term) {
+          <button type="button" (click)="searchFor(term)">{{ term }}</button>
+        }
+      </div>
+
+      <div class="hero__ctas">
+        <a class="btn btn--gold btn--lg" routerLink="/products">
+          Browse {{ totalProducts }} products <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn--outline-light btn--lg" routerLink="/contact">Get A Quote</a>
+      </div>
+    </div>
+
+    <!-- ── Signature drawing ── -->
+    <div class="hero__visual" aria-hidden="true">
+      <div class="seal">
+        <svg class="seal__svg" viewBox="0 0 500 500" fill="none">
+          <defs>
+            <radialGradient id="rubber" cx="50%" cy="50%" r="50%">
+              <stop offset="58%" stop-color="#141a30" />
+              <stop offset="76%" stop-color="#232c4d" />
+              <stop offset="92%" stop-color="#121729" />
+            </radialGradient>
+            <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#A07C30" />
+              <stop offset=".5" stop-color="#E8C96B" />
+              <stop offset="1" stop-color="#C9A84C" />
+            </linearGradient>
+          </defs>
+
+          <!-- Dial ticks -->
+          <g class="seal__ticks">
+            @for (t of ticks; track t.i) {
+              <line [attr.x1]="t.x1" [attr.y1]="t.y1" [attr.x2]="t.x2" [attr.y2]="t.y2"
+                    [class.long]="t.long" [style.--i]="t.i" />
+            }
+          </g>
+
+          <!-- Rotating seal -->
+          <g class="seal__rotor">
+            <path class="seal__body" fill="url(#rubber)" fill-rule="evenodd"
+                  d="M250 58a192 192 0 1 0 0.01 0Z M250 130a120 120 0 1 0 0.01 0Z" />
+            <circle class="draw d1" cx="250" cy="250" r="200" stroke="url(#goldStroke)" stroke-width="3" pathLength="1" />
+            <circle class="draw d2" cx="250" cy="250" r="192" stroke="rgba(255,255,255,.25)" stroke-width="1" pathLength="1" />
+            <circle class="seal__spring" cx="250" cy="250" r="129" stroke="url(#goldStroke)" stroke-width="11" />
+            <circle class="draw d3" cx="250" cy="250" r="113" stroke="rgba(255,255,255,.7)" stroke-width="2" pathLength="1" />
+            <circle cx="250" cy="250" r="160" stroke="rgba(255,255,255,.06)" stroke-width="18" />
+            <path class="seal__sheen" d="M250 70 A180 180 0 0 1 430 250" stroke="rgba(232,201,107,.55)" stroke-width="3" stroke-linecap="round" />
+            <circle cx="250" cy="250" r="100" stroke="rgba(255,255,255,.12)" stroke-dasharray="2 8" />
+          </g>
+
+          <!-- Centre lines -->
+          <g class="seal__axes" stroke="rgba(255,255,255,.18)" stroke-dasharray="14 6 3 6">
+            <line x1="250" y1="120" x2="250" y2="380" />
+            <line x1="120" y1="250" x2="380" y2="250" />
+          </g>
+
+          <!-- Dimensions (35 × 62 × 7 — a real SKF size we stock) -->
+          <g class="seal__dims" stroke="#C9A84C" stroke-width="1.2">
+            <line class="draw d4" x1="50" y1="250" x2="50" y2="12" pathLength="1" />
+            <line class="draw d4" x1="450" y1="250" x2="450" y2="12" pathLength="1" />
+            <line class="draw d5" x1="56" y1="20" x2="444" y2="20" pathLength="1" />
+            <path class="arrow" d="M56 20l10 -4v8z M444 20l-10 -4v8z" fill="#C9A84C" stroke="none" />
+            <line class="draw d4" x1="137" y1="250" x2="137" y2="488" pathLength="1" />
+            <line class="draw d4" x1="363" y1="250" x2="363" y2="488" pathLength="1" />
+            <line class="draw d5" x1="143" y1="480" x2="357" y2="480" pathLength="1" />
+            <path class="arrow" d="M143 480l10 -4v8z M357 480l-10 -4v8z" fill="#C9A84C" stroke="none" />
+          </g>
+          <g class="seal__labels">
+            <rect x="200" y="7" width="100" height="26" rx="13" />
+            <text x="250" y="25">OD 62 mm</text>
+            <rect x="200" y="467" width="100" height="26" rx="13" />
+            <text x="250" y="485">ID 35 mm</text>
+          </g>
+        </svg>
+
+        <!-- Orbiting real products -->
+        @for (p of orbit; track p.id; let i = $index) {
+          <a class="orb" [class]="'orb orb--' + i" [routerLink]="['/products', p.slug]" tabindex="-1">
+            <app-product-image [product]="p" [width]="200" [height]="200" [priority]="i === 0" />
+          </a>
+        }
+
+        <div class="tag tag--a"><i class="fa-solid fa-certificate"></i> SKF · IVR · J K Pioneer</div>
+        <div class="tag tag--b"><strong>{{ totalProducts }}</strong> products · {{ totalCategories }} categories</div>
+      </div>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#categories" aria-label="Scroll to categories">
+    <span></span>
+  </a>
+</section>

@@ -27,11 +27,9 @@ export interface Product {
   industriesServed: string[];    // Which industries use this
 
   // Media
-  imageUrl: string;             // Product image path
+  imageUrl: string;             // '' = show the category illustration instead
   imageAlt: string;             // SEO alt text for image
 
-  // Commerce
-  whatsappMessage: string;      // Pre-filled WhatsApp message
 
   // Metadata
   featured?: boolean;           // Show on homepage?
