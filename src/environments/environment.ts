@@ -20,7 +20,7 @@ export const environment = {
     phoneDisplay: '+91 76796 79044', // what visitors see
     // IMPORTANT: make sure this inbox exists before going live —
     // every "Enquire by email" button sends mail here.
-    email: 'info@burhanisealcentre.com',
+    email: 'burhaniseal@gmail.com',
 
     address: {
       line1: 'Ground Floor, 37, Strand Road',
