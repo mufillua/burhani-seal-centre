@@ -82,7 +82,7 @@ import { CategoryArt } from '../../../models/category.model';
   styles: `
     :host { display: block; color: inherit; line-height: 0; }
     svg { width: 100%; height: 100%; overflow: visible; }
-    .accent { stroke: var(--art-accent, #C9A84C); }
+    .accent { stroke: var(--art-accent, #0155B1); }
   `
 })
 export class CategoryArtComponent {

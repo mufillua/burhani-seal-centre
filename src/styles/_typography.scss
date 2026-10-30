@@ -78,24 +78,24 @@ p {
 }
 
 a {
-  color: $gold-dark;
+  color: $blue-dark;
   text-decoration: none;
   transition: color $transition-fast;
 
-  &:hover { color: $gold; }
+  &:hover { color: $blue; }
 }
 
 address { font-style: normal; }
 
-// Visible keyboard focus everywhere — gold ring
+// Visible keyboard focus everywhere — blue ring
 :focus-visible {
-  outline: 2px solid $gold;
+  outline: 2px solid $blue;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 ::selection {
-  background: rgba($gold, 0.28);
+  background: rgba($blue, 0.28);
   color: $charcoal;
 }
 
@@ -108,11 +108,11 @@ address { font-style: normal; }
 }
 
 // --- Text helpers ---
-.text-gold { color: $gold !important; }
+.text-brand { color: $blue !important; }
 .text-white { color: $white !important; }
 
-.text-gradient-gold {
-  @include gold-text;
+.text-gradient-brand {
+  @include brand-text;
 }
 
 .section-label {
@@ -124,7 +124,7 @@ address { font-style: normal; }
   font-weight: $weight-bold;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: $gold-dark;
+  color: $blue-dark;
   margin-bottom: $space-2;
 
   &::before {
@@ -145,7 +145,7 @@ address { font-style: normal; }
   em {
     font-style: italic;
     font-weight: $weight-semibold;
-    @include gold-text;
+    @include brand-text;
   }
 }
 

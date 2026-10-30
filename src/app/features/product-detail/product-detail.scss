@@ -7,7 +7,7 @@
 .pd-top {
   padding: calc(#{$nav-h} + 22px) 0 70px;
   background:
-    radial-gradient(ellipse 50% 120% at 90% 0%, rgba($gold, 0.14), transparent 60%),
+    radial-gradient(ellipse 50% 120% at 90% 0%, rgba($blue-light, 0.14), transparent 60%),
     linear-gradient(120deg, $surface-1-glass, $surface-2-glass 45%, $surface-3-glass);
 
   .breadcrumb { margin: 0; }
@@ -44,7 +44,7 @@
   overflow: hidden;
   border-radius: $radius-xl;
   background: $white;
-  box-shadow: 0 30px 60px -25px rgba($navy, 0.45), 0 0 0 1px rgba($gold, 0.15);
+  box-shadow: 0 30px 60px -25px rgba($navy, 0.45), 0 0 0 1px rgba($blue, 0.15);
   cursor: zoom-in;
 
   @include respond-to('mobile') { aspect-ratio: 4 / 3.4; border-radius: $radius-lg; }
@@ -108,7 +108,7 @@
     color: $charcoal;
   }
 
-  i { color: $gold-dark; font-size: 1rem; }
+  i { color: $blue-dark; font-size: 1rem; }
 
   @include respond-to('mobile') {
     gap: 6px;
@@ -129,15 +129,15 @@
   gap: 10px;
   padding: 5px 14px 5px 5px;
   border-radius: $radius-full;
-  background: rgba($gold, 0.1);
+  background: rgba($blue, 0.1);
   font-family: $font-accent;
   font-size: 0.75rem;
   font-weight: $weight-bold;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $gold-dark;
+  color: $blue-dark;
 
-  &:hover { background: rgba($gold, 0.2); color: $gold-dark; }
+  &:hover { background: rgba($blue, 0.2); color: $blue-dark; }
 }
 
 .pd__category-art {
@@ -147,7 +147,7 @@
   border-radius: 50%;
   background: $navy;
   color: $white;
-  --art-accent: #{$gold-light};
+  --art-accent: #{$blue-light};
 }
 
 .pd__title {
@@ -201,7 +201,7 @@
   padding: clamp(20px, 3vw, 28px);
   border-radius: $radius-lg;
   background: $white;
-  border: 1px solid rgba($gold, 0.35);
+  border: 1px solid rgba($blue, 0.35);
   box-shadow: 0 20px 50px -24px rgba($navy, 0.35);
   overflow: hidden;
 
@@ -210,7 +210,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    @include gold-gradient;
+    @include brand-gradient;
   }
 }
 
@@ -254,7 +254,7 @@
     color: $charcoal;
     transition: background-color 0.2s ease;
 
-    &:hover:not(:disabled) { background: $gold-subtle; color: $gold-dark; }
+    &:hover:not(:disabled) { background: $blue-subtle; color: $blue-dark; }
     &:disabled { opacity: 0.35; cursor: not-allowed; }
   }
 
@@ -268,7 +268,7 @@
     font-weight: $weight-semibold;
     outline: none;
 
-    &:focus { background: rgba($gold, 0.06); }
+    &:focus { background: rgba($blue, 0.06); }
   }
 }
 
@@ -288,7 +288,7 @@
     transition: all 0.2s ease;
 
     &.is-active { background: $charcoal; border-color: $charcoal; color: $white; }
-    &:hover:not(.is-active) { border-color: $gold; color: $charcoal; }
+    &:hover:not(.is-active) { border-color: $blue; color: $charcoal; }
   }
 }
 
@@ -302,7 +302,7 @@
   background: none;
   font-size: 0.875rem;
   font-weight: $weight-semibold;
-  color: $gold-dark;
+  color: $blue-dark;
 
   i { font-size: 11px; }
   &:hover { color: $charcoal; }
@@ -320,7 +320,7 @@
     font-size: 16px;
     line-height: 1.5;
 
-    &:focus { border-color: $gold; outline: none; box-shadow: 0 0 0 3px rgba($gold, 0.18); }
+    &:focus { border-color: $blue; outline: none; box-shadow: 0 0 0 3px rgba($blue, 0.18); }
   }
 }
 
@@ -374,7 +374,7 @@
 
   i { font-size: 0.85em; }
   &:hover { color: $charcoal; }
-  &.is-active { color: $charcoal; i { color: $gold-dark; } }
+  &.is-active { color: $charcoal; i { color: $blue-dark; } }
 
   @include respond-to('mobile') {
     font-size: 0.75rem;
@@ -389,7 +389,7 @@
   width: calc(100% / 3);
   height: 3px;
   border-radius: 3px 3px 0 0;
-  @include gold-gradient;
+  @include brand-gradient;
   transform: translateX(calc(var(--tab, 0) * 100%));
   transition: transform 0.45s var(--ease-out);
 }
@@ -432,8 +432,8 @@
     height: 22px;
     margin-top: 1px;
     border-radius: 50%;
-    background: rgba($gold, 0.15);
-    color: $gold-dark;
+    background: rgba($blue, 0.15);
+    color: $blue-dark;
     font-size: 10px;
   }
 }
@@ -490,7 +490,7 @@
   margin: 16px 0 0;
 
   li { display: flex; gap: 12px; align-items: baseline; }
-  i { color: $gold; font-size: 0.7rem; }
+  i { color: $blue; font-size: 0.7rem; }
 }
 
 .apps__chips {
@@ -558,7 +558,7 @@
   color: $navy;
   font-size: 1.05rem;
 
-  &:hover { border-color: $gold; color: $gold-dark; }
+  &:hover { border-color: $blue; color: $blue-dark; }
 }
 
 .sticky-bar__main { flex: 1; min-height: 48px; }

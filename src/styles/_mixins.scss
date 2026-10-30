@@ -45,13 +45,29 @@
   flex-direction: column;
 }
 
-// --- GOLD GRADIENT ---
-@mixin gold-gradient {
-  background: linear-gradient(135deg, $gold-dark, $gold, $gold-light, $gold);
+// --- BRAND FILL ---
+// Solid logo blue with a slight lift — buttons, badges, marks.
+// Text on it is always white.
+@mixin brand-gradient {
+  background: linear-gradient(135deg, $blue-dark 0%, $blue 50%, $blue-bright 100%);
 }
 
-@mixin gold-text {
-  background: linear-gradient(135deg, $gold-dark, $gold-light);
+// Thin lines and bars that sit on dark-blue backgrounds.
+@mixin brand-gradient-light {
+  background: linear-gradient(90deg, #4F97F2, $blue-light);
+}
+
+// Gradient text: logo blue on light backgrounds…
+@mixin brand-text {
+  background: linear-gradient(120deg, $blue-dark, $blue 55%, $blue-bright);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// …and a light sky-blue on dark-blue backgrounds.
+@mixin brand-text-light {
+  background: linear-gradient(120deg, #7DB6FF, $blue-light 50%, #E1EEFF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -114,8 +130,8 @@
   height: 100%;
 }
 
-// --- GOLD BORDER BOTTOM ---
-@mixin gold-underline {
+// --- BRAND UNDERLINE ---
+@mixin brand-underline {
   position: relative;
 
   &::after {
@@ -125,7 +141,7 @@
     left: 0;
     width: 60px;
     height: 3px;
-    @include gold-gradient;
+    @include brand-gradient;
     border-radius: $radius-full;
   }
 

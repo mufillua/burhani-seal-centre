@@ -3,10 +3,10 @@
 
     <!-- Logo -->
     <a class="brand" routerLink="/" aria-label="Burhani Seal Centre — home">
-      <span class="brand__mark" aria-hidden="true">B<i></i></span>
+      <span class="brand__mark"><app-logo-mark /></span>
       <span class="brand__text">
-        <span class="brand__name">Burhani</span>
-        <span class="brand__sub">Seal Centre</span>
+        <span class="brand__name"><span>Burhani&#32;</span><span>Seal Centre</span></span>
+        <span class="brand__sub">Since 1988</span>
       </span>
     </a>
 
@@ -76,7 +76,7 @@
         </span>
       </a>
 
-      <a class="btn btn--gold btn--sm nav__quote" routerLink="/contact">
+      <a class="btn btn--primary btn--sm nav__quote" routerLink="/contact">
         <span class="nav__quote-long">Get A Quote</span>
         <span class="nav__quote-short">Quote</span>
       </a>
@@ -139,7 +139,7 @@
     </nav>
 
     <div class="drawer__footer">
-      <a class="btn btn--gold btn--block" routerLink="/contact">Get A Quote</a>
+      <a class="btn btn--primary btn--block" routerLink="/contact">Get A Quote</a>
       <div class="drawer__row">
         <a class="btn btn--whatsapp" [href]="enquiry.generalWhatsappHref" target="_blank" rel="noopener">
           <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp

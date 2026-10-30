@@ -22,11 +22,14 @@ Node 20.19+ or 22.12+ is required.
 
 | What | File |
 | --- | --- |
-| Phone, WhatsApp, email, address, map pin, opening hours, GSTIN, owner, social links, "25+ years / 500+ customers" | `src/environments/environment.ts` |
+| Phone, WhatsApp, email, address, map pin, opening hours, GSTIN, owner, social links, "500+ customers" | `src/environments/environment.ts` |
+| Year founded (1988). "Years in the trade" is calculated from it and goes up each year | `src/environments/environment.ts` → `founded` |
+| Logo: the B mark used across the site (it takes the colour of the text around it) | `src/app/shared/components/logo-mark/logo-mark.ts` |
+| Logo files: full stacked logo and mark as SVG | `src/assets/brand/` |
 | Live address of the site (domain) | `src/environments/environment.ts` → `seo.siteUrl` |
 | Products and categories | `src/app/data/products.data.ts` |
 | "Industries we serve" page | `src/app/data/industries.data.ts` |
-| Colours, fonts, spacing | `src/styles/_variables.scss` |
+| Colours (all built from the logo blue `#0155B1`), fonts, spacing | `src/styles/_variables.scss` |
 
 Social links that are left as `''` are hidden automatically.
 

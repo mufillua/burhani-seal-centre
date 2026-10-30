@@ -73,12 +73,12 @@
   &--lg { min-height: 56px; padding: 16px 34px; font-size: 0.875rem; }
   &--block { width: 100%; }
 
-  &--gold {
-    @include gold-gradient;
-    color: $charcoal;
-    box-shadow: 0 6px 20px rgba($gold, 0.28);
+  &--primary {
+    @include brand-gradient;
+    color: $white;
+    box-shadow: 0 6px 20px rgba($blue, 0.28);
 
-    &:hover { color: $charcoal; transform: translateY(-2px); box-shadow: $shadow-gold-lg; }
+    &:hover { color: $white; transform: translateY(-2px); box-shadow: $shadow-brand-lg; }
   }
 
   &--dark {
@@ -93,7 +93,7 @@
     border-color: rgba($charcoal, 0.22);
     color: $charcoal;
 
-    &:hover { border-color: $gold; color: $gold-dark; transform: translateY(-2px); }
+    &:hover { border-color: $blue; color: $blue-dark; transform: translateY(-2px); }
   }
 
   &--outline-light {
@@ -102,7 +102,7 @@
     color: $white;
     backdrop-filter: blur(6px);
 
-    &:hover { border-color: $gold; color: $gold-light; transform: translateY(-2px); }
+    &:hover { border-color: $blue; color: $blue-light; transform: translateY(-2px); }
   }
 
   &--whatsapp {
@@ -121,8 +121,8 @@
 }
 
 // Legacy button names → new system
-.btn-gold         { @extend .btn; @extend .btn--gold; }
-.btn-outline-gold { @extend .btn; @extend .btn--outline; }
+.btn-primary         { @extend .btn; @extend .btn--primary; }
+.btn-outline-brand { @extend .btn; @extend .btn--outline; }
 .btn-dark         { @extend .btn; @extend .btn--dark; }
 .btn-whatsapp     { @extend .btn; @extend .btn--whatsapp; }
 
@@ -137,7 +137,7 @@
   color: $charcoal;
   transition: all 0.25s ease;
 
-  &:hover { border-color: $gold; color: $gold-dark; }
+  &:hover { border-color: $blue; color: $blue-dark; }
   &:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 
@@ -157,14 +157,14 @@
   border: 1px solid rgba($navy, 0.1);
   white-space: nowrap;
 
-  &--gold { background: $gold-subtle; color: $gold-dark; border-color: rgba($gold, 0.25); }
+  &--primary { background: $blue-subtle; color: $blue-dark; border-color: rgba($blue, 0.25); }
 }
 
-// ── GOLD DIVIDER ─────────────────────────────
-.gold-divider {
+// ── BRAND DIVIDER ────────────────────────────
+.brand-divider {
   width: 56px;
   height: 3px;
-  @include gold-gradient;
+  @include brand-gradient;
   border-radius: $radius-full;
   margin: $space-3 0;
 
@@ -176,7 +176,7 @@
   position: relative;
   padding: calc(#{$nav-h} + clamp(2.5rem, 6vw, 4.5rem)) 0 clamp(4rem, 8vw, 5.5rem);
   background:
-    radial-gradient(ellipse 60% 80% at 85% 0%, rgba($gold, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 0%, rgba($blue-light, 0.14), transparent 60%),
     radial-gradient(ellipse 50% 70% at 0% 100%, rgba($navy-deep, 0.45), transparent 70%),
     linear-gradient(135deg, $surface-1-glass 0%, $surface-2-glass 40%, $surface-3-glass 100%);
   color: $white;
@@ -214,7 +214,7 @@
     em {
       font-style: italic;
       font-weight: $weight-semibold;
-      @include gold-text;
+      @include brand-text-light;
     }
   }
 
@@ -239,9 +239,9 @@
   letter-spacing: 0.04em;
   color: rgba($white, 0.5);
 
-  a { color: rgba($white, 0.65); &:hover { color: $gold-light; } }
+  a { color: rgba($white, 0.65); &:hover { color: $blue-light; } }
   i { font-size: 8px; opacity: 0.5; }
-  [aria-current] { color: $gold-light; }
+  [aria-current] { color: $blue-light; }
 }
 
 // ── SKELETON SHIMMER ─────────────────────────
@@ -258,21 +258,20 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: $charcoal;
+  background: $surface-1;
   z-index: 9999;
 }
 .boot__mark {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
-  @include gold-gradient;
-  color: $charcoal;
-  font-family: $font-primary;
-  font-weight: $weight-black;
-  font-size: 1.75rem;
+  border-radius: 14px;
+  background: $white;
+  color: $blue;
   animation: float 1.6s ease-in-out infinite;
+
+  svg { height: 42px; width: auto; }
 }
 
 // ── SCROLLBAR (desktop) ──────────────────────
@@ -284,7 +283,7 @@
     border-radius: $radius-full;
     border: 2px solid $mist;
   }
-  ::-webkit-scrollbar-thumb:hover { background: $gold-dark; }
+  ::-webkit-scrollbar-thumb:hover { background: $blue-dark; }
 }
 
 // Product pages show a fixed enquiry bar on phones — keep the

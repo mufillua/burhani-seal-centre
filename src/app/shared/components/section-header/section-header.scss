@@ -26,7 +26,7 @@
   font-weight: $weight-bold;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $gold-dark;
+  color: $blue-dark;
 
   &::before {
     content: '';
@@ -46,7 +46,7 @@
   em {
     font-style: italic;
     font-weight: $weight-semibold;
-    @include gold-text;
+    @include brand-text;
     padding-right: 0.06em; // italic overhang
   }
 }
@@ -57,7 +57,7 @@
   height: 3px;
   margin-top: 18px;
   border-radius: 3px;
-  @include gold-gradient;
+  @include brand-gradient;
 }
 
 .sh__subtitle {
@@ -68,7 +68,8 @@
 }
 
 :host(.sh--light) {
-  .sh__eyebrow { color: $gold-light; }
-  .sh__title { color: $white; }
+  .sh__eyebrow { color: $blue-light; }
+  .sh__title { color: $white; em { @include brand-text-light; } }
+  .sh__rule { @include brand-gradient-light; }
   .sh__subtitle { color: rgba($white, 0.68); }
 }

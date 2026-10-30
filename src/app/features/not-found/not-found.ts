@@ -25,7 +25,7 @@ import { CategoryArtComponent } from '../../shared/components/category-art/categ
           <form class="nf__search" role="search" (submit)="$event.preventDefault(); search(q.value)">
             <label for="nf-q" class="visually-hidden">Search products</label>
             <input #q id="nf-q" type="search" placeholder="Search products…" autocomplete="off" />
-            <button type="submit" class="btn btn--gold">Search</button>
+            <button type="submit" class="btn btn--primary">Search</button>
           </form>
           <div class="nf__links">
             @for (c of categories; track c.id) {
@@ -49,16 +49,16 @@ import { CategoryArtComponent } from '../../shared/components/category-art/categ
     .nf { min-height: 80vh; }
     .nf__grid { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
       @include respond-to('max-tablet') { grid-template-columns: 1fr; } }
-    .nf__code { font-family: $font-accent; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: $gold; margin-bottom: 14px; font-size: .75rem; }
+    .nf__code { font-family: $font-accent; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: $blue-light; margin-bottom: 14px; font-size: .75rem; }
     .nf__search { display: flex; gap: 10px; max-width: 520px; margin-top: 28px;
       input { flex: 1; min-width: 0; height: 52px; padding: 0 20px; border-radius: $radius-full; border: 1px solid rgba($white, .2);
         background: rgba($white, .08); color: $white; font-size: 16px; outline: none;
-        &::placeholder { color: rgba($white, .5); } &:focus { border-color: $gold; } } }
+        &::placeholder { color: rgba($white, .5); } &:focus { border-color: $blue-light; } } }
     .nf__links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px;
       a { padding: 6px 14px; border-radius: $radius-full; border: 1px solid rgba($white, .14); color: rgba($white, .85); font-size: .8125rem;
-        &:hover { border-color: $gold; color: $white; } } }
+        &:hover { border-color: $blue-light; color: $white; } } }
     .nf__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .nf__art { width: 260px; height: 260px; color: rgba($white, .8); --art-accent: #{$gold-light}; animation: spin 40s linear infinite;
+    .nf__art { width: 260px; height: 260px; color: rgba($white, .8); --art-accent: #{$blue-light}; animation: spin 40s linear infinite;
       @include respond-to('max-tablet') { display: none; } }
   `
 })

@@ -35,8 +35,8 @@
   transition: all 0.3s var(--ease-out);
 
   &:hover:not(:disabled):not(.is-current) {
-    border-color: $gold;
-    color: $gold-dark;
+    border-color: $blue;
+    color: $blue-dark;
     transform: translateY(-2px);
   }
 
@@ -44,10 +44,10 @@
 }
 
 .pager__num.is-current {
-  @include gold-gradient;
+  @include brand-gradient;
   border-color: transparent;
-  color: $charcoal;
-  box-shadow: 0 6px 16px rgba($gold, 0.35);
+  color: $white;
+  box-shadow: 0 6px 16px rgba($blue, 0.35);
   cursor: default;
 }
 

@@ -29,7 +29,7 @@
   @media (hover: hover) {
     &:hover {
       transform: translateY(-6px);
-      border-color: rgba($gold, 0.45);
+      border-color: rgba($blue, 0.45);
       box-shadow: 0 28px 56px -24px rgba($navy, 0.35);
 
       .cat__art { transform: rotate(-12deg) scale(1.06); }
@@ -57,10 +57,10 @@
   place-items: center;
   min-height: 200px;
   background:
-    radial-gradient(circle at 30% 20%, rgba($gold, 0.22), transparent 60%),
+    radial-gradient(circle at 30% 20%, rgba($blue-light, 0.22), transparent 60%),
     linear-gradient(160deg, $surface-3, $surface-1);
   color: rgba($white, 0.88);
-  --art-accent: #{$gold-light};
+  --art-accent: #{$blue-light};
 
   @include respond-to('max-tablet') { min-height: 170px; }
 }
@@ -84,7 +84,7 @@
     margin-left: -10px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid $gold;
+    border: 2px solid $white;
     background: $white;
     transition: transform 0.5s var(--ease-out);
 
@@ -144,7 +144,7 @@
   font-family: $font-accent;
   font-size: 0.8125rem;
   font-weight: $weight-bold;
-  color: $gold-dark;
+  color: $blue-dark;
 
   i { margin-left: 6px; font-size: 11px; transition: transform 0.3s var(--ease-out); }
 }

@@ -16,10 +16,10 @@
   height: 200px;
   padding: 28px;
   border-radius: 50%;
-  border: 1px solid rgba($gold, 0.25);
-  background: radial-gradient(circle, rgba($gold, 0.12), transparent 70%);
+  border: 1px solid rgba($blue-light, 0.25);
+  background: radial-gradient(circle, rgba($blue-light, 0.12), transparent 70%);
   color: rgba($white, 0.85);
-  --art-accent: #{$gold-light};
+  --art-accent: #{$blue-light};
   animation: float 6s ease-in-out infinite;
 
   @include respond-to('max-tablet') { display: none; }
@@ -37,7 +37,7 @@
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: $gold;
+  color: $blue-light;
   pointer-events: none;
 }
 
@@ -58,9 +58,9 @@
   &::-webkit-search-cancel-button { display: none; }
 
   &:focus {
-    border-color: $gold;
+    border-color: $blue-light;
     background: rgba($white, 0.12);
-    box-shadow: 0 0 0 4px rgba($gold, 0.18);
+    box-shadow: 0 0 0 4px rgba($blue-light, 0.18);
   }
 
   @include respond-to('mobile') { height: 52px; font-size: 16px; }
@@ -79,7 +79,7 @@
   background: rgba($white, 0.1);
   color: $white;
 
-  &:hover { background: $gold; color: $charcoal; }
+  &:hover { background: $blue; color: $white; }
 }
 
 // ── LAYOUT ───────────────────────────────────
@@ -147,7 +147,7 @@
   &:hover { background: $mist; .cat-btn__icon { transform: rotate(-8deg); } }
 
   &.is-active {
-    background: linear-gradient(90deg, rgba($gold, 0.16), rgba($gold, 0.04));
+    background: linear-gradient(90deg, rgba($blue, 0.16), rgba($blue, 0.04));
 
     &::before {
       content: '';
@@ -157,12 +157,12 @@
       bottom: 8px;
       width: 3px;
       border-radius: 3px;
-      @include gold-gradient;
+      @include brand-gradient;
     }
 
-    .cat-btn__icon { background: $navy; color: $white; --art-accent: #{$gold-light}; }
+    .cat-btn__icon { background: $navy; color: $white; --art-accent: #{$blue-light}; }
     .cat-btn__name { font-weight: $weight-bold; }
-    .cat-btn__count { background: $gold; color: $charcoal; }
+    .cat-btn__count { background: $blue; color: $white; }
   }
 }
 
@@ -177,7 +177,7 @@
   background: rgba($navy, 0.06);
   color: $navy;
   font-size: 0.85rem;
-  --art-accent: #{$gold-dark};
+  --art-accent: #{$blue-bright};
   transition: all 0.35s var(--ease-out);
 }
 
@@ -208,7 +208,7 @@
   padding: 20px;
   border-radius: $radius-lg;
   background:
-    radial-gradient(circle at 100% 0%, rgba($gold, 0.22), transparent 55%),
+    radial-gradient(circle at 100% 0%, rgba($blue-light, 0.22), transparent 55%),
     linear-gradient(160deg, $surface-3, $surface-1);
   color: $white;
 }
@@ -221,7 +221,7 @@
   color: rgba($white, 0.6);
   word-break: break-all;
 
-  &:hover { color: $gold-light; }
+  &:hover { color: $blue-light; }
 }
 
 // ── CHIPS (phones / tablets) ─────────────────
@@ -268,7 +268,7 @@
     border-color: $charcoal;
     color: $white;
 
-    span { background: $gold; color: $charcoal; }
+    span { background: $blue; color: $white; }
   }
 }
 
@@ -310,7 +310,7 @@
     color: $charcoal;
     cursor: pointer;
 
-    &:focus { border-color: $gold; outline: none; box-shadow: 0 0 0 3px rgba($gold, 0.2); }
+    &:focus { border-color: $blue; outline: none; box-shadow: 0 0 0 3px rgba($blue, 0.2); }
   }
 }
 
@@ -327,15 +327,15 @@
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  border: 1px solid rgba($gold, 0.35);
+  border: 1px solid rgba($blue, 0.35);
   border-radius: $radius-full;
-  background: rgba($gold, 0.1);
+  background: rgba($blue, 0.1);
   font-size: 0.8125rem;
   font-weight: $weight-medium;
-  color: $gold-dark;
+  color: $blue-dark;
 
   i { font-size: 10px; }
-  &:hover { background: $gold; color: $charcoal; }
+  &:hover { background: $blue; color: $white; }
 }
 
 .filter-clear {
@@ -380,7 +380,7 @@
   height: 96px;
   margin-bottom: 20px;
   color: $navy;
-  --art-accent: #{$gold};
+  --art-accent: #{$blue};
   animation: float 5s ease-in-out infinite;
 }
 

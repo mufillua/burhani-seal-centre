@@ -32,7 +32,7 @@
     background-color: rgba($surface-1, 0.84);
     backdrop-filter: saturate(140%) blur(16px);
     -webkit-backdrop-filter: saturate(140%) blur(16px);
-    border-bottom-color: rgba($gold, 0.16);
+    border-bottom-color: rgba($blue-light, 0.16);
     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
 
     &::before { opacity: 0; }
@@ -65,60 +65,53 @@
 }
 
 .brand__mark {
-  position: relative;
+  // The logo as printed: blue mark on a white tile
   display: grid;
   place-items: center;
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  @include gold-gradient;
-  color: $charcoal;
-  font-family: $font-primary;
-  font-weight: $weight-black;
-  font-size: 1.45rem;
-  line-height: 1;
-  box-shadow: 0 6px 18px rgba($gold, 0.3);
+  background: $white;
+  color: $blue;
+  font-size: 28px;          // sets the mark's height
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
   transition: transform 0.5s var(--ease-spring);
 
-  i {
-    position: absolute;
-    right: 6px;
-    bottom: 6px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: $charcoal;
-  }
-
-  @include respond-to('max-tablet') { width: 38px; height: 38px; font-size: 1.3rem; }
-}
-
-@include respond-to('mobile') {
-  .brand { gap: 9px; }
-  .brand__name { font-size: 1.1rem; }
-  .brand__sub { letter-spacing: 0.16em; font-size: 0.5625rem; }
-  .nav__phone-icon { width: 38px; height: 38px; }
-  .burger { width: 38px; height: 38px; span { left: 11px; right: 11px; } span:nth-child(1) { top: 12px; } span:nth-child(2) { top: 18px; right: 14px; } span:nth-child(3) { top: 24px; } &.is-open span:nth-child(1), &.is-open span:nth-child(3) { top: 18px; } }
+  @include respond-to('max-tablet') { width: 38px; height: 38px; font-size: 25px; }
 }
 
 .brand__text { display: flex; flex-direction: column; line-height: 1.05; }
 
 .brand__name {
-  font-family: $font-primary;
-  font-size: 1.25rem;
+  font-family: $font-accent;
+  font-size: 1rem;
   font-weight: $weight-bold;
-  letter-spacing: 0.02em;
-  color: $gold-light;
+  letter-spacing: 0.03em;
+  color: $white;
+  white-space: nowrap;
 }
 
 .brand__sub {
-  margin-top: 3px;
+  margin-top: 4px;
   font-family: $font-accent;
   font-size: 0.625rem;
   font-weight: $weight-semibold;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba($white, 0.72);
+  color: $blue-light;
+}
+
+// Phones: the name stacks ("Burhani" / "Seal Centre") so the call,
+// quote and menu buttons keep their room. Kept after the base rules
+// above so it wins.
+@include respond-to('mobile') {
+  .nav__bar { gap: 12px; }
+  .brand { gap: 9px; }
+  .brand__text { line-height: 1.12; }
+  .brand__name { font-size: 0.8125rem; letter-spacing: 0.02em; > span { display: block; } }
+  .brand__sub { margin-top: 3px; letter-spacing: 0.16em; font-size: 0.5rem; }
+  .nav__phone-icon { width: 38px; height: 38px; }
+  .burger { width: 38px; height: 38px; span { left: 11px; right: 11px; } span:nth-child(1) { top: 12px; } span:nth-child(2) { top: 18px; right: 14px; } span:nth-child(3) { top: 24px; } &.is-open span:nth-child(1), &.is-open span:nth-child(3) { top: 18px; } }
 }
 
 // ── DESKTOP LINKS ────────────────────────────
@@ -149,7 +142,7 @@
   color: rgba($white, 0.86);
   transition: color 0.25s ease, background-color 0.25s ease;
 
-  // gold underline that grows from the centre
+  // blue underline that grows from the centre
   &::after {
     content: '';
     position: absolute;
@@ -158,14 +151,14 @@
     bottom: 6px;
     height: 2px;
     border-radius: 2px;
-    @include gold-gradient;
+    @include brand-gradient-light;
     transform: scaleX(0);
     transition: transform 0.45s var(--ease-out);
   }
 
   &:hover, &.is-open { color: $white; background: rgba($white, 0.06); }
   &:hover::after, &.is-active::after { transform: scaleX(1); }
-  &.is-active { color: $gold-light; }
+  &.is-active { color: $blue-light; }
 }
 
 .nav__chev {
@@ -195,7 +188,7 @@
   overflow: hidden;
   border-radius: $radius-lg;
   background: $white;
-  box-shadow: 0 30px 70px -20px rgba(#0b0d1a, 0.55), 0 0 0 1px rgba($gold, 0.18);
+  box-shadow: 0 30px 70px -20px rgba(#0b0d1a, 0.55), 0 0 0 1px rgba($blue, 0.18);
 }
 
 .mega__grid {
@@ -221,7 +214,7 @@
     background: $mist;
     color: $charcoal;
 
-    .mega__art { background: $navy; color: $white; --art-accent: #{$gold-light}; transform: rotate(-8deg); }
+    .mega__art { background: $navy; color: $white; --art-accent: #{$blue-light}; transform: rotate(-8deg); }
     .mega__cat-name { color: $navy-deep; }
   }
 }
@@ -232,9 +225,9 @@
   height: 48px;
   padding: 9px;
   border-radius: 12px;
-  background: rgba($gold, 0.1);
+  background: rgba($blue, 0.1);
   color: $navy;
-  --art-accent: #{$gold-dark};
+  --art-accent: #{$blue-bright};
   transition: all 0.4s var(--ease-out);
 }
 
@@ -255,7 +248,7 @@
   gap: 12px;
   padding: 24px;
   background:
-    radial-gradient(circle at 100% 0%, rgba($gold, 0.25), transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba($blue-light, 0.25), transparent 60%),
     linear-gradient(160deg, $surface-3, $surface-1);
   color: $white;
 }
@@ -279,7 +272,7 @@
   font-family: $font-accent;
   font-size: 0.8125rem;
   font-weight: $weight-bold;
-  color: $gold-light;
+  color: $blue-light;
 
   i { font-size: 10px; margin-left: 6px; transition: transform 0.3s ease; }
   &:hover { color: $white; i { transform: translateX(4px); } }
@@ -301,7 +294,7 @@
   gap: 10px;
   color: $white;
 
-  &:hover { color: $gold-light; .nav__phone-icon { background: $gold; color: $charcoal; } }
+  &:hover { color: $blue-light; .nav__phone-icon { background: $blue; color: $white; } }
 }
 
 .nav__phone-icon {
@@ -401,7 +394,7 @@
   right: 0;
   bottom: -1px;
   height: 2px;
-  @include gold-gradient;
+  @include brand-gradient-light;
   transform-origin: left center;
   transform: scaleX(var(--progress, 0));
   opacity: 0;
@@ -432,10 +425,10 @@
   overscroll-behavior: contain;
   padding: 12px 20px calc(20px + env(safe-area-inset-bottom));
   background:
-    radial-gradient(circle at 100% 0%, rgba($gold, 0.14), transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba($blue-light, 0.14), transparent 50%),
     linear-gradient(170deg, $surface-2 0%, $surface-1 100%);
   color: $white;
-  border-left: 1px solid rgba($gold, 0.15);
+  border-left: 1px solid rgba($blue-light, 0.15);
 
   @include respond-to('min-laptop') { display: none; }
 }
@@ -465,12 +458,12 @@
     color: $white;
     text-align: left;
 
-    &.is-active { color: $gold-light; }
+    &.is-active { color: $blue-light; }
   }
 
   .drawer__toggle i {
     font-size: 12px;
-    color: $gold-light;
+    color: $blue-light;
     transition: transform 0.35s var(--ease-out);
 
     &.is-open { transform: rotate(180deg); }
@@ -483,8 +476,8 @@
   font-weight: $weight-bold;
   padding: 2px 9px;
   border-radius: $radius-full;
-  background: rgba($gold, 0.15);
-  color: $gold-light;
+  background: rgba($blue-light, 0.15);
+  color: $blue-light;
   margin-left: auto;
 }
 
@@ -514,11 +507,11 @@
   border-radius: 8px;
   background: rgba($white, 0.06);
   color: rgba($white, 0.85);
-  --art-accent: #{$gold-light};
+  --art-accent: #{$blue-light};
 }
 
 .drawer__all {
-  color: $gold-light !important;
+  color: $blue-light !important;
   font-family: $font-accent;
   font-size: 0.8125rem !important;
   font-weight: $weight-bold !important;

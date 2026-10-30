@@ -85,7 +85,7 @@ export class AboutComponent {
       path: '/about'
     });
 
-    // The gold line in the timeline fills as you scroll through it
+    // The blue line in the timeline fills as you scroll through it
     const zone = inject(NgZone);
     const doc = inject(DOCUMENT);
     const destroyRef = inject(DestroyRef);

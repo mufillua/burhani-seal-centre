@@ -6,7 +6,7 @@
 //
 // • Transparent over the dark page heroes, turns to frosted
 //   navy once you scroll, and shrinks slightly.
-// • Gold progress line under the bar shows how far down the
+// • Blue progress line under the bar shows how far down the
 //   page you are.
 // • "Categories" opens a mega-menu (hover, click or keyboard).
 
@@ -29,10 +29,11 @@ import { environment } from '../../../../environments/environment';
 import { ProductService } from '../../../services/product.service';
 import { EnquiryService } from '../../../services/enquiry.service';
 import { CategoryArtComponent } from '../category-art/category-art';
+import { LogoMarkComponent } from '../logo-mark/logo-mark';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive, CategoryArtComponent],
+  imports: [RouterLink, RouterLinkActive, CategoryArtComponent, LogoMarkComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',

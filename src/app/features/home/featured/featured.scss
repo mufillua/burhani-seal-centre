@@ -56,7 +56,7 @@
   padding: 28px;
   border-radius: $radius-lg;
   background:
-    radial-gradient(circle at 80% 10%, rgba($gold, 0.3), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba($blue-light, 0.3), transparent 55%),
     linear-gradient(160deg, $surface-3, $surface-1);
   color: $white;
   transition: transform 0.5s var(--ease-out);
@@ -69,7 +69,7 @@
   font-size: 4.5rem;
   font-weight: $weight-bold;
   line-height: 1;
-  @include gold-text;
+  @include brand-text-light;
 }
 
 .more-card__label { color: rgba($white, 0.7); }
@@ -79,7 +79,7 @@
   font-family: $font-accent;
   font-size: 0.875rem;
   font-weight: $weight-bold;
-  color: $gold-light;
+  color: $blue-light;
 
   i { margin-left: 6px; transition: transform 0.3s var(--ease-out); }
 }
@@ -97,6 +97,6 @@
     transform-origin: left;
     transform: scaleX(var(--p, 0.12));
     transition: transform 0.25s ease;
-    @include gold-gradient;
+    @include brand-gradient;
   }
 }

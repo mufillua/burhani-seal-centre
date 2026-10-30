@@ -5,6 +5,8 @@
 // social link on the website is read from here.
 // Change a value once and the whole site updates.
 
+const FOUNDED = 1988;
+
 export const environment = {
   company: {
     name: 'Burhani Seal Centre',
@@ -47,10 +49,15 @@ export const environment = {
       indiamart: ''
     },
 
+    // Year the business started (shown in the logo: "Since 1988").
+    // "Years in the trade" on the home and about pages is worked out
+    // from this, so it goes up by itself every year.
+    founded: FOUNDED,
+
     // Headline numbers shown on the home and about pages.
-    // Confirm "years" and "clients" with the owner before launch.
+    // Confirm "clients" with the owner before launch.
     stats: {
-      years: 25,
+      years: new Date().getFullYear() - FOUNDED,
       clients: 500
     }
   },

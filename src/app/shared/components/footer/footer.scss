@@ -4,7 +4,7 @@
 .footer {
   position: relative;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba($gold, 0.1), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba($blue-light, 0.1), transparent 70%),
     linear-gradient(180deg, $surface-2-glass 0%, $surface-1-glass 100%);
   color: rgba($white, 0.7);
   padding-top: clamp(3rem, 7vw, 5rem);
@@ -14,12 +14,12 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
-    @include gold-gradient;
+    @include brand-gradient-light;
     opacity: 0.8;
   }
 
   a { color: rgba($white, 0.72); transition: color 0.2s ease; }
-  a:hover { color: $gold-light; }
+  a:hover { color: $blue-light; }
 }
 
 // ── CTA band ─────────────────────────────────
@@ -39,7 +39,7 @@
   font-size: clamp(1.75rem, 3.6vw, 2.6rem);
   line-height: 1.15;
 
-  em { font-style: italic; @include gold-text; }
+  em { font-style: italic; @include brand-text-light; }
 }
 
 .footer__cta-text {
@@ -80,18 +80,16 @@
 .footer__mark {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  @include gold-gradient;
-  color: $charcoal;
-  font-family: $font-primary;
-  font-weight: $weight-black;
-  font-size: 1.5rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: $white;
+  color: $blue;
+  font-size: 34px;
 }
 
-.footer__name { font-family: $font-primary; font-size: 1.3rem; font-weight: $weight-bold; color: $gold-light; }
-.footer__sub { font-family: $font-accent; font-size: 0.625rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba($white, 0.6); }
+.footer__name { font-family: $font-accent; font-size: 1.05rem; font-weight: $weight-bold; letter-spacing: 0.03em; color: $white; }
+.footer__sub { margin-top: 4px; font-family: $font-accent; font-size: 0.625rem; font-weight: $weight-semibold; letter-spacing: 0.2em; text-transform: uppercase; color: $blue-light; }
 
 .footer__about {
   margin-top: 18px;
@@ -113,7 +111,7 @@
     border-radius: 50%;
     border: 1px solid rgba($white, 0.14);
 
-    &:hover { background: $gold; border-color: $gold; color: $charcoal; }
+    &:hover { background: $blue; border-color: $blue; color: $white; }
   }
 }
 
@@ -155,7 +153,7 @@
   line-height: 1.55;
   word-break: break-word;
 
-  i { width: 16px; margin-top: 4px; color: $gold; flex-shrink: 0; text-align: center; }
+  i { width: 16px; margin-top: 4px; color: $blue-light; flex-shrink: 0; text-align: center; }
 }
 
 .footer__hours {
@@ -168,7 +166,7 @@
   font-size: 0.8125rem;
 
   li { display: flex; justify-content: space-between; gap: 12px; }
-  li span:last-child { color: $gold-light; white-space: nowrap; }
+  li span:last-child { color: $blue-light; white-space: nowrap; }
   li.is-closed span { color: rgba($white, 0.38); }
 }
 
@@ -204,5 +202,5 @@
   letter-spacing: 0.06em;
 
   i { transition: transform 0.3s var(--ease-out); }
-  &:hover { color: $gold-light; i { transform: translateY(-3px); } }
+  &:hover { color: $blue-light; i { transform: translateY(-3px); } }
 }

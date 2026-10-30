@@ -21,7 +21,7 @@
   @media (hover: hover) {
     &:hover {
       transform: translateY(-6px);
-      border-color: rgba($gold, 0.45);
+      border-color: rgba($blue, 0.45);
       box-shadow: 0 24px 48px -18px rgba($navy, 0.28);
 
       .card__media ::ng-deep img,
@@ -31,7 +31,7 @@
     }
   }
 
-  &:focus-within { border-color: rgba($gold, 0.6); }
+  &:focus-within { border-color: rgba($blue, 0.6); }
 }
 
 // Whole-card link sits under the action buttons
@@ -59,7 +59,7 @@
   border-radius: $radius-full;
   background: rgba($charcoal, 0.78);
   backdrop-filter: blur(6px);
-  color: $gold-light;
+  color: $blue-light;
   font-family: $font-accent;
   font-size: 0.625rem;
   font-weight: $weight-semibold;
@@ -87,7 +87,7 @@
   transform: translateY(8px);
   transition: all 0.4s var(--ease-out);
 
-  i { font-size: 10px; color: $gold-dark; }
+  i { font-size: 10px; color: $blue-dark; }
 
   @media (hover: none) { display: none; }
 }

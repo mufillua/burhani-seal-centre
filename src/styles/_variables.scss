@@ -5,41 +5,45 @@
 // Change one variable and the whole site updates.
 
 // --- COLOR PALETTE ---
+// Everything is built from one colour: the B.S.C logo blue (#0155B1),
+// plus white. Dark sections use deep shades of it, light sections a
+// pale tint of it, and accents the logo blue itself.
 $white:           #FFFFFF;
-$off-white:       #F8F9FA;
-$light-gray:      #F2F2F2;
-$silver-light:    #E8E8E8;
-$silver:          #C0C0C0;
-$silver-dark:     #999999;
-$charcoal:        #1A1A2E;
-$navy:            #16213E;
-$navy-deep:       #0F3460;
-$black:           #0A0A0A;
+$off-white:       #F7FAFE;
+$light-gray:      #F1F5FB;
+$silver-light:    #DCE5F2;
+$silver:          #B8C6DA;
+$silver-dark:     #8A99B0;
+$charcoal:        #0B1B36;   // text ink — near-black blue
+$navy:            #0A2E66;   // dark icon / panel blue
+$navy-deep:       #0148A0;
+$black:           #050D1C;
 
-// Light surfaces — a cool "drafting table" tint taken from the navy,
-// used instead of plain white behind light sections. White is kept
-// for cards, so they read as sheets of paper laid on the table.
-$mist:            #E7ECF4;
-$mist-deep:       #D8E0EC;
-$mist-line:       rgba(22, 33, 62, 0.07);
-$card-border:     #D5DCE8;
+// Brand blue (from the logo)
+$blue:            #0155B1;   // the logo colour — buttons, links, icons
+$blue-dark:       #01438C;   // hover / text on pale backgrounds
+$blue-bright:     #2C77D4;   // lighter step for gradients
+$blue-light:      #A9D0FF;   // accents on dark-blue backgrounds
+$blue-subtle:     rgba(1, 85, 177, 0.1);
 
-// Dark surfaces — a lighter navy than the text ink ($charcoal/$navy).
-// Big dark sections use the "glass" versions: 86% opaque, so the
-// backdrop's drifting light shows through. Over $mist they land on
-// the solid colours, which small cards and panels use.
-$surface-1:       #222A48;   // deepest
-$surface-2:       #2A365E;
-$surface-3:       #314070;   // lightest
-$surface-1-glass: rgba(2, 10, 44, 0.86);
-$surface-2-glass: rgba(11, 24, 70, 0.86);
-$surface-3-glass: rgba(19, 36, 90, 0.86);
+// Light surfaces — a pale tint of the logo blue, used instead of plain
+// white behind light sections. White is kept for cards, so they read
+// as sheets of paper laid on the table.
+$mist:            #EBF2FB;
+$mist-deep:       #DCE8F7;
+$mist-line:       rgba(1, 85, 177, 0.07);
+$card-border:     #D2DFF1;
 
-// Gold Accents (our luxury signature color)
-$gold:            #C9A84C;
-$gold-light:      #E8C96B;
-$gold-dark:       #A07C30;
-$gold-subtle:     rgba(201, 168, 76, 0.15);
+// Dark surfaces — deep shades of the logo blue.
+// Big dark sections use the "glass" versions (88% opaque) so the
+// backdrop's drifting light shows through; small cards and panels use
+// the solid colours.
+$surface-1:       #0A2A5C;   // deepest
+$surface-2:       #0D3A7C;
+$surface-3:       #124A9A;   // lightest
+$surface-1-glass: rgba(0, 15, 70, 0.88);
+$surface-2-glass: rgba(0, 33, 107, 0.88);
+$surface-3-glass: rgba(0, 51, 141, 0.88);
 
 // Functional Colors
 $success:         #28a745;
@@ -97,8 +101,8 @@ $shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.08);
 $shadow-md:     0 4px 24px rgba(0, 0, 0, 0.12);
 $shadow-lg:     0 8px 48px rgba(0, 0, 0, 0.18);
 $shadow-xl:     0 16px 64px rgba(0, 0, 0, 0.24);
-$shadow-gold:   0 8px 32px rgba(201, 168, 76, 0.25);
-$shadow-gold-lg: 0 16px 48px rgba(201, 168, 76, 0.35);
+$shadow-brand:   0 8px 32px rgba(1, 85, 177, 0.25);
+$shadow-brand-lg: 0 16px 48px rgba(1, 85, 177, 0.35);
 
 // --- TRANSITIONS ---
 $transition-fast:   0.2s ease;
@@ -135,5 +139,5 @@ $nav-h:        76px;
 $nav-h-mobile: 64px;
 
 // --- TEXT ON LIGHT ---
-$text-body:  #4A4F5C;
-$text-muted: #5E6474;   // ≥ 4.5:1 on $mist and $mist-deep
+$text-body:  #3F4A5E;
+$text-muted: #5A6478;   // ≥ 4.5:1 on $mist and $mist-deep

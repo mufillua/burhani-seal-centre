@@ -8,10 +8,11 @@ import { environment } from '../../../../environments/environment';
 import { ProductService } from '../../../services/product.service';
 import { EnquiryService } from '../../../services/enquiry.service';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { LogoMarkComponent } from '../logo-mark/logo-mark';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, RevealDirective],
+  imports: [RouterLink, RevealDirective, LogoMarkComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.html',
   styleUrl: './footer.scss'

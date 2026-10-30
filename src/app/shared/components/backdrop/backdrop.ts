@@ -41,7 +41,7 @@ const ticks = (count: number, inner: number, longInner: number, outer: number, e
   host: { 'aria-hidden': 'true' },
   template: `
     <div class="grid"></div>
-    <div class="glow glow--gold"></div>
+    <div class="glow glow--blue"></div>
     <div class="glow glow--steel"></div>
 
     <!-- Oil seal, 35 × 62 × 7 -->
@@ -63,8 +63,8 @@ const ticks = (count: number, inner: number, longInner: number, outer: number, e
           <line x1="36" y1="14" x2="564" y2="14" />
           <path d="M36 14l12 -4v8z M564 14l-12 -4v8z" class="fill" />
         </g>
-        <circle cx="300" cy="300" r="214" class="gold spring" />
-        <path d="M300 30 A270 270 0 0 1 570 300" class="gold arc" />
+        <circle cx="300" cy="300" r="214" class="accent spring" />
+        <path d="M300 30 A270 270 0 0 1 570 300" class="accent arc" />
       </svg>
     </div>
 
@@ -86,7 +86,7 @@ const ticks = (count: number, inner: number, longInner: number, outer: number, e
           <line x1="300" y1="20" x2="300" y2="580" class="dashdot" />
           <line x1="20" y1="300" x2="580" y2="300" class="dashdot" />
         </g>
-        <circle cx="300" cy="300" r="191" class="gold cage" />
+        <circle cx="300" cy="300" r="191" class="accent cage" />
       </svg>
     </div>
   `,
@@ -124,14 +124,14 @@ const ticks = (count: number, inner: number, longInner: number, outer: number, e
       border-radius: 50%;
       will-change: transform;
 
-      &--gold {
+      &--primary {
         top: -18vh;
         left: -12vw;
         width: 70vw;
         height: 70vw;
         max-width: 900px;
         max-height: 900px;
-        background: radial-gradient(circle, rgba($gold, 0.2), rgba($gold, 0.06) 40%, transparent 68%);
+        background: radial-gradient(circle, rgba($blue, 0.16), rgba($blue, 0.05) 40%, transparent 68%);
         animation: drift-a 26s ease-in-out infinite alternate;
       }
 
@@ -142,7 +142,7 @@ const ticks = (count: number, inner: number, longInner: number, outer: number, e
         height: 80vw;
         max-width: 1100px;
         max-height: 1100px;
-        background: radial-gradient(circle, rgba(#5b7bb4, 0.22), rgba(#5b7bb4, 0.06) 42%, transparent 68%);
+        background: radial-gradient(circle, rgba(#4F97F2, 0.2), rgba(#4F97F2, 0.06) 42%, transparent 68%);
         animation: drift-b 32s ease-in-out infinite alternate;
       }
     }
@@ -200,9 +200,9 @@ const ticks = (count: number, inner: number, longInner: number, outer: number, e
       .fill { fill: rgba($navy, 0.16); stroke: none; }
     }
 
-    .gold { stroke: rgba($gold-dark, 0.26); }
+    .accent { stroke: rgba($blue, 0.24); }
     .spring { stroke-width: 9; stroke-dasharray: 2.5 4; }
-    .arc { stroke-width: 2.5; stroke-linecap: round; stroke: rgba($gold, 0.42); }
+    .arc { stroke-width: 2.5; stroke-linecap: round; stroke: rgba($blue-bright, 0.4); }
     .cage { stroke-width: 1.5; stroke-dasharray: 4 6; }
 
     @media (prefers-reduced-motion: reduce) {

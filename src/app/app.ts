@@ -35,7 +35,7 @@ import { BackdropComponent } from './shared/components/backdrop/backdrop';
     .skip-link {
       position: fixed; left: 12px; top: -60px; z-index: 1000;
       padding: 10px 16px; border-radius: 8px;
-      background: #C9A84C; color: #1A1A2E; font-weight: 700;
+      background: #0155B1; color: #FFFFFF; font-weight: 700;
       transition: top .2s ease;
     }
     .skip-link:focus { top: 12px; }

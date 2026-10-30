@@ -3,7 +3,7 @@
 // ============================================
 // <app-section-header eyebrow="Our range" title="Browse by" accent="category"
 //                     subtitle="…" [centered]="true" [light]="false" />
-// `accent` is set in gold italics after the title.
+// `accent` is set in blue italics after the title.
 
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';

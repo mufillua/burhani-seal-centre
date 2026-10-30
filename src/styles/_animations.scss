@@ -43,7 +43,7 @@
   will-change: auto;
 }
 
-// Gold line that draws itself when revealed
+// Blue line that draws itself when revealed
 .reveal-ready .draw-line[data-reveal] {
   opacity: 1;
   transform: scaleX(0);
