@@ -1,7 +1,7 @@
 # Burhani Seal Centre — website
 
 Product catalogue for Burhani Seal Centre, Burra Bazar, Kolkata. Visitors browse
-44 products in 8 categories and enquire about a product on WhatsApp or by email.
+59 products in 8 categories and enquire about a product on WhatsApp or by email.
 Nothing is stored on a server: every enquiry opens WhatsApp or the visitor's email
 app with the message already written.
 
@@ -53,9 +53,13 @@ enquiry, so keep it pointing at the address the site is actually live on.
    is to copy an existing product in the same category. Make the `slug` unique;
    it becomes the URL `/products/<slug>`.
 2. Optional photo: save it as `src/assets/images/products/<slug>.webp`, square,
-   about 800 × 800 px, under 120 KB. Then set
+   about 800 × 800 px, under 120 KB, with the product on a plain white
+   background (every photo on the site is on white). Then set
    `imageUrl: 'assets/images/products/<slug>.webp'`. Products without a photo
    show the category illustration and a "Photo on request" note.
+   Extra photos go in `gallery`, e.g.
+   `gallery: ['assets/images/products/<slug>-2.webp']`. They show as
+   thumbnails under the main photo on the product page.
 3. Set `featured: true` to show it under "Popular products" on the home page.
 
 The catalogue shows 12 products per page. Search, category, sort order and page

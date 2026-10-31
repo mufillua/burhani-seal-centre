@@ -49,6 +49,14 @@
   aspect-ratio: 4 / 3;
 
   app-product-image { position: absolute; inset: 0; }
+
+  // keep the product clear of the category badge
+  app-product-image ::ng-deep img {
+    box-sizing: border-box;
+    padding: 40px 18px 12px;
+
+    @include respond-to('mobile') { padding: 30px 4px 2px; }
+  }
 }
 
 .card__category {

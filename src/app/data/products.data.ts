@@ -1,10 +1,11 @@
 // ============================================
 // PRODUCT CATALOGUE — single source of truth
 // ============================================
-// 44 products from burhanisealcentre.com, grouped into
-// 8 categories a buyer would actually look for.
+// 59 products from burhanisealcentre.com, the IndiaMART
+// listing and client photos, in 8 categories a buyer would look for.
 // To add a product: copy a block, change the fields,
 // and drop a photo in src/assets/images/products/<id>.webp
+// (extra photos go in `gallery`, named <id>-2.webp, <id>-3.webp)
 // (leave imageUrl as '' to show the category illustration).
 
 import { Category } from '../models/category.model';
@@ -142,6 +143,7 @@ export const PRODUCTS: Product[] = [
     ],
     industriesServed: ['Automotive', 'Chemical Industry', 'Steel Industry', 'Cement Industry', 'Power Plants'],
     imageUrl: 'assets/images/products/skf-oil-seals.webp',
+    gallery: ['assets/images/products/skf-oil-seals-2.webp'],
     imageAlt: 'SKF Oil Seals — Burhani Seal Centre Kolkata',
     featured: true,
     sortOrder: 1,
@@ -312,6 +314,7 @@ export const PRODUCTS: Product[] = [
     ],
     industriesServed: ['Chemical Industry', 'Oil & Gas', 'Petrochemical', 'Pharmaceutical Industry', 'Power Plants'],
     imageUrl: 'assets/images/products/viton-oil-seal.webp',
+    gallery: ['assets/images/products/viton-oil-seal-2.webp', 'assets/images/products/viton-oil-seal-3.webp'],
     imageAlt: 'Viton Oil Seal — Burhani Seal Centre Kolkata',
     featured: true,
     sortOrder: 5
@@ -354,6 +357,7 @@ export const PRODUCTS: Product[] = [
     ],
     industriesServed: ['Chemical Industry', 'Water Treatment', 'Steel Industry', 'Cement Industry', 'Power Plants'],
     imageUrl: 'assets/images/products/20mm-nitrile-oil-seal.webp',
+    gallery: ['assets/images/products/20mm-nitrile-oil-seal-2.webp', 'assets/images/products/20mm-nitrile-oil-seal-3.webp'],
     imageAlt: '20 mm Nitrile Oil Seal — Burhani Seal Centre Kolkata',
     sortOrder: 6
   },
@@ -477,6 +481,7 @@ export const PRODUCTS: Product[] = [
     ],
     industriesServed: ['Chemical Industry', 'Pharmaceutical Industry'],
     imageUrl: 'assets/images/products/3mm-rubber-oil-seal.webp',
+    gallery: ['assets/images/products/3mm-rubber-oil-seal-2.webp', 'assets/images/products/3mm-rubber-oil-seal-3.webp'],
     imageAlt: '3 mm Rubber Oil Seal — Burhani Seal Centre Kolkata',
     sortOrder: 9
   },
@@ -682,7 +687,7 @@ export const PRODUCTS: Product[] = [
       'Heavy vehicle and truck transmission sealing'
     ],
     industriesServed: ['Steel Industry', 'Cement Industry', 'Chemical Industry', 'Power Plants'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/gearbox-oil-seal.webp',
     imageAlt: 'Gearbox Oil Seal — Burhani Seal Centre Kolkata',
     sortOrder: 14
   },
@@ -723,9 +728,438 @@ export const PRODUCTS: Product[] = [
       'Heavy truck and bus wheel hub assemblies'
     ],
     industriesServed: ['Steel Industry', 'Cement Industry', 'Chemical Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/cassette-oil-seals.webp',
+    gallery: ['assets/images/products/cassette-oil-seals-2.webp'],
     imageAlt: 'Cassette Oil Seals — Burhani Seal Centre Kolkata',
     sortOrder: 15
+  },
+
+  // ── Added from the IndiaMART listing ──────
+  // sortOrder uses decimals so each size sits next to its family.
+
+  {
+    id: 'skf-oil-seal-40x62x8',
+    name: 'SKF Oil Seal 40 × 62 × 8',
+    slug: 'skf-oil-seal-40x62x8',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Genuine SKF HMSA10 RG radial shaft seal, 40 mm shaft × 62 mm bore × 8 mm wide, in nitrile rubber with a double lip.',
+    fullDescription: `A genuine SKF radial shaft seal in the 40 × 62 × 8 mm size, from the HMSA10 RG series. The nitrile (NBR) lip keeps oil and grease in, and the second dust lip keeps dirt and water out of the bearing.\n\nIt is a common size on gearbox input shafts, electric motors and pumps. Burhani Seal Centre keeps it in stock in original SKF packing, so you can collect it from the counter in Burra Bazar or have it sent across Kolkata.`,
+    features: [
+      'Genuine SKF, supplied in original SKF packing',
+      'HMSA10 RG series radial shaft seal',
+      'Nitrile (NBR) rubber, good with mineral oils and grease',
+      'Double lip: an oil lip plus a dust lip',
+      '40 mm shaft, 62 mm housing bore, 8 mm wide',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'SKF'              },
+      { label: 'Series',         value: 'HMSA10 RG'        },
+      { label: 'Inner Diameter', value: '40 mm'            },
+      { label: 'Outer Diameter', value: '62 mm'            },
+      { label: 'Width',          value: '8 mm'             },
+      { label: 'Material',       value: 'Nitrile (NBR)'    },
+      { label: 'Seal Design',    value: 'Double Lip'       }
+    ],
+    applications: [
+      'Gearbox input and output shafts',
+      'Electric motor shaft ends',
+      'Centrifugal pump bearing housings',
+      'General rotating machinery'
+    ],
+    industriesServed: ['Automotive', 'Steel Industry', 'Cement Industry', 'Chemical Industry'],
+    imageUrl: 'assets/images/products/skf-oil-seal-40x62x8.webp',
+    imageAlt: 'SKF oil seal 40×62×8 HMSA10 RG in original SKF packing',
+    sortOrder: 1.1
+  },
+
+  {
+    id: 'skf-oil-seal-55x70',
+    name: 'SKF Oil Seal 55 × 70',
+    slug: 'skf-oil-seal-55x70',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Genuine SKF HNBR radial shaft seal for a 55 mm shaft in a 70 mm bore, for gearboxes, hydraulic and industrial equipment.',
+    fullDescription: `A genuine SKF radial shaft seal for a 55 mm shaft in a 70 mm housing bore. The HNBR (hydrogenated nitrile) compound handles higher temperatures and wears better than standard nitrile.\n\nBurhani Seal Centre stocks it in original SKF packing for gearbox, hydraulic and general industrial use.`,
+    features: [
+      'Genuine SKF, supplied in original SKF packing',
+      'HNBR rubber for higher temperature and better wear than NBR',
+      '55 mm shaft, 70 mm housing bore',
+      'For gearbox, hydraulic and industrial use',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'SKF'                              },
+      { label: 'Inner Diameter', value: '55 mm'                            },
+      { label: 'Outer Diameter', value: '70 mm'                            },
+      { label: 'Material',       value: 'HNBR'                             },
+      { label: 'Application',    value: 'Gearbox, Hydraulic, Industrial'   }
+    ],
+    applications: [
+      'Gearbox shafts',
+      'Hydraulic pumps and motors',
+      'Industrial rotating equipment'
+    ],
+    industriesServed: ['Steel Industry', 'Cement Industry', 'Power Plants'],
+    imageUrl: 'assets/images/products/skf-oil-seal-55x70.webp',
+    imageAlt: 'SKF oil seal 55×70 in original SKF packing',
+    sortOrder: 1.2
+  },
+
+  {
+    id: 'skf-oil-seal-55x100x12',
+    name: 'SKF Oil Seal 55 × 100 × 12',
+    slug: 'skf-oil-seal-55x100x12',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Genuine SKF HMSA10 RG radial shaft seal, 55 mm shaft × 100 mm bore × 12 mm wide, nitrile rubber, double lip.',
+    fullDescription: `A genuine SKF radial shaft seal in the 55 × 100 × 12 mm size, from the HMSA10 RG series. The deep 22.5 mm section suits heavier housings, and the double nitrile lip keeps lubricant in and dirt out.\n\nBurhani Seal Centre keeps this size in stock in original SKF packing.`,
+    features: [
+      'Genuine SKF, supplied in original SKF packing',
+      'HMSA10 RG series radial shaft seal',
+      'Nitrile (NBR) rubber',
+      'Double lip: an oil lip plus a dust lip',
+      '55 mm shaft, 100 mm housing bore, 12 mm wide',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'SKF'           },
+      { label: 'Series',         value: 'HMSA10 RG'     },
+      { label: 'Inner Diameter', value: '55 mm'         },
+      { label: 'Outer Diameter', value: '100 mm'        },
+      { label: 'Width',          value: '12 mm'         },
+      { label: 'Material',       value: 'Nitrile (NBR)' },
+      { label: 'Seal Design',    value: 'Double Lip'    }
+    ],
+    applications: [
+      'Heavy gearbox shafts',
+      'Pump and blower bearing housings',
+      'Conveyor drive shafts',
+      'General rotating machinery'
+    ],
+    industriesServed: ['Steel Industry', 'Cement Industry', 'Power Plants', 'Chemical Industry'],
+    imageUrl: 'assets/images/products/skf-oil-seal-55x100x12.webp',
+    imageAlt: 'SKF oil seal 55×100×12 HMSA10 RG in original SKF packing',
+    sortOrder: 1.3
+  },
+
+  {
+    id: 'skf-oil-seal-90x115x12',
+    name: 'SKF Oil Seal 90 × 115 × 12',
+    slug: 'skf-oil-seal-90x115x12',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Genuine SKF HMSA10 RG radial shaft seal, 90 mm shaft × 115 mm bore × 12 mm wide, in nitrile rubber.',
+    fullDescription: `A genuine SKF radial shaft seal for large shafts: 90 mm shaft, 115 mm housing bore, 12 mm wide, from the HMSA10 RG series in nitrile rubber.\n\nIt suits large gearboxes, rolling-mill equipment and heavy pumps. Burhani Seal Centre keeps it in stock in original SKF packing.`,
+    features: [
+      'Genuine SKF, supplied in original SKF packing',
+      'HMSA10 RG series radial shaft seal',
+      'Nitrile (NBR) rubber',
+      '90 mm shaft, 115 mm housing bore, 12 mm wide',
+      'For large gearboxes and heavy machinery',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'SKF'           },
+      { label: 'Series',         value: 'HMSA10 RG'     },
+      { label: 'Inner Diameter', value: '90 mm'         },
+      { label: 'Outer Diameter', value: '115 mm'        },
+      { label: 'Width',          value: '12 mm'         },
+      { label: 'Material',       value: 'Nitrile (NBR)' }
+    ],
+    applications: [
+      'Large industrial gearboxes',
+      'Rolling-mill and crusher equipment',
+      'Heavy pump bearing housings'
+    ],
+    industriesServed: ['Steel Industry', 'Cement Industry', 'Power Plants'],
+    imageUrl: 'assets/images/products/skf-oil-seal-90x115x12.webp',
+    gallery: ['assets/images/products/skf-oil-seal-90x115x12-2.webp'],
+    imageAlt: 'SKF oil seal 90×115×12 HMSA10 RG in original SKF packing',
+    sortOrder: 1.4
+  },
+
+  {
+    id: 'skf-oil-seal-100x150',
+    name: 'SKF Oil Seal 100 × 150',
+    slug: 'skf-oil-seal-100x150',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Genuine SKF HNBR double-lip radial shaft seal for a 100 mm shaft in a 150 mm bore, for gearboxes, hydraulic and industrial equipment.',
+    fullDescription: `A large genuine SKF radial shaft seal for a 100 mm shaft in a 150 mm housing bore. The double lip is made from HNBR (hydrogenated nitrile), which handles heat and wear better than standard nitrile.\n\nBurhani Seal Centre stocks it in original SKF packing for heavy gearbox, hydraulic and industrial use.`,
+    features: [
+      'Genuine SKF, supplied in original SKF packing',
+      'HNBR rubber for higher temperature and better wear than NBR',
+      'Double lip: an oil lip plus a dust lip',
+      '100 mm shaft, 150 mm housing bore',
+      'For heavy gearbox, hydraulic and industrial use',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'SKF'                            },
+      { label: 'Inner Diameter', value: '100 mm'                         },
+      { label: 'Outer Diameter', value: '150 mm'                         },
+      { label: 'Material',       value: 'HNBR'                           },
+      { label: 'Seal Design',    value: 'Double Lip'                     },
+      { label: 'Application',    value: 'Gearbox, Industrial, Hydraulic' }
+    ],
+    applications: [
+      'Heavy gearbox output shafts',
+      'Hydraulic motors and pumps',
+      'Large industrial rotating equipment'
+    ],
+    industriesServed: ['Steel Industry', 'Cement Industry', 'Power Plants'],
+    imageUrl: 'assets/images/products/skf-oil-seal-100x150.webp',
+    imageAlt: 'SKF oil seal 100×150 in original SKF packing',
+    sortOrder: 1.5
+  },
+
+  {
+    id: 'gold-super-oil-seal-230x260x15',
+    name: 'Gold Super Oil Seal 230 × 260 × 15',
+    slug: 'gold-super-oil-seal-230x260x15',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Large Gold Super nitrile oil seal, 230 mm shaft × 260 mm bore × 15 mm wide, for heavy industrial shafts.',
+    fullDescription: `A large-diameter Gold Super oil seal for a 230 mm shaft in a 260 mm housing bore, 15 mm wide, in nitrile (NBR) rubber.\n\nSizes this large are used on heavy industrial machinery such as rolling mills, kilns, large gearboxes and crushers. Burhani Seal Centre keeps this size in stock. Call or WhatsApp to check other large sizes.`,
+    features: [
+      'Gold Super brand',
+      'Large diameter: 230 mm shaft, 260 mm bore, 15 mm wide',
+      'Nitrile (NBR) rubber, good with mineral oils and grease',
+      'For heavy industrial shafts',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'Gold Super'    },
+      { label: 'Inner Diameter', value: '230 mm'        },
+      { label: 'Outer Diameter', value: '260 mm'        },
+      { label: 'Width',          value: '15 mm'         },
+      { label: 'Material',       value: 'Nitrile (NBR)' }
+    ],
+    applications: [
+      'Rolling-mill roll necks and drives',
+      'Kiln and crusher shafts',
+      'Large industrial gearboxes'
+    ],
+    industriesServed: ['Steel Industry', 'Cement Industry', 'Power Plants'],
+    imageUrl: 'assets/images/products/gold-super-oil-seal-230x260x15.webp',
+    gallery: ['assets/images/products/gold-super-oil-seal-230x260x15-2.webp', 'assets/images/products/gold-super-oil-seal-230x260x15-3.webp'],
+    imageAlt: 'Gold Super oil seal 230×260×15 in its foil pack with the size label',
+    sortOrder: 4.1
+  },
+
+  {
+    id: 'sunny-oil-seal',
+    name: 'Sunny Oil Seal 45 × 58 × 7',
+    slug: 'sunny-oil-seal',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Sunny brand double-lip oil seal, 45 mm shaft × 58 mm bore × 7 mm wide, for automotive, pump, agricultural and gearbox use.',
+    fullDescription: `A Sunny brand oil seal for a 45 mm shaft in a 58 mm housing bore, 7 mm wide. The double lip keeps lubricant in and stops dust and water getting into the bearing.\n\nSunny seals are a dependable, economical choice for everyday maintenance on vehicles, pumps, farm machinery and gearboxes. Burhani Seal Centre keeps them in stock in Kolkata.`,
+    features: [
+      'Sunny brand, supplied in Sunny packing',
+      'Double lip: an oil lip plus a dust lip',
+      'Neoprene rubber',
+      '45 mm shaft, 58 mm housing bore, 7 mm wide',
+      'Economical for routine maintenance',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'Sunny'                                            },
+      { label: 'Inner Diameter', value: '45 mm'                                            },
+      { label: 'Outer Diameter', value: '58 mm'                                            },
+      { label: 'Width',          value: '7 mm'                                             },
+      { label: 'Material',       value: 'Neoprene'                                         },
+      { label: 'Seal Design',    value: 'Double Lip'                                       },
+      { label: 'Application',    value: 'Automotive, pumps, agriculture, industrial, gearbox' }
+    ],
+    applications: [
+      'Automotive wheel hubs and gearboxes',
+      'Water and process pumps',
+      'Tractors and farm machinery',
+      'Small industrial gearboxes'
+    ],
+    industriesServed: ['Automotive', 'Water Treatment', 'Chemical Industry'],
+    imageUrl: 'assets/images/products/sunny-oil-seal.webp',
+    imageAlt: 'Sunny oil seal 45×58×7, pack of two',
+    sortOrder: 4.2
+  },
+
+  {
+    id: 'notional-oil-seal',
+    name: 'Notional Oil Seal 40 × 58 × 8',
+    slug: 'notional-oil-seal',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Notional brand double-lip nitrile oil seal, 40 mm shaft × 58 mm bore × 8 mm wide, for everyday rotating-shaft sealing.',
+    fullDescription: `A Notional brand rotary shaft seal for a 40 mm shaft in a 58 mm housing bore, 8 mm wide. The double nitrile (NBR) lip keeps oil and grease in and stops dirt, dust and water getting in.\n\nIt is an economical seal for routine maintenance on pumps, motors, gearboxes and vehicles. Burhani Seal Centre keeps it in stock in Kolkata.`,
+    features: [
+      'Notional brand, supplied in Notional packing',
+      'Double lip: an oil lip plus a dust lip',
+      'Nitrile (NBR) rubber',
+      '40 mm shaft, 58 mm housing bore, 8 mm wide',
+      'Economical for routine maintenance',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Brand',          value: 'Notional'      },
+      { label: 'Inner Diameter', value: '40 mm'         },
+      { label: 'Outer Diameter', value: '58 mm'         },
+      { label: 'Width',          value: '8 mm'          },
+      { label: 'Material',       value: 'Nitrile (NBR)' },
+      { label: 'Seal Design',    value: 'Double Lip'    }
+    ],
+    applications: [
+      'Pump and motor shaft ends',
+      'Small gearboxes',
+      'Automotive and two-wheeler shafts'
+    ],
+    industriesServed: ['Automotive', 'Chemical Industry', 'Water Treatment'],
+    imageUrl: 'assets/images/products/notional-oil-seal.webp',
+    gallery: ['assets/images/products/notional-oil-seal-2.webp'],
+    imageAlt: 'Notional oil seal 40×58×8 in its packing',
+    sortOrder: 4.3
+  },
+
+  {
+    id: '25mm-rubber-oil-seal',
+    name: '25 mm Rubber Oil Seal',
+    slug: '25mm-rubber-oil-seal',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Rubber-covered single-lip oil seal for a 25 mm shaft in a 52 mm bore, for industrial pumps, motors and gearboxes.',
+    fullDescription: `A single-lip rubber oil seal for a 25 mm shaft in a 52 mm housing bore. The outer case is fully rubber-covered, so it grips the housing well and resists corrosion.\n\nIt keeps lubricating oil in and dust and moisture out on pumps, electric motors, gearboxes and farm machinery. Burhani Seal Centre keeps it in stock in Kolkata.`,
+    features: [
+      '25 mm shaft, 52 mm housing bore',
+      'Rubber-covered outer case for a firm, corrosion-free fit',
+      'Single lip',
+      'Nitrile rubber as standard; Viton on request',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Inner Diameter',   value: '25 mm'          },
+      { label: 'Outer Diameter',   value: '52 mm'          },
+      { label: 'Material',         value: 'Rubber'         },
+      { label: 'Seal Design',      value: 'Single Lip'     },
+      { label: 'Special Features', value: 'Rubber covered' },
+      { label: 'Application',      value: 'Industrial'     }
+    ],
+    applications: [
+      'Pump and motor shaft ends',
+      'Gearboxes',
+      'Agricultural machinery',
+      'General industrial machinery'
+    ],
+    industriesServed: ['Chemical Industry', 'Water Treatment', 'Food Industry'],
+    imageUrl: 'assets/images/products/25mm-rubber-oil-seal.webp',
+    imageAlt: '25 mm rubber oil seal',
+    sortOrder: 12.1
+  },
+
+  {
+    id: '30mm-rubber-oil-seal',
+    name: '30 mm Rubber Oil Seal',
+    slug: '30mm-rubber-oil-seal',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Rubber-covered single-lip oil seal for a 30 mm shaft in a 52 mm bore, for industrial pumps, motors and gearboxes.',
+    fullDescription: `A single-lip rubber oil seal for a 30 mm shaft in a 52 mm housing bore. The outer case is fully rubber-covered, so it grips the housing well and resists corrosion.\n\nIt keeps lubricating oil in and dust and moisture out on pumps, electric motors, gearboxes and farm machinery. Burhani Seal Centre keeps it in stock in Kolkata.`,
+    features: [
+      '30 mm shaft, 52 mm housing bore',
+      'Rubber-covered outer case for a firm, corrosion-free fit',
+      'Single lip',
+      'Nitrile rubber as standard; Viton on request',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Inner Diameter',   value: '30 mm'          },
+      { label: 'Outer Diameter',   value: '52 mm'          },
+      { label: 'Material',         value: 'Rubber'         },
+      { label: 'Seal Design',      value: 'Single Lip'     },
+      { label: 'Special Features', value: 'Rubber covered' },
+      { label: 'Application',      value: 'Industrial'     }
+    ],
+    applications: [
+      'Pump and motor shaft ends',
+      'Gearboxes',
+      'Agricultural machinery',
+      'General industrial machinery'
+    ],
+    industriesServed: ['Chemical Industry', 'Water Treatment', 'Food Industry'],
+    imageUrl: 'assets/images/products/30mm-rubber-oil-seal.webp',
+    imageAlt: '30 mm rubber oil seal',
+    sortOrder: 12.2
+  },
+
+  {
+    id: '40mm-rubber-oil-seal',
+    name: '40 mm Rubber Oil Seal',
+    slug: '40mm-rubber-oil-seal',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Rubber-covered single-lip oil seal for a 40 mm shaft in a 52 mm bore, for industrial pumps, motors and gearboxes.',
+    fullDescription: `A single-lip rubber oil seal for a 40 mm shaft in a 52 mm housing bore. The outer case is fully rubber-covered, so it grips the housing well and resists corrosion.\n\nIt keeps lubricating oil in and dust and moisture out on pumps, electric motors, gearboxes and farm machinery. Burhani Seal Centre keeps it in stock in Kolkata.`,
+    features: [
+      '40 mm shaft, 52 mm housing bore',
+      'Rubber-covered outer case for a firm, corrosion-free fit',
+      'Single lip',
+      'Nitrile rubber as standard; Viton on request',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Inner Diameter',   value: '40 mm'          },
+      { label: 'Outer Diameter',   value: '52 mm'          },
+      { label: 'Material',         value: 'Rubber'         },
+      { label: 'Seal Design',      value: 'Single Lip'     },
+      { label: 'Special Features', value: 'Rubber covered' },
+      { label: 'Application',      value: 'Industrial'     }
+    ],
+    applications: [
+      'Pump and motor shaft ends',
+      'Gearboxes',
+      'Agricultural machinery',
+      'General industrial machinery'
+    ],
+    industriesServed: ['Chemical Industry', 'Water Treatment', 'Food Industry'],
+    imageUrl: 'assets/images/products/40mm-rubber-oil-seal.webp',
+    imageAlt: '40 mm rubber oil seal',
+    sortOrder: 12.3
+  },
+
+  {
+    id: '50mm-rubber-oil-seal',
+    name: '50 mm Rubber Oil Seal',
+    slug: '50mm-rubber-oil-seal',
+    categoryId: 'oil-seals',
+    categoryName: 'Oil Seals',
+    shortDescription: 'Rubber-covered single-lip oil seal for a 50 mm shaft, for industrial pumps, motors and gearboxes.',
+    fullDescription: `A single-lip rubber oil seal for a 50 mm shaft. The outer case is fully rubber-covered, so it grips the housing well and resists corrosion.\n\nIt keeps lubricating oil in and dust and moisture out on pumps, electric motors, gearboxes and farm machinery. Tell us your housing bore and width and we will match the seal from stock.`,
+    features: [
+      '50 mm shaft',
+      'Rubber-covered outer case for a firm, corrosion-free fit',
+      'Single lip',
+      'Nitrile rubber as standard; Viton on request',
+      'In stock in Kolkata'
+    ],
+    specifications: [
+      { label: 'Inner Diameter',   value: '50 mm'                },
+      { label: 'Outer Diameter',   value: 'Tell us your housing bore' },
+      { label: 'Material',         value: 'Rubber'               },
+      { label: 'Seal Design',      value: 'Single Lip'           },
+      { label: 'Special Features', value: 'Rubber covered'       },
+      { label: 'Application',      value: 'Industrial'           }
+    ],
+    applications: [
+      'Pump and motor shaft ends',
+      'Gearboxes',
+      'Agricultural machinery',
+      'General industrial machinery'
+    ],
+    industriesServed: ['Chemical Industry', 'Water Treatment', 'Food Industry'],
+    imageUrl: 'assets/images/products/50mm-rubber-oil-seal.webp',
+    imageAlt: '50 mm rubber oil seal',
+    sortOrder: 12.4
   },
 
   // ══════════════════════════════════════════
@@ -768,7 +1202,7 @@ export const PRODUCTS: Product[] = [
       'Marine and offshore hydraulic equipment'
     ],
     industriesServed: ['Steel Industry', 'Cement Industry', 'Chemical Industry', 'Power Plants', 'Oil & Gas'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/hydraulic-oil-seal.webp',
     imageAlt: 'Hydraulic Oil Seal — Burhani Seal Centre Kolkata',
     sortOrder: 16
   },
@@ -934,7 +1368,7 @@ export const PRODUCTS: Product[] = [
       'General industrial hydraulic actuator rod protection'
     ],
     industriesServed: ['Steel Industry', 'Cement Industry', 'Chemical Industry', 'Power Plants'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/hydraulic-wiper-seal.webp',
     imageAlt: 'Hydraulic Wiper Seal — Burhani Seal Centre Kolkata',
     sortOrder: 20
   },
@@ -1020,7 +1454,7 @@ export const PRODUCTS: Product[] = [
       'Hydraulic power unit scheduled maintenance'
     ],
     industriesServed: ['Steel Industry', 'Cement Industry', 'Chemical Industry', 'Power Plants', 'Oil & Gas'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/hydraulic-oil-seal-kit.webp',
     imageAlt: 'Hydraulic Oil Seal Kit — Burhani Seal Centre Kolkata',
     sortOrder: 22
   },
@@ -1108,8 +1542,51 @@ export const PRODUCTS: Product[] = [
   },
 
   // ══════════════════════════════════════════
-  // PUMP SEALS  (3)
+  // PUMP SEALS  (4)
   // ══════════════════════════════════════════
+
+  {
+    id: 'mechanical-pump-seal',
+    name: 'Mechanical Pump Seal',
+    slug: 'mechanical-pump-seal',
+    categoryId: 'pump-seals',
+    categoryName: 'Pump Seals',
+    shortDescription: 'Stainless steel mechanical seals for industrial pumps, in single conical-spring and multi-spring designs, matched to your shaft size and fluid.',
+    fullDescription: `Mechanical pump seals stop the pumped liquid leaking out where the shaft passes through the pump casing. Two flat seal faces, one turning with the shaft and one fixed in the casing, are held together by springs, so the seal keeps working as the faces wear.\n\nBurhani Seal Centre supplies stainless steel mechanical seals in single conical-spring and multi-spring designs for water, chemical and process pumps. Send us the shaft size, the pump make or a photo of the old seal, and we will match it.`,
+    features: [
+      'Stainless steel body and springs',
+      'Single conical-spring and multi-spring designs',
+      'Rotating seal head and stationary seat supplied together',
+      'Face materials to suit the fluid: carbon, ceramic or silicon carbide',
+      'For water, chemical and process pumps',
+      'Matched from your shaft size, pump make or old seal'
+    ],
+    specifications: [
+      { label: 'Seal Type',      value: 'Single conical spring / Multi-spring' },
+      { label: 'Metal Parts',    value: 'Stainless steel'                      },
+      { label: 'Face Materials', value: 'Carbon / Ceramic / Silicon carbide'   },
+      { label: 'Elastomers',     value: 'NBR / EPDM / Viton'                   },
+      { label: 'Sizes',          value: 'Send your shaft size or old seal'     }
+    ],
+    applications: [
+      'Centrifugal water pumps',
+      'Chemical and process pumps',
+      'Cooling water and boiler feed pumps',
+      'Effluent and slurry pumps'
+    ],
+    industriesServed: ['Chemical Industry', 'Water Treatment', 'Pharmaceutical Industry', 'Food Industry', 'Power Plants'],
+    imageUrl: 'assets/images/products/mechanical-pump-seal.webp',
+    gallery: [
+      'assets/images/products/mechanical-pump-seal-2.webp',
+      'assets/images/products/mechanical-pump-seal-3.webp',
+      'assets/images/products/mechanical-pump-seal-4.webp',
+      'assets/images/products/mechanical-pump-seal-5.webp',
+      'assets/images/products/mechanical-pump-seal-6.webp',
+      'assets/images/products/mechanical-pump-seal-7.webp'
+    ],
+    imageAlt: 'Stainless steel multi-spring mechanical pump seal',
+    sortOrder: 24.5
+  },
 
   {
     id: '30mm-mechanical-pump-seal',
@@ -1147,7 +1624,7 @@ export const PRODUCTS: Product[] = [
       'General industrial process pump sealing'
     ],
     industriesServed: ['Water Treatment', 'Chemical Industry', 'Pharmaceutical Industry', 'Power Plants', 'Textile Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/30mm-mechanical-pump-seal.webp',
     imageAlt: '30 mm Mechanical Pump Seal — Burhani Seal Centre Kolkata',
     sortOrder: 25
   },
@@ -1188,7 +1665,7 @@ export const PRODUCTS: Product[] = [
       'Light-duty industrial water service pumps'
     ],
     industriesServed: ['Water Treatment', 'Chemical Industry', 'Food Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/20mm-water-pump-seal.webp',
     imageAlt: '20 mm Water Pump Seal — Burhani Seal Centre Kolkata',
     sortOrder: 26
   },
@@ -1289,6 +1766,7 @@ export const PRODUCTS: Product[] = [
     fullDescription: `The Nitrile Rubber O Ring Kit is an assortment box containing NBR O Rings in a comprehensive range of sizes — covering the most commonly required metric and imperial dimensions for hydraulic, pneumatic and general industrial sealing. Having a full size range on hand eliminates sourcing delays during emergency maintenance and ensures the right O Ring size is always available.\n\nBurhani Seal Centre supplies nitrile O Ring kits in 200-piece, 360-piece and 500-piece assortments, in protective compartmented cases for easy size identification.`,
     features: [
       'Nitrile (NBR) O Rings — excellent oil and petroleum resistance',
+      'SKF O-ring kit OR KIT-1 AS N70M in stock: 382 nitrile 70 Shore O-rings in 30 AS568 sizes',
       'Comprehensive size range: 50–500 pieces covering all common sizes',
       'Metric and imperial sizes in one kit',
       'Compartmented storage case for easy size identification',
@@ -1315,8 +1793,9 @@ export const PRODUCTS: Product[] = [
       'Service and repair workshop all-in-one O Ring supply'
     ],
     industriesServed: ['Chemical Industry', 'Steel Industry', 'Cement Industry', 'Water Treatment', 'Power Plants'],
-    imageUrl: '',
-    imageAlt: 'Nitrile Rubber O Ring Kit — Burhani Seal Centre Kolkata',
+    imageUrl: 'assets/images/products/nitrile-rubber-o-ring-kit.webp',
+    gallery: ['assets/images/products/nitrile-rubber-o-ring-kit-2.webp'],
+    imageAlt: 'SKF nitrile O-ring kit OR KIT-1 AS N70M, 382 pieces in 30 sizes',
     sortOrder: 29
   },
 
@@ -1356,7 +1835,7 @@ export const PRODUCTS: Product[] = [
       'On-site emergency sealing repair'
     ],
     industriesServed: ['Chemical Industry', 'Water Treatment', 'Steel Industry', 'Cement Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/rubber-o-ring-kit.webp',
     imageAlt: 'Rubber O Ring Kit — Burhani Seal Centre Kolkata',
     sortOrder: 30
   },
@@ -1375,6 +1854,7 @@ export const PRODUCTS: Product[] = [
     fullDescription: `PU Coupling Spiders are the flexible polyurethane insert elements that sit between the two hubs of a jaw-type flexible coupling. Burhani Seal Centre supplies PU coupling spiders in all standard sizes including L050, L075, L090, L095, L099, L100, L110, L150, L190 and custom sizes across the full range of jaw coupling series.\n\nOur rubber spider couplings are a high-quality flexible coupling designed to transmit torque smoothly while compensating for misalignment between shafts. Manufactured using premium-grade rubber (NBR/PU), the coupling offers excellent vibration damping, shock absorption and long service life. It ensures silent operation and protects machinery components from wear and tear.`,
     features: [
       'Available in all standard jaw coupling sizes (L050 to L190 series)',
+      'Red PU spiders for Rotex-type couplings also in stock',
       'Premium NBR/PU material for vibration damping and shock absorption',
       'Transmits torque smoothly between misaligned shafts',
       'Silent operation — reduces noise in pump-motor assemblies',
@@ -1401,8 +1881,8 @@ export const PRODUCTS: Product[] = [
       'OEM machinery flexible drive systems'
     ],
     industriesServed: ['Chemical Industry', 'Water Treatment', 'Steel Industry', 'Cement Industry', 'Textile Industry', 'Power Plants'],
-    imageUrl: '',
-    imageAlt: 'PU Coupling Spider — Burhani Seal Centre Kolkata',
+    imageUrl: 'assets/images/products/pu-coupling-spider.webp',
+    imageAlt: 'Red PU spiders for Rotex-type jaw couplings',
     sortOrder: 31
   },
 
@@ -1442,7 +1922,7 @@ export const PRODUCTS: Product[] = [
       'Light-duty torque transmission with vibration damping'
     ],
     industriesServed: ['Chemical Industry', 'Water Treatment', 'Textile Industry', 'Steel Industry', 'Food Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/1-inch-pu-coupling-spider.webp',
     imageAlt: '1 inch PU Coupling Spider — Burhani Seal Centre Kolkata',
     sortOrder: 32
   },
@@ -1524,7 +2004,7 @@ export const PRODUCTS: Product[] = [
       'Replacement spider elements for existing jaw couplings'
     ],
     industriesServed: ['Chemical Industry', 'Water Treatment', 'Steel Industry', 'Cement Industry', 'Textile Industry', 'Food Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/rubber-spider-couplings.webp',
     imageAlt: 'Rubber Spider Couplings — Burhani Seal Centre Kolkata',
     sortOrder: 34
   },
@@ -1568,6 +2048,78 @@ export const PRODUCTS: Product[] = [
     imageUrl: '',
     imageAlt: 'Rubber Industrial Tyre Couplings — Burhani Seal Centre Kolkata',
     sortOrder: 35
+  },
+
+  {
+    id: 'l-50-pu-coupling-spider',
+    name: 'L-50 PU Coupling Spider',
+    slug: 'l-50-pu-coupling-spider',
+    categoryId: 'couplings',
+    categoryName: 'Couplings & Spiders',
+    shortDescription: 'L-50 size polyurethane spider for jaw couplings, 80 Shore A, to cushion shock, damp vibration and take up small misalignment.',
+    fullDescription: `The L-50 PU coupling spider is the flexible insert that sits between the two hubs of an L-50 jaw coupling. It transmits the drive while cushioning shock loads, damping vibration and allowing for slight shaft misalignment.\n\nPolyurethane resists wear, oil and grease, so the spider lasts well on pumps, compressors, conveyors, gearboxes and motors. Replace it without moving the motor or pump.`,
+    features: [
+      'Fits L-50 jaw coupling hubs',
+      'Polyurethane (PU), 80 Shore A',
+      'Cushions shock loads and damps vibration',
+      'Takes up slight angular and parallel misalignment',
+      'Resists wear, oil and grease',
+      'Replace without disturbing alignment'
+    ],
+    specifications: [
+      { label: 'Coupling Size',     value: 'L-50'               },
+      { label: 'Material',          value: 'Polyurethane (PU)'  },
+      { label: 'Hardness',          value: '80 Shore A'         },
+      { label: 'Colour',            value: 'Blue'               },
+      { label: 'Temperature Range', value: 'Up to 80 °C'        },
+      { label: 'Design',            value: 'Standard spider'    }
+    ],
+    applications: [
+      'Pump-motor drives',
+      'Compressors and blowers',
+      'Conveyor drives',
+      'Gearbox input couplings'
+    ],
+    industriesServed: ['Chemical Industry', 'Water Treatment', 'Food Industry', 'Steel Industry'],
+    imageUrl: 'assets/images/products/l-50-pu-coupling-spider.webp',
+    imageAlt: 'L-50 PU coupling spiders',
+    sortOrder: 33.1
+  },
+
+  {
+    id: 'l-70-pu-coupling-spider',
+    name: 'L-70 PU Coupling Spider',
+    slug: 'l-70-pu-coupling-spider',
+    categoryId: 'couplings',
+    categoryName: 'Couplings & Spiders',
+    shortDescription: 'L-70 size polyurethane spider for jaw couplings, 85 Shore A, to cushion shock, damp vibration and take up small misalignment.',
+    fullDescription: `The L-70 PU coupling spider is the flexible insert that sits between the two hubs of an L-70 jaw coupling. It transmits the drive while cushioning shock loads, damping vibration and allowing for slight shaft misalignment.\n\nThe harder 85 Shore A polyurethane suits slightly heavier drives than the L-50, and resists wear, oil and grease. Replace it without moving the motor or pump.`,
+    features: [
+      'Fits L-70 jaw coupling hubs',
+      'Polyurethane (PU), 85 Shore A',
+      'Cushions shock loads and damps vibration',
+      'Takes up slight angular and parallel misalignment',
+      'Resists wear, oil and grease',
+      'Replace without disturbing alignment'
+    ],
+    specifications: [
+      { label: 'Coupling Size',     value: 'L-70'               },
+      { label: 'Material',          value: 'Polyurethane (PU)'  },
+      { label: 'Hardness',          value: '85 Shore A'         },
+      { label: 'Colour',            value: 'Blue'               },
+      { label: 'Temperature Range', value: 'Up to 90 °C'        },
+      { label: 'Design',            value: 'Standard spider'    }
+    ],
+    applications: [
+      'Pump-motor drives',
+      'Compressors and blowers',
+      'Conveyor drives',
+      'Gearbox input couplings'
+    ],
+    industriesServed: ['Chemical Industry', 'Water Treatment', 'Food Industry', 'Steel Industry'],
+    imageUrl: 'assets/images/products/l-70-pu-coupling-spider.webp',
+    imageAlt: 'L-70 PU coupling spiders',
+    sortOrder: 33.2
   },
 
   // ══════════════════════════════════════════
@@ -1651,7 +2203,7 @@ export const PRODUCTS: Product[] = [
       'Hygienic dairy and beverage plant sealing'
     ],
     industriesServed: ['Food Industry', 'Pharmaceutical Industry', 'Chemical Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/8mm-white-silicone-rubber-sheet.webp',
     imageAlt: '8 mm White Silicone Rubber Sheet — Burhani Seal Centre Kolkata',
     sortOrder: 37
   },
@@ -1692,7 +2244,7 @@ export const PRODUCTS: Product[] = [
       'Bonded into custom O Ring profiles for large bores'
     ],
     industriesServed: ['Chemical Industry', 'Steel Industry', 'Cement Industry', 'Water Treatment'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/8mm-black-rubber-cord.webp',
     imageAlt: '8 mm Black Rubber Cord — Burhani Seal Centre Kolkata',
     sortOrder: 38
   },
@@ -1860,7 +2412,7 @@ export const PRODUCTS: Product[] = [
       'Industrial robot compressed air connections'
     ],
     industriesServed: ['Chemical Industry', 'Pharmaceutical Industry', 'Food Industry', 'Textile Industry'],
-    imageUrl: '',
+    imageUrl: 'assets/images/products/2-inch-blue-polyurethane-tube.webp',
     imageAlt: '2 inch Blue Polyurethane Tube — Burhani Seal Centre Kolkata',
     sortOrder: 42
   },

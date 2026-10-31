@@ -82,6 +82,13 @@ export class ProductDetailComponent {
     return p ? this.enquiry.productEmailHref(p, this.details()) : '';
   });
 
+  // ── Photos: main photo plus any extra gallery shots ──
+  protected readonly photos = computed(() => {
+    const p = this.product();
+    return p?.imageUrl ? [p.imageUrl, ...(p.gallery ?? [])] : [];
+  });
+  protected readonly activePhoto = linkedSignal<string, number>({ source: this.slug, computation: () => 0 });
+
   // ── Image zoom (desktop, photos only) ────
   protected readonly zoom = signal<{ x: number; y: number } | null>(null);
   private readonly tabsEl = viewChild<ElementRef<HTMLElement>>('tablist');
@@ -126,7 +133,7 @@ export class ProductDetailComponent {
             sku: p.id,
             description: p.shortDescription,
             category: p.categoryName,
-            ...(p.imageUrl ? { image: this.seo.absolute(p.imageUrl) } : {}),
+            ...(p.imageUrl ? { image: [p.imageUrl, ...(p.gallery ?? [])].map(u => this.seo.absolute(u)) } : {}),
             ...(brand ? { brand: { '@type': 'Brand', name: brand } } : {}),
             additionalProperty: p.specifications.map(s => ({ '@type': 'PropertyValue', name: s.label, value: s.value }))
           },

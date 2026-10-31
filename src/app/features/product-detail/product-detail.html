@@ -24,7 +24,8 @@
              [class.is-zooming]="!!zoom()"
              (mousemove)="onZoomMove($event)"
              (mouseleave)="zoom.set(null)">
-          <app-product-image class="gallery__img" [product]="p" [priority]="true" [width]="800" [height]="800"
+          <app-product-image class="gallery__img" [product]="p" [src]="photos()[activePhoto()] ?? null"
+                             [priority]="true" [width]="800" [height]="800"
                              [style.transform-origin]="zoom() ? zoom()!.x + '% ' + zoom()!.y + '%' : null" />
           @if (p.imageUrl) {
             <span class="gallery__hint" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i> Hover to zoom</span>
@@ -32,6 +33,19 @@
             <span class="gallery__hint gallery__hint--static">Photo on request — ask us on WhatsApp</span>
           }
         </div>
+
+        @if (photos().length > 1) {
+          <div class="thumbs" role="group" aria-label="Product photos">
+            @for (src of photos(); track src; let i = $index) {
+              <button type="button" class="thumbs__btn" [class.is-active]="i === activePhoto()"
+                      [attr.aria-pressed]="i === activePhoto()"
+                      [attr.aria-label]="'Show photo ' + (i + 1) + ' of ' + photos().length"
+                      (click)="activePhoto.set(i)">
+                <img [src]="src" alt="" width="72" height="72" loading="lazy" decoding="async" />
+              </button>
+            }
+          </div>
+        }
 
         <ul class="assure" role="list">
           <li><i class="fa-solid fa-file-invoice" aria-hidden="true"></i><span>GST invoice on every order</span></li>

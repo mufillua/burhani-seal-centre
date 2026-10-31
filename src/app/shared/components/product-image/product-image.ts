@@ -17,7 +17,7 @@ import { CategoryArtComponent } from '../category-art/category-art';
   host: { class: 'product-image', '[class.product-image--art]': '!showPhoto()' },
   template: `
     @if (showPhoto()) {
-      <img [src]="product().imageUrl"
+      <img [src]="src() || product().imageUrl"
            [alt]="product().imageAlt || product().name"
            [attr.width]="width()" [attr.height]="height()"
            [attr.loading]="priority() ? 'eager' : 'lazy'"
@@ -37,6 +37,8 @@ import { CategoryArtComponent } from '../category-art/category-art';
 })
 export class ProductImageComponent {
   readonly product = input.required<Product>();
+  /** Show this photo instead of the main one (product page gallery) */
+  readonly src = input<string | null>(null);
   readonly priority = input(false);
   readonly width = input(800);
   readonly height = input(600);

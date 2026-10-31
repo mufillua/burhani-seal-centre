@@ -28,6 +28,7 @@ export interface Product {
 
   // Media
   imageUrl: string;             // '' = show the category illustration instead
+  gallery?: string[];           // Extra photos shown as thumbnails on the product page
   imageAlt: string;             // SEO alt text for image
 
 
