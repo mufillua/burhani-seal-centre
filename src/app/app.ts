@@ -7,7 +7,8 @@
 //  • back / forward      → return to where you were
 //  • only filters change → stay put (the page handles it)
 
-import { Component, DOCUMENT, inject } from '@angular/core';
+import { Component, DOCUMENT, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet, Scroll } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs';
@@ -51,6 +52,9 @@ export class AppComponent {
     if ('IntersectionObserver' in (doc.defaultView ?? {})) {
       doc.documentElement.classList.add('reveal-ready');
     }
+
+    // Scroll handling only means something in a browser (not while pre-rendering)
+    if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
 
     let lastPath = '';
     router.events

@@ -27,7 +27,7 @@
     <ul class="cat-grid" role="list">
       @for (cat of categories; track cat.id; let i = $index) {
         <li appReveal="up" [revealDelay]="(i % 4) * 80">
-          <a class="cat-tile" routerLink="/products" [queryParams]="{ category: cat.id }">
+          <a class="cat-tile" [routerLink]="['/categories', cat.id]">
             <span class="cat-tile__art"><app-category-art [type]="cat.art" /></span>
             <span class="cat-tile__count">{{ cat.productCount }}</span>
             <span class="cat-tile__name">{{ cat.name }}</span>
@@ -59,8 +59,8 @@
     <div class="about__copy">
       <app-section-header eyebrow="Burhani Seal Centre" title="A counter in Burra Bazar," accent="trusted across industries" [light]="true" />
       <p appReveal="up">
-        Led by <strong>{{ company.owner }}</strong>, Burhani Seal Centre supplies oil seals, hydraulic seals,
-        seal kits, couplings and bearings to workshops, maintenance teams and plant buyers. We help you match
+        Led by <strong>{{ company.owner }}</strong>, Burhani Seal Centre supplies hydraulic, pneumatic and oil
+        seals, O-rings, gaskets, bellows and other rubber parts to workshops, maintenance teams and plant buyers. We help you match
         the right part to your machine — not just sell what's on the shelf.
       </p>
       <ul class="about__points" role="list">

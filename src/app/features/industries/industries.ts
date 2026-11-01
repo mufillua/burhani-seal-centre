@@ -38,7 +38,7 @@ export class IndustriesComponent {
   constructor() {
     inject(SeoService).set({
       title: 'Industries we serve',
-      description: 'Oil seals, hydraulic seals, seal kits, couplings and bearings for chemical, pharmaceutical, food, oil & gas, power, water treatment, textile, cement, steel and paper industries.',
+      description: 'Seals, gaskets, bellows and diaphragms for chemical, pharma, food, oil & gas, power, water, textile, cement, steel and paper plants. Burhani Seal Centre.',
       path: '/industries'
     });
   }

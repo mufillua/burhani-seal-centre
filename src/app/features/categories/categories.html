@@ -19,7 +19,7 @@
       @for (cat of categories; track cat.id; let i = $index) {
         <li appReveal="up" [revealDelay]="(i % 2) * 90">
           <article class="cat">
-            <a class="cat__link" routerLink="/products" [queryParams]="{ category: cat.id }">
+            <a class="cat__link" [routerLink]="['/categories', cat.id]">
               <span class="visually-hidden">Browse {{ cat.name }}</span>
             </a>
 
@@ -32,7 +32,7 @@
                   }
                 </div>
               }
-              <span class="cat__count">{{ cat.productCount }} products</span>
+              <span class="cat__count">{{ cat.productCount }} {{ cat.productCount === 1 ? 'product' : 'products' }}</span>
             </div>
 
             <div class="cat__body">

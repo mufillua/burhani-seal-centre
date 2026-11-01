@@ -37,10 +37,10 @@ export class HeroComponent {
 
   protected readonly totalProducts = this.products.getTotalProductCount();
   protected readonly totalCategories = this.products.getTotalCategoryCount();
-  protected readonly popular = ['SKF oil seal', 'Viton', 'Coupling spider', 'O-ring kit', 'Hydraulic seal kit'];
+  protected readonly popular = ['TC oil seal', 'U-ring', 'O-ring', 'Bellows', 'Diaphragm'];
 
   /** Three real product photos that orbit the drawing */
-  protected readonly orbit: Product[] = ['skf-oil-seals', 'pu-hydraulic-seal', 'viton-oil-seal']
+  protected readonly orbit: Product[] = ['u-ring-piston-seal-un', 'spider-element-gr', 'tc-oil-seal']
     .map(slug => this.products.getProductBySlug(slug))
     .filter((p): p is Product => !!p);
 

@@ -29,7 +29,7 @@ import { CategoryArtComponent } from '../../shared/components/category-art/categ
           </form>
           <div class="nf__links">
             @for (c of categories; track c.id) {
-              <a routerLink="/products" [queryParams]="{ category: c.id }">{{ c.name }}</a>
+              <a [routerLink]="['/categories', c.id]">{{ c.name }}</a>
             }
           </div>
           <div class="nf__ctas">

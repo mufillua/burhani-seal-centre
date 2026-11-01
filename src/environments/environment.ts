@@ -68,10 +68,10 @@ export const environment = {
     // WhatsApp/email enquiries. When the domain is connected, change
     // this one line and rebuild — `npm run build` updates
     // index.html, sitemap.xml and robots.txt to match.
-    siteUrl: 'https://burhani-seal-centre.vercel.app',
-    defaultTitle: 'Burhani Seal Centre | Oil Seals, Hydraulic Seals & Couplings in Kolkata',
+    siteUrl: 'https://burhanisealcentre.vercel.app',
+    defaultTitle: 'Burhani Seal Centre | Seals, Gaskets & Rubber Products in Kolkata',
     defaultDescription:
-      'Burhani Seal Centre, Burra Bazar, Kolkata — oil seals (SKF, IVR, J K Pioneer), hydraulic seals, seal kits, pump seals, O-ring kits, PU coupling spiders, rubber sheets and SKF bearings. Enquire on WhatsApp or email.',
+      'Hydraulic, pneumatic and oil seals, O-rings, gaskets, bellows, diaphragms, couplings and rubber sheets from Burra Bazar, Kolkata. Enquire on WhatsApp or email.',
     ogImage: '/assets/images/og-image.jpg'
   }
 };

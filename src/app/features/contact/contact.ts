@@ -92,7 +92,7 @@ export class ContactComponent {
 
     inject(SeoService).set({
       title: 'Get a quote — contact us',
-      description: `Request a quote from Burhani Seal Centre, ${environment.company.address.full}. Call or WhatsApp ${environment.company.phoneDisplay}, or email ${environment.company.email}.`,
+      description: `Get a quote from Burhani Seal Centre, Burra Bazar, Kolkata. Call or WhatsApp ${environment.company.phoneDisplay}, or email ${environment.company.email}.`,
       path: '/contact'
     });
   }

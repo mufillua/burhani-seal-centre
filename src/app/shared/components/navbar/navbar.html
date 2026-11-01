@@ -35,11 +35,11 @@
                 <ul class="mega__grid" role="list">
                   @for (cat of categories; track cat.id; let i = $index) {
                     <li [style.--i]="i">
-                      <a class="mega__cat" routerLink="/products" [queryParams]="{ category: cat.id }">
+                      <a class="mega__cat" [routerLink]="['/categories', cat.id]">
                         <span class="mega__art"><app-category-art [type]="cat.art" /></span>
                         <span class="mega__cat-text">
                           <span class="mega__cat-name">{{ cat.name }}</span>
-                          <span class="mega__cat-count">{{ cat.productCount }} products</span>
+                          <span class="mega__cat-count">{{ cat.productCount }} {{ cat.productCount === 1 ? 'product' : 'products' }}</span>
                         </span>
                       </a>
                     </li>
@@ -121,7 +121,7 @@
             <ul id="drawer-categories" class="drawer__cats" role="list" animate.enter="anim-drop-in">
               @for (cat of categories; track cat.id) {
                 <li>
-                  <a routerLink="/products" [queryParams]="{ category: cat.id }">
+                  <a [routerLink]="['/categories', cat.id]">
                     <span class="drawer__cat-art"><app-category-art [type]="cat.art" /></span>
                     {{ cat.name }}
                     <span class="drawer__count">{{ cat.productCount }}</span>

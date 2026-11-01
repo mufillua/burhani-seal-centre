@@ -140,7 +140,7 @@ export class ProductDetailComponent {
           this.seo.breadcrumb([
             { name: 'Home', path: '/' },
             { name: 'Products', path: '/products' },
-            { name: p.categoryName, path: `/products?category=${p.categoryId}` },
+            { name: p.categoryName, path: `/categories/${p.categoryId}` },
             { name: p.name, path: `/products/${p.slug}` }
           ])
         ]

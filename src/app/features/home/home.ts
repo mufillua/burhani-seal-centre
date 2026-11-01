@@ -35,10 +35,10 @@ export class HomeComponent {
   protected readonly totalProducts = this.products.getTotalProductCount();
   protected readonly industries = [...INDUSTRIES].sort((a, b) => a.sortOrder - b.sortOrder);
 
-  /** Brands and materials we stock — shown in the moving ribbon */
+  /** Materials we supply — shown in the moving ribbon */
   protected readonly ribbon = [
-    'SKF', 'Nitrile (NBR)', 'IVR', 'Viton (FKM)', 'J K Pioneer', 'Polyurethane',
-    'Gold Super', 'Silicone', 'Double-lip', 'PTFE-loaded', 'Stainless steel'
+    'Nitrile (NBR)', 'Viton (FKM)', 'Polyurethane (PU)', 'SKF', 'J K Pioneer', 'IVR', 'Silicone', 'EPDM',
+    'Neoprene', 'SBR', 'Natural rubber', 'Gold Super', 'Acetal (POM)'
   ];
 
   protected readonly stats = [

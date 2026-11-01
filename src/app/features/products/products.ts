@@ -2,8 +2,11 @@
 // PRODUCTS — catalogue with filters + pagination
 // ============================================
 // Everything lives in the URL so any view can be shared,
-// bookmarked or refreshed:
-//   /products?category=oil-seals&q=viton&sort=name-asc&page=2
+// bookmarked or refreshed. Each category has its own page:
+//   /products                      all products
+//   /categories/oil-seals          one category
+//   /categories/oil-seals?q=tc&sort=name-asc&page=2
+// Old /products?category=… links are redirected to the category page.
 // 12 products per page.
 
 import {
@@ -15,8 +18,10 @@ import {
   effect,
   inject,
   linkedSignal,
+  PLATFORM_ID,
   viewChild
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PAGE_SIZE, ProductService, ProductSort } from '../../services/product.service';
@@ -34,6 +39,9 @@ const SORTS: { value: ProductSort; label: string }[] = [
 
 @Component({
   selector: 'app-products',
+  // The list depends on the query string (search, sort, page), which the
+  // pre-rendered HTML can't know, so this page re-renders in the browser.
+  host: { ngSkipHydration: 'true' },
   imports: [RouterLink, ProductCardComponent, PaginationComponent, CategoryArtComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './products.html',
@@ -56,9 +64,10 @@ export class ProductsComponent {
 
   // ── State, read from the URL ─────────────
   private readonly params = toSignal(this.route.queryParamMap, { requireSync: true });
+  private readonly pathParams = toSignal(this.route.paramMap, { requireSync: true });
 
   protected readonly category = computed(() => {
-    const id = this.params().get('category');
+    const id = this.pathParams().get('category') ?? this.params().get('category');
     return this.products.getCategoryById(id) ? id : null;
   });
   protected readonly activeCategory = computed(() => this.products.getCategoryById(this.category()));
@@ -86,18 +95,44 @@ export class ProductsComponent {
     // Page title / description follow the selected category
     effect(() => {
       const cat = this.activeCategory();
+      const path = cat ? `/categories/${cat.id}` : '/products';
       this.seo.set({
-        title: cat ? `${cat.name} — buy in Kolkata` : 'Product catalogue — seals, kits, couplings & bearings',
+        title: cat ? `${cat.name} in Kolkata` : 'Product catalogue — seals, gaskets, bellows & rubber parts',
         description: cat
-          ? `${cat.description} Browse ${cat.productCount} products and enquire on WhatsApp or email — Burhani Seal Centre, Burra Bazar, Kolkata.`
-          : `Browse ${this.totalProducts} industrial products: oil seals, hydraulic seals, seal kits, pump seals, O-rings, couplings, rubber sheets and SKF bearings. Enquire on WhatsApp or email.`,
-        path: cat ? `/products?category=${cat.id}` : '/products'
+          ? cat.metaDescription ?? cat.description
+          : `Browse ${this.totalProducts} industrial rubber products: hydraulic, pneumatic and oil seals, O-rings, gaskets, bellows and diaphragms. Enquire on WhatsApp.`,
+        path,
+        jsonLd: [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: cat ? cat.name : 'Product catalogue',
+            description: cat ? cat.description : `${this.totalProducts} industrial rubber products`,
+            url: this.seo.absolute(path)
+          },
+          this.seo.breadcrumb([
+            { name: 'Home', path: '/' },
+            { name: 'Products', path: '/products' },
+            ...(cat ? [{ name: cat.name, path }] : [])
+          ])
+        ]
       });
     });
 
-    // Keep the selected category chip in view on phones
+    // Old links (/products?category=oil-seals) → the category's own page
+    effect(() => {
+      const legacy = this.params().get('category');
+      if (!this.pathParams().get('category') && legacy && this.products.getCategoryById(legacy)) {
+        const { category, ...rest } = this.route.snapshot.queryParams;
+        this.router.navigate(['/categories', legacy], { queryParams: rest, replaceUrl: true });
+      }
+    });
+
+    // Keep the selected category chip in view on phones (browser only)
+    const isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     effect(() => {
       const id = this.category() ?? 'all';
+      if (!isBrowser) return;
       queueMicrotask(() => {
         const chip = this.chips()?.nativeElement.querySelector<HTMLElement>(`[data-chip="${id}"]`);
         chip?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
@@ -111,7 +146,10 @@ export class ProductsComponent {
 
   protected setCategory(id: string | null): void {
     if (id === this.category()) return;
-    this.navigate({ category: id, page: null });
+    // Keep the search and sort, start again at page 1
+    this.router.navigate(id ? ['/categories', id] : ['/products'], {
+      queryParams: { q: this.search() || null, sort: this.sort() === 'featured' ? null : this.sort() }
+    });
     this.scrollToResults();
   }
 
@@ -140,7 +178,7 @@ export class ProductsComponent {
 
   protected clearAll(): void {
     this.searchInput.set('');
-    this.navigate({ q: null, page: null, category: null, sort: null });
+    this.router.navigate(['/products']);
   }
 
   private navigate(params: Params, replaceUrl = false): void {

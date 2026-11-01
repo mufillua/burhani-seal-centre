@@ -41,7 +41,7 @@ const urls = [
   entry('/', 'weekly', '1.0'),
   entry('/products', 'weekly', '0.9'),
   entry('/categories', 'monthly', '0.8'),
-  ...categories.map((id) => entry(`/products?category=${id}`, 'weekly', '0.8')),
+  ...categories.map((id) => entry(`/categories/${id}`, 'weekly', '0.8')),
   entry('/about', 'monthly', '0.6'),
   entry('/industries', 'monthly', '0.6'),
   entry('/contact', 'yearly', '0.7'),

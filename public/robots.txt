@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://burhani-seal-centre.vercel.app/sitemap.xml
+Sitemap: https://burhanisealcentre.vercel.app/sitemap.xml

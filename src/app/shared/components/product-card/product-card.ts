@@ -31,6 +31,8 @@ export class ProductCardComponent {
   protected readonly emailHref = computed(() => this.enquiry.productEmailHref(this.product()));
   protected readonly keySpec = computed(() => {
     const specs = this.product().specifications;
-    return specs.find(s => /size|diameter|bore|thickness|brand/i.test(s.label)) ?? specs[0];
+    // A brand or exact size if the product has one, otherwise its material
+    return specs.find(s => /^(brand|size|inner diameter|thickness)$/i.test(s.label))
+      ?? specs.find(s => /^material$/i.test(s.label)) ?? specs[0];
   });
 }

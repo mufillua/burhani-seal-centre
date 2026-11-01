@@ -52,8 +52,8 @@ export class AboutComponent {
     },
     {
       icon: 'fa-solid fa-tags',
-      title: 'Brands you already trust',
-      text: 'SKF, IVR, J K Pioneer and Gold Super oil seals alongside PU, nitrile and Viton seals, kits and couplings.'
+      title: 'The full range in one place',
+      text: 'Hydraulic, pneumatic and oil seals, O-rings, gaskets, bellows, diaphragms and couplings in NBR, Viton, PU, PTFE, EPDM and silicone.'
     },
     {
       icon: 'fa-solid fa-comments',
@@ -81,7 +81,7 @@ export class AboutComponent {
   constructor() {
     inject(SeoService).set({
       title: 'About us',
-      description: `Burhani Seal Centre, ${environment.company.address.line2}, Kolkata — led by ${environment.company.owner}. Oil seals, hydraulic seals, seal kits, couplings and bearings with help matching the right part.`,
+      description: `Burhani Seal Centre, Burra Bazar, Kolkata, led by ${environment.company.owner}: seals, gaskets, bellows and rubber parts, with help matching the right part.`,
       path: '/about'
     });
 

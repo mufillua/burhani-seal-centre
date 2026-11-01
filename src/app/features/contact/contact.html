@@ -103,7 +103,7 @@
             <div class="field">
               <label for="f-product">Product</label>
               <input id="f-product" type="text" list="product-list" autocomplete="off"
-                     placeholder="Start typing — e.g. SKF oil seal"
+                     placeholder="Start typing — e.g. TC oil seal"
                      [value]="form().product" (input)="update('product', $any($event.target).value)" />
               <datalist id="product-list">
                 @for (name of productNames; track name) { <option [value]="name"></option> }

@@ -177,14 +177,14 @@
   left: 0;
   right: 0;
   margin-inline: auto;
-  width: min(980px, calc(100vw - 48px));
+  width: min(1120px, calc(100vw - 48px));
   padding-top: 12px; // hover bridge
   color: $charcoal;
 }
 
 .mega__inner {
   display: grid;
-  grid-template-columns: 1fr 250px;
+  grid-template-columns: 1fr 240px;
   overflow: hidden;
   border-radius: $radius-lg;
   background: $white;
@@ -193,9 +193,9 @@
 
 .mega__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px;
-  padding: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px 4px;
+  padding: 14px;
   margin: 0;
 
   li { animation: fadeInUp 0.45s var(--ease-out) both; animation-delay: calc(var(--i) * 30ms); }
@@ -204,8 +204,8 @@
 .mega__cat {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 12px;
+  gap: 12px;
+  padding: 8px 10px;
   border-radius: $radius-md;
   color: $charcoal;
   transition: background-color 0.25s ease;
@@ -221,10 +221,10 @@
 
 .mega__art {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  padding: 9px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  border-radius: 10px;
   background: rgba($blue, 0.1);
   color: $navy;
   --art-accent: #{$blue-bright};
@@ -235,7 +235,7 @@
 
 .mega__cat-name {
   font-family: $font-accent;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: $weight-bold;
 }
 

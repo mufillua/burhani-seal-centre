@@ -29,7 +29,7 @@ export class CategoriesComponent {
   constructor() {
     inject(SeoService).set({
       title: 'Product categories',
-      description: 'Oil seals, hydraulic seals, seal kits, pump seals, O-rings, couplings, rubber sheets and bearings — browse every category at Burhani Seal Centre, Kolkata.',
+      description: 'Every category: hydraulic, pneumatic and oil seals, O-rings, couplings, bellows, diaphragms, gaskets, rubber sheets and more. Burhani Seal Centre, Kolkata.',
       path: '/categories'
     });
   }

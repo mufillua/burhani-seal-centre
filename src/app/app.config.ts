@@ -3,6 +3,7 @@
 // ============================================
 
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import {
   ActivatedRouteSnapshot,
   provideRouter,
@@ -23,6 +24,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
+    // Pages arrive pre-rendered (see app.routes.server.ts); the app takes
+    // them over in place instead of drawing them again. Clicks made while
+    // it loads are replayed once it's ready.
+    provideClientHydration(withEventReplay()),
     provideRouter(
       routes,
       // Smooth cross-fade between pages. Skipped when only the

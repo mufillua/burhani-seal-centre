@@ -25,6 +25,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/categories/categories').then(m => m.CategoriesComponent)
   },
   {
+    // One page per category, e.g. /categories/oil-seals (same catalogue view, pre-filtered)
+    path: 'categories/:category',
+    loadComponent: () => import('./features/products/products').then(m => m.ProductsComponent)
+  },
+  {
     path: 'about',
     loadComponent: () => import('./features/about/about').then(m => m.AboutComponent)
   },

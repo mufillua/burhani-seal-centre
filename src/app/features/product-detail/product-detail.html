@@ -7,7 +7,7 @@
         <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         <a routerLink="/products">Products</a>
         <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-        <a routerLink="/products" [queryParams]="{ category: p.categoryId }">{{ p.categoryName }}</a>
+        <a [routerLink]="['/categories', p.categoryId]">{{ p.categoryName }}</a>
         <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         <span aria-current="page">{{ p.name }}</span>
       </nav>
@@ -56,7 +56,7 @@
 
       <!-- Info + enquiry -->
       <div class="pd__info">
-        <a class="pd__category" routerLink="/products" [queryParams]="{ category: p.categoryId }">
+        <a class="pd__category" [routerLink]="['/categories', p.categoryId]">
           <span class="pd__category-art"><app-category-art [type]="category()?.art" /></span>
           {{ p.categoryName }}
         </a>
@@ -217,7 +217,7 @@
           }
         </ul>
         <div class="related__more">
-          <a class="btn btn--outline" routerLink="/products" [queryParams]="{ category: p.categoryId }">
+          <a class="btn btn--outline" [routerLink]="['/categories', p.categoryId]">
             All {{ p.categoryName }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
