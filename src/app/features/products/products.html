@@ -178,3 +178,34 @@
     </div>
   </div>
 </section>
+
+<!-- ── ABOUT THIS CATEGORY + FAQ (category pages) ── -->
+@if (activeCategory(); as cat) {
+  @if (cat.intro?.length || cat.faqs?.length) {
+    <section class="cat-about" aria-labelledby="cat-about-title">
+      <div class="container-custom cat-about__grid">
+        <div class="cat-about__text">
+          <h2 id="cat-about-title" class="cat-about__title">About {{ cat.name.toLowerCase() }}</h2>
+          @for (para of cat.intro ?? []; track $index) {
+            <p>{{ para }}</p>
+          }
+          <a class="btn btn--whatsapp" [href]="enquiry.generalWhatsappHref" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send a photo or size on WhatsApp
+          </a>
+        </div>
+
+        @if (cat.faqs?.length) {
+          <div class="cat-about__faq">
+            <h2 class="cat-about__title">Common questions</h2>
+            @for (f of cat.faqs ?? []; track f.q; let first = $first) {
+              <details class="faq" [open]="first">
+                <summary><h3 class="faq__q">{{ f.q }}</h3><i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+                <p class="faq__a">{{ f.a }}</p>
+              </details>
+            }
+          </div>
+        }
+      </div>
+    </section>
+  }
+}

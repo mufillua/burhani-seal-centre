@@ -79,10 +79,12 @@ export class AboutComponent {
   private readonly timeline = viewChild<ElementRef<HTMLElement>>('timeline');
 
   constructor() {
-    inject(SeoService).set({
-      title: 'About us',
-      description: `Burhani Seal Centre, Burra Bazar, Kolkata, led by ${environment.company.owner}: seals, gaskets, bellows and rubber parts, with help matching the right part.`,
-      path: '/about'
+    const seo = inject(SeoService);
+    seo.set({
+      title: `About Burhani Seal Centre — Burra Bazar, Since ${environment.company.founded}`,
+      description: seo.snippet(`A seal and rubber parts counter on Strand Road, Burra Bazar, led by ${environment.company.owner}. We help you match the right part.`),
+      path: '/about',
+      business: true
     });
 
     // The blue line in the timeline fills as you scroll through it

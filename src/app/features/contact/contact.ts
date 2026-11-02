@@ -91,9 +91,10 @@ export class ContactComponent {
     if (product) this.form.update(f => ({ ...f, product: product.name, quantity: '10 pcs' }));
 
     inject(SeoService).set({
-      title: 'Get a quote — contact us',
-      description: `Get a quote from Burhani Seal Centre, Burra Bazar, Kolkata. Call or WhatsApp ${environment.company.phoneDisplay}, or email ${environment.company.email}.`,
-      path: '/contact'
+      title: 'Contact & Get a Quote — Strand Road, Burra Bazar',
+      description: `Get a quote for seals and rubber parts: call or WhatsApp ${environment.company.phoneDisplay}, or visit 37 Strand Road, Burra Bazar, Kolkata. Open Mon–Sat.`,
+      path: '/contact',
+      business: true
     });
   }
 

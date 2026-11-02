@@ -21,7 +21,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-gauge-high',
     art: 'hydraulic',
     description: 'Piston and rod seals for hydraulic cylinders: PU U-rings, PTFE cap seals, compact seals, vee packings and combination seals in NBR, FKM, PU and bronze-filled PTFE.',
-    metaDescription: 'Hydraulic piston and rod seals in PU, NBR, FKM and PTFE: U-rings, cap seals, compact seals and vee packings. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Hydraulic Seals & Seal Kits in Kolkata',
+    metaDescription: 'Piston and rod seals, U-cups, PTFE cap seals, compact seals and vee packings in PU, NBR and Viton.',
+    intro: [
+      'Hydraulic seals keep oil inside a cylinder and dirt out. We stock piston seals, rod seals, U-cups, PTFE cap seals, compact seals and vee packings in polyurethane (PU), nitrile (NBR), Viton (FKM) and bronze-filled PTFE, for presses, earth-moving machines, machine tools and injection moulding machines.',
+      'Not sure of the profile? Send a photo of the old seal, or the rod or bore diameter with the groove diameter and width, on WhatsApp and we\'ll match it from stock at our Burra Bazar counter.'
+    ],
+    faqs: [
+      { q: 'What is the difference between a piston seal and a rod seal?', a: 'A piston seal seals the piston against the cylinder bore, so it is sized on the bore diameter. A rod seal sits in the cylinder head and seals around the moving rod, so it is sized on the rod diameter. Most cylinders also need a wiper and guide rings.' },
+      { q: 'Which is better for hydraulic seals, PU or nitrile?', a: 'Polyurethane (PU) resists wear and extrusion and suits most mobile and industrial cylinders up to about 80 °C. Nitrile (NBR) or fabric-reinforced rubber copes better with heat and rough rods, and Viton (FKM) is used for higher temperatures.' },
+      { q: 'How do I order a replacement hydraulic seal?', a: 'Send the old seal, a photo with a ruler, or the rod or bore diameter with the groove diameter and width. We confirm the profile, material and price on WhatsApp, and you can collect from Strand Road, Burra Bazar.' }
+    ],
     featured: true,
     sortOrder: 1
   },
@@ -32,7 +42,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-wind',
     art: 'pneumatic',
     description: 'Seals for air cylinders and valves: piston and rod seals, complete pistons, cushion seals, buffer rings and magnetic piston seals.',
-    metaDescription: 'Pneumatic piston and rod seals, complete pistons, cushion seals and magnetic piston seals for air cylinders. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Pneumatic Seals for Air Cylinders, Kolkata',
+    metaDescription: 'Piston and rod seals, complete pistons, cushion and magnetic seals for air cylinders and valves.',
+    intro: [
+      'Pneumatic seals are made for compressed air: low-friction lips that let cylinders move smoothly at normal air pressure, with or without lubrication. We supply piston and rod seals, complete pistons, cushion seals, buffer rings and magnetic piston seals for air cylinders and valves.',
+      'Tell us the cylinder bore and rod diameter, or the cylinder\'s make and model, and we\'ll find the matching seal or complete piston.'
+    ],
+    faqs: [
+      { q: 'Can I use a hydraulic seal in an air cylinder?', a: 'Usually not. Hydraulic seals are stiffer and grip harder, so an air cylinder fitted with them moves jerkily and wears faster. Pneumatic seals have softer, low-friction lips designed for air pressure.' },
+      { q: 'What is a cushion seal?', a: 'A cushion seal traps a little air at the end of the stroke so the piston slows down instead of hitting the end cap. It protects the cylinder and reduces noise on fast-moving machines.' },
+      { q: 'What is a magnetic piston seal for?', a: 'It carries a magnet in the piston so reed switches or sensors on the outside of the cylinder can detect where the piston is.' }
+    ],
     featured: true,
     sortOrder: 2
   },
@@ -43,7 +63,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-circle-notch',
     art: 'oil-seal',
     description: 'Genuine SKF and Gold Super oil seals, rotary shaft seals in TC, SC, VC, SB, SA and other profiles, and cassette, combi, split, V-ring and PTFE lip seals in NBR, FKM and ACM.',
-    metaDescription: 'SKF and Gold Super oil seals, TC, SC, VC and SB rotary seals, cassette, split and PTFE lip seals in NBR, FKM and ACM. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Oil Seals in Kolkata — SKF, Gold Super, TC & PTFE',
+    metaDescription: 'SKF and Gold Super oil seals, TC, SC, VC and SB profiles, cassette, split and PTFE lip seals.',
+    intro: [
+      'Oil seals (radial shaft seals) keep lubricant in and dust and water out where a rotating shaft leaves a housing. We stock genuine SKF and Gold Super oil seals alongside TC, SC, VC, SB, TA and SA profiles, cassette and split seals, V-rings and PTFE lip seals in nitrile (NBR), Viton (FKM) and ACM.',
+      'Oil seals are sized shaft × bore × width in millimetres, for example 35 × 62 × 7. Read the numbers off the old seal, or measure the shaft and housing, and send them on WhatsApp for stock and price.'
+    ],
+    faqs: [
+      { q: 'What do the numbers on an oil seal mean?', a: 'They are the shaft diameter, the housing bore and the width in millimetres. A 40 × 62 × 8 seal fits a 40 mm shaft in a 62 mm bore and is 8 mm wide.' },
+      { q: 'What is the difference between TC and SC oil seals?', a: 'Both have a rubber-covered outside and a spring-loaded main lip. TC adds a second dust lip to keep dirt out; SC has a single lip for clean, enclosed housings.' },
+      { q: 'Which oil seal material should I choose?', a: 'Nitrile (NBR) suits most oils and greases up to about 100 °C. Viton (FKM) is for higher temperatures and fuels, and PTFE lip seals handle dry running, high speed and aggressive chemicals.' }
+    ],
     featured: true,
     sortOrder: 3
   },
@@ -54,7 +84,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-arrows-left-right',
     art: 'wiper',
     description: 'Rod wipers that keep dirt out of hydraulic and pneumatic cylinders, and guide rings and strips that take side loads off the seals.',
-    metaDescription: 'Rod wipers for hydraulic and pneumatic cylinders, plus PTFE, POM and phenolic guide rings and strips. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Wiper Seals & Guide Rings in Kolkata',
+    metaDescription: 'Rod wipers for hydraulic and air cylinders, and PTFE, POM and phenolic guide rings and strips.',
+    intro: [
+      'A wiper (scraper) seal sits at the mouth of a cylinder and scrapes dust, mud and water off the rod as it retracts. Guide rings and guide strips keep the piston and rod centred and stop metal-to-metal contact. Together they protect the main seals and make them last longer.',
+      'We stock single and double-lip wipers in PU and nitrile, metal-cased wipers for heavy-duty housings, pneumatic rod wipers, and guide rings in PTFE, POM and phenolic fabric.'
+    ],
+    faqs: [
+      { q: 'Why does a cylinder need a wiper seal?', a: 'Without a wiper, dirt on the rod is pulled into the cylinder on every stroke, scoring the rod and destroying the rod seal. A wiper costs little and greatly extends seal life.' },
+      { q: 'What is the difference between a snap-in and a metal-cased wiper?', a: 'A snap-in wiper sits in a groove in the gland. A metal-cased wiper is pressed into an open housing and is preferred on heavy machines working in dirt.' },
+      { q: 'What do guide rings do?', a: 'They take the side load on the piston and rod so the metal parts never touch. Worn guide rings let the piston rub the bore and quickly ruin the seals.' }
+    ],
     featured: true,
     sortOrder: 4
   },
@@ -65,7 +105,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-ring',
     art: 'o-ring',
     description: 'O-rings in NBR, Viton, silicone, EPDM, neoprene and PU, boxed O-ring kits, and bonded (Dowty) seals for hydraulic fittings.',
-    metaDescription: 'O-rings in NBR, Viton, silicone, EPDM, neoprene and PU, boxed O-ring kits and bonded (Dowty) seals. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'O-Rings, O-Ring Kits & Dowty Seals in Kolkata',
+    metaDescription: 'O-rings in NBR, Viton, silicone, EPDM and PU, boxed O-ring kits and Dowty (bonded) seals.',
+    intro: [
+      'O-rings are the most common seal of all: a rubber ring squeezed in a groove to seal static joints and slow-moving parts. We stock O-rings in nitrile (NBR), Viton (FKM), silicone, EPDM, neoprene and PU, boxed O-ring kits for maintenance stores, and Dowty (bonded) seals for hydraulic fittings.',
+      'O-rings are sized by inside diameter × cross-section, for example 20 × 2.5 mm. Tell us the size, the fluid and the temperature, and we\'ll suggest the right material.'
+    ],
+    faqs: [
+      { q: 'How is an O-ring measured?', a: 'By its inside diameter (ID) and its cross-section (thickness), both in millimetres. Measure the ring unstretched, or measure the groove it fits in.' },
+      { q: 'Which O-ring material should I use?', a: 'Nitrile for oils, greases and water; Viton for high temperatures, fuels and many chemicals; EPDM for water and steam but not oil; silicone for food use and very high or low temperatures.' },
+      { q: 'What is a Dowty seal?', a: 'A Dowty seal, or bonded seal, is a steel washer with a rubber ring bonded inside it. It seals threaded hydraulic ports, banjo bolts and drain plugs, and is chosen by thread size.' }
+    ],
     featured: true,
     sortOrder: 5
   },
@@ -76,7 +126,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-gears',
     art: 'pump',
     description: 'Mechanical pump seals in single-spring and multi-spring designs, and mechanical shaft seals for compressors and other rotating equipment.',
-    metaDescription: 'Mechanical pump seals, single-spring and multi-spring, for water, chemical and process pumps, matched to your shaft. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Mechanical Seals for Pumps in Kolkata',
+    metaDescription: 'Single-spring and multi-spring mechanical seals for water, chemical and process pumps.',
+    intro: [
+      'A mechanical seal stops liquid leaking where a pump shaft passes through the casing. Two flat faces, one turning with the shaft and one fixed in the casing, are held together by a spring. We supply single-spring, conical-spring and multi-spring mechanical seals for water, chemical and process pumps.',
+      'To match a seal, send the shaft size, the pump make and model, or a photo of the old seal with its seat. We\'ll confirm the face materials (carbon, ceramic or silicon carbide) and rubber parts for your liquid.'
+    ],
+    faqs: [
+      { q: 'How do I know which mechanical seal fits my pump?', a: 'Start with the shaft diameter and the pump make and model. A photo of the old seal and its stationary seat helps us match the type and working length.' },
+      { q: 'Why is my mechanical seal leaking?', a: 'Common causes are dry running, worn or cracked faces, the wrong rubber for the liquid, or misalignment. Replacing the complete seal, including its seat, usually fixes it.' },
+      { q: 'Which face materials should I choose?', a: 'Carbon against ceramic suits clean water. Silicon carbide faces last longer with abrasive or chemical liquids.' }
+    ],
     featured: true,
     sortOrder: 6
   },
@@ -87,7 +147,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-gear',
     art: 'coupling',
     description: 'Elastic coupling elements and spiders in PU, TPU, natural rubber and nylon, and complete jaw couplings.',
-    metaDescription: 'Star and spider coupling elements in PU, TPU, rubber and nylon, plus KTR, ROTEX and Lovejoy jaw couplings. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Coupling Spiders & Star Couplings in Kolkata',
+    metaDescription: 'Coupling spiders and star coupling elements in PU, TPU and rubber, plus KTR, ROTEX and Lovejoy.',
+    intro: [
+      'Coupling spiders and elastic elements are the flexible inserts between the two hubs of a jaw or star coupling. They carry the torque from motor to pump or gearbox, absorb shock and allow slight misalignment. We stock spiders and coupling elements in PU, TPU, natural rubber and nylon, plus KTR, ROTEX and Lovejoy jaw couplings.',
+      'Tell us the coupling type and size (for example L-70, or the hub diameter), or send a photo of the old element, and we\'ll find the replacement.'
+    ],
+    faqs: [
+      { q: 'When should a coupling spider be replaced?', a: 'When it is cracked, flattened or crumbling, or when the coupling starts to knock or vibrate. A new spider is cheap and protects the motor and pump bearings.' },
+      { q: 'Does the hardness of a spider matter?', a: 'Yes. Harder spiders carry more torque but pass on more vibration; softer ones damp more but carry less. Match the hardness of the spider you are replacing.' },
+      { q: 'Do you supply complete couplings?', a: 'Yes. We supply jaw couplings as well as the spare spiders and elements. Tell us the shaft sizes and the motor power.' }
+    ],
     featured: true,
     sortOrder: 7
   },
@@ -98,7 +168,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-compress',
     art: 'bellows',
     description: 'Protective rubber bellows, vacuum suction bellows for lifting and handling, and flanged bellows for pipelines and ducts.',
-    metaDescription: 'Rubber bellows, vacuum suction bellows and flanged bellows in silicone, EPDM, NBR, SBR, PU and Viton. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Rubber Bellows & Vacuum Suction Cups, Kolkata',
+    metaDescription: 'Rubber bellows, vacuum suction cups and flanged bellows in silicone, EPDM, NBR, PU and Viton.',
+    intro: [
+      'Rubber bellows are flexible, folded covers. Protective bellows keep dust, chips and fluid off moving rods, ball screws and joints. Vacuum suction cups (suction bellows) grip parts on vacuum lifters and pick-and-place lines, and flanged bellows absorb vibration and movement in pipelines and ducts.',
+      'We stock bellows in silicone, EPDM, nitrile, SBR, neoprene, PU and Viton. Send the sizes or a photo and we\'ll match the shape and material.'
+    ],
+    faqs: [
+      { q: 'What is a vacuum suction cup bellows used for?', a: 'It is the gripper on a vacuum lifter or robot arm. The folds let it reach down and seal on uneven, curved or angled surfaces, then lift the part.' },
+      { q: 'Which bellows material should I choose?', a: 'Nitrile for oil, EPDM for water and outdoor use, silicone for heat and food contact, and Viton for high temperatures and chemicals.' },
+      { q: 'What is a flanged bellows?', a: 'A rubber expansion joint with flanges at both ends. It is bolted into a pipeline or duct to absorb vibration, thermal expansion and small misalignment.' }
+    ],
     featured: true,
     sortOrder: 8
   },
@@ -109,7 +189,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-circle-dot',
     art: 'diaphragm',
     description: 'Rubber, fabric-reinforced, PTFE and Santoprene diaphragms for valves, pumps and actuators, including spares for AODD pumps.',
-    metaDescription: 'EPDM, NBR, fabric-reinforced, PTFE and Santoprene diaphragms for valves and AODD pumps. Burhani Seal Centre, Burra Bazar, Kolkata.',
+    metaTitle: 'Rubber & PTFE Diaphragms in Kolkata',
+    metaDescription: 'EPDM, NBR and canvas diaphragms, valve diaphragms, and PTFE and Santoprene AODD pump diaphragms.',
+    intro: [
+      'A diaphragm is a flexible membrane that separates two spaces and passes pressure or movement between them. We supply rubber diaphragms in EPDM and nitrile, canvas-reinforced diaphragms, replacement diaphragms for diaphragm and deluge valves, and PTFE and Santoprene diaphragms for air-operated double-diaphragm (AODD) pumps.',
+      'Send the old diaphragm, a photo with sizes, or the valve or pump make and model, and we\'ll match it.'
+    ],
+    faqs: [
+      { q: 'Which diaphragm material is right for my pump?', a: 'PTFE resists almost every chemical, Santoprene gives long flex life for general duty, EPDM suits water and many acids, and nitrile suits oils.' },
+      { q: 'Why use a canvas-reinforced diaphragm?', a: 'The fabric layer stops the rubber stretching under pressure, so the diaphragm keeps its shape and lasts longer in valves and actuators.' },
+      { q: 'How do I order a valve diaphragm?', a: 'Tell us the valve make, size and type, or send the old diaphragm. Valves of the same size from different makers often take different diaphragms.' }
+    ],
     sortOrder: 9
   },
   {
@@ -119,7 +209,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-vector-square',
     art: 'gasket',
     description: 'Rubber, non-metallic, metallic and spiral wound gaskets, and rubber seatings for butterfly valves.',
-    metaDescription: 'Rubber, Viton, EPDM, non-metallic, metallic and spiral wound gaskets, and butterfly valve seatings. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Rubber Gaskets & Valve Seatings in Kolkata',
+    metaDescription: 'Rubber, Viton, EPDM, non-metallic, metallic and spiral wound gaskets, and butterfly valve seats.',
+    intro: [
+      'Gaskets seal the joint between flanges and covers. We supply rubber gaskets in nitrile, EPDM and Viton, non-metallic gaskets, metallic and spiral wound gaskets for high pressure and temperature, and rubber seatings (liners) for butterfly valves.',
+      'For a flange gasket, tell us the pipe size and flange standard, or the inside and outside diameters and bolt holes. For a valve seating, send the valve size and make.'
+    ],
+    faqs: [
+      { q: 'How do I choose a gasket material?', a: 'Rubber gaskets suit water, air and low-pressure oil lines. Non-metallic gaskets handle steam and higher temperatures, and spiral wound or metallic gaskets are used for high pressure and temperature.' },
+      { q: 'What sizes do you need for a flange gasket?', a: 'The inside and outside diameters and thickness, plus the number and size of bolt holes and their pitch circle — or simply the pipe size and flange standard.' },
+      { q: 'When should a butterfly valve seating be replaced?', a: 'When the valve no longer shuts off fully, or the liner is cracked, swollen or torn. A new seating restores tight shut-off without replacing the valve body.' }
+    ],
     sortOrder: 10
   },
   {
@@ -129,7 +229,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-layer-group',
     art: 'sheet',
     description: 'Rubber sheets in NBR, EPDM, neoprene, silicone and Viton, silicone and EPDM sponge sheets, and anti-skid rubber matting.',
-    metaDescription: 'NBR, EPDM, neoprene, silicone and Viton rubber sheets, sponge sheets and anti-skid matting. Burhani Seal Centre, Burra Bazar, Kolkata.',
+    metaTitle: 'Rubber Sheets & Silicone Sheets in Kolkata',
+    metaDescription: 'NBR, EPDM, neoprene, silicone and Viton rubber sheets, sponge sheets and anti-skid rubber sheet.',
+    intro: [
+      'Rubber sheet is cut into gaskets, washers, pads, liners and seals. We stock nitrile (NBR), EPDM, neoprene, silicone and Viton rubber sheets, silicone and EPDM sponge sheets for soft gaskets and insulation, and anti-skid rubber sheet for floors and work areas.',
+      'Tell us the material, thickness and size you need, or what the sheet will be used for, and we\'ll suggest the right grade.'
+    ],
+    faqs: [
+      { q: 'Which rubber sheet should I use for oil?', a: 'Nitrile (NBR) sheet resists mineral oils and greases. For high temperatures or fuels, use Viton (FKM) sheet.' },
+      { q: 'What is silicone rubber sheet used for?', a: 'Heat-resistant gaskets, oven and dryer door seals, food-contact gaskets and insulation, as it stays flexible over a wide temperature range.' },
+      { q: 'What is the difference between solid and sponge sheet?', a: 'Solid sheet seals under pressure. Sponge sheet is soft and compressible, for sealing uneven surfaces at low pressure, cushioning and insulation.' }
+    ],
     sortOrder: 11
   },
   {
@@ -139,7 +249,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-grip-lines',
     art: 'profile',
     description: 'Extruded rubber profiles, round and square rubber cords and silicone tubes in a range of compounds.',
-    metaDescription: 'Rubber extrusions and profiles, silicone, Viton and PU cords, and silicone tubes. Burhani Seal Centre, Burra Bazar, Kolkata.',
+    metaTitle: 'Silicone Tubes, Rubber Cords & Extrusions',
+    metaDescription: 'Silicone tubes, rubber cords and extruded rubber profiles in silicone, EPDM, NBR, Viton and PU.',
+    intro: [
+      'Rubber extrusions are long profiles used as door, panel and hatch seals, edge trims and channel seals. Rubber cords are cut and joined to make large O-rings and groove seals, and silicone tubes carry liquids, air and food or pharma products.',
+      'We supply extrusions and cords in silicone, EPDM, nitrile, neoprene, SBR, Viton and PU, and clear and coloured silicone tubing. Send the profile shape and sizes, or a sample piece.'
+    ],
+    faqs: [
+      { q: 'How do I order a rubber extrusion?', a: 'Send a photo or drawing of the profile with its main dimensions, the material or where it will be used, and the length you need.' },
+      { q: 'How are silicone tubes sized?', a: 'By inside diameter and wall thickness. Tell us the bore and wall, or the fitting the tube goes on, and the length you need.' },
+      { q: 'Can rubber cord be made into an O-ring?', a: 'Yes. Cord is often cut to length and joined to make large O-rings and seals that aren\'t made as moulded rings.' }
+    ],
     sortOrder: 12
   },
   {
@@ -149,7 +269,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-wave-square',
     art: 'mount',
     description: 'Anti-vibration mountings, pads and rubber dampers that cut vibration and noise from machines and engines.',
-    metaDescription: 'Anti-vibration mounts for machines and engines, levelling mounts, pads and rubber dampers. Burhani Seal Centre, Burra Bazar, Kolkata.',
+    metaTitle: 'Anti-Vibration Pads & Mounts in Kolkata',
+    metaDescription: 'Anti-vibration pads, machine and engine mounts, levelling mounts and rubber dampers.',
+    intro: [
+      'Anti-vibration mounts and pads sit between a machine and the floor or frame and stop vibration and noise passing through. Rubber dampers absorb shock between moving parts. We supply machine and engine mounts, levelling mounts, anti-vibration pads and rubber dampers in natural rubber, nitrile, EPDM, SBR and silicone.',
+      'To choose a mount, tell us the machine\'s weight, the number of mounting points and the bolt size, or send a photo of the old mount.'
+    ],
+    faqs: [
+      { q: 'How do I choose an anti-vibration mount?', a: 'Divide the machine\'s weight by the number of mounts to get the load on each, then match the bolt or stud size. Engines and generators usually need softer mounts than heavy machine tools.' },
+      { q: 'What is the difference between an anti-vibration pad and a mount?', a: 'A pad goes under a machine\'s feet without bolting and suits lighter machines. A mount bolts to the machine and frame and holds it in place.' },
+      { q: 'Which rubber is best for dampers?', a: 'Natural rubber damps best. Nitrile is used where oil is present, and silicone or EPDM where heat or weather is an issue.' }
+    ],
     sortOrder: 13
   },
   {
@@ -159,7 +289,17 @@ export const CATEGORIES: Category[] = [
     icon: 'fa-pen-ruler',
     art: 'custom',
     description: 'Gaskets, bushes, diaphragms, bellows and rubber-to-metal parts made to your drawing or sample.',
-    metaDescription: 'Custom gaskets, bushes, diaphragms, bellows and rubber-to-metal parts made to your drawing or sample. Burhani Seal Centre, Kolkata.',
+    metaTitle: 'Custom Rubber Parts Made to Drawing, Kolkata',
+    metaDescription: 'Gaskets, bushes, diaphragms, bellows and rubber-to-metal parts made to your drawing or sample.',
+    intro: [
+      'When a standard part won\'t do, rubber parts can be made to your drawing, sample or old part: gaskets, bushes, diaphragms, bellows, rubber-to-metal bonded parts and Viton (FKM) components.',
+      'Send a drawing or a photo with dimensions, the quantity and where the part will be used. We\'ll confirm the material, price and lead time on WhatsApp.'
+    ],
+    faqs: [
+      { q: 'Can a part be made from a sample?', a: 'Yes. Send or bring the old part; we check its dimensions and material and confirm the price and lead time.' },
+      { q: 'What information do you need for a custom part?', a: 'A drawing or photo with dimensions, the material or the fluid and temperature it will see, and the quantity.' },
+      { q: 'Which materials are available?', a: 'Nitrile, EPDM, silicone, neoprene, Viton (FKM), natural rubber and polyurethane, and rubber bonded to metal.' }
+    ],
     sortOrder: 14
   }
 ];
@@ -243,7 +383,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 1,
     metaTitle: 'U-Ring Piston Seal (UN) — Hydraulic Seal',
-    metaDescription: 'U-Ring Piston Seal (UN): PU, up to 250 bar (25 MPa), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Piston Seal (UN): PU, up to 250 bar (25 MPa), −30 °C to +80 °C.'
   },
   {
     id: 'u-ring-piston-seal-bs',
@@ -271,7 +411,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Piston Seal (BS) — PU',
     sortOrder: 2,
     metaTitle: 'U-Ring Piston Seal (BS) — Hydraulic Seal',
-    metaDescription: 'U-Ring Piston Seal (BS): PU, up to 40 MPa (400 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Piston Seal (BS): PU, up to 40 MPa (400 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-ring-seal-with-square-ring',
@@ -298,7 +438,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Seal with Square Ring — PU',
     sortOrder: 3,
     metaTitle: 'U-Ring Seal with Square Ring — Hydraulic Seal',
-    metaDescription: 'U-Ring Seal with Square Ring: PU, up to 50 MPa (500 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Seal with Square Ring: PU, up to 50 MPa (500 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-ring-seal-with-o-ring',
@@ -325,7 +465,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Seal with O-Ring — PU / NBR',
     sortOrder: 4,
     metaTitle: 'U-Ring Seal with O-Ring — Hydraulic Seal',
-    metaDescription: 'U-Ring Seal with O-Ring: PU / NBR, up to 50 MPa (500 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Seal with O-Ring: PU / NBR, up to 50 MPa (500 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-cup-seal-bd',
@@ -353,7 +493,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Cup Seal (BD) — PU / NBR / POM',
     sortOrder: 5,
     metaTitle: 'U-Cup Seal (BD) — Hydraulic Seal',
-    metaDescription: 'U-Cup Seal (BD): PU / NBR / POM, up to 50 MPa (500 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Cup Seal (BD): PU / NBR / POM, up to 50 MPa (500 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-cup-seal-bu',
@@ -381,7 +521,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Cup Seal (BU) — PU / POM',
     sortOrder: 6,
     metaTitle: 'U-Cup Seal (BU) — Hydraulic Seal',
-    metaDescription: 'U-Cup Seal (BU): PU / POM, up to 50 MPa (500 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Cup Seal (BU): PU / POM, up to 50 MPa (500 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-ring-piston-seal-odu',
@@ -409,7 +549,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Piston Seal (ODU) — PU',
     sortOrder: 7,
     metaTitle: 'U-Ring Piston Seal (ODU) — Hydraulic Seal',
-    metaDescription: 'U-Ring Piston Seal (ODU): PU, up to 40 MPa (400 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Piston Seal (ODU): PU, up to 40 MPa (400 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-ring-rod-seal-idu',
@@ -437,7 +577,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Rod Seal (IDU) — PU',
     sortOrder: 8,
     metaTitle: 'U-Ring Rod Seal (IDU) — Hydraulic Seal',
-    metaDescription: 'U-Ring Rod Seal (IDU): PU, up to 40 MPa (400 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Rod Seal (IDU): PU, up to 40 MPa (400 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-ring-seal-usi',
@@ -465,7 +605,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Seal (USI) — PU',
     sortOrder: 9,
     metaTitle: 'U-Ring Seal (USI) — Hydraulic Seal',
-    metaDescription: 'U-Ring Seal (USI): PU, up to 31.5 MPa (315 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Seal (USI): PU, up to 31.5 MPa (315 bar), −30 °C to +80 °C.'
   },
   {
     id: 'u-ring-seal-hby',
@@ -493,7 +633,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Seal (HBY) — PU',
     sortOrder: 10,
     metaTitle: 'U-Ring Seal (HBY) — Hydraulic Seal',
-    metaDescription: 'U-Ring Seal (HBY): PU, up to 55 MPa (550 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Seal (HBY): PU, up to 55 MPa (550 bar), −30 °C to +80 °C.'
   },
   {
     id: 'spgo-piston-seal-bsf',
@@ -522,7 +662,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 11,
     metaTitle: 'SPGO Piston Seal (BSF) — Hydraulic Seal',
-    metaDescription: 'SPGO Piston Seal (BSF): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SPGO Piston Seal (BSF): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C.'
   },
   {
     id: 'rod-buffer-cap-seal-bsj',
@@ -550,7 +690,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rod Buffer Cap Seal (BSJ) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 12,
     metaTitle: 'Rod Buffer Cap Seal (BSJ) — Hydraulic Seal',
-    metaDescription: 'Rod Buffer Cap Seal (BSJ): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rod Buffer Cap Seal (BSJ): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +80 °C.'
   },
   {
     id: 'rod-cap-seal-gsi',
@@ -578,7 +718,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rod Cap Seal (GSI) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 13,
     metaTitle: 'Rod Cap Seal (GSI) — Hydraulic Seal',
-    metaDescription: 'Rod Cap Seal (GSI): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rod Cap Seal (GSI): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C.'
   },
   {
     id: 'cap-seal-gsd',
@@ -606,7 +746,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Cap Seal (GSD) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 14,
     metaTitle: 'Cap Seal (GSD) — Hydraulic Seal in Kolkata',
-    metaDescription: 'Cap Seal (GSD): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Cap Seal (GSD): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C.'
   },
   {
     id: 'rod-cap-seal-oed',
@@ -634,7 +774,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rod Cap Seal (OED) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 15,
     metaTitle: 'Rod Cap Seal (OED) — Hydraulic Seal',
-    metaDescription: 'Rod Cap Seal (OED): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rod Cap Seal (OED): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C.'
   },
   {
     id: 'piston-cap-seal-oed',
@@ -662,7 +802,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Piston Cap Seal (OED) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 16,
     metaTitle: 'Piston Cap Seal (OED) — Hydraulic Seal',
-    metaDescription: 'Piston Cap Seal (OED): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Piston Cap Seal (OED): Bronze-filled PTFE / NBR or FKM, up to 40 MPa (400 bar), −30 °C to +220 °C.'
   },
   {
     id: 'piston-seal-spgw',
@@ -690,7 +830,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Piston Seal (SPGW) — Bronze-filled PTFE / NBR / POM',
     sortOrder: 17,
     metaTitle: 'Piston Seal (SPGW) — Hydraulic Seal',
-    metaDescription: 'Piston Seal (SPGW): Bronze-filled PTFE / NBR / POM, up to 60 MPa (600 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Piston Seal (SPGW): Bronze-filled PTFE / NBR / POM, up to 60 MPa (600 bar), −30 °C to +110 °C.'
   },
   {
     id: 'rod-cup-seal-hbts',
@@ -718,7 +858,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rod Cup Seal (HBTS) — PU / NBR',
     sortOrder: 18,
     metaTitle: 'Rod Cup Seal (HBTS) — Hydraulic Seal',
-    metaDescription: 'Rod Cup Seal (HBTS): PU / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rod Cup Seal (HBTS): PU / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'piston-cup-seal-gsf',
@@ -746,7 +886,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Piston Cup Seal (GSF) — NBR',
     sortOrder: 19,
     metaTitle: 'Piston Cup Seal (GSF) — Hydraulic Seal',
-    metaDescription: 'Piston Cup Seal (GSF): NBR, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Piston Cup Seal (GSF): NBR, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'vee-packing-seal',
@@ -773,7 +913,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Vee Packing Seal — NBR / FKM with fabric',
     sortOrder: 20,
     metaTitle: 'Vee Packing Seal — Hydraulic Seal',
-    metaDescription: 'Vee Packing Seal: NBR / FKM with fabric, up to 70 MPa (700 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Vee Packing Seal: NBR / FKM with fabric, up to 70 MPa (700 bar), −30 °C to +110 °C.'
   },
   {
     id: 'vee-pack-sets',
@@ -800,7 +940,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Vee Pack Sets — NBR',
     sortOrder: 21,
     metaTitle: 'Vee Pack Sets — Hydraulic Seal in Kolkata',
-    metaDescription: 'Vee Pack Sets: NBR, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Vee Pack Sets: NBR, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'compact-seal-s8',
@@ -828,7 +968,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Compact Seal (S8) — NBR / FKM with fabric',
     sortOrder: 22,
     metaTitle: 'Compact Seal (S8) — Hydraulic Seal',
-    metaDescription: 'Compact Seal (S8): NBR / FKM with fabric, up to 70 MPa (700 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Compact Seal (S8): NBR / FKM with fabric, up to 70 MPa (700 bar), −30 °C to +110 °C.'
   },
   {
     id: 'compact-seal-tse',
@@ -856,7 +996,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Compact Seal (TSE) — NBR / FKM with fabric',
     sortOrder: 23,
     metaTitle: 'Compact Seal (TSE) — Hydraulic Seal',
-    metaDescription: 'Compact Seal (TSE): NBR / FKM with fabric, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Compact Seal (TSE): NBR / FKM with fabric, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'compact-seal-b18',
@@ -884,7 +1024,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Compact Seal (B18) — NBR with fabric',
     sortOrder: 24,
     metaTitle: 'Compact Seal (B18) — Hydraulic Seal',
-    metaDescription: 'Compact Seal (B18): NBR with fabric, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Compact Seal (B18): NBR with fabric, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'compact-seal-d56',
@@ -912,7 +1052,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Compact Seal (D56) — NBR / FKM with fabric',
     sortOrder: 25,
     metaTitle: 'Compact Seal (D56) — Hydraulic Seal',
-    metaDescription: 'Compact Seal (D56): NBR / FKM with fabric, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Compact Seal (D56): NBR / FKM with fabric, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'compact-seal-kdas',
@@ -940,7 +1080,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Compact Seal (KDAS) — NBR / TPE / POM',
     sortOrder: 26,
     metaTitle: 'Compact Seal (KDAS) — Hydraulic Seal',
-    metaDescription: 'Compact Seal (KDAS): NBR / TPE / POM, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Compact Seal (KDAS): NBR / TPE / POM, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'rubber-u-ring-piston-seal-odu',
@@ -968,7 +1108,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rubber U-Ring Piston Seal (ODU) — NBR / FKM',
     sortOrder: 27,
     metaTitle: 'Rubber U-Ring Piston Seal (ODU) — Hydraulic Seal',
-    metaDescription: 'Rubber U-Ring Piston Seal (ODU): NBR / FKM, up to 30 MPa (300 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rubber U-Ring Piston Seal (ODU): NBR / FKM, up to 30 MPa (300 bar), −30 °C to +200 °C.'
   },
   {
     id: 'rubber-u-ring-rod-seal-idu',
@@ -996,7 +1136,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rubber U-Ring Rod Seal (IDU) — NBR / FKM',
     sortOrder: 28,
     metaTitle: 'Rubber U-Ring Rod Seal (IDU) — Hydraulic Seal',
-    metaDescription: 'Rubber U-Ring Rod Seal (IDU): NBR / FKM, up to 30 MPa (300 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rubber U-Ring Rod Seal (IDU): NBR / FKM, up to 30 MPa (300 bar), −30 °C to +200 °C.'
   },
   {
     id: 'fabric-u-ring-seal-ush',
@@ -1024,7 +1164,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Fabric U-Ring Seal (USH) — NBR / FKM with fabric',
     sortOrder: 29,
     metaTitle: 'Fabric U-Ring Seal (USH) — Hydraulic Seal',
-    metaDescription: 'Fabric U-Ring Seal (USH): NBR / FKM with fabric, up to 70 MPa (700 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Fabric U-Ring Seal (USH): NBR / FKM with fabric, up to 70 MPa (700 bar), −30 °C to +200 °C.'
   },
   {
     id: 'u-ring-seal-uph',
@@ -1052,7 +1192,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Seal (UPH) — NBR / FKM',
     sortOrder: 30,
     metaTitle: 'U-Ring Seal (UPH) — Hydraulic Seal',
-    metaDescription: 'U-Ring Seal (UPH): NBR / FKM, up to 30 MPa (300 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Seal (UPH): NBR / FKM, up to 30 MPa (300 bar), −30 °C to +110 °C.'
   },
   {
     id: 'combination-seal-spg',
@@ -1080,7 +1220,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Combination Seal (SPG) — Bronze-filled PTFE / NBR',
     sortOrder: 31,
     metaTitle: 'Combination Seal (SPG) — Hydraulic Seal',
-    metaDescription: 'Combination Seal (SPG): Bronze-filled PTFE / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Combination Seal (SPG): Bronze-filled PTFE / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'combination-seal-kr',
@@ -1108,7 +1248,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Combination Seal (KR) — PU / NBR',
     sortOrder: 32,
     metaTitle: 'Combination Seal (KR) — Hydraulic Seal',
-    metaDescription: 'Combination Seal (KR): PU / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Combination Seal (KR): PU / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'combination-seal-aq5',
@@ -1136,7 +1276,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Combination Seal (AQ5) — Bronze-filled PTFE / NBR',
     sortOrder: 33,
     metaTitle: 'Combination Seal (AQ5) — Hydraulic Seal',
-    metaDescription: 'Combination Seal (AQ5): Bronze-filled PTFE / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Combination Seal (AQ5): Bronze-filled PTFE / NBR, up to 40 MPa (400 bar), −30 °C to +110 °C.'
   },
   {
     id: 'combination-seal-ok',
@@ -1164,7 +1304,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Combination Seal (OK) — POM / NBR',
     sortOrder: 34,
     metaTitle: 'Combination Seal (OK) — Hydraulic Seal',
-    metaDescription: 'Combination Seal (OK): POM / NBR, up to 50 MPa (500 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Combination Seal (OK): POM / NBR, up to 50 MPa (500 bar), −30 °C to +110 °C.'
   },
   {
     id: 'combined-seal-ohm',
@@ -1192,7 +1332,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Combined Seal (OHM) — NBR / Nylon',
     sortOrder: 35,
     metaTitle: 'Combined Seal (OHM) — Hydraulic Seal',
-    metaDescription: 'Combined Seal (OHM): NBR / Nylon, up to 25 MPa (250 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Combined Seal (OHM): NBR / Nylon, up to 25 MPa (250 bar), −30 °C to +110 °C.'
   },
   {
     id: 'rotation-seal-roi',
@@ -1220,7 +1360,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rotation Seal (ROI) — TPU',
     sortOrder: 36,
     metaTitle: 'Rotation Seal (ROI) — Hydraulic Seal',
-    metaDescription: 'Rotation Seal (ROI): TPU, up to 50 MPa (500 bar), −30 °C to +110 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rotation Seal (ROI): TPU, up to 50 MPa (500 bar), −30 °C to +110 °C.'
   },
   {
     id: 'double-acting-seal-gds',
@@ -1249,7 +1389,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Seal (GDS) — TPU',
     sortOrder: 37,
     metaTitle: 'Double-Acting Seal (GDS) — Hydraulic Seal',
-    metaDescription: 'Double-Acting Seal (GDS): TPU, up to 50 MPa (500 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Seal (GDS): TPU, up to 50 MPa (500 bar), −30 °C to +80 °C.'
   },
 
   // ══════════════════════════════════════════
@@ -1282,7 +1422,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 38,
     metaTitle: 'Pneumatic Rod Seal (QYd) — Pneumatic Seal',
-    metaDescription: 'Pneumatic Rod Seal (QYd): TPU / NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Pneumatic Rod Seal (QYd): TPU / NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +80 °C.'
   },
   {
     id: 'pneumatic-piston-seal-qyd',
@@ -1310,7 +1450,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Pneumatic Piston Seal (QYd) — TPU / NBR / FKM',
     sortOrder: 39,
     metaTitle: 'Pneumatic Piston Seal (QYd) — Pneumatic Seal',
-    metaDescription: 'Pneumatic Piston Seal (QYd): TPU / NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Pneumatic Piston Seal (QYd): TPU / NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +100 °C.'
   },
   {
     id: 'double-acting-piston-seal-cop',
@@ -1338,7 +1478,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Piston Seal (COP) — NBR / FKM',
     sortOrder: 40,
     metaTitle: 'Double-Acting Piston Seal (COP) — Pneumatic Seal',
-    metaDescription: 'Double-Acting Piston Seal (COP): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Piston Seal (COP): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +100 °C.'
   },
   {
     id: 'piston-seal-pgy',
@@ -1366,7 +1506,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Piston Seal (PGY) — NBR / FKM',
     sortOrder: 41,
     metaTitle: 'Piston Seal (PGY) — Pneumatic Seal',
-    metaDescription: 'Piston Seal (PGY): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Piston Seal (PGY): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C.'
   },
   {
     id: 'single-acting-piston-seal-z8',
@@ -1394,7 +1534,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Single-Acting Piston Seal (Z8) — TPU / NBR / FKM',
     sortOrder: 42,
     metaTitle: 'Single-Acting Piston Seal (Z8) — Pneumatic Seal',
-    metaDescription: 'Single-Acting Piston Seal (Z8): TPU / NBR / FKM, up to 1.5 MPa (15 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Single-Acting Piston Seal (Z8): TPU / NBR / FKM, up to 1.5 MPa (15 bar), −30 °C to +200 °C.'
   },
   {
     id: 'double-acting-piston-seal-z5',
@@ -1422,7 +1562,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Piston Seal (Z5) — PU / POM',
     sortOrder: 43,
     metaTitle: 'Double-Acting Piston Seal (Z5) — Pneumatic Seal',
-    metaDescription: 'Double-Acting Piston Seal (Z5): PU / POM, up to 16 MPa (160 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Piston Seal (Z5): PU / POM, up to 16 MPa (160 bar), −30 °C to +200 °C.'
   },
   {
     id: 'u-ring-rod-seal-c1',
@@ -1450,7 +1590,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'U-Ring Rod Seal (C1) — NBR / FKM',
     sortOrder: 44,
     metaTitle: 'U-Ring Rod Seal (C1) — Pneumatic Seal',
-    metaDescription: 'U-Ring Rod Seal (C1): NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'U-Ring Rod Seal (C1): NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +200 °C.'
   },
   {
     id: 'compact-seal-kdn',
@@ -1478,7 +1618,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Compact Seal (KDN) — NBR / FKM',
     sortOrder: 45,
     metaTitle: 'Compact Seal (KDN) — Pneumatic Seal',
-    metaDescription: 'Compact Seal (KDN): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Compact Seal (KDN): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C.'
   },
   {
     id: 'double-acting-piston-seal-pz',
@@ -1506,7 +1646,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Piston Seal (PZ) — NBR / FKM',
     sortOrder: 46,
     metaTitle: 'Double-Acting Piston Seal (PZ) — Pneumatic Seal',
-    metaDescription: 'Double-Acting Piston Seal (PZ): NBR / FKM, up to 1.3 MPa (13 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Piston Seal (PZ): NBR / FKM, up to 1.3 MPa (13 bar), −30 °C to +200 °C.'
   },
   {
     id: 'piston-seal-e4',
@@ -1534,7 +1674,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Piston Seal (E4) — NBR / TPU / FKM',
     sortOrder: 47,
     metaTitle: 'Piston Seal (E4) — Pneumatic Seal',
-    metaDescription: 'Piston Seal (E4): NBR / TPU / FKM, up to 55 MPa (550 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Piston Seal (E4): NBR / TPU / FKM, up to 55 MPa (550 bar), −30 °C to +80 °C.'
   },
   {
     id: 'double-acting-piston-seal-zt',
@@ -1562,7 +1702,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Piston Seal (ZT) — NBR / FKM',
     sortOrder: 48,
     metaTitle: 'Double-Acting Piston Seal (ZT) — Pneumatic Seal',
-    metaDescription: 'Double-Acting Piston Seal (ZT): NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +220 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Piston Seal (ZT): NBR / FKM, up to 1.6 MPa (16 bar), −30 °C to +220 °C.'
   },
   {
     id: 'piston-seal-c2',
@@ -1590,7 +1730,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Piston Seal (C2) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 49,
     metaTitle: 'Piston Seal (C2) — Pneumatic Seal',
-    metaDescription: 'Piston Seal (C2): Bronze-filled PTFE / NBR or FKM, up to 1.6 MPa (16 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Piston Seal (C2): Bronze-filled PTFE / NBR or FKM, up to 1.6 MPa (16 bar), −30 °C to +200 °C.'
   },
   {
     id: 'double-acting-piston-seal-ppd',
@@ -1618,7 +1758,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Piston Seal (PPD) — NBR / FKM',
     sortOrder: 50,
     metaTitle: 'Double-Acting Piston Seal (PPD) — Pneumatic Seal',
-    metaDescription: 'Double-Acting Piston Seal (PPD): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Piston Seal (PPD): NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C.'
   },
   {
     id: 'double-acting-piston-dp',
@@ -1646,7 +1786,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Piston (DP) — NBR',
     sortOrder: 51,
     metaTitle: 'Double-Acting Piston (DP) — Pneumatic Seal',
-    metaDescription: 'Double-Acting Piston (DP): NBR, up to 1.2 MPa (12 bar), −30 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Piston (DP): NBR, up to 1.2 MPa (12 bar), −30 °C to +100 °C.'
   },
   {
     id: 'complete-piston-de',
@@ -1674,7 +1814,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Complete Piston (DE) — NBR',
     sortOrder: 52,
     metaTitle: 'Complete Piston (DE) — Pneumatic Seal',
-    metaDescription: 'Complete Piston (DE): NBR, up to 1.2 MPa (12 bar), −30 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Complete Piston (DE): NBR, up to 1.2 MPa (12 bar), −30 °C to +100 °C.'
   },
   {
     id: 'double-acting-piston-dk',
@@ -1702,7 +1842,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Piston (DK) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 53,
     metaTitle: 'Double-Acting Piston (DK) — Pneumatic Seal',
-    metaDescription: 'Double-Acting Piston (DK): Bronze-filled PTFE / NBR or FKM, up to 1.2 MPa (12 bar), −30 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Piston (DK): Bronze-filled PTFE / NBR or FKM, up to 1.2 MPa (12 bar), −30 °C to +100 °C.'
   },
   {
     id: 'complete-piston-dsbc',
@@ -1730,7 +1870,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Complete Piston (DSBC) — PU / POM / aluminium',
     sortOrder: 54,
     metaTitle: 'Complete Piston (DSBC) — Pneumatic Seal',
-    metaDescription: 'Complete Piston (DSBC): PU / POM / aluminium, up to 1.6 MPa (16 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Complete Piston (DSBC): PU / POM / aluminium, up to 1.6 MPa (16 bar), −30 °C to +80 °C.'
   },
   {
     id: 'combined-piston-dprs',
@@ -1758,7 +1898,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Combined Piston (DPRS) — PU / POM / aluminium',
     sortOrder: 55,
     metaTitle: 'Combined Piston (DPRS) — Pneumatic Seal',
-    metaDescription: 'Combined Piston (DPRS): PU / POM / aluminium, up to 1.6 MPa (16 bar), −30 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Combined Piston (DPRS): PU / POM / aluminium, up to 1.6 MPa (16 bar), −30 °C to +80 °C.'
   },
   {
     id: 'complete-piston-mya',
@@ -1786,7 +1926,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Complete Piston (MYA) — NBR / FKM',
     sortOrder: 56,
     metaTitle: 'Complete Piston (MYA) — Pneumatic Seal',
-    metaDescription: 'Complete Piston (MYA): NBR / FKM, up to 0.8 MPa (8 bar), −25 °C to +70 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Complete Piston (MYA): NBR / FKM, up to 0.8 MPa (8 bar), −25 °C to +70 °C.'
   },
   {
     id: 'cushioning-seal-pp',
@@ -1814,7 +1954,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Cushioning Seal (PP) — TPU / NBR / FKM',
     sortOrder: 57,
     metaTitle: 'Cushioning Seal (PP) — Pneumatic Seal',
-    metaDescription: 'Cushioning Seal (PP): TPU / NBR / FKM, up to 1.6 MPa (16 bar), −25 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Cushioning Seal (PP): TPU / NBR / FKM, up to 1.6 MPa (16 bar), −25 °C to +200 °C.'
   },
   {
     id: 'cushion-seal-aei-hc-2',
@@ -1842,7 +1982,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Cushion Seal (AEI / HC-2) — NBR / FKM with fabric',
     sortOrder: 58,
     metaTitle: 'Cushion Seal (AEI / HC-2) — Pneumatic Seal',
-    metaDescription: 'Cushion Seal (AEI / HC-2): NBR / FKM with fabric, up to 1.6 MPa (16 bar), −25 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Cushion Seal (AEI / HC-2): NBR / FKM with fabric, up to 1.6 MPa (16 bar), −25 °C to +200 °C.'
   },
   {
     id: 'pneumatic-valve-seal-qe',
@@ -1870,7 +2010,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Pneumatic Valve Seal (QE) — NBR',
     sortOrder: 59,
     metaTitle: 'Pneumatic Valve Seal (QE) — Pneumatic Seal',
-    metaDescription: 'Pneumatic Valve Seal (QE): NBR, up to 1.6 MPa (16 bar), −25 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Pneumatic Valve Seal (QE): NBR, up to 1.6 MPa (16 bar), −25 °C to +200 °C.'
   },
   {
     id: 'pneumatic-cushion-seal-pa-v6',
@@ -1898,7 +2038,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Pneumatic Cushion Seal (PA / V6) — NBR / FKM',
     sortOrder: 60,
     metaTitle: 'Pneumatic Cushion Seal (PA / V6) — Pneumatic Seal',
-    metaDescription: 'Pneumatic Cushion Seal (PA / V6): NBR / FKM, up to 40 MPa (400 bar), −25 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Pneumatic Cushion Seal (PA / V6): NBR / FKM, up to 40 MPa (400 bar), −25 °C to +200 °C.'
   },
   {
     id: 'pneumatic-backing-ring-ydk',
@@ -1926,7 +2066,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Pneumatic Backing Ring (YDK) — TPU',
     sortOrder: 61,
     metaTitle: 'Pneumatic Backing Ring (YDK) — Pneumatic Seal',
-    metaDescription: 'Pneumatic Backing Ring (YDK): TPU, up to 1.6 MPa (16 bar), −25 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Pneumatic Backing Ring (YDK): TPU, up to 1.6 MPa (16 bar), −25 °C to +200 °C.'
   },
   {
     id: 'pneumatic-buffer-ring-dnc',
@@ -1954,7 +2094,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Pneumatic Buffer Ring (DNC) — Rubber',
     sortOrder: 62,
     metaTitle: 'Pneumatic Buffer Ring (DNC) — Pneumatic Seal',
-    metaDescription: 'Pneumatic Buffer Ring (DNC): Rubber, up to 1.6 MPa (16 bar), −25 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Pneumatic Buffer Ring (DNC): Rubber, up to 1.6 MPa (16 bar), −25 °C to +200 °C.'
   },
   {
     id: 'magnetic-piston-seal-mps-mk',
@@ -1982,7 +2122,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Magnetic Piston Seal (MPS / MK) — TPU',
     sortOrder: 63,
     metaTitle: 'Magnetic Piston Seal (MPS / MK) — Pneumatic Seal',
-    metaDescription: 'Magnetic Piston Seal (MPS / MK): TPU, up to 2 MPa (20 bar), −25 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Magnetic Piston Seal (MPS / MK): TPU, up to 2 MPa (20 bar), −25 °C to +80 °C.'
   },
   {
     id: 'cushion-seal-pcs',
@@ -2010,7 +2150,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Cushion Seal (PCS) — NBR with metal insert',
     sortOrder: 64,
     metaTitle: 'Cushion Seal (PCS) — Pneumatic Seal',
-    metaDescription: 'Cushion Seal (PCS): NBR with metal insert, up to 1 MPa (10 bar), −5 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Cushion Seal (PCS): NBR with metal insert, up to 1 MPa (10 bar), −5 °C to +80 °C.'
   },
 
   // ══════════════════════════════════════════
@@ -2041,7 +2181,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 65,
     metaTitle: 'TC Oil Seal in Kolkata',
-    metaDescription: 'TC Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'TC Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'tg4-oil-seal',
@@ -2068,7 +2208,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'TG4 Oil Seal — NBR / FKM / ACM',
     sortOrder: 66,
     metaTitle: 'TG4 Oil Seal in Kolkata',
-    metaDescription: 'TG4 Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'TG4 Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'tc4-oil-seal',
@@ -2094,7 +2234,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'TC4 Oil Seal — NBR / FKM / ACM',
     sortOrder: 67,
     metaTitle: 'TC4 Oil Seal in Kolkata',
-    metaDescription: 'TC4 Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'TC4 Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'sg-oil-seal',
@@ -2120,7 +2260,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SG Oil Seal — NBR / FKM / ACM',
     sortOrder: 68,
     metaTitle: 'SG Oil Seal in Kolkata',
-    metaDescription: 'SG Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SG Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'vc-oil-seal',
@@ -2146,7 +2286,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'VC Oil Seal — NBR / FKM / ACM',
     sortOrder: 69,
     metaTitle: 'VC Oil Seal in Kolkata',
-    metaDescription: 'VC Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'VC Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'sc-oil-seal',
@@ -2172,7 +2312,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SC Oil Seal — NBR / FKM / ACM',
     sortOrder: 70,
     metaTitle: 'SC Oil Seal in Kolkata',
-    metaDescription: 'SC Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SC Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'sb-oil-seal',
@@ -2198,7 +2338,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SB Oil Seal — NBR / FKM / ACM',
     sortOrder: 71,
     metaTitle: 'SB Oil Seal in Kolkata',
-    metaDescription: 'SB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'vb-oil-seal',
@@ -2224,7 +2364,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'VB Oil Seal — NBR / FKM / ACM',
     sortOrder: 72,
     metaTitle: 'VB Oil Seal in Kolkata',
-    metaDescription: 'VB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'VB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'kb-oil-seal',
@@ -2250,7 +2390,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'KB Oil Seal — NBR / FKM / ACM',
     sortOrder: 73,
     metaTitle: 'KB Oil Seal in Kolkata',
-    metaDescription: 'KB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'KB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'sa-oil-seal',
@@ -2276,7 +2416,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SA Oil Seal — NBR / FKM / ACM',
     sortOrder: 74,
     metaTitle: 'SA Oil Seal in Kolkata',
-    metaDescription: 'SA Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SA Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'ta-oil-seal',
@@ -2302,7 +2442,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'TA Oil Seal — NBR / FKM / ACM',
     sortOrder: 75,
     metaTitle: 'TA Oil Seal in Kolkata',
-    metaDescription: 'TA Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'TA Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'split-oil-seal',
@@ -2328,7 +2468,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Split Oil Seal — NBR / FKM / ACM',
     sortOrder: 76,
     metaTitle: 'Split Oil Seal in Kolkata',
-    metaDescription: 'Split Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Split Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'db-oil-seal',
@@ -2354,7 +2494,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'DB Oil Seal — NBR / FKM / ACM',
     sortOrder: 77,
     metaTitle: 'DB Oil Seal in Kolkata',
-    metaDescription: 'DB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'DB Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'zf-bearing-seal',
@@ -2379,7 +2519,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'ZF Bearing Seal — NBR',
     sortOrder: 78,
     metaTitle: 'ZF Bearing Seal — Oil Seal in Kolkata',
-    metaDescription: 'ZF Bearing Seal: NBR, −30 °C to +120 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'ZF Bearing Seal: NBR, −30 °C to +120 °C.'
   },
   {
     id: 'mg-bearing-seal',
@@ -2404,7 +2544,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'MG Bearing Seal — NBR',
     sortOrder: 79,
     metaTitle: 'MG Bearing Seal — Oil Seal in Kolkata',
-    metaDescription: 'MG Bearing Seal: NBR, −30 °C to +120 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'MG Bearing Seal: NBR, −30 °C to +120 °C.'
   },
   {
     id: 'cassette-oil-seal',
@@ -2428,7 +2568,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Cassette Oil Seal — NBR / FKM',
     sortOrder: 80,
     metaTitle: 'Cassette Oil Seal in Kolkata',
-    metaDescription: 'Cassette Oil Seal in NBR / FKM — keeps lubricant in and dust and water out. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Cassette Oil Seal in NBR / FKM — keeps lubricant in and dust and water out.'
   },
   {
     id: 'combi-oil-seal',
@@ -2452,7 +2592,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Combi Oil Seal — NBR / PTFE',
     sortOrder: 81,
     metaTitle: 'Combi Oil Seal in Kolkata',
-    metaDescription: 'Combi Oil Seal in NBR / PTFE — keeps lubricant in and dust and water out. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Combi Oil Seal in NBR / PTFE — keeps lubricant in and dust and water out.'
   },
   {
     id: 'htct-oil-seal',
@@ -2478,7 +2618,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'HTCT Oil Seal — NBR / FKM / ACM',
     sortOrder: 82,
     metaTitle: 'HTCT Oil Seal in Kolkata',
-    metaDescription: 'HTCT Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'HTCT Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'tbg-oil-seal',
@@ -2504,7 +2644,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'TBG Oil Seal — NBR / FKM / ACM',
     sortOrder: 83,
     metaTitle: 'TBG Oil Seal in Kolkata',
-    metaDescription: 'TBG Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'TBG Oil Seal: NBR / FKM / ACM, up to 0.03 MPa (0.3 bar), −30 °C to +200 °C.'
   },
   {
     id: 'tcn-high-pressure-oil-seal',
@@ -2530,7 +2670,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'TCN High-Pressure Oil Seal — NBR / FKM',
     sortOrder: 84,
     metaTitle: 'TCN High-Pressure Oil Seal in Kolkata',
-    metaDescription: 'TCN High-Pressure Oil Seal: NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'TCN High-Pressure Oil Seal: NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C.'
   },
   {
     id: 'tcv-high-pressure-oil-seal',
@@ -2556,7 +2696,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'TCV High-Pressure Oil Seal — NBR / FKM',
     sortOrder: 85,
     metaTitle: 'TCV High-Pressure Oil Seal in Kolkata',
-    metaDescription: 'TCV High-Pressure Oil Seal: NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'TCV High-Pressure Oil Seal: NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C.'
   },
   {
     id: 'ec-end-cap',
@@ -2580,7 +2720,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EC End Cap — NBR / FKM',
     sortOrder: 86,
     metaTitle: 'EC End Cap — Oil Seal in Kolkata',
-    metaDescription: 'EC End Cap in NBR / FKM — keeps lubricant in and dust and water out. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EC End Cap in NBR / FKM — keeps lubricant in and dust and water out.'
   },
   {
     id: 'sc-oil-seal-for-gear-units',
@@ -2604,7 +2744,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SC Oil Seal for Gear Units — NBR / FKM',
     sortOrder: 87,
     metaTitle: 'SC Oil Seal for Gear Units in Kolkata',
-    metaDescription: 'SC Oil Seal for Gear Units in NBR / FKM — keeps lubricant in and dust and water out. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SC Oil Seal for Gear Units in NBR / FKM — keeps lubricant in and dust and water out.'
   },
   {
     id: 'v-ring-va',
@@ -2630,7 +2770,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'V-Ring (VA) — NBR / FKM',
     sortOrder: 88,
     metaTitle: 'V-Ring (VA) — Oil Seal in Kolkata',
-    metaDescription: 'V-Ring (VA) in NBR / FKM — keeps lubricant in and dust and water out. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'V-Ring (VA) in NBR / FKM — keeps lubricant in and dust and water out.'
   },
   {
     id: 'dc-oil-seal',
@@ -2655,7 +2795,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'DC Oil Seal — NBR / FKM / ACM',
     sortOrder: 89,
     metaTitle: 'DC Oil Seal in Kolkata',
-    metaDescription: 'DC Oil Seal: NBR / FKM / ACM, −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'DC Oil Seal: NBR / FKM / ACM, −30 °C to +200 °C.'
   },
   {
     id: 'ptfe-oil-seal-single-lip',
@@ -2682,7 +2822,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PTFE Oil Seal, Single Lip — PTFE / stainless steel 304',
     sortOrder: 90,
     metaTitle: 'PTFE Oil Seal, Single Lip in Kolkata',
-    metaDescription: 'PTFE Oil Seal, Single Lip: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PTFE Oil Seal, Single Lip: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C.'
   },
   {
     id: 'ptfe-oil-seal-double-lip',
@@ -2710,7 +2850,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 91,
     metaTitle: 'PTFE Oil Seal, Double Lip in Kolkata',
-    metaDescription: 'PTFE Oil Seal, Double Lip: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PTFE Oil Seal, Double Lip: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C.'
   },
   {
     id: 'ptfe-oil-seal-reverse-lips',
@@ -2737,7 +2877,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PTFE Oil Seal, Reverse Lips — PTFE / stainless steel 304',
     sortOrder: 92,
     metaTitle: 'PTFE Oil Seal, Reverse Lips in Kolkata',
-    metaDescription: 'PTFE Oil Seal, Reverse Lips: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PTFE Oil Seal, Reverse Lips: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C.'
   },
   {
     id: 'ptfe-oil-seal-triple-lips',
@@ -2764,7 +2904,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PTFE Oil Seal, Triple Lips — PTFE / stainless steel 304',
     sortOrder: 93,
     metaTitle: 'PTFE Oil Seal, Triple Lips in Kolkata',
-    metaDescription: 'PTFE Oil Seal, Triple Lips: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PTFE Oil Seal, Triple Lips: PTFE / stainless steel 304, up to 3.5 MPa (35 bar), −70 °C to +250 °C.'
   },
   {
     id: 'all-ptfe-seal-single-lip',
@@ -2791,7 +2931,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'All-PTFE Seal, Single Lip — PTFE',
     sortOrder: 94,
     metaTitle: 'All-PTFE Seal, Single Lip — Oil Seal',
-    metaDescription: 'All-PTFE Seal, Single Lip: PTFE, up to 3.5 MPa (35 bar), −70 °C to +250 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'All-PTFE Seal, Single Lip: PTFE, up to 3.5 MPa (35 bar), −70 °C to +250 °C.'
   },
   {
     id: 'all-ptfe-seal-double-lip',
@@ -2818,7 +2958,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'All-PTFE Seal, Double Lip — PTFE',
     sortOrder: 95,
     metaTitle: 'All-PTFE Seal, Double Lip — Oil Seal',
-    metaDescription: 'All-PTFE Seal, Double Lip: PTFE, up to 3.5 MPa (35 bar), −70 °C to +250 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'All-PTFE Seal, Double Lip: PTFE, up to 3.5 MPa (35 bar), −70 °C to +250 °C.'
   },
 
   // ══════════════════════════════════════════
@@ -2849,7 +2989,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double Wiper (DHS) — PU',
     sortOrder: 96,
     metaTitle: 'Double Wiper (DHS) — Wiper Seal in Kolkata',
-    metaDescription: 'Double Wiper (DHS): PU, −35 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double Wiper (DHS): PU, −35 °C to +100 °C.'
   },
   {
     id: 'wiper-ja',
@@ -2879,7 +3019,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 97,
     metaTitle: 'Wiper (JA) — Wiper Seal in Kolkata',
-    metaDescription: 'Wiper (JA): PU / NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Wiper (JA): PU / NBR / FKM, up to 1 MPa (10 bar), −30 °C to +200 °C.'
   },
   {
     id: 'double-wiper-lbi',
@@ -2906,7 +3046,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double Wiper (LBI) — PU',
     sortOrder: 98,
     metaTitle: 'Double Wiper (LBI) — Wiper Seal in Kolkata',
-    metaDescription: 'Double Wiper (LBI): PU, −35 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double Wiper (LBI): PU, −35 °C to +100 °C.'
   },
   {
     id: 'wiper-a1',
@@ -2933,7 +3073,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Wiper (A1) — PU',
     sortOrder: 99,
     metaTitle: 'Wiper (A1) — Wiper Seal in Kolkata',
-    metaDescription: 'Wiper (A1): PU, −35 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Wiper (A1): PU, −35 °C to +200 °C.'
   },
   {
     id: 'wiper-pw-ghk',
@@ -2960,7 +3100,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Wiper (PW / GHK) — PU',
     sortOrder: 100,
     metaTitle: 'Wiper (PW / GHK) — Wiper Seal in Kolkata',
-    metaDescription: 'Wiper (PW / GHK): PU, −35 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Wiper (PW / GHK): PU, −35 °C to +100 °C.'
   },
   {
     id: 'double-wiper-ay',
@@ -2987,7 +3127,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double Wiper (AY) — PU',
     sortOrder: 101,
     metaTitle: 'Double Wiper (AY) — Wiper Seal in Kolkata',
-    metaDescription: 'Double Wiper (AY): PU, −35 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double Wiper (AY): PU, −35 °C to +100 °C.'
   },
   {
     id: 'double-wiper-lbh',
@@ -3014,7 +3154,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double Wiper (LBH) — NBR / FKM',
     sortOrder: 102,
     metaTitle: 'Double Wiper (LBH) — Wiper Seal in Kolkata',
-    metaDescription: 'Double Wiper (LBH): NBR / FKM, −35 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double Wiper (LBH): NBR / FKM, −35 °C to +100 °C.'
   },
   {
     id: 'energised-double-lip-wiper-al5',
@@ -3041,7 +3181,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Energised Double-Lip Wiper (AL5) — Bronze-filled PTFE / NBR or FKM',
     sortOrder: 103,
     metaTitle: 'Energised Double-Lip Wiper (AL5) — Wiper Seal',
-    metaDescription: 'Energised Double-Lip Wiper (AL5): Bronze-filled PTFE / NBR or FKM, −35 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Energised Double-Lip Wiper (AL5): Bronze-filled PTFE / NBR or FKM, −35 °C to +200 °C.'
   },
   {
     id: 'twin-lip-wiper-dkb',
@@ -3069,7 +3209,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Twin Lip Wiper (DKB) — Metal / NBR',
     sortOrder: 104,
     metaTitle: 'Twin Lip Wiper (DKB) — Wiper Seal',
-    metaDescription: 'Twin Lip Wiper (DKB): Metal / NBR, up to 32 MPa (320 bar), −35 °C to +120 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Twin Lip Wiper (DKB): Metal / NBR, up to 32 MPa (320 bar), −35 °C to +120 °C.'
   },
   {
     id: 'twin-lip-wiper-dkbi',
@@ -3097,7 +3237,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Twin Lip Wiper (DKBI) — Metal / PU',
     sortOrder: 105,
     metaTitle: 'Twin Lip Wiper (DKBI) — Wiper Seal',
-    metaDescription: 'Twin Lip Wiper (DKBI): Metal / PU, up to 32 MPa (320 bar), −35 °C to +90 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Twin Lip Wiper (DKBI): Metal / PU, up to 32 MPa (320 bar), −35 °C to +90 °C.'
   },
   {
     id: 'twin-lip-wiper-ga',
@@ -3125,7 +3265,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Twin Lip Wiper (GA) — Metal / NBR',
     sortOrder: 106,
     metaTitle: 'Twin Lip Wiper (GA) — Wiper Seal',
-    metaDescription: 'Twin Lip Wiper (GA): Metal / NBR, up to 32 MPa (320 bar), −35 °C to +90 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Twin Lip Wiper (GA): Metal / NBR, up to 32 MPa (320 bar), −35 °C to +90 °C.'
   },
   {
     id: 'rod-wiper-combination-eu',
@@ -3153,7 +3293,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rod Wiper Combination (EU) — PU',
     sortOrder: 107,
     metaTitle: 'Rod Wiper Combination (EU) — Wiper Seal',
-    metaDescription: 'Rod Wiper Combination (EU): PU, up to 1.6 MPa (16 bar), −35 °C to +90 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rod Wiper Combination (EU): PU, up to 1.6 MPa (16 bar), −35 °C to +90 °C.'
   },
   {
     id: 'double-acting-wiper-seal-pdu',
@@ -3181,7 +3321,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Wiper Seal (PDU) — NBR',
     sortOrder: 108,
     metaTitle: 'Double-Acting Wiper Seal (PDU) in Kolkata',
-    metaDescription: 'Double-Acting Wiper Seal (PDU): NBR, up to 1 MPa (10 bar), −20 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Wiper Seal (PDU): NBR, up to 1 MPa (10 bar), −20 °C to +80 °C.'
   },
   {
     id: 'double-acting-wiper-seal-em',
@@ -3209,7 +3349,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Wiper Seal (EM) — PU',
     sortOrder: 109,
     metaTitle: 'Double-Acting Wiper Seal (EM) in Kolkata',
-    metaDescription: 'Double-Acting Wiper Seal (EM): PU, up to 1.6 MPa (16 bar), −20 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Wiper Seal (EM): PU, up to 1.6 MPa (16 bar), −20 °C to +80 °C.'
   },
   {
     id: 'double-acting-wiper-seal-zhm',
@@ -3237,7 +3377,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Wiper Seal (ZHM) — NBR',
     sortOrder: 110,
     metaTitle: 'Double-Acting Wiper Seal (ZHM) in Kolkata',
-    metaDescription: 'Double-Acting Wiper Seal (ZHM): NBR, up to 1.6 MPa (16 bar), −30 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Wiper Seal (ZHM): NBR, up to 1.6 MPa (16 bar), −30 °C to +100 °C.'
   },
   {
     id: 'double-acting-thin-wiper-fc-2',
@@ -3265,7 +3405,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Thin Wiper (FC-2) — NBR / FKM',
     sortOrder: 111,
     metaTitle: 'Double-Acting Thin Wiper (FC-2) — Wiper Seal',
-    metaDescription: 'Double-Acting Thin Wiper (FC-2): NBR / FKM, up to 1 MPa (10 bar), −20 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Thin Wiper (FC-2): NBR / FKM, up to 1 MPa (10 bar), −20 °C to +200 °C.'
   },
   {
     id: 'wiper-combination-e8',
@@ -3293,7 +3433,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Wiper Combination (E8) — PTFE and PU / NBR and FKM',
     sortOrder: 112,
     metaTitle: 'Wiper Combination (E8) — Wiper Seal',
-    metaDescription: 'Wiper Combination (E8): PTFE and PU / NBR and FKM, up to 1.6 MPa (16 bar), −20 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Wiper Combination (E8): PTFE and PU / NBR and FKM, up to 1.6 MPa (16 bar), −20 °C to +200 °C.'
   },
   {
     id: 'double-acting-wiper-el',
@@ -3321,7 +3461,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Wiper (EL) — PU',
     sortOrder: 113,
     metaTitle: 'Double-Acting Wiper (EL) — Wiper Seal',
-    metaDescription: 'Double-Acting Wiper (EL): PU, up to 1.6 MPa (16 bar), −20 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Wiper (EL): PU, up to 1.6 MPa (16 bar), −20 °C to +200 °C.'
   },
   {
     id: 'double-acting-wiper-drp',
@@ -3349,7 +3489,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Wiper (DRP) — NBR / FKM',
     sortOrder: 114,
     metaTitle: 'Double-Acting Wiper (DRP) — Wiper Seal',
-    metaDescription: 'Double-Acting Wiper (DRP): NBR / FKM, up to 1 MPa (10 bar), −20 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Wiper (DRP): NBR / FKM, up to 1 MPa (10 bar), −20 °C to +200 °C.'
   },
   {
     id: 'double-acting-wiper-pdr',
@@ -3377,7 +3517,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Double-Acting Wiper (PDR) — NBR / metal',
     sortOrder: 115,
     metaTitle: 'Double-Acting Wiper (PDR) — Wiper Seal',
-    metaDescription: 'Double-Acting Wiper (PDR): NBR / metal, up to 1.6 MPa (16 bar), −20 °C to +85 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Double-Acting Wiper (PDR): NBR / metal, up to 1.6 MPa (16 bar), −20 °C to +85 °C.'
   },
   {
     id: 'guide-strip',
@@ -3404,7 +3544,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Guide Strip — Bronze-filled PTFE / phenolic fabric',
     sortOrder: 116,
     metaTitle: 'Guide Strip in Kolkata',
-    metaDescription: 'Guide Strip: Bronze-filled PTFE / phenolic fabric, −35 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Guide Strip: Bronze-filled PTFE / phenolic fabric, −35 °C to +200 °C.'
   },
   {
     id: 'guide-ring-wr',
@@ -3432,7 +3572,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Guide Ring (WR) — PTFE / POM / phenolic / bronze-filled PTFE',
     sortOrder: 117,
     metaTitle: 'Guide Ring (WR) in Kolkata',
-    metaDescription: 'Guide Ring (WR): PTFE / POM / phenolic / bronze-filled PTFE, −35 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Guide Ring (WR): PTFE / POM / phenolic / bronze-filled PTFE, −35 °C to +200 °C.'
   },
   {
     id: 'guide-ring-fai-wr',
@@ -3460,7 +3600,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Guide Ring (FAI-WR) — PTFE / POM / phenolic / bronze-filled PTFE',
     sortOrder: 118,
     metaTitle: 'Guide Ring (FAI-WR) in Kolkata',
-    metaDescription: 'Guide Ring (FAI-WR): PTFE / POM / phenolic / bronze-filled PTFE, −35 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Guide Ring (FAI-WR): PTFE / POM / phenolic / bronze-filled PTFE, −35 °C to +200 °C.'
   },
 
   // ══════════════════════════════════════════
@@ -3472,8 +3612,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-t6',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: FKM / NBR / TPU / PVC / NR with fabric, 70–90 Shore, up to 32 MPa (320 bar), −20 °C to +200 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: FKM / NBR / TPU / PVC / NR with fabric.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +200 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: FKM / NBR / TPU / PVC / NR with fabric, 70–90 Shore, up to 32 MPa (320 bar), −20 °C to +200 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: FKM / NBR / TPU / PVC / NR with fabric.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +200 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in FKM / NBR / TPU / PVC / NR with fabric', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'FKM / NBR / TPU / PVC / NR with fabric' },
@@ -3482,7 +3622,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +200 °C' },
       { label: 'Hardness', value: '70–90 Shore' },
       { label: 'Profile Code', value: 'T6' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3492,7 +3632,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (T6) — FKM / NBR / TPU / PVC / NR with fabric',
     sortOrder: 119,
     metaTitle: 'Coupling Element (T6) in Kolkata',
-    metaDescription: 'Coupling Element (T6): FKM / NBR / TPU / PVC / NR with fabric, up to 32 MPa (320 bar), −20 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (T6): FKM / NBR / TPU / PVC / NR with fabric, up to 32 MPa (320 bar), −20 °C to +200 °C.'
   },
   {
     id: 'star-coupling-element-mt',
@@ -3500,8 +3640,8 @@ export const PRODUCTS: Product[] = [
     slug: 'star-coupling-element-mt',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for star (jaw) couplings: TPU / NBR / FKM, 90 Shore, up to 32 MPa (320 bar), −20 °C to +200 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NBR / FKM.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +200 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for star (jaw) couplings: TPU / NBR / FKM, 90 Shore, up to 32 MPa (320 bar), −20 °C to +200 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NBR / FKM.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +200 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in TPU / NBR / FKM', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'TPU / NBR / FKM' },
@@ -3510,7 +3650,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +200 °C' },
       { label: 'Hardness', value: '90 Shore' },
       { label: 'Profile Code', value: 'MT' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3520,16 +3660,16 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 120,
     metaTitle: 'Star Coupling Element (MT) in Kolkata',
-    metaDescription: 'Star Coupling Element (MT): TPU / NBR / FKM, up to 32 MPa (320 bar), −20 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Star Coupling Element (MT): TPU / NBR / FKM, up to 32 MPa (320 bar), −20 °C to +200 °C.'
   },
   {
     id: 'spider-element-gr',
-    name: 'Spider Element (GR)',
+    name: 'Coupling Spider (GR)',
     slug: 'spider-element-gr',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for jaw couplings: NBR / FKM / TPU, 92 Shore, up to 32 MPa (320 bar), −20 °C to +200 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: NBR / FKM / TPU.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +200 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for jaw couplings: NBR / FKM / TPU, 92 Shore, up to 32 MPa (320 bar), −20 °C to +200 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: NBR / FKM / TPU.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +200 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in NBR / FKM / TPU', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'NBR / FKM / TPU' },
@@ -3538,25 +3678,25 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +200 °C' },
       { label: 'Hardness', value: '92 Shore' },
       { label: 'Profile Code', value: 'GR' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
     industriesServed: INDS_ELEMENT,
     imageUrl: 'assets/images/products/spider-element-gr.webp',
-    imageAlt: 'Spider Element (GR) — NBR / FKM / TPU',
+    imageAlt: 'Coupling Spider (GR) — NBR / FKM / TPU',
     sortOrder: 121,
-    metaTitle: 'Spider Element (GR) — Coupling in Kolkata',
-    metaDescription: 'Spider Element (GR): NBR / FKM / TPU, up to 32 MPa (320 bar), −20 °C to +200 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'Coupling Spider (GR) in Kolkata',
+    metaDescription: 'Coupling Spider (GR): NBR / FKM / TPU, up to 32 MPa (320 bar), −20 °C to +200 °C.'
   },
   {
     id: 'spider-element-gs',
-    name: 'Spider Element (GS)',
+    name: 'Coupling Spider (GS)',
     slug: 'spider-element-gs',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for jaw couplings: FKM / NBR / TPU / PVC / NR with fabric, 70–90 Shore, up to 32 MPa (320 bar), −20 °C to +80 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: FKM / NBR / TPU / PVC / NR with fabric.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +80 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for jaw couplings: FKM / NBR / TPU / PVC / NR with fabric, 70–90 Shore, up to 32 MPa (320 bar), −20 °C to +80 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: FKM / NBR / TPU / PVC / NR with fabric.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +80 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in FKM / NBR / TPU / PVC / NR with fabric', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'FKM / NBR / TPU / PVC / NR with fabric' },
@@ -3565,16 +3705,16 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +80 °C' },
       { label: 'Hardness', value: '70–90 Shore' },
       { label: 'Profile Code', value: 'GS' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
     industriesServed: INDS_ELEMENT,
     imageUrl: 'assets/images/products/spider-element-gs.webp',
-    imageAlt: 'Spider Element (GS) — FKM / NBR / TPU / PVC / NR with fabric',
+    imageAlt: 'Coupling Spider (GS) — FKM / NBR / TPU / PVC / NR with fabric',
     sortOrder: 122,
-    metaTitle: 'Spider Element (GS) — Coupling in Kolkata',
-    metaDescription: 'Spider Element (GS): FKM / NBR / TPU / PVC / NR with fabric, up to 32 MPa (320 bar), −20 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'Coupling Spider (GS) in Kolkata',
+    metaDescription: 'Coupling Spider (GS): FKM / NBR / TPU / PVC / NR with fabric, up to 32 MPa (320 bar), −20 °C to +80 °C.'
   },
   {
     id: 'coupling-element-bwn',
@@ -3582,8 +3722,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-bwn',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: TPU, 92 Shore, up to 32 MPa (320 bar), −20 °C to +80 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in thermoplastic polyurethane (TPU), tough and wear resistant.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +80 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: TPU, 92 Shore, up to 32 MPa (320 bar), −20 °C to +80 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in thermoplastic polyurethane (TPU), tough and wear resistant.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +80 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Made in thermoplastic polyurethane (TPU), tough and wear resistant', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'TPU' },
@@ -3592,7 +3732,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +80 °C' },
       { label: 'Hardness', value: '92 Shore' },
       { label: 'Profile Code', value: 'BWN' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3601,7 +3741,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (BWN) — TPU',
     sortOrder: 123,
     metaTitle: 'Coupling Element (BWN) in Kolkata',
-    metaDescription: 'Coupling Element (BWN): TPU, up to 32 MPa (320 bar), −20 °C to +80 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (BWN): TPU, up to 32 MPa (320 bar), −20 °C to +80 °C.'
   },
   {
     id: 'hrc-coupling-element',
@@ -3609,8 +3749,8 @@ export const PRODUCTS: Product[] = [
     slug: 'hrc-coupling-element',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for HRC-type couplings: TPU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for HRC-type couplings: TPU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in TPU / NR', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'TPU / NR' },
@@ -3618,7 +3758,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Max. Pressure', value: '32 MPa (320 bar)' },
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '92 Shore' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3627,7 +3767,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'HRC Coupling Element — TPU / NR',
     sortOrder: 124,
     metaTitle: 'HRC Coupling Element in Kolkata',
-    metaDescription: 'HRC Coupling Element: TPU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'HRC Coupling Element: TPU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'coupling-element-l6',
@@ -3635,8 +3775,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-l6',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: TPU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: TPU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in TPU / NR', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'TPU / NR' },
@@ -3645,7 +3785,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '92 Shore' },
       { label: 'Profile Code', value: 'L6' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3654,7 +3794,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (L6) — TPU / NR',
     sortOrder: 125,
     metaTitle: 'Coupling Element (L6) in Kolkata',
-    metaDescription: 'Coupling Element (L6): TPU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (L6): TPU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'coupling-element-h2',
@@ -3662,8 +3802,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-h2',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: TPU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: TPU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in TPU / NR', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'TPU / NR' },
@@ -3672,7 +3812,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '92 Shore' },
       { label: 'Profile Code', value: 'H2' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3681,7 +3821,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (H2) — TPU / NR',
     sortOrder: 126,
     metaTitle: 'Coupling Element (H2) in Kolkata',
-    metaDescription: 'Coupling Element (H2): TPU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (H2): TPU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'coupling-element-mh',
@@ -3689,8 +3829,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-mh',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: TPU / NR with metal, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR with metal.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: TPU / NR with metal, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: TPU / NR with metal.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in TPU / NR with metal', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'TPU / NR with metal' },
@@ -3699,7 +3839,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '92 Shore' },
       { label: 'Profile Code', value: 'MH' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3708,7 +3848,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (MH) — TPU / NR with metal',
     sortOrder: 127,
     metaTitle: 'Coupling Element (MH) in Kolkata',
-    metaDescription: 'Coupling Element (MH): TPU / NR with metal, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (MH): TPU / NR with metal, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'coupling-element-ar',
@@ -3716,8 +3856,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-ar',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: NR, 80 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in natural rubber, which is highly elastic and resilient.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: NR, 80 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in natural rubber, which is highly elastic and resilient.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Made in natural rubber, which is highly elastic and resilient', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'NR' },
@@ -3726,7 +3866,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '80 Shore' },
       { label: 'Profile Code', value: 'AR' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3735,7 +3875,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (AR) — NR',
     sortOrder: 128,
     metaTitle: 'Coupling Element (AR) in Kolkata',
-    metaDescription: 'Coupling Element (AR): NR, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (AR): NR, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'coupling-element-t8',
@@ -3743,8 +3883,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-t8',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: PU, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in polyurethane (PU), which resists wear and extrusion far better than rubber.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: PU, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in polyurethane (PU), which resists wear and extrusion far better than rubber.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Made in polyurethane (PU), which resists wear and extrusion far better than rubber', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'PU' },
@@ -3753,7 +3893,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '92 Shore' },
       { label: 'Profile Code', value: 'T8' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3762,7 +3902,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (T8) — PU',
     sortOrder: 129,
     metaTitle: 'Coupling Element (T8) in Kolkata',
-    metaDescription: 'Coupling Element (T8): PU, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (T8): PU, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'coupling-element-yox',
@@ -3770,8 +3910,8 @@ export const PRODUCTS: Product[] = [
     slug: 'coupling-element-yox',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: PU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: PU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: PU / NR, 92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: PU / NR.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in PU / NR', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'PU / NR' },
@@ -3780,7 +3920,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '92 Shore' },
       { label: 'Profile Code', value: 'YOX' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3789,7 +3929,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Coupling Element (YOX) — PU / NR',
     sortOrder: 130,
     metaTitle: 'Coupling Element (YOX) in Kolkata',
-    metaDescription: 'Coupling Element (YOX): PU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Coupling Element (YOX): PU / NR, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'nm-coupling-element',
@@ -3797,8 +3937,8 @@ export const PRODUCTS: Product[] = [
     slug: 'nm-coupling-element',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for NM-type couplings: NR, 80 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in natural rubber, which is highly elastic and resilient.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for NM-type couplings: NR, 80 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in natural rubber, which is highly elastic and resilient.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Made in natural rubber, which is highly elastic and resilient', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'NR' },
@@ -3806,7 +3946,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Max. Pressure', value: '32 MPa (320 bar)' },
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '80 Shore' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3815,7 +3955,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NM Coupling Element — NR',
     sortOrder: 131,
     metaTitle: 'NM Coupling Element in Kolkata',
-    metaDescription: 'NM Coupling Element: NR, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NM Coupling Element: NR, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'nl-nylon-coupling-element',
@@ -3823,8 +3963,8 @@ export const PRODUCTS: Product[] = [
     slug: 'nl-nylon-coupling-element',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: Nylon, 95 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in nylon, a hard, wear-resistant engineering plastic.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: Nylon, 95 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. This one is made in nylon, a hard, wear-resistant engineering plastic.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Made in nylon, a hard, wear-resistant engineering plastic', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'Nylon' },
@@ -3832,7 +3972,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Max. Pressure', value: '32 MPa (320 bar)' },
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '95 Shore' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3841,7 +3981,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NL Nylon Coupling Element — Nylon',
     sortOrder: 132,
     metaTitle: 'NL Nylon Coupling Element in Kolkata',
-    metaDescription: 'NL Nylon Coupling Element: Nylon, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NL Nylon Coupling Element: Nylon, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'elastic-coupling-elements-assorted',
@@ -3849,8 +3989,8 @@ export const PRODUCTS: Product[] = [
     slug: 'elastic-coupling-elements-assorted',
     categoryId: 'couplings',
     categoryName: 'Couplings & Spider Elements',
-    shortDescription: 'Coupling element for flexible couplings: NR / PU / PVC / TPU, 90–92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
-    fullDescription: `A coupling element sits between two coupling hubs. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: NR / PU / PVC / TPU.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling element from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'Coupling spider for flexible couplings: NR / PU / PVC / TPU, 90–92 Shore, up to 32 MPa (320 bar), −20 °C to +100 °C.',
+    fullDescription: `A coupling spider (elastic element) sits between the two hubs of a jaw or star coupling. It transmits the torque, cushions shock and allows slight shaft misalignment. Material: NR / PU / PVC / TPU.\n\nIt is rated for pressures up to 32 MPa (320 bar) and temperatures from −20 °C to +100 °C.\n\nBurhani Seal Centre supplies this coupling spider from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Cushions shock loads and damps vibration', 'Available in NR / PU / PVC / TPU', 'Allows slight angular and parallel misalignment', 'Replace without moving the motor or the driven machine'],
     specifications: [
       { label: 'Material', value: 'NR / PU / PVC / TPU' },
@@ -3858,7 +3998,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Max. Pressure', value: '32 MPa (320 bar)' },
       { label: 'Temperature', value: '−20 °C to +100 °C' },
       { label: 'Hardness', value: '90–92 Shore' },
-      { label: 'Type', value: 'Coupling element' },
+      { label: 'Type', value: 'Coupling spider' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_ELEMENT,
@@ -3868,7 +4008,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Elastic Coupling Elements, Assorted — NR / PU / PVC / TPU',
     sortOrder: 133,
     metaTitle: 'Elastic Coupling Elements, Assorted',
-    metaDescription: 'Elastic Coupling Elements, Assorted: NR / PU / PVC / TPU, up to 32 MPa (320 bar), −20 °C to +100 °C. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Elastic Coupling Elements, Assorted: NR / PU / PVC / TPU, up to 32 MPa (320 bar), −20 °C to +100 °C.'
   },
   {
     id: 'ktr-couplings',
@@ -3891,7 +4031,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'KTR Couplings',
     sortOrder: 134,
     metaTitle: 'KTR Couplings in Kolkata',
-    metaDescription: 'KTR Couplings — cushions shock loads and damps vibration. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'KTR Couplings — cushions shock loads and damps vibration.'
   },
   {
     id: 'rotex-jaw-couplings',
@@ -3914,7 +4054,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'ROTEX Jaw Couplings',
     sortOrder: 135,
     metaTitle: 'ROTEX Jaw Couplings in Kolkata',
-    metaDescription: 'ROTEX Jaw Couplings — cushions shock loads and damps vibration. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'ROTEX Jaw Couplings — cushions shock loads and damps vibration.'
   },
   {
     id: 'lovejoy-jaw-couplings',
@@ -3937,7 +4077,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Lovejoy Jaw Couplings',
     sortOrder: 136,
     metaTitle: 'Lovejoy Jaw Couplings in Kolkata',
-    metaDescription: 'Lovejoy Jaw Couplings — cushions shock loads and damps vibration. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Lovejoy Jaw Couplings — cushions shock loads and damps vibration.'
   },
 
   // ══════════════════════════════════════════
@@ -3965,7 +4105,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 137,
     metaTitle: 'Silicone Bellows in Kolkata',
-    metaDescription: 'Silicone Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'pu-bellows',
@@ -3988,7 +4128,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PU Bellows — PU',
     sortOrder: 138,
     metaTitle: 'PU Bellows in Kolkata',
-    metaDescription: 'PU Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PU Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'nbr-bellows',
@@ -4011,7 +4151,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR Bellows — NBR',
     sortOrder: 139,
     metaTitle: 'NBR Bellows in Kolkata',
-    metaDescription: 'NBR Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'sbr-bellows',
@@ -4034,7 +4174,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SBR Bellows — SBR',
     sortOrder: 140,
     metaTitle: 'SBR Bellows in Kolkata',
-    metaDescription: 'SBR Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SBR Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'epdm-bellows',
@@ -4057,7 +4197,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Bellows — EPDM',
     sortOrder: 141,
     metaTitle: 'EPDM Bellows in Kolkata',
-    metaDescription: 'EPDM Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'rubber-bellows',
@@ -4080,7 +4220,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rubber Bellows — Rubber',
     sortOrder: 142,
     metaTitle: 'Rubber Bellows in Kolkata',
-    metaDescription: 'Rubber Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rubber Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'buna-rubber-bellows',
@@ -4103,7 +4243,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Buna Rubber Bellows — Buna Rubber',
     sortOrder: 143,
     metaTitle: 'Buna Rubber Bellows in Kolkata',
-    metaDescription: 'Buna Rubber Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Buna Rubber Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'viton-bellows',
@@ -4126,169 +4266,169 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton Bellows — Viton',
     sortOrder: 144,
     metaTitle: 'Viton Bellows in Kolkata',
-    metaDescription: 'Viton Bellows — keeps dust, chips and fluid off moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton Bellows — keeps dust, chips and fluid off moving parts.'
   },
   {
     id: 'epdm-vacuum-suction-bellows',
-    name: 'EPDM Vacuum Suction Bellows',
+    name: 'EPDM Vacuum Suction Cup',
     slug: 'epdm-vacuum-suction-bellows',
     categoryId: 'bellows',
     categoryName: 'Bellows',
-    shortDescription: 'A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Made in EPDM, which suits water, steam, weather and ozone but not mineral oil.',
-    fullDescription: `A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven or angled surfaces. This one is made in EPDM, which suits water, steam, weather and ozone but not mineral oil.\n\nBurhani Seal Centre supplies this vacuum suction bellows from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Made in EPDM, which suits water, steam, weather and ozone but not mineral oil.',
+    fullDescription: `A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven, curved or angled surfaces. This one is made in EPDM, which suits water, steam, weather and ozone but not mineral oil.\n\nBurhani Seal Centre supplies this vacuum suction cup from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals on uneven, curved or angled surfaces', 'Made in EPDM, which suits water, steam, weather and ozone but not mineral oil', 'Folds give a little stroke and cushioning on pick-up'],
     specifications: [
       { label: 'Material', value: 'EPDM' },
       { label: 'Application', value: 'Vacuum lifters and pick-and-place units' },
-      { label: 'Type', value: 'Vacuum suction bellows' },
+      { label: 'Type', value: 'Vacuum suction cup' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_VAC,
     industriesServed: INDS_VAC,
     imageUrl: 'assets/images/products/epdm-vacuum-suction-bellows.webp',
-    imageAlt: 'EPDM Vacuum Suction Bellows — EPDM',
+    imageAlt: 'EPDM Vacuum Suction Cup — EPDM',
     sortOrder: 145,
-    metaTitle: 'EPDM Vacuum Suction Bellows in Kolkata',
-    metaDescription: 'EPDM Vacuum Suction Bellows — seals on uneven, curved or angled surfaces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'EPDM Vacuum Suction Cup in Kolkata',
+    metaDescription: 'EPDM Vacuum Suction Cup — seals on uneven, curved or angled surfaces.'
   },
   {
     id: 'silicone-vacuum-suction-bellows',
-    name: 'Silicone Vacuum Suction Bellows',
+    name: 'Silicone Vacuum Suction Cup',
     slug: 'silicone-vacuum-suction-bellows',
     categoryId: 'bellows',
     categoryName: 'Bellows',
-    shortDescription: 'A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Made in silicone, which stays flexible from very low to high temperatures.',
-    fullDescription: `A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven or angled surfaces. This one is made in silicone, which stays flexible from very low to high temperatures.\n\nBurhani Seal Centre supplies this vacuum suction bellows from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Made in silicone, which stays flexible from very low to high temperatures.',
+    fullDescription: `A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven, curved or angled surfaces. This one is made in silicone, which stays flexible from very low to high temperatures.\n\nBurhani Seal Centre supplies this vacuum suction cup from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals on uneven, curved or angled surfaces', 'Made in silicone, which stays flexible from very low to high temperatures', 'Folds give a little stroke and cushioning on pick-up'],
     specifications: [
       { label: 'Material', value: 'Silicone' },
       { label: 'Application', value: 'Vacuum lifters and pick-and-place units' },
-      { label: 'Type', value: 'Vacuum suction bellows' },
+      { label: 'Type', value: 'Vacuum suction cup' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_VAC,
     industriesServed: INDS_VAC,
     imageUrl: 'assets/images/products/silicone-vacuum-suction-bellows.webp',
     gallery: ['assets/images/products/silicone-vacuum-suction-bellows-2.webp'],
-    imageAlt: 'Silicone Vacuum Suction Bellows — Silicone',
+    imageAlt: 'Silicone Vacuum Suction Cup — Silicone',
     sortOrder: 146,
-    metaTitle: 'Silicone Vacuum Suction Bellows in Kolkata',
-    metaDescription: 'Silicone Vacuum Suction Bellows — seals on uneven, curved or angled surfaces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'Silicone Vacuum Suction Cup in Kolkata',
+    metaDescription: 'Silicone Vacuum Suction Cup — seals on uneven, curved or angled surfaces.'
   },
   {
     id: 'blue-silicone-vacuum-suction-bellows',
-    name: 'Blue Silicone Vacuum Suction Bellows',
+    name: 'Blue Silicone Vacuum Suction Cup',
     slug: 'blue-silicone-vacuum-suction-bellows',
     categoryId: 'bellows',
     categoryName: 'Bellows',
-    shortDescription: 'A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Made in silicone, which stays flexible from very low to high temperatures.',
-    fullDescription: `A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven or angled surfaces. This one is made in silicone, which stays flexible from very low to high temperatures.\n\nBurhani Seal Centre supplies this vacuum suction bellows from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Made in silicone, which stays flexible from very low to high temperatures.',
+    fullDescription: `A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven, curved or angled surfaces. This one is made in silicone, which stays flexible from very low to high temperatures.\n\nBurhani Seal Centre supplies this vacuum suction cup from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals on uneven, curved or angled surfaces', 'Made in silicone, which stays flexible from very low to high temperatures', 'Folds give a little stroke and cushioning on pick-up'],
     specifications: [
       { label: 'Material', value: 'Silicone' },
       { label: 'Application', value: 'Vacuum lifters and pick-and-place units' },
-      { label: 'Type', value: 'Vacuum suction bellows' },
+      { label: 'Type', value: 'Vacuum suction cup' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_VAC,
     industriesServed: INDS_VAC,
     imageUrl: 'assets/images/products/blue-silicone-vacuum-suction-bellows.webp',
-    imageAlt: 'Blue Silicone Vacuum Suction Bellows — Silicone',
+    imageAlt: 'Blue Silicone Vacuum Suction Cup — Silicone',
     sortOrder: 147,
-    metaTitle: 'Blue Silicone Vacuum Suction Bellows',
-    metaDescription: 'Blue Silicone Vacuum Suction Bellows — seals on uneven, curved or angled surfaces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'Blue Silicone Vacuum Suction Cup',
+    metaDescription: 'Blue Silicone Vacuum Suction Cup — seals on uneven, curved or angled surfaces.'
   },
   {
     id: 'sbr-vacuum-suction-bellows',
-    name: 'SBR Vacuum Suction Bellows',
+    name: 'SBR Vacuum Suction Cup',
     slug: 'sbr-vacuum-suction-bellows',
     categoryId: 'bellows',
     categoryName: 'Bellows',
-    shortDescription: 'A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Made in SBR, an economical, hard-wearing general-purpose rubber.',
-    fullDescription: `A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven or angled surfaces. This one is made in SBR, an economical, hard-wearing general-purpose rubber.\n\nBurhani Seal Centre supplies this vacuum suction bellows from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Made in SBR, an economical, hard-wearing general-purpose rubber.',
+    fullDescription: `A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven, curved or angled surfaces. This one is made in SBR, an economical, hard-wearing general-purpose rubber.\n\nBurhani Seal Centre supplies this vacuum suction cup from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals on uneven, curved or angled surfaces', 'Made in SBR, an economical, hard-wearing general-purpose rubber', 'Folds give a little stroke and cushioning on pick-up'],
     specifications: [
       { label: 'Material', value: 'SBR' },
       { label: 'Application', value: 'Vacuum lifters and pick-and-place units' },
-      { label: 'Type', value: 'Vacuum suction bellows' },
+      { label: 'Type', value: 'Vacuum suction cup' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_VAC,
     industriesServed: INDS_VAC,
     imageUrl: 'assets/images/products/sbr-vacuum-suction-bellows.webp',
-    imageAlt: 'SBR Vacuum Suction Bellows — SBR',
+    imageAlt: 'SBR Vacuum Suction Cup — SBR',
     sortOrder: 148,
-    metaTitle: 'SBR Vacuum Suction Bellows in Kolkata',
-    metaDescription: 'SBR Vacuum Suction Bellows — seals on uneven, curved or angled surfaces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'SBR Vacuum Suction Cup in Kolkata',
+    metaDescription: 'SBR Vacuum Suction Cup — seals on uneven, curved or angled surfaces.'
   },
   {
     id: 'fkm-vacuum-suction-bellows',
-    name: 'FKM Vacuum Suction Bellows',
+    name: 'FKM Vacuum Suction Cup',
     slug: 'fkm-vacuum-suction-bellows',
     categoryId: 'bellows',
     categoryName: 'Bellows',
-    shortDescription: 'A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Made in fluoroelastomer (FKM / Viton), for high temperatures, fuels and many chemicals.',
-    fullDescription: `A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven or angled surfaces. This one is made in fluoroelastomer (FKM / Viton), for high temperatures, fuels and many chemicals.\n\nBurhani Seal Centre supplies this vacuum suction bellows from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Made in fluoroelastomer (FKM / Viton), for high temperatures, fuels and many chemicals.',
+    fullDescription: `A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven, curved or angled surfaces. This one is made in fluoroelastomer (FKM / Viton), for high temperatures, fuels and many chemicals.\n\nBurhani Seal Centre supplies this vacuum suction cup from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals on uneven, curved or angled surfaces', 'Made in fluoroelastomer (FKM / Viton), for high temperatures, fuels and many chemicals', 'Folds give a little stroke and cushioning on pick-up'],
     specifications: [
       { label: 'Material', value: 'FKM' },
       { label: 'Application', value: 'Vacuum lifters and pick-and-place units' },
-      { label: 'Type', value: 'Vacuum suction bellows' },
+      { label: 'Type', value: 'Vacuum suction cup' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_VAC,
     industriesServed: INDS_VAC,
     imageUrl: 'assets/images/products/fkm-vacuum-suction-bellows.webp',
-    imageAlt: 'FKM Vacuum Suction Bellows — FKM',
+    imageAlt: 'FKM Vacuum Suction Cup — FKM',
     sortOrder: 149,
-    metaTitle: 'FKM Vacuum Suction Bellows in Kolkata',
-    metaDescription: 'FKM Vacuum Suction Bellows — seals on uneven, curved or angled surfaces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'FKM Vacuum Suction Cup in Kolkata',
+    metaDescription: 'FKM Vacuum Suction Cup — seals on uneven, curved or angled surfaces.'
   },
   {
     id: 'pu-vacuum-suction-bellows',
-    name: 'PU Vacuum Suction Bellows',
+    name: 'PU Vacuum Suction Cup',
     slug: 'pu-vacuum-suction-bellows',
     categoryId: 'bellows',
     categoryName: 'Bellows',
-    shortDescription: 'A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Made in polyurethane (PU), which resists wear and extrusion far better than rubber.',
-    fullDescription: `A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven or angled surfaces. This one is made in polyurethane (PU), which resists wear and extrusion far better than rubber.\n\nBurhani Seal Centre supplies this vacuum suction bellows from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Made in polyurethane (PU), which resists wear and extrusion far better than rubber.',
+    fullDescription: `A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven, curved or angled surfaces. This one is made in polyurethane (PU), which resists wear and extrusion far better than rubber.\n\nBurhani Seal Centre supplies this vacuum suction cup from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals on uneven, curved or angled surfaces', 'Made in polyurethane (PU), which resists wear and extrusion far better than rubber', 'Folds give a little stroke and cushioning on pick-up'],
     specifications: [
       { label: 'Material', value: 'PU' },
       { label: 'Application', value: 'Vacuum lifters and pick-and-place units' },
-      { label: 'Type', value: 'Vacuum suction bellows' },
+      { label: 'Type', value: 'Vacuum suction cup' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_VAC,
     industriesServed: INDS_VAC,
     imageUrl: 'assets/images/products/pu-vacuum-suction-bellows.webp',
-    imageAlt: 'PU Vacuum Suction Bellows — PU',
+    imageAlt: 'PU Vacuum Suction Cup — PU',
     sortOrder: 150,
-    metaTitle: 'PU Vacuum Suction Bellows in Kolkata',
-    metaDescription: 'PU Vacuum Suction Bellows — seals on uneven, curved or angled surfaces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'PU Vacuum Suction Cup in Kolkata',
+    metaDescription: 'PU Vacuum Suction Cup — seals on uneven, curved or angled surfaces.'
   },
   {
     id: 'nbr-vacuum-suction-bellows',
-    name: 'NBR Vacuum Suction Bellows',
+    name: 'NBR Vacuum Suction Cup',
     slug: 'nbr-vacuum-suction-bellows',
     categoryId: 'bellows',
     categoryName: 'Bellows',
-    shortDescription: 'A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Made in nitrile (NBR), which handles mineral oils, greases and water well.',
-    fullDescription: `A vacuum suction bellows is the cup on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven or angled surfaces. This one is made in nitrile (NBR), which handles mineral oils, greases and water well.\n\nBurhani Seal Centre supplies this vacuum suction bellows from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Made in nitrile (NBR), which handles mineral oils, greases and water well.',
+    fullDescription: `A bellows-type vacuum suction cup is the gripper on a vacuum lifter or pick-and-place line. Its folds let it reach and seal on uneven, curved or angled surfaces. This one is made in nitrile (NBR), which handles mineral oils, greases and water well.\n\nBurhani Seal Centre supplies this vacuum suction cup from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals on uneven, curved or angled surfaces', 'Made in nitrile (NBR), which handles mineral oils, greases and water well', 'Folds give a little stroke and cushioning on pick-up'],
     specifications: [
       { label: 'Material', value: 'NBR' },
       { label: 'Application', value: 'Vacuum lifters and pick-and-place units' },
-      { label: 'Type', value: 'Vacuum suction bellows' },
+      { label: 'Type', value: 'Vacuum suction cup' },
       { label: 'Sizes', value: 'Tell us the size you need' }
     ],
     applications: APPS_VAC,
     industriesServed: INDS_VAC,
     imageUrl: 'assets/images/products/nbr-vacuum-suction-bellows.webp',
-    imageAlt: 'NBR Vacuum Suction Bellows — NBR',
+    imageAlt: 'NBR Vacuum Suction Cup — NBR',
     sortOrder: 151,
-    metaTitle: 'NBR Vacuum Suction Bellows in Kolkata',
-    metaDescription: 'NBR Vacuum Suction Bellows — seals on uneven, curved or angled surfaces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'NBR Vacuum Suction Cup in Kolkata',
+    metaDescription: 'NBR Vacuum Suction Cup — seals on uneven, curved or angled surfaces.'
   },
   {
     id: 'nbr-flanged-bellows',
@@ -4312,7 +4452,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR Flanged Bellows — NBR',
     sortOrder: 152,
     metaTitle: 'NBR Flanged Bellows in Kolkata',
-    metaDescription: 'NBR Flanged Bellows — absorbs vibration, thermal movement and misalignment. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR Flanged Bellows — absorbs vibration, thermal movement and misalignment.'
   },
   {
     id: 'sbr-flanged-bellows',
@@ -4335,7 +4475,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SBR Flanged Bellows — SBR',
     sortOrder: 153,
     metaTitle: 'SBR Flanged Bellows in Kolkata',
-    metaDescription: 'SBR Flanged Bellows — absorbs vibration, thermal movement and misalignment. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SBR Flanged Bellows — absorbs vibration, thermal movement and misalignment.'
   },
   {
     id: 'neoprene-flanged-bellows',
@@ -4358,7 +4498,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Neoprene Flanged Bellows — Neoprene',
     sortOrder: 154,
     metaTitle: 'Neoprene Flanged Bellows in Kolkata',
-    metaDescription: 'Neoprene Flanged Bellows — absorbs vibration, thermal movement and misalignment. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Neoprene Flanged Bellows — absorbs vibration, thermal movement and misalignment.'
   },
   {
     id: 'epdm-flanged-bellows',
@@ -4381,7 +4521,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Flanged Bellows — EPDM',
     sortOrder: 155,
     metaTitle: 'EPDM Flanged Bellows in Kolkata',
-    metaDescription: 'EPDM Flanged Bellows — absorbs vibration, thermal movement and misalignment. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Flanged Bellows — absorbs vibration, thermal movement and misalignment.'
   },
   {
     id: 'viton-flanged-bellows',
@@ -4404,7 +4544,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton Flanged Bellows — Viton',
     sortOrder: 156,
     metaTitle: 'Viton Flanged Bellows in Kolkata',
-    metaDescription: 'Viton Flanged Bellows — absorbs vibration, thermal movement and misalignment. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton Flanged Bellows — absorbs vibration, thermal movement and misalignment.'
   },
   {
     id: 'flanged-air-bellows',
@@ -4427,7 +4567,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Flanged Air Bellows',
     sortOrder: 157,
     metaTitle: 'Flanged Air Bellows in Kolkata',
-    metaDescription: 'Flanged Air Bellows — absorbs vibration, thermal movement and misalignment. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Flanged Air Bellows — absorbs vibration, thermal movement and misalignment.'
   },
 
   // ══════════════════════════════════════════
@@ -4454,7 +4594,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Diaphragm — EPDM',
     sortOrder: 158,
     metaTitle: 'EPDM Diaphragm in Kolkata',
-    metaDescription: 'EPDM Diaphragm — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Diaphragm — separates media and transmits pressure or movement.'
   },
   {
     id: 'deluge-valve-diaphragm',
@@ -4476,7 +4616,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Deluge Valve Diaphragm',
     sortOrder: 159,
     metaTitle: 'Deluge Valve Diaphragm in Kolkata',
-    metaDescription: 'Deluge Valve Diaphragm — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Deluge Valve Diaphragm — separates media and transmits pressure or movement.'
   },
   {
     id: 'nbr-diaphragm',
@@ -4499,7 +4639,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR Diaphragm — NBR',
     sortOrder: 160,
     metaTitle: 'NBR Diaphragm in Kolkata',
-    metaDescription: 'NBR Diaphragm — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR Diaphragm — separates media and transmits pressure or movement.'
   },
   {
     id: 'diaphragm-with-bolt',
@@ -4521,7 +4661,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Diaphragm with Bolt',
     sortOrder: 161,
     metaTitle: 'Diaphragm with Bolt in Kolkata',
-    metaDescription: 'Diaphragm with Bolt — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Diaphragm with Bolt — separates media and transmits pressure or movement.'
   },
   {
     id: 'epdm-canvas-diaphragm',
@@ -4544,7 +4684,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Canvas Diaphragm — EPDM with canvas',
     sortOrder: 162,
     metaTitle: 'EPDM Canvas Diaphragm in Kolkata',
-    metaDescription: 'EPDM Canvas Diaphragm in EPDM with canvas — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Canvas Diaphragm in EPDM with canvas — separates media and transmits pressure or movement.'
   },
   {
     id: 'epdm-nylon-canvas-diaphragm',
@@ -4567,7 +4707,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Nylon Canvas Diaphragm — EPDM with nylon canvas',
     sortOrder: 163,
     metaTitle: 'EPDM Nylon Canvas Diaphragm in Kolkata',
-    metaDescription: 'EPDM Nylon Canvas Diaphragm in EPDM with nylon canvas — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Nylon Canvas Diaphragm in EPDM with nylon canvas — separates media and transmits pressure or…'
   },
   {
     id: 'saunders-type-valve-diaphragm',
@@ -4589,7 +4729,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Saunders-Type Valve Diaphragm',
     sortOrder: 164,
     metaTitle: 'Saunders-Type Valve Diaphragm in Kolkata',
-    metaDescription: 'Saunders-Type Valve Diaphragm — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Saunders-Type Valve Diaphragm — separates media and transmits pressure or movement.'
   },
   {
     id: 'bdk-valve-diaphragm',
@@ -4611,7 +4751,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'BDK Valve Diaphragm',
     sortOrder: 165,
     metaTitle: 'BDK Valve Diaphragm in Kolkata',
-    metaDescription: 'BDK Valve Diaphragm — separates media and transmits pressure or movement. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'BDK Valve Diaphragm — separates media and transmits pressure or movement.'
   },
   {
     id: 'ptfe-diaphragm',
@@ -4636,7 +4776,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 166,
     metaTitle: 'PTFE Diaphragm in Kolkata',
-    metaDescription: 'PTFE Diaphragm — long flex life in air-operated double-diaphragm pumps. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PTFE Diaphragm — long flex life in air-operated double-diaphragm pumps.'
   },
   {
     id: 'aodd-pump-diaphragm',
@@ -4659,7 +4799,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'AODD Pump Diaphragm',
     sortOrder: 167,
     metaTitle: 'AODD Pump Diaphragm in Kolkata',
-    metaDescription: 'AODD Pump Diaphragm — long flex life in air-operated double-diaphragm pumps. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'AODD Pump Diaphragm — long flex life in air-operated double-diaphragm pumps.'
   },
   {
     id: 'santoprene-diaphragm',
@@ -4683,7 +4823,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Santoprene Diaphragm — Santoprene',
     sortOrder: 168,
     metaTitle: 'Santoprene Diaphragm in Kolkata',
-    metaDescription: 'Santoprene Diaphragm — long flex life in air-operated double-diaphragm pumps. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Santoprene Diaphragm — long flex life in air-operated double-diaphragm pumps.'
   },
 
   // ══════════════════════════════════════════
@@ -4711,7 +4851,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 169,
     metaTitle: 'Mechanical Seals for Pumps & Compressors',
-    metaDescription: 'Mechanical Seals — stops leakage where the shaft leaves the pump. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Mechanical Seals — stops leakage where the shaft leaves the pump.'
   },
 
   // ══════════════════════════════════════════
@@ -4740,7 +4880,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 170,
     metaTitle: 'NBR O-Rings in Kolkata',
-    metaDescription: 'NBR O-Rings — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR O-Rings — seals static joints and slow-moving parts.'
   },
   {
     id: 'silicone-o-rings',
@@ -4763,7 +4903,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone O-Rings — Silicone',
     sortOrder: 171,
     metaTitle: 'Silicone O-Rings in Kolkata',
-    metaDescription: 'Silicone O-Rings — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone O-Rings — seals static joints and slow-moving parts.'
   },
   {
     id: 'viton-o-rings',
@@ -4787,7 +4927,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton O-Rings — Viton',
     sortOrder: 172,
     metaTitle: 'Viton O-Rings in Kolkata',
-    metaDescription: 'Viton O-Rings — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton O-Rings — seals static joints and slow-moving parts.'
   },
   {
     id: 'neoprene-o-rings',
@@ -4810,7 +4950,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Neoprene O-Rings — Neoprene',
     sortOrder: 173,
     metaTitle: 'Neoprene O-Rings in Kolkata',
-    metaDescription: 'Neoprene O-Rings — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Neoprene O-Rings — seals static joints and slow-moving parts.'
   },
   {
     id: 'epdm-o-rings',
@@ -4833,7 +4973,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM O-Rings — EPDM',
     sortOrder: 174,
     metaTitle: 'EPDM O-Rings in Kolkata',
-    metaDescription: 'EPDM O-Rings — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM O-Rings — seals static joints and slow-moving parts.'
   },
   {
     id: 'pu-o-rings',
@@ -4856,7 +4996,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PU O-Rings — PU',
     sortOrder: 175,
     metaTitle: 'PU O-Rings in Kolkata',
-    metaDescription: 'PU O-Rings — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PU O-Rings — seals static joints and slow-moving parts.'
   },
   {
     id: 'nbr-o-ring-kit',
@@ -4879,7 +5019,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR O-Ring Kit — NBR',
     sortOrder: 176,
     metaTitle: 'NBR O-Ring Kit in Kolkata',
-    metaDescription: 'NBR O-Ring Kit — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR O-Ring Kit — seals static joints and slow-moving parts.'
   },
   {
     id: 'viton-o-ring-kit',
@@ -4903,7 +5043,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton O-Ring Kit — Viton',
     sortOrder: 177,
     metaTitle: 'Viton O-Ring Kit in Kolkata',
-    metaDescription: 'Viton O-Ring Kit — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton O-Ring Kit — seals static joints and slow-moving parts.'
   },
   {
     id: 'silicone-o-ring-kit',
@@ -4926,32 +5066,32 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone O-Ring Kit — Silicone',
     sortOrder: 178,
     metaTitle: 'Silicone O-Ring Kit in Kolkata',
-    metaDescription: 'Silicone O-Ring Kit — seals static joints and slow-moving parts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone O-Ring Kit — seals static joints and slow-moving parts.'
   },
   {
     id: 'bonded-seals-dowty-washers',
-    name: 'Bonded Seals (Dowty Washers)',
+    name: 'Dowty Seals (Bonded Seals)',
     slug: 'bonded-seals-dowty-washers',
     categoryId: 'o-rings',
     categoryName: 'O-Rings, Kits & Bonded Seals',
-    shortDescription: 'A bonded seal is a metal washer with a rubber sealing ring bonded inside it. Material: Steel with NBR.',
-    fullDescription: `A bonded seal is a metal washer with a rubber sealing ring bonded inside it. It seals threaded hydraulic fittings and banjo bolts. Material: Steel with NBR.\n\nBurhani Seal Centre supplies this bonded seal from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
+    shortDescription: 'A Dowty seal (bonded seal) is a metal washer with a rubber sealing ring bonded inside it. Material: Steel with NBR.',
+    fullDescription: `A Dowty seal (bonded seal) is a metal washer with a rubber sealing ring bonded inside it. It seals threaded hydraulic fittings, banjo bolts and drain plugs. Material: Steel with NBR.\n\nBurhani Seal Centre supplies this Dowty seal from Burra Bazar, Kolkata. Send the size, the old part or a photo on WhatsApp and we will confirm the match, price and stock.`,
     features: ['Seals threaded hydraulic ports and banjo bolts', 'Available in Steel with NBR', 'Metal ring holds the rubber in place under pressure'],
     specifications: [
       { label: 'Material', value: 'Steel with NBR' },
       { label: 'Application', value: 'Hydraulic hose fittings and adaptors' },
-      { label: 'Profile Code', value: 'Dowty Washers' },
-      { label: 'Type', value: 'Bonded seal' },
+      { label: 'Profile Code', value: 'Bonded Seals' },
+      { label: 'Type', value: 'Dowty seal' },
       { label: 'Sizes', value: 'Send your size, groove or old part' }
     ],
     applications: APPS_BONDED,
     industriesServed: INDS_BONDED,
     imageUrl: 'assets/images/products/bonded-seals-dowty-washers.webp',
     gallery: ['assets/images/products/bonded-seals-dowty-washers-2.webp', 'assets/images/products/bonded-seals-dowty-washers-3.webp', 'assets/images/products/bonded-seals-dowty-washers-4.webp', 'assets/images/products/bonded-seals-dowty-washers-5.webp', 'assets/images/products/bonded-seals-dowty-washers-6.webp'],
-    imageAlt: 'Bonded Seals (Dowty Washers) — Steel with NBR',
+    imageAlt: 'Dowty Seals (Bonded Seals) — Steel with NBR',
     sortOrder: 179,
-    metaTitle: 'Bonded Seals (Dowty Washers) in Kolkata',
-    metaDescription: 'Bonded Seals (Dowty Washers) in Steel with NBR — seals threaded hydraulic ports and banjo bolts. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaTitle: 'Dowty Seals (Bonded Seals) in Kolkata',
+    metaDescription: 'Dowty Seals (Bonded Seals) in Steel with NBR — seals threaded hydraulic ports and banjo bolts.'
   },
 
   // ══════════════════════════════════════════
@@ -4978,7 +5118,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR Rubber Sheet — NBR',
     sortOrder: 180,
     metaTitle: 'NBR Rubber Sheet in Kolkata',
-    metaDescription: 'NBR Rubber Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR Rubber Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'viton-rubber-sheet',
@@ -5002,7 +5142,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton Rubber Sheet — Viton',
     sortOrder: 181,
     metaTitle: 'Viton Rubber Sheet in Kolkata',
-    metaDescription: 'Viton Rubber Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton Rubber Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'silicone-rubber-sheet',
@@ -5025,7 +5165,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Rubber Sheet — Silicone',
     sortOrder: 182,
     metaTitle: 'Silicone Rubber Sheet in Kolkata',
-    metaDescription: 'Silicone Rubber Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Rubber Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'neoprene-rubber-sheet',
@@ -5048,7 +5188,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Neoprene Rubber Sheet — Neoprene',
     sortOrder: 183,
     metaTitle: 'Neoprene Rubber Sheet in Kolkata',
-    metaDescription: 'Neoprene Rubber Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Neoprene Rubber Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'epdm-rubber-sheet',
@@ -5071,7 +5211,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Rubber Sheet — EPDM',
     sortOrder: 184,
     metaTitle: 'EPDM Rubber Sheet in Kolkata',
-    metaDescription: 'EPDM Rubber Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Rubber Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'anti-skid-rubber-sheet',
@@ -5093,7 +5233,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Anti-Skid Rubber Sheet',
     sortOrder: 185,
     metaTitle: 'Anti-Skid Rubber Sheet in Kolkata',
-    metaDescription: 'Anti-Skid Rubber Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Anti-Skid Rubber Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'silicone-sponge-sheet',
@@ -5117,7 +5257,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Sponge Sheet — Silicone',
     sortOrder: 186,
     metaTitle: 'Silicone Sponge Sheet in Kolkata',
-    metaDescription: 'Silicone Sponge Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Sponge Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'epdm-sponge-sheet',
@@ -5140,7 +5280,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Sponge Sheet — EPDM',
     sortOrder: 187,
     metaTitle: 'EPDM Sponge Sheet in Kolkata',
-    metaDescription: 'EPDM Sponge Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Sponge Sheet — cut into gaskets, washers, pads and liners.'
   },
   {
     id: 'silicone-square-sponge-sheet',
@@ -5164,7 +5304,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Square Sponge Sheet — Silicone',
     sortOrder: 188,
     metaTitle: 'Silicone Square Sponge Sheet in Kolkata',
-    metaDescription: 'Silicone Square Sponge Sheet — cut into gaskets, washers, pads and liners. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Square Sponge Sheet — cut into gaskets, washers, pads and liners.'
   },
 
   // ══════════════════════════════════════════
@@ -5191,7 +5331,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Metallic Gaskets',
     sortOrder: 189,
     metaTitle: 'Metallic Gaskets in Kolkata',
-    metaDescription: 'Metallic Gaskets — seals flanged and covered joints. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Metallic Gaskets — seals flanged and covered joints.'
   },
   {
     id: 'spiral-wound-gaskets',
@@ -5213,7 +5353,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Spiral Wound Gaskets',
     sortOrder: 190,
     metaTitle: 'Spiral Wound Gaskets in Kolkata',
-    metaDescription: 'Spiral Wound Gaskets — seals flanged and covered joints. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Spiral Wound Gaskets — seals flanged and covered joints.'
   },
   {
     id: 'non-metallic-gaskets',
@@ -5236,7 +5376,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Non-Metallic Gaskets',
     sortOrder: 191,
     metaTitle: 'Non-Metallic Gaskets in Kolkata',
-    metaDescription: 'Non-Metallic Gaskets — seals flanged and covered joints. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Non-Metallic Gaskets — seals flanged and covered joints.'
   },
   {
     id: 'viton-gaskets',
@@ -5259,7 +5399,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton Gaskets — Viton',
     sortOrder: 192,
     metaTitle: 'Viton Gaskets in Kolkata',
-    metaDescription: 'Viton Gaskets — seals flanged and covered joints. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton Gaskets — seals flanged and covered joints.'
   },
   {
     id: 'rubber-gaskets',
@@ -5282,7 +5422,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Rubber Gaskets — Rubber',
     sortOrder: 193,
     metaTitle: 'Rubber Gaskets in Kolkata',
-    metaDescription: 'Rubber Gaskets — seals flanged and covered joints. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Rubber Gaskets — seals flanged and covered joints.'
   },
   {
     id: 'epdm-gaskets',
@@ -5305,7 +5445,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Gaskets — EPDM',
     sortOrder: 194,
     metaTitle: 'EPDM Gaskets in Kolkata',
-    metaDescription: 'EPDM Gaskets — seals flanged and covered joints. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Gaskets — seals flanged and covered joints.'
   },
   {
     id: 'silicone-butterfly-valve-seating',
@@ -5328,7 +5468,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Butterfly Valve Seating — Silicone',
     sortOrder: 195,
     metaTitle: 'Silicone Butterfly Valve Seating',
-    metaDescription: 'Silicone Butterfly Valve Seating — gives the valve disc a tight shut-off. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Butterfly Valve Seating — gives the valve disc a tight shut-off.'
   },
   {
     id: 'epdm-butterfly-valve-seating',
@@ -5351,7 +5491,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Butterfly Valve Seating — EPDM',
     sortOrder: 196,
     metaTitle: 'EPDM Butterfly Valve Seating in Kolkata',
-    metaDescription: 'EPDM Butterfly Valve Seating — gives the valve disc a tight shut-off. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Butterfly Valve Seating — gives the valve disc a tight shut-off.'
   },
   {
     id: 'nbr-butterfly-valve-seating',
@@ -5374,7 +5514,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR Butterfly Valve Seating — NBR',
     sortOrder: 197,
     metaTitle: 'NBR Butterfly Valve Seating in Kolkata',
-    metaDescription: 'NBR Butterfly Valve Seating — gives the valve disc a tight shut-off. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR Butterfly Valve Seating — gives the valve disc a tight shut-off.'
   },
   {
     id: 'sbr-butterfly-valve-seating',
@@ -5397,7 +5537,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SBR Butterfly Valve Seating — SBR',
     sortOrder: 198,
     metaTitle: 'SBR Butterfly Valve Seating in Kolkata',
-    metaDescription: 'SBR Butterfly Valve Seating — gives the valve disc a tight shut-off. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SBR Butterfly Valve Seating — gives the valve disc a tight shut-off.'
   },
   {
     id: 'alpha-level-butterfly-valve-seating',
@@ -5420,7 +5560,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Alpha Level Butterfly Valve Seating',
     sortOrder: 199,
     metaTitle: 'Alpha Level Butterfly Valve Seating',
-    metaDescription: 'Alpha Level Butterfly Valve Seating — gives the valve disc a tight shut-off. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Alpha Level Butterfly Valve Seating — gives the valve disc a tight shut-off.'
   },
 
   // ══════════════════════════════════════════
@@ -5447,7 +5587,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Rubber Extrusions — Silicone',
     sortOrder: 200,
     metaTitle: 'Silicone Rubber Extrusions in Kolkata',
-    metaDescription: 'Silicone Rubber Extrusions — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Rubber Extrusions — seals doors, panels, hatches and covers.'
   },
   {
     id: 'neoprene-rubber-extrusions',
@@ -5470,7 +5610,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Neoprene Rubber Extrusions — Neoprene',
     sortOrder: 201,
     metaTitle: 'Neoprene Rubber Extrusions in Kolkata',
-    metaDescription: 'Neoprene Rubber Extrusions — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Neoprene Rubber Extrusions — seals doors, panels, hatches and covers.'
   },
   {
     id: 'nbr-rubber-extrusions',
@@ -5494,7 +5634,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR Rubber Extrusions — NBR',
     sortOrder: 202,
     metaTitle: 'NBR Rubber Extrusions in Kolkata',
-    metaDescription: 'NBR Rubber Extrusions — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR Rubber Extrusions — seals doors, panels, hatches and covers.'
   },
   {
     id: 'sbr-rubber-extrusions',
@@ -5517,7 +5657,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SBR Rubber Extrusions — SBR',
     sortOrder: 203,
     metaTitle: 'SBR Rubber Extrusions in Kolkata',
-    metaDescription: 'SBR Rubber Extrusions — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SBR Rubber Extrusions — seals doors, panels, hatches and covers.'
   },
   {
     id: 'epdm-rubber-extrusions',
@@ -5540,7 +5680,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Rubber Extrusions — EPDM',
     sortOrder: 204,
     metaTitle: 'EPDM Rubber Extrusions in Kolkata',
-    metaDescription: 'EPDM Rubber Extrusions — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Rubber Extrusions — seals doors, panels, hatches and covers.'
   },
   {
     id: 'viton-rubber-extrusions',
@@ -5563,7 +5703,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton Rubber Extrusions — Viton',
     sortOrder: 205,
     metaTitle: 'Viton Rubber Extrusions in Kolkata',
-    metaDescription: 'Viton Rubber Extrusions — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton Rubber Extrusions — seals doors, panels, hatches and covers.'
   },
   {
     id: 'pu-rubber-extrusions',
@@ -5586,7 +5726,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PU Rubber Extrusions — PU',
     sortOrder: 206,
     metaTitle: 'PU Rubber Extrusions in Kolkata',
-    metaDescription: 'PU Rubber Extrusions — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PU Rubber Extrusions — seals doors, panels, hatches and covers.'
   },
   {
     id: 'silicone-rubber-cord',
@@ -5610,7 +5750,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Rubber Cord — Silicone',
     sortOrder: 207,
     metaTitle: 'Silicone Rubber Cord in Kolkata',
-    metaDescription: 'Silicone Rubber Cord — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Rubber Cord — seals doors, panels, hatches and covers.'
   },
   {
     id: 'viton-rubber-cord',
@@ -5634,7 +5774,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Viton Rubber Cord — Viton',
     sortOrder: 208,
     metaTitle: 'Viton Rubber Cord in Kolkata',
-    metaDescription: 'Viton Rubber Cord — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Viton Rubber Cord — seals doors, panels, hatches and covers.'
   },
   {
     id: 'pu-cord',
@@ -5657,7 +5797,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PU Cord — PU',
     sortOrder: 209,
     metaTitle: 'PU Cord in Kolkata',
-    metaDescription: 'PU Cord — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PU Cord — seals doors, panels, hatches and covers.'
   },
   {
     id: 'silicone-square-cord',
@@ -5680,7 +5820,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Square Cord — Silicone',
     sortOrder: 210,
     metaTitle: 'Silicone Square Cord in Kolkata',
-    metaDescription: 'Silicone Square Cord — seals doors, panels, hatches and covers. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Square Cord — seals doors, panels, hatches and covers.'
   },
   {
     id: 'silicone-tubes',
@@ -5704,7 +5844,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Tubes — Silicone',
     sortOrder: 211,
     metaTitle: 'Silicone Tubes in Kolkata',
-    metaDescription: 'Silicone Tubes — flexible and heat resistant. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Tubes — flexible and heat resistant.'
   },
 
   // ══════════════════════════════════════════
@@ -5730,7 +5870,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Machine Anti-Vibration Mount',
     sortOrder: 212,
     metaTitle: 'Machine Anti-Vibration Mount in Kolkata',
-    metaDescription: 'Machine Anti-Vibration Mount — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Machine Anti-Vibration Mount — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'anti-vibration-mount',
@@ -5753,7 +5893,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Anti-Vibration Mount',
     sortOrder: 213,
     metaTitle: 'Anti-Vibration Mount in Kolkata',
-    metaDescription: 'Anti-Vibration Mount — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Anti-Vibration Mount — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'engine-anti-vibration-mount',
@@ -5776,7 +5916,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Engine Anti-Vibration Mount',
     sortOrder: 214,
     metaTitle: 'Engine Anti-Vibration Mount in Kolkata',
-    metaDescription: 'Engine Anti-Vibration Mount — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Engine Anti-Vibration Mount — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'levelling-anti-vibration-mount',
@@ -5799,7 +5939,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Levelling Anti-Vibration Mount',
     sortOrder: 215,
     metaTitle: 'Levelling Anti-Vibration Mount in Kolkata',
-    metaDescription: 'Levelling Anti-Vibration Mount — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Levelling Anti-Vibration Mount — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'anti-vibration-pad',
@@ -5821,7 +5961,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Anti-Vibration Pad',
     sortOrder: 216,
     metaTitle: 'Anti-Vibration Pad in Kolkata',
-    metaDescription: 'Anti-Vibration Pad — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Anti-Vibration Pad — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'epdm-rubber-damper',
@@ -5844,7 +5984,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'EPDM Rubber Damper — EPDM',
     sortOrder: 217,
     metaTitle: 'EPDM Rubber Damper in Kolkata',
-    metaDescription: 'EPDM Rubber Damper — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'EPDM Rubber Damper — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'metal-rubber-damper',
@@ -5867,7 +6007,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Metal-Rubber Damper',
     sortOrder: 218,
     metaTitle: 'Metal-Rubber Damper in Kolkata',
-    metaDescription: 'Metal-Rubber Damper — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Metal-Rubber Damper — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'nbr-rubber-damper',
@@ -5891,7 +6031,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'NBR Rubber Damper — NBR',
     sortOrder: 219,
     metaTitle: 'NBR Rubber Damper in Kolkata',
-    metaDescription: 'NBR Rubber Damper — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'NBR Rubber Damper — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'sbr-rubber-damper',
@@ -5914,7 +6054,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SBR Rubber Damper — SBR',
     sortOrder: 220,
     metaTitle: 'SBR Rubber Damper in Kolkata',
-    metaDescription: 'SBR Rubber Damper — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'SBR Rubber Damper — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'natural-rubber-damper',
@@ -5937,7 +6077,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Natural Rubber Damper — Natural Rubber',
     sortOrder: 221,
     metaTitle: 'Natural Rubber Damper in Kolkata',
-    metaDescription: 'Natural Rubber Damper — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Natural Rubber Damper — cuts vibration and noise passed into floors and frames.'
   },
   {
     id: 'silicone-rubber-damper',
@@ -5960,7 +6100,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Silicone Rubber Damper — Silicone',
     sortOrder: 222,
     metaTitle: 'Silicone Rubber Damper in Kolkata',
-    metaDescription: 'Silicone Rubber Damper — cuts vibration and noise passed into floors and frames. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Silicone Rubber Damper — cuts vibration and noise passed into floors and frames.'
   },
 
   // ══════════════════════════════════════════
@@ -5986,7 +6126,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom Gaskets',
     sortOrder: 223,
     metaTitle: 'Custom Gaskets in Kolkata',
-    metaDescription: 'Custom Gaskets — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom Gaskets — made to your drawing, sample or old part.'
   },
   {
     id: 'custom-rubber-bushes',
@@ -6008,7 +6148,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom Rubber Bushes',
     sortOrder: 224,
     metaTitle: 'Custom Rubber Bushes in Kolkata',
-    metaDescription: 'Custom Rubber Bushes — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom Rubber Bushes — made to your drawing, sample or old part.'
   },
   {
     id: 'custom-diaphragms',
@@ -6031,7 +6171,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom Diaphragms',
     sortOrder: 225,
     metaTitle: 'Custom Diaphragms in Kolkata',
-    metaDescription: 'Custom Diaphragms — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom Diaphragms — made to your drawing, sample or old part.'
   },
   {
     id: 'custom-bellows',
@@ -6053,7 +6193,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom Bellows',
     sortOrder: 226,
     metaTitle: 'Custom Bellows in Kolkata',
-    metaDescription: 'Custom Bellows — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom Bellows — made to your drawing, sample or old part.'
   },
   {
     id: 'custom-silicone-gaskets',
@@ -6076,7 +6216,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom Silicone Gaskets — Silicone',
     sortOrder: 227,
     metaTitle: 'Custom Silicone Gaskets in Kolkata',
-    metaDescription: 'Custom Silicone Gaskets — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom Silicone Gaskets — made to your drawing, sample or old part.'
   },
   {
     id: 'custom-epdm-gaskets',
@@ -6100,7 +6240,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom EPDM Gaskets — EPDM',
     sortOrder: 228,
     metaTitle: 'Custom EPDM Gaskets in Kolkata',
-    metaDescription: 'Custom EPDM Gaskets — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom EPDM Gaskets — made to your drawing, sample or old part.'
   },
   {
     id: 'custom-rectangular-gaskets',
@@ -6122,7 +6262,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom Rectangular Gaskets',
     sortOrder: 229,
     metaTitle: 'Custom Rectangular Gaskets in Kolkata',
-    metaDescription: 'Custom Rectangular Gaskets — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom Rectangular Gaskets — made to your drawing, sample or old part.'
   },
   {
     id: 'pu-bonded-metal-parts',
@@ -6145,7 +6285,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'PU-Bonded Metal Parts — PU bonded to metal',
     sortOrder: 230,
     metaTitle: 'PU-Bonded Metal Parts in Kolkata',
-    metaDescription: 'PU-Bonded Metal Parts in PU bonded to metal — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'PU-Bonded Metal Parts in PU bonded to metal — made to your drawing, sample or old part.'
   },
   {
     id: 'custom-viton-fkm-parts',
@@ -6170,7 +6310,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Custom Viton (FKM) Parts — Viton',
     sortOrder: 231,
     metaTitle: 'Custom Viton (FKM) Parts in Kolkata',
-    metaDescription: 'Custom Viton (FKM) Parts — made to your drawing, sample or old part. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Custom Viton (FKM) Parts — made to your drawing, sample or old part.'
   },
 
   // ══════════════════════════════════════════
@@ -6219,7 +6359,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 64.1,
     metaTitle: 'SKF Oil Seals in Kolkata',
-    metaDescription: 'Genuine SKF radial shaft oil seals in NBR, Viton and PTFE for gearboxes, pumps and motors. Burhani Seal Centre, Burra Bazar, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Genuine SKF radial shaft oil seals in NBR, Viton and PTFE for gearboxes, pumps and motors.'
   },
   {
     id: 'skf-oil-seal-40x62x8',
@@ -6257,7 +6397,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SKF oil seal 40×62×8 HMSA10 RG in original SKF packing',
     sortOrder: 64.2,
     metaTitle: 'SKF Oil Seal 40 × 62 × 8 in Kolkata',
-    metaDescription: 'Genuine SKF HMSA10 RG oil seal, 40 × 62 × 8 mm, nitrile, double lip. In stock at Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Genuine SKF HMSA10 RG oil seal, 40 × 62 × 8 mm, nitrile, double lip.'
   },
   {
     id: 'skf-oil-seal-55x70',
@@ -6291,7 +6431,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SKF oil seal 55×70 in original SKF packing',
     sortOrder: 64.3,
     metaTitle: 'SKF Oil Seal 55 × 70 in Kolkata',
-    metaDescription: 'Genuine SKF HNBR oil seal for a 55 mm shaft in a 70 mm bore, for gearboxes and hydraulics. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Genuine SKF HNBR oil seal for a 55 mm shaft in a 70 mm bore.'
   },
   {
     id: 'skf-oil-seal-55x100x12',
@@ -6329,7 +6469,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SKF oil seal 55×100×12 HMSA10 RG in original SKF packing',
     sortOrder: 64.4,
     metaTitle: 'SKF Oil Seal 55 × 100 × 12 in Kolkata',
-    metaDescription: 'Genuine SKF HMSA10 RG oil seal, 55 × 100 × 12 mm, nitrile, double lip. In stock at Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Genuine SKF HMSA10 RG oil seal, 55 × 100 × 12 mm, nitrile, double lip.'
   },
   {
     id: 'skf-oil-seal-90x115x12',
@@ -6366,7 +6506,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SKF oil seal 90×115×12 HMSA10 RG in original SKF packing',
     sortOrder: 64.5,
     metaTitle: 'SKF Oil Seal 90 × 115 × 12 in Kolkata',
-    metaDescription: 'Genuine SKF HMSA10 RG oil seal, 90 × 115 × 12 mm, nitrile, for large gearboxes. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Genuine SKF HMSA10 RG oil seal, 90 × 115 × 12 mm, nitrile, for large gearboxes.'
   },
   {
     id: 'skf-oil-seal-100x150',
@@ -6402,7 +6542,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'SKF oil seal 100×150 in original SKF packing',
     sortOrder: 64.6,
     metaTitle: 'SKF Oil Seal 100 × 150 in Kolkata',
-    metaDescription: 'Genuine SKF HNBR double-lip oil seal for a 100 mm shaft in a 150 mm bore. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Genuine SKF HNBR double-lip oil seal for a 100 mm shaft in a 150 mm bore.'
   },
   {
     id: 'gold-super-oil-seal',
@@ -6444,7 +6584,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Gold Super Oil Seal — Burhani Seal Centre Kolkata',
     sortOrder: 64.7,
     metaTitle: 'Gold Super Oil Seals in Kolkata',
-    metaDescription: 'Gold Super oil seals in premium rubber with a reinforced metal case, for motors, pumps and gearboxes. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Gold Super oil seals with a reinforced metal case, for motors, pumps and gearboxes.'
   },
   {
     id: 'gold-super-oil-seal-230x260x15',
@@ -6479,7 +6619,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: 'Gold Super oil seal 230×260×15 in its foil pack with the size label',
     sortOrder: 64.8,
     metaTitle: 'Gold Super Oil Seal 230 × 260 × 15',
-    metaDescription: 'Large Gold Super nitrile oil seal, 230 × 260 × 15 mm, for rolling mills, kilns and big gearboxes. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: 'Large Gold Super nitrile oil seal, 230 × 260 × 15 mm, for rolling mills and kilns.'
   },
   {
     id: 'mechanical-pump-seal',
@@ -6524,7 +6664,7 @@ export const PRODUCTS: Product[] = [
     featured: true,
     sortOrder: 168.8,
     metaTitle: 'Mechanical Pump Seal in Kolkata',
-    metaDescription: 'Stainless steel mechanical pump seals in single-spring and multi-spring designs, matched to your shaft size or old seal. Burhani Seal Centre, Kolkata.'
+    metaDescription: 'Stainless steel single-spring and multi-spring mechanical pump seals, matched to your shaft.'
   },
   {
     id: '30mm-mechanical-pump-seal',
@@ -6566,7 +6706,7 @@ export const PRODUCTS: Product[] = [
     imageAlt: '30 mm Mechanical Pump Seal — Burhani Seal Centre Kolkata',
     sortOrder: 168.9,
     metaTitle: '30 mm Mechanical Pump Seal in Kolkata',
-    metaDescription: '30 mm single-spring mechanical seal for centrifugal pumps, with carbon/ceramic or carbon/SiC faces. Burhani Seal Centre, Kolkata. Enquire on WhatsApp.'
+    metaDescription: '30 mm single-spring mechanical seal for centrifugal pumps, carbon/ceramic or SiC faces.'
   }
 ];
 

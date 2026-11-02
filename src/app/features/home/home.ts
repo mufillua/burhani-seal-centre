@@ -67,10 +67,12 @@ export class HomeComponent {
   ];
 
   constructor() {
-    inject(SeoService).set({
+    const seo = inject(SeoService);
+    seo.set({
       title: environment.seo.defaultTitle,
-      description: environment.seo.defaultDescription,
-      path: '/'
+      description: seo.snippet(environment.seo.defaultDescription),
+      path: '/',
+      business: true
     });
   }
 }

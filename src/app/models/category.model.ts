@@ -16,7 +16,10 @@ export interface Category {
   icon: string;          // Font Awesome icon (small UI places)
   art: CategoryArt;      // Line illustration (cards, placeholders)
   description: string;
-  metaDescription?: string; // search-result snippet for the category page (≤155 characters)
+  metaTitle?: string;       // search-result title for the category page (brand is added)
+  metaDescription?: string; // search-result snippet; the site adds the WhatsApp line
+  intro?: string[];         // "About" paragraphs shown under the products
+  faqs?: { q: string; a: string }[]; // questions shown under the products (and as FAQ data)
   productCount?: number; // Calculated at runtime
   featured?: boolean;
   sortOrder: number;

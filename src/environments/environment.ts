@@ -42,12 +42,23 @@ export const environment = {
     hoursShort: 'Mon–Sat, 10 AM – 6 PM',
 
     // Leave a link empty ('') to hide that icon in the footer.
+    // Every filled-in link is also given to Google as "the same business"
+    // (structured data), which helps Google connect your listings.
     social: {
       linkedin: '',
       facebook: '',
       instagram: '',
-      indiamart: ''
+      indiamart: 'https://www.indiamart.com/burhani-sealcentre-kolkata/',
+      // Paste your Google Business Profile / Google Maps share link here
+      // once the profile is verified (Maps → your business → Share).
+      googleBusiness: ''
     },
+
+    // Opening hours in the format Google reads (24-hour clock)
+    hoursSchema: [
+      { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
+      { days: ['Saturday'], opens: '10:00', closes: '17:00' }
+    ],
 
     // Year the business started (shown in the logo: "Since 1988").
     // "Years in the trade" on the home and about pages is worked out
@@ -68,10 +79,16 @@ export const environment = {
     // WhatsApp/email enquiries. When the domain is connected, change
     // this one line and rebuild — `npm run build` updates
     // index.html, sitemap.xml and robots.txt to match.
-    siteUrl: 'https://burhanisealcentre.vercel.app',
-    defaultTitle: 'Burhani Seal Centre | Seals, Gaskets & Rubber Products in Kolkata',
+    siteUrl: 'https://www.burhanisealcentre.in',
+    defaultTitle: 'Oil Seals, O-Rings & Gaskets in Kolkata | Burhani Seal Centre',
     defaultDescription:
-      'Hydraulic, pneumatic and oil seals, O-rings, gaskets, bellows, diaphragms, couplings and rubber sheets from Burra Bazar, Kolkata. Enquire on WhatsApp or email.',
-    ogImage: '/assets/images/og-image.jpg'
+      'SKF & Gold Super oil seals, O-rings, gaskets, mechanical seals and 240+ rubber parts in Burra Bazar, Kolkata since 1988.',
+    ogImage: '/assets/images/og-image.jpg',
+
+    // Search Console / Bing Webmaster verification. Paste only the code
+    // from the meta tag they give you (content="…"), then rebuild.
+    // Not needed if you verify the domain by DNS instead.
+    googleVerification: '',
+    bingVerification: ''
   }
 };

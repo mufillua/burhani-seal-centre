@@ -96,25 +96,42 @@ export class ProductsComponent {
     effect(() => {
       const cat = this.activeCategory();
       const path = cat ? `/categories/${cat.id}` : '/products';
+      const listed = cat ? this.products.getProductsByCategory(cat.id) : [];
       this.seo.set({
-        title: cat ? `${cat.name} in Kolkata` : 'Product catalogue — seals, gaskets, bellows & rubber parts',
-        description: cat
+        title: cat ? cat.metaTitle ?? `${cat.name} in Kolkata` : 'All Products — Seals, O-Rings, Gaskets & Rubber Parts',
+        description: this.seo.snippet(cat
           ? cat.metaDescription ?? cat.description
-          : `Browse ${this.totalProducts} industrial rubber products: hydraulic, pneumatic and oil seals, O-rings, gaskets, bellows and diaphragms. Enquire on WhatsApp.`,
+          : `${this.totalProducts} seals, O-rings, gaskets, bellows, diaphragms and rubber parts with photos and sizes.`),
         path,
         jsonLd: [
           {
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: cat ? cat.name : 'Product catalogue',
+            name: cat ? cat.name : 'All products',
             description: cat ? cat.description : `${this.totalProducts} industrial rubber products`,
-            url: this.seo.absolute(path)
+            url: this.seo.absolute(path),
+            ...(listed.length ? {
+              mainEntity: {
+                '@type': 'ItemList',
+                numberOfItems: listed.length,
+                itemListElement: listed.map((p, i) => ({
+                  '@type': 'ListItem', position: i + 1, name: p.name, url: this.seo.absolute(`/products/${p.slug}`)
+                }))
+              }
+            } : {})
           },
           this.seo.breadcrumb([
             { name: 'Home', path: '/' },
             { name: 'Products', path: '/products' },
             ...(cat ? [{ name: cat.name, path }] : [])
-          ])
+          ]),
+          ...(cat?.faqs?.length ? [{
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: cat.faqs.map(f => ({
+              '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a }
+            }))
+          }] : [])
         ]
       });
     });

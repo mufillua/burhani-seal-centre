@@ -121,14 +121,17 @@ export class ProductDetailComponent {
       const brand = p.specifications.find(s => /^brand$/i.test(s.label))?.value;
       this.seo.set({
         title: p.metaTitle?.replace(/\s*\|.*$/, '') || `${p.name} — ${p.categoryName}`,
-        description: p.metaDescription || `${p.shortDescription} Enquire on WhatsApp or email — Burhani Seal Centre, Kolkata.`,
+        description: this.seo.snippet(p.metaDescription || p.shortDescription),
         path: `/products/${p.slug}`,
         image: p.imageUrl || undefined,
+        imageAlt: p.imageAlt || p.name,
         type: 'product',
         jsonLd: [
           {
             '@context': 'https://schema.org',
             '@type': 'Product',
+            '@id': `${this.seo.absolute(`/products/${p.slug}`)}#product`,
+            url: this.seo.absolute(`/products/${p.slug}`),
             name: p.name,
             sku: p.id,
             description: p.shortDescription,

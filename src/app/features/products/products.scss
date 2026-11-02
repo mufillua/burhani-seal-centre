@@ -399,3 +399,94 @@
   gap: 12px;
   margin-top: 24px;
 }
+
+// ── ABOUT THIS CATEGORY + FAQ ────────────────
+// Helpful text for buyers (and for search engines) under the products.
+.cat-about {
+  padding: 8px 0 72px;
+
+  @include respond-to('mobile') { padding-bottom: 48px; }
+}
+
+.cat-about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @include respond-to('max-tablet') { grid-template-columns: 1fr; }
+}
+
+.cat-about__text,
+.cat-about__faq {
+  min-width: 0; // let the column shrink to the screen instead of the button's width
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: $radius-lg;
+  background: $white;
+  border: 1px solid $card-border;
+}
+
+.cat-about__title {
+  margin: 0 0 14px;
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+}
+
+.cat-about__text {
+  p {
+    margin: 0 0 14px;
+    max-width: 62ch;
+    font-size: 0.975rem;
+    line-height: 1.75;
+    color: $text-muted;
+  }
+
+  .btn {
+    margin-top: 6px;
+
+    @include respond-to('mobile') {
+      width: 100%;
+      justify-content: center;
+      white-space: normal;
+      text-align: center;
+    }
+  }
+}
+
+.faq {
+  border-top: 1px solid $card-border;
+
+  &:first-of-type { border-top: 0; }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker { display: none; }
+    &:focus-visible { outline: 2px solid $blue; outline-offset: 4px; border-radius: 4px; }
+
+    i { flex-shrink: 0; color: $blue; transition: transform 0.25s var(--ease-out); }
+  }
+
+  &[open] summary i { transform: rotate(45deg); }
+}
+
+.faq__q {
+  margin: 0;
+  font-family: $font-accent;
+  font-size: 0.95rem;
+  font-weight: $weight-semibold;
+  line-height: 1.45;
+  color: $charcoal;
+}
+
+.faq__a {
+  margin: 0 0 16px;
+  font-size: 0.925rem;
+  line-height: 1.7;
+  color: $text-muted;
+}

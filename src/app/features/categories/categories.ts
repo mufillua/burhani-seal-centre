@@ -27,9 +27,10 @@ export class CategoriesComponent {
   }));
 
   constructor() {
-    inject(SeoService).set({
-      title: 'Product categories',
-      description: 'Every category: hydraulic, pneumatic and oil seals, O-rings, couplings, bellows, diaphragms, gaskets, rubber sheets and more. Burhani Seal Centre, Kolkata.',
+    const seo = inject(SeoService);
+    seo.set({
+      title: 'All Categories — Seals, O-Rings, Gaskets & Rubber Parts',
+      description: seo.snippet('Hydraulic, pneumatic and oil seals, O-rings, mechanical seals, coupling spiders, bellows, diaphragms, gaskets and rubber sheets.'),
       path: '/categories'
     });
   }

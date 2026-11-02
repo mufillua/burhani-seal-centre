@@ -36,9 +36,10 @@ export class IndustriesComponent {
     }));
 
   constructor() {
-    inject(SeoService).set({
-      title: 'Industries we serve',
-      description: 'Seals, gaskets, bellows and diaphragms for chemical, pharma, food, oil & gas, power, water, textile, cement, steel and paper plants. Burhani Seal Centre.',
+    const seo = inject(SeoService);
+    seo.set({
+      title: 'Seals & Rubber Parts by Industry',
+      description: seo.snippet('Seals, gaskets, bellows and diaphragms for chemical, pharma, food, oil & gas, power, water, cement and steel plants.'),
       path: '/industries'
     });
   }

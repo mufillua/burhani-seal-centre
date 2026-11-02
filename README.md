@@ -38,29 +38,67 @@ Node 20.19+ or 22.12+ is required.
 
 Social links that are left as `''` are hidden automatically.
 
-### Connecting the domain
+### The domain: www.burhanisealcentre.in
 
-1. In Vercel, add the domain under **Project → Settings → Domains**.
-2. In `src/environments/environment.ts`, set `seo.siteUrl` to the new address,
-   e.g. `'https://www.burhanisealcentre.com'` (no trailing slash). It is currently
-   `https://burhanisealcentre.vercel.app`.
-3. Commit and push. The build (`npm run build`) runs
-   `scripts/generate-seo-files.mjs` first. That script rewrites the domain in
-   `src/index.html` and regenerates `public/sitemap.xml` and `public/robots.txt`,
-   so you don't edit those files by hand.
-4. Submit `https://<your-domain>/sitemap.xml` in Google Search Console.
+The site is set up for `https://www.burhanisealcentre.in` (`seo.siteUrl` in
+`src/environments/environment.ts`). Every canonical link, social preview, the
+sitemap, robots.txt and the product link inside each WhatsApp/email enquiry use
+it. The build (`npm run build`) runs `scripts/generate-seo-files.mjs` first,
+which writes the domain into `src/index.html` and regenerates
+`public/sitemap.xml` and `public/robots.txt`, so you never edit those by hand.
 
-`siteUrl` is also used for the product link inside every WhatsApp and email
-enquiry, so keep it pointing at the address the site is actually live on.
+`vercel.json` sends anyone who opens the old `burhanisealcentre.vercel.app` or
+`burhani-seal-centre.vercel.app` address to the same page on the new domain
+(permanent 308 redirect), so old links and Google's old entries carry over.
+
+Setting it up in Vercel (once):
+
+1. **Project → Settings → Domains → Add** `www.burhanisealcentre.in`, then add
+   `burhanisealcentre.in` and choose "Redirect to www.burhanisealcentre.in".
+2. At the registrar where you bought the domain, add exactly the DNS records
+   Vercel shows for each name (an `A` record for the bare domain and a `CNAME`
+   for `www`). Wait until Vercel shows both as "Valid".
+3. Only then push this version. The `.vercel.app` addresses redirect to the new
+   domain, so the domain must already work.
+
+### Getting found on Google
+
+1. **Google Search Console** (search.google.com/search-console): add a
+   *Domain* property for `burhanisealcentre.in` and verify it with the DNS TXT
+   record it gives you. (Or add a *URL prefix* property, copy the code from the
+   meta tag it offers into `seo.googleVerification` in `environment.ts`, and
+   rebuild.) Then **Sitemaps → Add** `https://www.burhanisealcentre.in/sitemap.xml`.
+2. **Bing Webmaster Tools** (bing.com/webmasters): "Import from Google Search
+   Console" is the quickest; or paste its code into `seo.bingVerification`.
+3. **Google Business Profile** (business.google.com): claim or create the
+   listing for the shop at 37 Strand Road, set the website to
+   `https://www.burhanisealcentre.in`, pick the closest categories Google
+   offers (type "seal" and "rubber" in the category box), and use the same phone
+   and hours as the site. Once it's
+   verified, open it in Google Maps → **Share** → copy the link into
+   `social.googleBusiness` in `environment.ts` and rebuild. This listing is what
+   puts the shop in Google Maps and "near me" searches, so ask regular customers
+   to leave a review there.
+4. Keep the name, address and phone exactly the same on IndiaMART, JustDial and
+   any other listing as on the site (`company` in `environment.ts`).
+
+What each page already gives Google: a unique title (under 65 characters) and
+description (under 160, ending with the WhatsApp number), a canonical link, a
+social preview image, and structured data — business details, address, map pin
+and opening hours on the home, about and contact pages; a product entry on
+each product page; a product list, breadcrumbs and FAQs on each category page.
+Product photos are listed in the sitemap so they can appear in Google Images.
 
 ### Adding a product
 
 1. Add an entry to `PRODUCTS` in `src/app/data/products.data.ts`. The easiest way
    is to copy an existing product in the same category. Make the `slug` unique;
-   it becomes the URL `/products/<slug>`. Give it a `metaTitle` and
-   `metaDescription` (under 160 characters); they become the page's title and
-   search snippet. The new page is pre-rendered and added to the sitemap
-   automatically on the next build.
+   it becomes the URL `/products/<slug>`. Give it a `metaTitle` (under 65
+   characters, with the words people search for, e.g. "TC Oil Seal — Double
+   Lip, NBR & Viton") and a `metaDescription` of plain facts, under 105
+   characters. The site adds "In stock in Kolkata — WhatsApp … for price." to the
+   end, so the search snippet stays under Google's 160. The new page is
+   pre-rendered and added to the sitemap automatically on the next build.
 2. Optional photo: save it as `src/assets/images/products/<slug>.webp`, square,
    about 800 × 800 px, under 120 KB, with the product on a plain white
    background (every photo on the site is on white). Then set
@@ -83,6 +121,11 @@ Add it to `CATEGORIES` in `products.data.ts`. `art` picks the illustration (one 
 `bellows`, `diaphragm`, `gasket`, `sheet`, `profile`, `mount`, `custom`, `bearing`).
 The navbar menu, footer, category pages, filters, pre-rendering and sitemap all
 read from this list.
+
+Each category can also have `metaTitle`, `metaDescription` (same limits as
+products), `intro` (paragraphs shown under "About …" below the products) and
+`faqs` (`{ q, a }` pairs shown as "Common questions"). The FAQs are also given
+to Google as structured data, so write real questions customers ask.
 
 ## Deploying
 
